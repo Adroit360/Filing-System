@@ -1,0 +1,26 @@
+.container {
+    height: 100vh;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: 1fr 8fr;
+}
+
+.menu {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 3.5fr;
+}
+
+app-menu {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: 1fr;
+}
+
+app-content {
+    border-top-left-radius: 50px;
+    background-color: #E5E5E5;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 3fr 1fr;
+}
