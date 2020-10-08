@@ -9,10 +9,16 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import {environment} from '../environments/environment';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { MenuComponent } from './menu/menu.component';
+import { ContentComponent } from './content/content.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavBarComponent,
+    MenuComponent,
+    ContentComponent
   ],
 
   imports: [
