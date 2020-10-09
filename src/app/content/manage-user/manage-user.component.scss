@@ -1,3 +1,4 @@
+@import '../../../styles/components/item-box';
 .header {
     display: flex;
     justify-content: space-between;
@@ -35,11 +36,6 @@
     grid-gap: 2px;
     /*background-color: #2196F3;*/
     padding: 10px 36px;
-}
-
-.list-container {
-    height: 72vh;
-    overflow: auto;
 }
 
 .box-1 {

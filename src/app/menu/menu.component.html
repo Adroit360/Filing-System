@@ -5,15 +5,29 @@
                 home
                 </span> General</a></li>
         <!-- The Sections the admin will create-->
-        <li><a href=""><span class="material-icons">
+        <!-- <li><a href=""><span class="material-icons">
                 folder_open
-                </span> Marketting</a></li>
-        <li><a href=""><span class="material-icons">
+                </span> Marketting</a></li> -->
+        <div class="custom-seciton">
+            <li *ngFor="let item of sections"><a href=""><span class="material-icons">
                     folder_open
-                    </span> Marketting</a></li>
-        <li><a href=""><span class="material-icons">
+                    </span> {{item}}</a></li>
+            <!-- <li><a href=""><span class="material-icons">
                         folder_open
                         </span> Marketting</a></li>
+        <li><a href=""><span class="material-icons">
+                            folder_open
+                            </span> Marketting</a></li>
+        <li><a href=""><span class="material-icons">
+                                folder_open
+                                </span> Marketting</a></li>
+        <li><a href=""><span class="material-icons">
+                                    folder_open
+                                    </span> Marketting</a></li>
+        <li><a href=""><span class="material-icons">
+                                        folder_open
+                                        </span> Marketting</a></li> -->
+        </div>
         <li><a href=""><span class="material-icons">
                 control_point
                 </span> Create New Section</a></li>
