@@ -1,7 +1,7 @@
 <div class="header">
-    <h1>Manage Users</h1>
+    <h2>Manage Users</h2>
     <div class="right-side">
-        <i class="material-icons" style="color: rgba(113, 183, 27, 0.88);">
+        <i class="material-icons" style="color: #ED1E23;">
           control_point
       </i>
         <a class="active" href="#home">Add a New user</a>
@@ -18,44 +18,48 @@
         <h5>Action</h5>
     </div>
 
-    <ul class="list">
-
-        <div class="box-1">
-            <h2>mr.adumatta</h2>
-            <h2>Nana</h2>
-            <h2>Kweku</h2>
-            <h2>Director</h2>
-            <h2>
-                <div class="sps">
-                    <span class="material-icons" style="background-color: white;">
-                  create
+    <div class="list-container">
+        <ul class="list" *ngFor="let item of userDetails">
+            <li>
+                <div class="box-1">
+                    <h2>{{item.email}}</h2>
+                    <h2>{{item.firstName}}</h2>
+                    <h2>{{item.lastName}}</h2>
+                    <h2>{{item.role}}</h2>
+                    <h2>
+                        <div class="sps">
+                            <span class="material-icons" style="background-color: white;">
+                      create
+                      </span>
+                            <span class="material-icons" style="background-color: white;">
+                  delete
                   </span>
-                    <span class="material-icons" style="background-color: white;">
-              delete
-              </span>
+                        </div>
+
+                    </h2>
                 </div>
+            </li>
 
-            </h2>
-        </div>
-
-        <div class="box-1">
-            <h2>justice.addico.ja@gmail.com</h2>
-            <h2>Justice</h2>
-            <h2>Addico</h2>
-            <h2>Developer</h2>
-            <h2>
-                <div class="sps">
-                    <span class="material-icons" style="background-color: white;">
-                  create
+            <!-- <div class="box-1">
+                <h2>justice.addico.ja@gmail.com</h2>
+                <h2>Justice</h2>
+                <h2>Addico</h2>
+                <h2>Developer</h2>
+                <h2>
+                    <div class="sps">
+                        <span class="material-icons" style="background-color: white;">
+                      create
+                      </span>
+                        <span class="material-icons" style="background-color: white;">
+                  delete
                   </span>
-                    <span class="material-icons" style="background-color: white;">
-              delete
-              </span>
-                </div>
-            </h2>
-        </div>
+                    </div>
+                </h2>
+            </div> -->
 
-    </ul>
+        </ul>
+    </div>
+
 
 
 </div>

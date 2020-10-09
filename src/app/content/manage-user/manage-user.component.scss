@@ -11,7 +11,7 @@
 }
 
 .right-side a {
-    color: rgba(113, 183, 27, 0.88);
+    color: #ED1E23;
     text-align: center;
     padding: 12px;
     text-decoration: none;
@@ -19,13 +19,12 @@
     line-height: 25px;
 }
 
-h1 {
-    font: 'Poppins';
-    font-weight: 600;
-    font-style: normal;
-    font-size: 35px;
-}
-
+// h1 {
+//     font: 'Poppins';
+//     font-weight: 600;
+//     font-style: normal;
+//     font-size: 35px;
+// }
 .main {
     padding: 10px 20px;
 }
@@ -36,6 +35,11 @@ h1 {
     grid-gap: 2px;
     /*background-color: #2196F3;*/
     padding: 10px 36px;
+}
+
+.list-container {
+    height: 72vh;
+    overflow: auto;
 }
 
 .box-1 {
@@ -60,6 +64,11 @@ h1 {
 .list {
     display: grid;
     grid-gap: 20px
+}
+
+.list li {
+    list-style: none;
+    margin-bottom: 20px;
 }
 
 .sps {
