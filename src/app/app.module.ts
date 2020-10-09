@@ -14,6 +14,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ContentComponent } from './content/content.component';
 import { ManageUserComponent } from './content/manage-user/manage-user.component';
 import { ManageUserGroupsComponent } from './content/manage-user-groups/manage-user-groups.component';
+import { EditUserComponent } from './content/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ManageUserGroupsComponent } from './content/manage-user-groups/manage-u
     MenuComponent,
     ContentComponent,
     ManageUserComponent,
-    ManageUserGroupsComponent
+    ManageUserGroupsComponent,
+    EditUserComponent
   ],
 
   imports: [
