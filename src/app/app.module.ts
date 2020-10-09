@@ -15,6 +15,7 @@ import { ContentComponent } from './content/content.component';
 import { ManageUserComponent } from './content/manage-user/manage-user.component';
 import { ManageUserGroupsComponent } from './content/manage-user-groups/manage-user-groups.component';
 import { EditUserComponent } from './content/edit-user/edit-user.component';
+import { AddNewUserComponent } from './content/add-new-user/add-new-user.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EditUserComponent } from './content/edit-user/edit-user.component';
     ContentComponent,
     ManageUserComponent,
     ManageUserGroupsComponent,
-    EditUserComponent
+    EditUserComponent,
+    AddNewUserComponent
   ],
 
   imports: [
