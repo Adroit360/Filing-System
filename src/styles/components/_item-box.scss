@@ -20,27 +20,3 @@
   border-radius:0.63rem;
 }
 
-/*****for buttons*********/
-
-.submit {
-    display: flex;
-    grid-gap: 0.94rem;
-    margin: 40px auto;
-    justify-content: center;
-    
-}
-
-button {
-    height: 3.125rem;
-    width: 11.25rem;
-    border-radius: 1rem;
-    font-size: 1rem;
-    border: 2px solid;
-    outline: transparent;
-}
-#btn{
-    background-color: #ED1E23; 
-    color: aliceblue;
-    border: none;
-    
-}
