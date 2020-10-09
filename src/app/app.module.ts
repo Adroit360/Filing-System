@@ -17,6 +17,7 @@ import { ManageUserGroupsComponent } from './content/manage-user-groups/manage-u
 import { EditUserComponent } from './content/edit-user/edit-user.component';
 import { AddNewUserComponent } from './content/add-new-user/add-new-user.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {EditUserDetailsComponent} from './content/edit-user-details/edit-user-details.component'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     ManageUserComponent,
     ManageUserGroupsComponent,
     EditUserComponent,
-    AddNewUserComponent
+    AddNewUserComponent,
+    EditUserDetailsComponent
   ],
 
   imports: [
@@ -39,7 +41,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     AngularFireStorageModule ,// for storage
     ReactiveFormsModule ,
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })
