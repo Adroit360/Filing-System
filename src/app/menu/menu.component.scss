@@ -1,3 +1,11 @@
+@mixin active(){
+ background-color: #FFFFFF;
+    -webkit-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    border-right: 10px solid #ED1E23;
+}
+
 h2 {
     font-family: Poppins;
     font-size: 16px;
@@ -28,6 +36,10 @@ li {
     line-height: 1.44rem;
     letter-spacing: 0em;
     text-align: left;
+    &:hover{
+        @include active();
+    
+    }
 }
 
 li span {
@@ -47,16 +59,14 @@ li a {
     grid-template-columns: 1fr 5fr;
 }
 
+
 .admin-tools-inbox li {
     display: grid;
 }
 
 .active {
-    background-color: #FFFFFF;
-    -webkit-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
-    box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
-    border-right: 10px solid #ED1E23;
+   @include active();
+   
 }
 
 
@@ -76,4 +86,8 @@ li a {
     overflow: auto;
     margin-top: 0.94rem;
     margin-bottom: 1rem;
+}
+.custom-seciton li:hover{
+ @include active();
+ border-right: none;
 }
