@@ -2,7 +2,7 @@
 .header {
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 0.63rem 1.25rem;
     align-items: center;
 }
 
@@ -27,31 +27,31 @@
 //     font-size: 35px;
 // }
 .main {
-    padding: 10px 20px;
+    padding: 0.63rem 1.25rem;
 }
 
 .content-1 {
     display: grid;
     grid-template-columns: 2fr 1.5fr 1.5fr 1fr 0.5fr;
-    grid-gap: 2px;
+    grid-gap: 0.13rem;
     /*background-color: #2196F3;*/
-    padding: 10px 36px;
+    padding: 0.63rem 2.25rem;
 }
 
 .box-1 {
     display: grid;
     grid-template-columns: 1.7fr 1.3fr 1.3fr 1fr 0.5fr;
-    grid-gap: 2px;
+   grid-gap: 0.13rem;
     background-color: #ffffff;
-    padding: 10px;
-    border-radius: 35px;
+    padding: 0.63rem;
+    border-radius: 2.19rem;
 }
 
 .box-1>h2 {
     /*background-color: rgba(255, 255, 255, 0.8);*/
     /*text-align: center;*/
     background-color: rgba(255, 255, 255, 0.8);
-    padding: 1px 4px;
+    padding: 0.06rem 0.25rem;
     font-size: 15px;
     font-weight: normal;
     font-style: normal;
@@ -59,12 +59,12 @@
 
 .list {
     display: grid;
-    grid-gap: 20px
+    grid-gap: 1.25rem
 }
 
 .list li {
     list-style: none;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .sps {
@@ -79,7 +79,7 @@
 @media only screen and (max-width: 845px) {
     .header {
         display: block;
-        padding: 10px 20px;
+        padding: 0.63rem 1.25rem;
         align-items: center;
     }
 }
