@@ -1,23 +1,6 @@
-.header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    align-items: center;
-}
+@import '../../../styles/components/item-box';
+@import '../../../styles/components/manage-user';
 
-.right-side {
-    display: flex;
-    align-items: center;
-}
-
-.right-side a {
-    color: rgba(113, 183, 27, 0.88);
-    text-align: center;
-    padding: 12px;
-    text-decoration: none;
-    font-size: 18px;
-    line-height: 25px;
-}
 
 h1 {
     font: 'Poppins';
@@ -26,15 +9,12 @@ h1 {
     font-size: 30px;
 }
 
-.main {
-    padding: 10px 20px;
-}
 
 .content-1 {
     display: grid;
     grid-template-columns: 2.5fr 1.7fr 1fr 0.5fr;
     grid-gap: 2px;
-    /*background-color: #2196F3;*/
+
     padding: 10px 36px;
 }
 
@@ -48,27 +28,9 @@ h1 {
 }
 
 .box-1>h2 {
-    /*background-color: rgba(255, 255, 255, 0.8);*/
-    /*text-align: center;*/
-    background-color: rgba(255, 255, 255, 0.8);
     padding: 4px 8px;
     font-size: 15px;
     font-weight: normal;
     font-style: normal;
 }
 
-.list {
-    display: grid;
-    grid-gap: 20px
-}
-
-
-/*Media queries*/
-
-@media only screen and (max-width: 845px) {
-    .header {
-        display: block;
-        padding: 10px 20px;
-        align-items: center;
-    }
-}

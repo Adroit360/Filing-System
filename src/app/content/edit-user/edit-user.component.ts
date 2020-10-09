@@ -6,7 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent implements OnInit {
-
+userGroups: {usergroupName: string, role: string}[]=[
+  {usergroupName: 'Finance', role: 'Director'},
+  {usergroupName: 'Finance', role: 'Director'},
+  {usergroupName: 'Finance', role: 'Director'},
+  {usergroupName: 'Finance', role: 'Director'},
+  {usergroupName: 'Finance', role: 'Director'},
+  {usergroupName: 'Finance', role: 'Director'},
+  {usergroupName: 'Finance', role: 'Director'},
+  {usergroupName: 'Finance', role: 'Director'},
+  {usergroupName: 'Finance', role: 'Director'},
+  {usergroupName: 'Finance', role: 'Director'},
+  {usergroupName: 'Finance', role: 'Director'},
+  {usergroupName: 'Finance', role: 'Director'},
+  {usergroupName: 'Finance', role: 'Director'},
+  {usergroupName: 'Finance', role: 'Director'},
+]
   constructor() { }
 
   ngOnInit(): void {

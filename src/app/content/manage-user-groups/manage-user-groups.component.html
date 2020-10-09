@@ -1,7 +1,7 @@
 <div class="header">
-    <h1>Manage User Groups</h1>
+    <h2>Manage User Groups</h2>
     <div class="right-side">
-        <i class="material-icons" style="color: rgba(113, 183, 27, 0.88);">
+        <i class="material-icons" style="color: #ED1E23;">
               control_point
           </i>
         <a class="active" href="#home">Add a New folder</a>
@@ -16,39 +16,27 @@
         <h5>Date Created</h5>
         <h5>Action</h5>
     </div>
-
-    <ul class="list">
-
-        <div class="box-1">
-            <h2>Finance Deparment</h2>
-            <h2>13</h2>
-            <h2>22-12-2009</h2>
+  <div class="list-container">
+        <ul class="list" *ngFor="let user of userGroups">
+            <li>
+               <div class="box-1">
+            <h2>{{user.department}}</h2>
+            <h2>{{user.numOfPeople}}</h2>
+            <h2>{{user.dateCreated}}</h2>
             <h2>
+              <div class="sps">
                 <span class="material-icons" style="background-color: white;">
                           create
                           </span>
                 <span class="material-icons" style="background-color: white;">
-                      delete
+                     delete_outline
                       </span>
+                      </div>
             </h2>
         </div>
+            </li>
 
-        <div class="box-1">
-            <h2>Party Planners</h2>
-            <h2>5</h2>
-            <h2>22-09-11</h2>
-            <h2>
-                <span class="material-icons" style="background-color: white;">
-                          create
-                          </span>
-                <span class="material-icons" style="background-color: white;">
-                      delete
-                      </span>
-
-            </h2>
-        </div>
-
-    </ul>
-
-
+        </ul>
+    </div>
+    
 </div>
