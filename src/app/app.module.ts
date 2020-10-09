@@ -16,11 +16,8 @@ import { ManageUserComponent } from './content/manage-user/manage-user.component
 import { ManageUserGroupsComponent } from './content/manage-user-groups/manage-user-groups.component';
 import { EditUserComponent } from './content/edit-user/edit-user.component';
 import { AddNewUserComponent } from './content/add-new-user/add-new-user.component';
-<<<<<<< HEAD
-import { EditUserDetailsComponent } from './content/edit-user-details/edit-user-details.component';
-=======
 import {ReactiveFormsModule} from '@angular/forms';
->>>>>>> c024f05b0bd131be0789c5313a8daa749916e76f
+import {EditUserDetailsComponent} from './content/edit-user-details/edit-user-details.component'
 
 @NgModule({
   declarations: [

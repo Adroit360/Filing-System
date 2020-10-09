@@ -1,0 +1,32 @@
+@import '../../../styles/components/manage-user';
+.header span {
+    color: #ED1E23;
+    border: 1px solid #ED1E23;
+    border-radius: 50%;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.main {
+    display: grid;
+    padding: 10px 20px;
+    grid-gap: 27px;
+}
+
+.box-1 {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    height: 45px;
+    width: 85%;
+    padding: 10px 31px;
+    border-radius: 25px;
+}
+
+.box-1>h3 {
+    text-align: center;
+    background: none;
+    height: 28px;
+    padding: 9px 12px;
+    color: #838383;
+}
