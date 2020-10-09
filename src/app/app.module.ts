@@ -13,6 +13,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MenuComponent } from './menu/menu.component';
 import { ContentComponent } from './content/content.component';
 import { ManageUserComponent } from './content/manage-user/manage-user.component';
+import { ManageUserGroupsComponent } from './content/manage-user-groups/manage-user-groups.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ManageUserComponent } from './content/manage-user/manage-user.component
     NavBarComponent,
     MenuComponent,
     ContentComponent,
-    ManageUserComponent
+    ManageUserComponent,
+    ManageUserGroupsComponent
   ],
 
   imports: [
