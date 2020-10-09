@@ -16,6 +16,7 @@ import { ManageUserComponent } from './content/manage-user/manage-user.component
 import { ManageUserGroupsComponent } from './content/manage-user-groups/manage-user-groups.component';
 import { EditUserComponent } from './content/edit-user/edit-user.component';
 import { AddNewUserComponent } from './content/add-new-user/add-new-user.component';
+import { EditUserDetailsComponent } from './content/edit-user-details/edit-user-details.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AddNewUserComponent } from './content/add-new-user/add-new-user.compone
     ManageUserComponent,
     ManageUserGroupsComponent,
     EditUserComponent,
-    AddNewUserComponent
+    AddNewUserComponent,
+    EditUserDetailsComponent
   ],
 
   imports: [
@@ -37,7 +39,7 @@ import { AddNewUserComponent } from './content/add-new-user/add-new-user.compone
     AngularFireAuthModule, //  for auth features,
     AngularFireStorageModule // for storage
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })
