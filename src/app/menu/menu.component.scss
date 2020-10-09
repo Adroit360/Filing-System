@@ -51,10 +51,17 @@ li a {
     display: grid;
 }
 
-.active a {
-    color: red;
+.active {
+    background-color: #FFFFFF;
+    -webkit-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    border-right: 10px solid #ED1E23;
 }
 
+// .active a {
+//     color: #FFFFFF;
+// }
 .admin-tools-inbox {
     margin-top: 16px;
 }
