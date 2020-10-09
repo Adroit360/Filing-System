@@ -1,23 +1,23 @@
 <div class="pad">
     <div class="header">
-        <h1>Add a new user</h1>
+        <h2>Add a new user</h2>
 
-        <div class="right-side">
+        <!-- <div class="right-side">
             <i class="material-icons" style="color: #ED1E23;">
             control_point
         </i>
             <a class="active" href="#home">Add a New user</a>
-        </div>
+        </div> -->
 
     </div>
 
     <div class="main">
 
-        <form>
-            <input type="firstName" placeholder=" First Name">
-            <input type="LastName" placeholder=" Last Name">
-            <input type="Role" placeholder=" Role">
-            <input type="email" placeholder=" Email">
+        <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+            <input type="firstName" placeholder=" First Name" formControlName ="firstName">
+            <input type="LastName" placeholder=" Last Name" formControlName="lastName">
+            <input type="Role" placeholder=" Role" formControlName="role">
+            <input type="email" placeholder=" Email" formControlName="email">
             <div class="submit">
                 <button type="submit" style="background-color: #ED1E23; color: aliceblue;">Create New User</button>
                 <button style="background-color: rgb(250, 250, 250); border-color: rgb(192, 247, 111);">Cancel</button>
