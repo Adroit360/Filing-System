@@ -6,7 +6,7 @@ h2 {
     line-height: 18px;
     letter-spacing: 0em;
     text-align: left;
-    padding-left: 20px;
+    padding-left: 1.25rem;
     color: #808080;
 }
 
@@ -15,17 +15,17 @@ h2 {
 }
 
 ul {
-    padding: 20px;
+    padding: 1.25rem;
     list-style: none;
 }
 
 li {
-    padding: 1px;
+    padding: 0.06rem;
     font-family: Poppins;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
-    line-height: 23px;
+    line-height: 1.44rem;
     letter-spacing: 0em;
     text-align: left;
 }
@@ -37,8 +37,8 @@ li span {
 li a {
     text-decoration: none;
     color: #808080;
-    padding: 10px;
-    // padding-left: 20px;
+    padding: 0.63rem;
+  
     cursor: pointer;
 }
 
@@ -59,23 +59,21 @@ li a {
     border-right: 10px solid #ED1E23;
 }
 
-// .active a {
-//     color: #FFFFFF;
-// }
+
 .admin-tools-inbox {
-    margin-top: 16px;
+    margin-top: 1rem;
 }
 
 .border-up {
     border-top: 2px solid;
     width: 85%;
-    margin-left: 20px;
+    margin-left: 1.25rem;
     color: #808080;
 }
 
 .admin-tools .custom-seciton {
     height: 33vh;
     overflow: auto;
-    margin-top: 15px;
-    margin-bottom: 16px;
+    margin-top: 0.94rem;
+    margin-bottom: 1rem;
 }
