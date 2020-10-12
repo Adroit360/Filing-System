@@ -13,7 +13,7 @@ export class MenuComponent implements OnInit {
 
 visible = true;
 sections: Section [];
-index: number;
+
 
 
   constructor(private sectionService: SectionService, private router: Router, private route :ActivatedRoute) { }

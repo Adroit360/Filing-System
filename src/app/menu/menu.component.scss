@@ -38,6 +38,7 @@ li {
     text-align: left;
     &:hover {
         @include active();
+        border-right: none;
     }
 }
 
@@ -100,3 +101,17 @@ input {
     font-weight: 400;
     line-height: 30px;
 }
+
+
+/*
+@media screen and (max-width: 800px) {
+    .admin-tools {
+        // margin-top: 30px;
+    }
+    li a {
+        text-decoration: none;
+        color: #ED1E23;
+        padding: 0.63rem;
+        cursor: pointer;
+    }
+}*/
