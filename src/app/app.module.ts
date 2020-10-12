@@ -21,12 +21,12 @@ import {EditUserDetailsComponent} from './content/edit-user-details/edit-user-de
 import { RouterModule, Routes } from '@angular/router';
 import { EmptyComponent } from './content/empty/empty.component';
 
-const appRoutes: Routes=[
-  {path: '', component: EmptyComponent},
-  {path: 'manageUsers', component: ManageUserComponent},
-  {path: 'manageUsers/AddUser', component: AddNewUserComponent},
-  {path: 'manageUserGroups', component: ManageUserGroupsComponent}
-]
+// const appRoutes: Routes=[
+//   {path: '', component: EmptyComponent},
+//   {path: 'manageUsers', component: ManageUserComponent},
+//   {path: 'manageUsers/AddUser', component: AddNewUserComponent},
+//   {path: 'manageUserGroups', component: ManageUserGroupsComponent}
+// ]
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +49,7 @@ const appRoutes: Routes=[
     AngularFireAuthModule, //  for auth features,
     AngularFireStorageModule ,// for storage
     ReactiveFormsModule ,
-    RouterModule.forRoot(appRoutes)
+    // RouterModule.forRoot(appRoutes)
   ],
 
   providers: [],

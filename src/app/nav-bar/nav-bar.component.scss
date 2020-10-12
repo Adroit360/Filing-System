@@ -13,7 +13,7 @@
 
 .notifications span {
     cursor: pointer;
-    margin:0.94rem auto;
+    margin: 0.94rem auto;
     font-size: 25px;
     margin-right: 0.63rem;
     float: right;
@@ -51,3 +51,30 @@
     background: #E5E5E5;
     margin-left: 15%;
 }
+
+.sidebar {
+    display: none;
+}
+
+
+/*
+@media screen and (max-width: 800px) {
+    .logo {
+        display: none;
+    }
+    .sidebar {
+        display: block;
+        margin: 20px auto;
+        .bar1,
+        .bar2,
+        .bar3 {
+            display: block;
+            height: 10px;
+            background-color: #ED1E23;
+            width: 60px;
+            margin: 6px 0px;
+            transition: 0.4s;
+        }
+    }
+}
+*/
