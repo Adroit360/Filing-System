@@ -20,12 +20,16 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {EditUserDetailsComponent} from './content/edit-user-details/edit-user-details.component'
 import { RouterModule, Routes } from '@angular/router';
 import { EmptyComponent } from './content/empty/empty.component';
+import { SectionService } from './services/Section.service';
+import { SectionComponent } from './content/section/section.component';
 
 const appRoutes: Routes=[
   {path: '', component: EmptyComponent},
+  {path: ' /:id/', component: SectionComponent},
   {path: 'manageUsers', component: ManageUserComponent},
   {path: 'manageUsers/AddUser', component: AddNewUserComponent},
-  {path: 'manageUserGroups', component: ManageUserGroupsComponent}
+  {path: 'manageUserGroups', component: ManageUserGroupsComponent},
+
 ]
 @NgModule({
   declarations: [
@@ -38,7 +42,8 @@ const appRoutes: Routes=[
     EditUserComponent,
     AddNewUserComponent,
     EditUserDetailsComponent,
-    EmptyComponent
+    EmptyComponent,
+    SectionComponent
   ],
 
   imports: [
@@ -52,7 +57,7 @@ const appRoutes: Routes=[
     RouterModule.forRoot(appRoutes)
   ],
 
-  providers: [],
+  providers: [SectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

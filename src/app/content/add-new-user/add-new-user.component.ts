@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { User } from 'src/app/models/user.model';
 @Component({
   selector: 'app-add-new-user',
   templateUrl: './add-new-user.component.html',
@@ -7,6 +8,7 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 })
 export class AddNewUserComponent implements OnInit {
   addUserForm: FormGroup;
+  newUser: User[];
   constructor() { }
 
   ngOnInit(): void {
@@ -19,7 +21,7 @@ export class AddNewUserComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.addUserForm);
-    
+    console.log(this.addUserForm.value);
+
   }
 }
