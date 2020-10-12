@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from './user.model';
 
 @Component({
   selector: 'app-manage-user',
@@ -6,21 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-user.component.scss']
 })
 export class ManageUserComponent implements OnInit {
-  userDetails: {email: string, firstName: string, lastName: string, role: string}[] = [
-    {email: 'mr.adumatta@adroit360gh.com', firstName: 'Nana', lastName: 'Kweku', role: 'Director'},
-    {email: 'mr.adumatta@adroit360gh.com', firstName: 'Nana', lastName: 'Kweku', role: 'Director'},
-    {email: 'mr.adumatta@adroit360gh.com', firstName: 'Nana', lastName: 'Kweku', role: 'Director'},
-    {email: 'mr.adumatta@adroit360gh.com', firstName: 'Nana', lastName: 'Kweku', role: 'Director'},
-    {email: 'mr.adumatta@adroit360gh.com', firstName: 'Nana', lastName: 'Kweku', role: 'Director'},
-    {email: 'mr.adumatta@adroit360gh.com', firstName: 'Nana', lastName: 'Kweku', role: 'Director'},
-    {email: 'mr.adumatta@adroit360gh.com', firstName: 'Nana', lastName: 'Kweku', role: 'Director'},
-    {email: 'mr.adumatta@adroit360gh.com', firstName: 'Nana', lastName: 'Kweku', role: 'Director'},
-    {email: 'mr.adumatta@adroit360gh.com', firstName: 'Nana', lastName: 'Kweku', role: 'Director'},
-    {email: 'mr.adumatta@adroit360gh.com', firstName: 'Nana', lastName: 'Kweku', role: 'Director'},
-    {email: 'mr.adumatta@adroit360gh.com', firstName: 'Nana', lastName: 'Kweku', role: 'Director'},
-    {email: 'mr.adumatta@adroit360gh.com', firstName: 'Nana', lastName: 'Kweku', role: 'Director'},
-  ];
-
+ userDetails: User[]=[
+   new User('adumatta@gmail.com','Nana', 'Kwaku', 'director'),
+   new User('adumatta@gmail.com','Nana', 'Kwaku', 'director'),
+   new User('adumatta@gmail.com','Nana', 'Kwaku', 'director'),
+   new User('adumatta@gmail.com','Nana', 'Kwaku', 'director'),
+   new User('adumatta@gmail.com','Nana', 'Kwaku', 'director')
+ ]
   constructor() { }
 
   ngOnInit(): void {

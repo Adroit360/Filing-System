@@ -9,36 +9,27 @@
                 folder_open
                 </span> Marketting</a></li> -->
         <div class="custom-seciton">
-            <li *ngFor="let item of sections"><a href=""><span class="material-icons">
+            <li *ngFor="let item of sections"><a (click)="onClick()"><span class="material-icons">
                     folder_open
-                    </span> {{item}}</a></li>
-            <!-- <li><a href=""><span class="material-icons">
-                        folder_open
-                        </span> Marketting</a></li>
-        <li><a href=""><span class="material-icons">
-                            folder_open
-                            </span> Marketting</a></li>
-        <li><a href=""><span class="material-icons">
-                                folder_open
-                                </span> Marketting</a></li>
-        <li><a href=""><span class="material-icons">
-                                    folder_open
-                                    </span> Marketting</a></li>
-        <li><a href=""><span class="material-icons">
-                                        folder_open
-                                        </span> Marketting</a></li> -->
+                    </span> {{item.name}}</a></li>
         </div>
-        <li><a href=""><span class="material-icons">
+        <li><a (click)="toggle()" *ngIf="visible;else Data"><span class="material-icons">
                 control_point
-                </span> Create New Section</a></li>
+                </span> Create New Section
+            </a>
+
+            <ng-template #Data>
+                <input (keydown.enter)="onAddedItem()" type="text" placeholder=" Add a New Section" #newSection>
+            </ng-template>
+        </li>
     </ul>
     <div class="border-up"></div>
 </div>
 <div class="admin-tools-inbox">
     <h2>Administrator Tools</h2>
     <ul>
-        <li class="active"><a href=""> Manage Users </a></li>
-        <li><a href=""> Manage User Groups </a></li>
+        <li><a routerLink="/manageUsers" routerLinkActive="active"> Manage Users </a></li>
+        <li><a routerLink="/manageUserGroups" routerLinkActive="active"> Manage User Groups </a></li>
         <!-- <li><a href=""> Access Overview</a></li> -->
     </ul>
 </div>
