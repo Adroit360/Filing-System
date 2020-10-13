@@ -1,24 +1,33 @@
 .container {
     height: 100vh;
     display: grid;
-    grid-auto-flow: row;
-    grid-template-rows: 1fr 8fr;
-    overflow-x: hidden;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 6rem repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    grid-template-areas: "side head head head head" "side main main main main" "side main main main main" "side main main main main" "side main main main main";
 }
 
-.menu {
+.parent {
     display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
 }
 
 app-menu {
+    grid-area: side;
     display: grid;
     grid-auto-flow: row;
-    grid-template-rows: 1fr;
+}
+
+app-nav-bar {
+    grid-area: head;
 }
 
 app-content {
+    grid-area: main;
     border-top-left-radius: 3.13rem;
     background-color: #E5E5E5;
     display: grid;

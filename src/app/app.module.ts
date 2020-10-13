@@ -18,15 +18,10 @@ import { EditUserComponent } from './content/edit-user/edit-user.component';
 import { AddNewUserComponent } from './content/add-new-user/add-new-user.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {EditUserDetailsComponent} from './content/edit-user-details/edit-user-details.component'
-import { RouterModule, Routes } from '@angular/router';
+import { SidebarModule } from 'ng-sidebar';
 import { EmptyComponent } from './content/empty/empty.component';
 
-// const appRoutes: Routes=[
-//   {path: '', component: EmptyComponent},
-//   {path: 'manageUsers', component: ManageUserComponent},
-//   {path: 'manageUsers/AddUser', component: AddNewUserComponent},
-//   {path: 'manageUserGroups', component: ManageUserGroupsComponent}
-// ]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,9 +42,9 @@ import { EmptyComponent } from './content/empty/empty.component';
     AngularFireModule.initializeApp(environment.firebaseConfig), //initialize firebase app
     AngularFirestoreModule, //  for database features
     AngularFireAuthModule, //  for auth features,
-    AngularFireStorageModule ,// for storage
+    AngularFireStorageModule , // for storage
     ReactiveFormsModule ,
-    // RouterModule.forRoot(appRoutes)
+    SidebarModule.forRoot(),
   ],
 
   providers: [],

@@ -1,16 +1,19 @@
 .nav-bar {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 1fr 3.5fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
-.logo img {
-    width: 9.25rem;
-    height: 3.56rem;
-    margin-left: 43px;
-    margin-top: 0.63rem;
-}
-
+// ng-sidebar-container {
+//     display: none;
+//     height: 100vh;
+// }
+// ::ng-deep .ng-sidebar {
+//     background-color: red;
+//     width: 300px;
+//     padding: 2rem 3rem;
+//     box-shadow: 0 0 2.5rem rgba(85, 85, 85, 0.5);
+// }
 .notifications span {
     cursor: pointer;
     margin: 0.94rem auto;
@@ -42,7 +45,7 @@
 #search {
     font-size: 18px;
     margin: 0.94rem auto;
-    width: 80%;
+    width: 100%;
     padding: 1.06rem;
     padding-left: 3.44rem;
     border-radius: 1.88rem;
