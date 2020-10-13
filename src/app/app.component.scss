@@ -8,14 +8,6 @@
     grid-template-areas: "side head head head head" "side main main main main" "side main main main main" "side main main main main" "side main main main main";
 }
 
-.parent {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-}
-
 app-menu {
     grid-area: side;
     display: grid;
@@ -36,33 +28,27 @@ app-content {
 }
 
 
-/*
+/******************MEDIA QUERIES**************************/
+
 @media screen and (max-width: 800px) {
-    .menu {
-        display: block;
-        // grid-auto-flow: column;
-        // grid-template-columns: 1fr 4fr;
+    .container {
+        grid-template-columns: auto repeat(4, 1fr);
     }
     app-content {
         border-top-left-radius: 0rem !important;
-        background-color: #E5E5E5;
-        display: grid;
-        grid-auto-flow: column;
-        grid-template-columns: auto;
+        background-color: red;
+        // display: grid;
+        // grid-auto-flow: column;
+        // grid-template-columns: auto;
     }
-    
-
-app-menu {
-    display: block;
-    position: fixed;
-    width: 50vw;
-    height: 90vh;
-    background-color: white;
-    // left: -200px;
-    transition: all 500ms linear;
-    cursor: pointer;
+    // app-menu {
+    //     display: block;
+    //     position: fixed;
+    //     width: 50vw;
+    //     height: 90vh;
+    //     background-color: white;
+    //     // left: -200px;
+    //     transition: all 500ms linear;
+    //     cursor: pointer;
+    // }
 }
-
-}
-
-*/

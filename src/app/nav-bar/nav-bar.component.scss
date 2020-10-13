@@ -1,7 +1,6 @@
 .nav-bar {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    align-items: center;
 }
 
 // ng-sidebar-container {
@@ -16,10 +15,10 @@
 // }
 .notifications span {
     cursor: pointer;
-    margin: 0.94rem auto;
+    margin: 1rem;
     font-size: 25px;
-    margin-right: 0.63rem;
-    float: right;
+    //margin-right: 0.63rem;
+    //float: right;
     border-radius: 50%;
     padding: 1.13rem;
     background-color: #E5E5E5;
@@ -33,26 +32,26 @@
 
 .search-box {
     position: relative;
+    flex-grow: 1;
+    margin: 0rem 1rem;
 }
 
 .search-box span {
     position: absolute;
-    top: 33%;
-    left: 17%;
+    top: 26%;
+    left: 2%;
     font-size: 30px;
 }
 
 #search {
     font-size: 18px;
-    margin: 0.94rem auto;
-    width: 100%;
+    width: 65%;
     padding: 1.06rem;
     padding-left: 3.44rem;
     border-radius: 1.88rem;
     outline: none;
     border: transparent;
     background: #E5E5E5;
-    margin-left: 15%;
 }
 
 .sidebar {
