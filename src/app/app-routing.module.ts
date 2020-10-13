@@ -8,10 +8,12 @@ import { EditUserComponent } from './content/edit-user/edit-user.component';
 import { AddNewUserComponent } from './content/add-new-user/add-new-user.component';
 import {EditUserDetailsComponent} from './content/edit-user-details/edit-user-details.component';
 import { EmptyComponent } from './content/empty/empty.component';
+import { SectionComponent } from './content/section/section.component';
 
 
 const routes: Routes = [
   {path: '', component: EmptyComponent},
+  {path: 'dashboard/:id/:name', component: SectionComponent},
   {path: 'manageUsers', component: ManageUserComponent},
   {path: 'manageUsers/AddUser', component: AddNewUserComponent},
   {path: 'manageUserGroups', component: ManageUserGroupsComponent}

@@ -22,24 +22,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmptyComponent } from './content/empty/empty.component';
 import { SectionService } from './services/Section.service';
 import { SectionComponent } from './content/section/section.component';
+import { UserService } from './services/User.service';
 
-<<<<<<< HEAD
-const appRoutes: Routes=[
-  {path: '', component: EmptyComponent},
-  {path: ' /:id/', component: SectionComponent},
-  {path: 'manageUsers', component: ManageUserComponent},
-  {path: 'manageUsers/AddUser', component: AddNewUserComponent},
-  {path: 'manageUserGroups', component: ManageUserGroupsComponent},
-
-]
-=======
 // const appRoutes: Routes=[
 //   {path: '', component: EmptyComponent},
 //   {path: 'manageUsers', component: ManageUserComponent},
 //   {path: 'manageUsers/AddUser', component: AddNewUserComponent},
 //   {path: 'manageUserGroups', component: ManageUserGroupsComponent}
 // ]
->>>>>>> 51f5d14cb23b271123ef44174b44af676b878797
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +56,7 @@ const appRoutes: Routes=[
     // RouterModule.forRoot(appRoutes)
   ],
 
-  providers: [SectionService],
+  providers: [SectionService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -32,8 +32,5 @@ sections: Section [];
    this.visible=!this.visible;
   }
 
-  onSelected( id: number, section: Section){
-    console.log(id , section);
-}
 
 }
