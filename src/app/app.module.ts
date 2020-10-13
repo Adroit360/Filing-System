@@ -20,6 +20,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {EditUserDetailsComponent} from './content/edit-user-details/edit-user-details.component'
 import { SidebarModule } from 'ng-sidebar';
 import { EmptyComponent } from './content/empty/empty.component';
+import { SectionService } from './services/Section.service';
+import { SectionComponent } from './content/section/section.component';
+import { UserService } from './services/User.service';
 
 
 @NgModule({
@@ -33,7 +36,8 @@ import { EmptyComponent } from './content/empty/empty.component';
     EditUserComponent,
     AddNewUserComponent,
     EditUserDetailsComponent,
-    EmptyComponent
+    EmptyComponent,
+    SectionComponent
   ],
 
   imports: [
@@ -47,7 +51,7 @@ import { EmptyComponent } from './content/empty/empty.component';
     SidebarModule.forRoot(),
   ],
 
-  providers: [],
+  providers: [SectionService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

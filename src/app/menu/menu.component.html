@@ -12,7 +12,7 @@
                 folder_open
                 </span> Marketting</a></li> -->
         <div class="custom-seciton">
-            <li *ngFor="let item of sections"><a (click)="onClick()"><span class="material-icons">
+            <li *ngFor="let item of sections; let i= index"><a><span class="material-icons">
                     folder_open
                     </span> {{item.name}}</a></li>
         </div>

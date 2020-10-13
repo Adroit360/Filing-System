@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Group } from 'src/app/models/group.model';
 
 @Component({
   selector: 'app-manage-user-groups',
@@ -7,23 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageUserGroupsComponent implements OnInit {
   // will change the date created to a Date type later
-  userGroups: {department: string, numOfPeople: number, dateCreated: string}[]=[
-    {department: 'Finance Department', numOfPeople :13, dateCreated: '22-12-2009'},
-    {department: 'Finance Department', numOfPeople :13, dateCreated: '22-12-2009'},
-    {department: 'Finance Department', numOfPeople :13, dateCreated: '22-12-2009'},
-    {department: 'Finance Department', numOfPeople :13, dateCreated: '22-12-2009'},
-    {department: 'Finance Department', numOfPeople :13, dateCreated: '22-12-2009'},
-    {department: 'Finance Department', numOfPeople :13, dateCreated: '22-12-2009'},
-    {department: 'Finance Department', numOfPeople :13, dateCreated: '22-12-2009'},
-    {department: 'Finance Department', numOfPeople :13, dateCreated: '22-12-2009'},
-    {department: 'Finance Department', numOfPeople :13, dateCreated: '22-12-2009'},
-      {department: 'Finance Department', numOfPeople :13, dateCreated: '22-12-2009'},
-    {department: 'Finance Department', numOfPeople :13, dateCreated: '22-12-2009'},
-    {department: 'Finance Department', numOfPeople :13, dateCreated: '22-12-2009'},
-    {department: 'Finance Department', numOfPeople :13, dateCreated: '22-12-2009'},
-    {department: 'Finance Department', numOfPeople :13, dateCreated: '22-12-2009'},
-    {department: 'Finance Department', numOfPeople :13, dateCreated: '22-12-2009'},
+  userGroups: Group[]=[
+    new Group('Finance', '20','20-20-19'),
+    new Group('Finance', '20','20-20-19'),
+    new Group('Finance', '20','20-20-19'),
+    new Group('Finance', '20','20-20-19'),
+
   ]
+
   constructor() { }
 
   ngOnInit(): void {
