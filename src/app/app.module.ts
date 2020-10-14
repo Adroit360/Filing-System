@@ -12,13 +12,15 @@ import {environment} from '../environments/environment';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MenuComponent } from './menu/menu.component';
 import { ContentComponent } from './content/content.component';
+import { DbtestComponent } from './dbtest/dbtest.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     MenuComponent,
-    ContentComponent
+    ContentComponent,
+    DbtestComponent
   ],
 
   imports: [
