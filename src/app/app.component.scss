@@ -8,6 +8,11 @@
     grid-template-areas: "side head head head head" "side main main main main" "side main main main main" "side main main main main" "side main main main main";
 }
 
+app-login {
+    margin: 0px;
+    padding: 0px;
+}
+
 app-menu {
     grid-area: side;
     display: grid;
@@ -30,16 +35,20 @@ app-content {
 
 /******************MEDIA QUERIES**************************/
 
+
+/*
 @media screen and (max-width: 800px) {
     .container {
         grid-template-columns: auto repeat(4, 1fr);
+        grid-template-rows: 6rem repeat(4, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        grid-template-areas: "side head head head head" "main main main main main" "main main main main main" "main main main main main" "main main main main main";
     }
     app-content {
         border-top-left-radius: 0rem !important;
-        background-color: red;
-        // display: grid;
-        // grid-auto-flow: column;
-        // grid-template-columns: auto;
+        // background-color: red;
+        display: block;
     }
     // app-menu {
     //     display: block;
@@ -52,3 +61,4 @@ app-content {
     //     cursor: pointer;
     // }
 }
+*/
