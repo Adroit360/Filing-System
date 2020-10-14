@@ -76,10 +76,22 @@ input[type=password] {
     border-radius: 10px;
 }
 
+.forgot-password {
+    margin-top: 1.25rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 2fr 1fr;
+    input {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-right: 0.63rem;
+        margin-top: 0.19rem;
+    }
+}
+
 button {
     height: 4rem;
     width: 21rem;
-    ;
     border-radius: 1.25rem;
     background: #ED1E23;
     border: transparent;
@@ -99,7 +111,6 @@ button {
 }
 
 .psw {
-    padding-top: 1rem;
     a {
         color: #009CAA;
     }
