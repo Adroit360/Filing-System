@@ -1,0 +1,48 @@
+<div class="header">
+    <h2>Manage Users</h2>
+    <div class="right-side">
+        <i class="material-icons" style="color: #ED1E23;">
+          control_point
+      </i>
+        <a class="active" routerLink="/manageUsers/AddUser">Add a New user</a>
+    </div>
+</div>
+
+<div class="main">
+
+    <div class="content-1">
+        <h5>Email</h5>
+        <h5>First Name</h5>
+        <h5>Last Name</h5>
+        <h5>Role</h5>
+        <h5>Action</h5>
+    </div>
+
+    <div class="list-container">
+        <ul class="list" *ngFor="let item of userDetails">
+            <li>
+                <div class="box-1">
+                    <h2>{{item.Email}}</h2>
+                    <h2>{{item.FirstName}}</h2>
+                    <h2>{{item.LastName}}</h2>
+                    <h2>{{item.position}}</h2>
+                    <h2>
+                        <div class="sps">
+                            <span class="material-icons" style="background-color: white;">
+                      create
+                      </span>
+                            <span class="material-icons" style="background-color: white;">
+                 delete_outline
+                  </span>
+                        </div>
+
+                    </h2>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+
+
+</div>

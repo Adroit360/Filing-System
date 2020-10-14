@@ -1,0 +1,82 @@
+.nav-bar {
+    display: flex;
+    align-items: center;
+}
+
+// ng-sidebar-container {
+//     display: none;
+//     height: 100vh;
+// }
+// ::ng-deep .ng-sidebar {
+//     background-color: red;
+//     width: 300px;
+//     padding: 2rem 3rem;
+//     box-shadow: 0 0 2.5rem rgba(85, 85, 85, 0.5);
+// }
+.notifications span {
+    cursor: pointer;
+    margin: 1rem;
+    font-size: 25px;
+    //margin-right: 0.63rem;
+    //float: right;
+    border-radius: 50%;
+    padding: 1.13rem;
+    background-color: #E5E5E5;
+    -webkit-box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
+}
+
+
+/*********SEARCH BOX**********************/
+
+.search-box {
+    position: relative;
+    flex-grow: 1;
+    margin: 0rem 1rem;
+}
+
+.search-box span {
+    position: absolute;
+    top: 26%;
+    left: 2%;
+    font-size: 30px;
+}
+
+#search {
+    font-size: 18px;
+    width: 65%;
+    padding: 1.06rem;
+    padding-left: 3.44rem;
+    border-radius: 1.88rem;
+    outline: none;
+    border: transparent;
+    background: #E5E5E5;
+}
+
+.sidebar {
+    display: none;
+}
+
+
+/*
+@media screen and (max-width: 800px) {
+    .logo {
+        display: none;
+    }
+    .sidebar {
+        display: block;
+        margin: 20px auto;
+        .bar1,
+        .bar2,
+        .bar3 {
+            display: block;
+            height: 10px;
+            background-color: #ED1E23;
+            width: 60px;
+            margin: 6px 0px;
+            transition: 0.4s;
+        }
+    }
+}
+*/

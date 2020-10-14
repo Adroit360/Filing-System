@@ -1,0 +1,19 @@
+/*.folders {
+    // border: 1px solid red;
+}*/
+
+.user-permissions {
+    background: #FFFFFF;
+    margin-top: 1.88rem;
+    border-top-left-radius: 0.63rem;
+    border-top-right-radius: 0.63rem;
+    -webkit-box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
+}
+
+@media screen and (max-width: 800px) {
+    .user-permissions {
+        display: none;
+    }
+}

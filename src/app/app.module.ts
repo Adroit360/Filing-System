@@ -12,7 +12,23 @@ import {environment} from '../environments/environment';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MenuComponent } from './menu/menu.component';
 import { ContentComponent } from './content/content.component';
+<<<<<<< HEAD
 import { DbtestComponent } from './dbtest/dbtest.component';
+=======
+import { ManageUserComponent } from './content/manage-user/manage-user.component';
+import { ManageUserGroupsComponent } from './content/manage-user-groups/manage-user-groups.component';
+import { EditUserComponent } from './content/edit-user/edit-user.component';
+import { AddNewUserComponent } from './content/add-new-user/add-new-user.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {EditUserDetailsComponent} from './content/edit-user-details/edit-user-details.component'
+import { SidebarModule } from 'ng-sidebar';
+import { EmptyComponent } from './content/empty/empty.component';
+import { SectionService } from './services/Section.service';
+import { SectionComponent } from './content/section/section.component';
+import { UserService } from './services/User.service';
+import { LoginComponent } from './login/login.component';
+
+>>>>>>> 22f96264418b2dc47d5fe2d1c1044355bf52430d
 
 @NgModule({
   declarations: [
@@ -20,7 +36,18 @@ import { DbtestComponent } from './dbtest/dbtest.component';
     NavBarComponent,
     MenuComponent,
     ContentComponent,
+<<<<<<< HEAD
     DbtestComponent
+=======
+    ManageUserComponent,
+    ManageUserGroupsComponent,
+    EditUserComponent,
+    AddNewUserComponent,
+    EditUserDetailsComponent,
+    EmptyComponent,
+    SectionComponent,
+    LoginComponent
+>>>>>>> 22f96264418b2dc47d5fe2d1c1044355bf52430d
   ],
 
   imports: [
@@ -29,10 +56,12 @@ import { DbtestComponent } from './dbtest/dbtest.component';
     AngularFireModule.initializeApp(environment.firebaseConfig), //initialize firebase app
     AngularFirestoreModule, //  for database features
     AngularFireAuthModule, //  for auth features,
-    AngularFireStorageModule // for storage
+    AngularFireStorageModule , // for storage
+    ReactiveFormsModule ,
+    SidebarModule.forRoot(),
   ],
-  
-  providers: [],
+
+  providers: [SectionService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

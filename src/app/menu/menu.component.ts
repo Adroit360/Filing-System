@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router'
+import { Section } from '../models/section.model';
+import { SectionService } from '../services/Section.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -7,9 +9,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+@ViewChild ('newSection') nameInputRef: ElementRef;
+
+  visible = true; // ng template
+  Opened = false;
+
+  sections: Section [];
+
+
+
+  constructor(private sectionService: SectionService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.sections = this.sectionService.getSection();
   }
 
+  toggle(){
+    this.visible = !this.visible;
+  }
+
+  onAddedItem(){
+    const newSection = new Section(this.nameInputRef.nativeElement.value);
+    this.sections.push(newSection);
+    this.visible = !this.visible;
+  }
+ 
+  // onToggleSidebar() {
+  //   this.Opened = !this.Opened;
+  // }
+  // onClose(){
+  //   this.Opened = !this.Opened;
+  // }
 }
