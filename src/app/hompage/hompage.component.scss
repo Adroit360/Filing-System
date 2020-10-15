@@ -2,7 +2,7 @@
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 5.5rem repeat(4, 1fr);
+    grid-template-rows: 5rem repeat(4, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     grid-template-areas: "side head head head head" "side main main main main" "side main main main main" "side main main main main" "side main main main main";

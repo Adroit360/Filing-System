@@ -23,7 +23,6 @@ export class AddNewUserComponent implements OnInit {
   }
 
   onSubmit(){
-
     this.newuser.addNewUser({
       Email: this.addUserForm.value.email,
       FirstName: this.addUserForm.value.firstName,
@@ -31,6 +30,10 @@ export class AddNewUserComponent implements OnInit {
       position: this.addUserForm.value.role
     });
 
-    this.router.navigate(['/manageUsers']);
+    this.router.navigate(['home/content/manageUsers']);
+  }
+
+  onCancel(){
+    this.router.navigate(['home/content/AddUser'])
   }
 }

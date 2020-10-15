@@ -10,6 +10,7 @@ import {FormControl, FormGroup, Validators, } from '@angular/forms';
 export class LoginComponent implements OnInit {
   LogInForm: FormGroup;
   isValid = false; // this property checks if the form is valid or if the name is in the database
+  forgot = false;
   constructor(private route: Router) { }
 
   ngOnInit(): void {
@@ -24,6 +25,9 @@ export class LoginComponent implements OnInit {
     this.route.navigate(['home/content/general']);
     console.log(this.LogInForm);
 
+  }
+  onToggle(){
+    this.forgot = !this.forgot;
   }
 
 }
