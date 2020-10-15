@@ -17,9 +17,10 @@ const routes: Routes = [
   {path: 'home', component: HompageComponent, children: [
     {path: 'content', component: ContentComponent, children: [
       {path: 'manageUsers', component: ManageUserComponent, children: [
-        {path: 'AddUser', component: AddNewUserComponent},
+        
       ]},
       {path: 'manageUserGroups', component: ManageUserGroupsComponent},
+      {path: 'AddUser', component: AddNewUserComponent},
       {path: 'general', component: EmptyComponent},
     ]}
   ]},

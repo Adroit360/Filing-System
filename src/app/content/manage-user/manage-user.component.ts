@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/User.service';
 import { User } from '../../models/user.model';
@@ -9,7 +10,7 @@ import { User } from '../../models/user.model';
 })
 export class ManageUserComponent implements OnInit {
  userDetails: User[] = [];
-  constructor( private userdetails: UserService) { }
+  constructor( private userdetails: UserService, private route: Router) { }
 
   ngOnInit(): void {
     this.userDetails = this.userdetails.getuserDetails();
@@ -24,6 +25,8 @@ export class ManageUserComponent implements OnInit {
   onEdit(item:any){
 
   }
-
+  addPage(){
+    this.route.navigate(['/home/content/AddUser']);
+  }
 
 }
