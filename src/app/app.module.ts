@@ -12,9 +12,6 @@ import {environment} from '../environments/environment';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MenuComponent } from './menu/menu.component';
 import { ContentComponent } from './content/content.component';
-<<<<<<< HEAD
-import { DbtestComponent } from './dbtest/dbtest.component';
-=======
 import { ManageUserComponent } from './content/manage-user/manage-user.component';
 import { ManageUserGroupsComponent } from './content/manage-user-groups/manage-user-groups.component';
 import { EditUserComponent } from './content/edit-user/edit-user.component';
@@ -28,7 +25,6 @@ import { SectionComponent } from './content/section/section.component';
 import { UserService } from './services/User.service';
 import { LoginComponent } from './login/login.component';
 
->>>>>>> 22f96264418b2dc47d5fe2d1c1044355bf52430d
 
 @NgModule({
   declarations: [
@@ -36,9 +32,6 @@ import { LoginComponent } from './login/login.component';
     NavBarComponent,
     MenuComponent,
     ContentComponent,
-<<<<<<< HEAD
-    DbtestComponent
-=======
     ManageUserComponent,
     ManageUserGroupsComponent,
     EditUserComponent,
@@ -47,7 +40,6 @@ import { LoginComponent } from './login/login.component';
     EmptyComponent,
     SectionComponent,
     LoginComponent
->>>>>>> 22f96264418b2dc47d5fe2d1c1044355bf52430d
   ],
 
   imports: [

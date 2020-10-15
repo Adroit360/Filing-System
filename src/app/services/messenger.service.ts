@@ -50,14 +50,31 @@ export class MessengerService {
 
 
   // create user
-  async newUser(user:User){
-    let user_id= user.email;
-    await this.authService.signUp(user.email,"defaultpassword").then(async res=>{
-      await this.users.doc(user_id).set(user).then((result)=>{
-        console.log("account creation succesful");
-        return result;
+  async NewUser(firstName,lastName,email,role){
+    let user:User={
+      email: email,
+      lastName:lastName,
+      firstName:firstName,
+      role:role,
+      accessList:[],
+      deletionPrivilege:false
+    }
+    
+    // create user in firestore database
+    await this.authService.signUp(user.email,"@password").then(async res=>{
+
+      // save user information to the database
+      console.log(res);
+      if(res=="auth/email-already-in-use" || res=="auth/invalid-email"){
+        return res;
+      }
+      await this.users.doc(user.email).set(user).then(()=>{
+        // send password reset link
+        this.authService.ResetPassword(email).catch(err=>{console.log("error from reset password",err);return err});
       })
-    });
+      .catch(e=>{console.log(e); return e;})
+ 
+    }).catch(e=>{console.log(e, "caught error"); return e;});
     
   }
 
@@ -72,6 +89,8 @@ export class MessengerService {
       return result;
     }).catch((err)=>{console.log(err);return err;})
   }
+
+
   // remove user
   async removeUser(user_id){
     await this.users.doc(user_id).delete().then(e=>{return e;}).catch(e=>{console.log(e)});
@@ -163,8 +182,7 @@ export class MessengerService {
             }         
         }else{
           contents.push(doc.data());
-        }
-          
+        }   
       }
      
     });});

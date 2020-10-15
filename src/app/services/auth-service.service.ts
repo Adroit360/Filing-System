@@ -54,4 +54,8 @@ export class AuthServiceService {
   SignOut(){
     return this.afAuth.signOut();
   }
+
+  ResetPassword(email){
+    return this.afAuth.sendPasswordResetEmail(email);
+  }
 }

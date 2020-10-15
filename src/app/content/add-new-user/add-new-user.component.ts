@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/User.service';
+import {MessengerService} from '../../services/messenger.service';
+
 @Component({
   selector: 'app-add-new-user',
   templateUrl: './add-new-user.component.html',
@@ -10,7 +12,7 @@ import { UserService } from 'src/app/services/User.service';
 export class AddNewUserComponent implements OnInit {
   addUserForm: FormGroup;
 
-  constructor( private newuser:UserService, private router: Router ) { }
+  constructor( private router: Router, private messenger:MessengerService ) { }
 
   ngOnInit(): void {
     this.addUserForm = new FormGroup({
@@ -22,15 +24,13 @@ export class AddNewUserComponent implements OnInit {
 
   }
 
-  onSubmit(){
+  async onSubmit(){
     console.log(this.addUserForm.value);
-    this.newuser.addNewUser({
-      Email: this.addUserForm.value.email,
-      FirstName: this.addUserForm.value.firstName,
-      LastName: this.addUserForm.value.lastName,
-      position: this.addUserForm.value.role
-    });
-
+     await this.messenger.NewUser(this.addUserForm.value.firstName,this.addUserForm.value.lastName,
+      this.addUserForm.value.email,this.addUserForm.value.role);//.then(res=>{
+      //    console.log('response from server',res);
+      //  });
+      // console.log(result,"this is the result");
     this.router.navigate(['/manageUsers']);
   }
 }

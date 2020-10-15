@@ -1,13 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-<<<<<<< HEAD
-import {DbtestComponent} from './dbtest/dbtest.component';
-
-
-const routes: Routes = [
-  {path:'',component:DbtestComponent},
-];
-=======
 import { MenuComponent } from './menu/menu.component';
 import { ContentComponent } from './content/content.component';
 import { ManageUserComponent } from './content/manage-user/manage-user.component';
@@ -25,8 +17,8 @@ const routes: Routes = [
   {path: 'manageUsers', component: ManageUserComponent},
   {path: 'manageUsers/AddUser', component: AddNewUserComponent},
   {path: 'manageUserGroups', component: ManageUserGroupsComponent}
+  
 ]
->>>>>>> 22f96264418b2dc47d5fe2d1c1044355bf52430d
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
