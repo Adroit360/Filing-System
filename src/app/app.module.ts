@@ -23,6 +23,7 @@ import { EmptyComponent } from './content/empty/empty.component';
 import { SectionService } from './services/Section.service';
 import { SectionComponent } from './content/section/section.component';
 import { UserService } from './services/User.service';
+import { ModalComponent } from './content/modal/modal.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { UserService } from './services/User.service';
     AddNewUserComponent,
     EditUserDetailsComponent,
     EmptyComponent,
-    SectionComponent
+    SectionComponent,
+    ModalComponent
   ],
 
   imports: [

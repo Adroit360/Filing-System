@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router'
+import {ActivatedRoute, Params, Router} from '@angular/router'
 import { Section } from '../models/section.model';
 import { SectionService } from '../services/Section.service';
 @Component({
@@ -13,10 +13,9 @@ export class MenuComponent implements OnInit {
 
 visible = true;
 sections: Section [];
+id:number
 
-
-
-  constructor(private sectionService: SectionService, private router: Router, private route :ActivatedRoute) { }
+constructor(private sectionService: SectionService, private router: Router, private route :ActivatedRoute) { }
 
   ngOnInit(): void {
     this.sections=this.sectionService.getSection();
@@ -24,6 +23,15 @@ sections: Section [];
 
   toggle(){
     this.visible=!this.visible;
+  }
+
+  onselectedSection(id:number){
+    this.route.params
+      .subscribe(
+        (params:Params)=>{
+          this.id= +params['id'];
+        }
+      );
   }
 
   onAddedItem(){

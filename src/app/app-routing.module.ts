@@ -13,7 +13,7 @@ import { SectionComponent } from './content/section/section.component';
 
 const routes: Routes = [
   {path: '', component: EmptyComponent},
-  {path: 'dashboard/:id/:name', component: SectionComponent},
+  //{path: '/:id', component: SectionComponent},
   {path: 'manageUsers', component: ManageUserComponent},
   {path: 'manageUsers/AddUser', component: AddNewUserComponent},
   {path: 'manageUserGroups', component: ManageUserGroupsComponent}

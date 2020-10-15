@@ -15,4 +15,15 @@ export class ManageUserComponent implements OnInit {
     this.userDetails=this.userdetails.getuserDetails();
   }
 
+  Ondelected(item:any){
+    this.userdetails.onDeleteUser(item);
+    this.userDetails=this.userdetails.getuserDetails();
+    console.log(item)
+  }
+
+  onEdit(item:any){
+
+  }
+
+
 }

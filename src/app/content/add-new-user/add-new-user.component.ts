@@ -23,7 +23,7 @@ export class AddNewUserComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.addUserForm.value);
+
     this.newuser.addNewUser({
       Email: this.addUserForm.value.email,
       FirstName: this.addUserForm.value.firstName,
