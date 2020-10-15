@@ -22,8 +22,9 @@ onSubmit(){
   console.log(this.forgotPassword);
 }
 
-onBack( value:boolean){
+onBack(value:boolean){
 this.onResult.emit(value);
+console.log('onBack',value);
 }
 
 }

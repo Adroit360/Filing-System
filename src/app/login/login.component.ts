@@ -30,4 +30,9 @@ export class LoginComponent implements OnInit {
     this.forgot = !this.forgot;
   }
 
+  onModalResult (result: boolean){
+    console.log(result);
+    this.forgot= result;
+  }
+
 }

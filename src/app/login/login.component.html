@@ -30,5 +30,5 @@
 </div>
 
 <div *ngIf="forgot">
-    <app-password></app-password>
+    <app-password (onResult)='onModalResult($event)'></app-password>
 </div>

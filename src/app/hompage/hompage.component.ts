@@ -1,3 +1,5 @@
+import { User } from './../models/user.model';
+import { InteractionService } from './../services/interaction.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,11 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hompage.component.scss']
 })
 export class HompageComponent implements OnInit {
-
-  constructor(private route: Router) { }
+  modalState: boolean;
+  userDetails: User;
+  constructor(private route: Router, private modal: InteractionService) { }
 
   ngOnInit(): void {
-    this.route.navigate(['content', 'general']);
+    // this.route.navigate(['content', 'general']);
+    
   }
 
 

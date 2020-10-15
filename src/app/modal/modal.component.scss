@@ -1,6 +1,6 @@
-@import '../../../styles/components/buttons';
+@import '../../styles/components/buttons';
 .modal {
-    display: none;
+    // display: none;
     /* Hidden by default */
     position: fixed;
     /* Stay in place */
@@ -27,7 +27,7 @@
 
 .modal-content {
     background-color: #fefefe;
-    margin: 140px 450px;
+    margin: 200px auto;
     padding: 20px;
     border: 1px solid #888;
     width: 350px;
