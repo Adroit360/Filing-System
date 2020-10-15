@@ -23,7 +23,8 @@ import { EmptyComponent } from './content/empty/empty.component';
 import { SectionService } from './services/Section.service';
 import { SectionComponent } from './content/section/section.component';
 import { UserService } from './services/User.service';
-import { ModalComponent } from './content/modal/modal.component';
+import { LoginComponent } from './login/login.component';
+import { HompageComponent } from './hompage/hompage.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ModalComponent } from './content/modal/modal.component';
     EditUserDetailsComponent,
     EmptyComponent,
     SectionComponent,
-    ModalComponent
+    LoginComponent,
+    HompageComponent
   ],
 
   imports: [

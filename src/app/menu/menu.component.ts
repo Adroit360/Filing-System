@@ -11,34 +11,42 @@ export class MenuComponent implements OnInit {
 
 @ViewChild ('newSection') nameInputRef: ElementRef;
 
-visible = true;
-sections: Section [];
-id:number
+  visible = true; // ng template
+  Opened = false;
 
-constructor(private sectionService: SectionService, private router: Router, private route :ActivatedRoute) { }
+  sections: Section [];
+
+
+
+  constructor(private sectionService: SectionService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.sections=this.sectionService.getSection();
+    this.sections = this.sectionService.getSection();
   }
 
   toggle(){
-    this.visible=!this.visible;
+    this.visible = !this.visible;
   }
 
   onselectedSection(id:number){
     this.route.params
       .subscribe(
         (params:Params)=>{
-          this.id= +params['id'];
+          //this.id= +params['id'];
         }
       );
   }
 
   onAddedItem(){
-    const newSection= new Section(this.nameInputRef.nativeElement.value);
-   this.sections.push(newSection);
-   this.visible=!this.visible;
+    const newSection = new Section(this.nameInputRef.nativeElement.value);
+    this.sections.push(newSection);
+    this.visible = !this.visible;
   }
 
-
+  // onToggleSidebar() {
+  //   this.Opened = !this.Opened;
+  // }
+  // onClose(){
+  //   this.Opened = !this.Opened;
+  // }
 }

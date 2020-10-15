@@ -1,3 +1,5 @@
+import { HompageComponent } from './hompage/hompage.component';
+import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
@@ -12,8 +14,9 @@ import { SectionComponent } from './content/section/section.component';
 
 
 const routes: Routes = [
-  {path: '', component: EmptyComponent},
-  //{path: '/:id', component: SectionComponent},
+  {path: '', component: HompageComponent, pathMatch:"full"},
+  {path: 'login', component: LoginComponent},
+  {path: 'dashboard/:id/:name', component: SectionComponent},
   {path: 'manageUsers', component: ManageUserComponent},
   {path: 'manageUsers/AddUser', component: AddNewUserComponent},
   {path: 'manageUserGroups', component: ManageUserGroupsComponent}

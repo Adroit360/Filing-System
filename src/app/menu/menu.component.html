@@ -1,3 +1,57 @@
+<!-- Container for sidebar(s) + page content -->
+<!--
+<ng-sidebar-container>
+
+    
+    <ng-sidebar [(opened)]="Opened">
+        <h1 (click)="onClose()">Close</h1>
+        <div class="admin-tools">
+            <h2>sections</h2>
+            <ul>
+                <li class="active"><a><span class="material-icons">
+                        home
+                        </span> General</a></li>
+                <div class="custom-seciton">
+                    <li *ngFor="let item of sections; let i= index"><a><span class="material-icons">
+                            folder_open
+                            </span> {{item.name}}</a></li>
+                </div>
+                <li><a (click)="toggle()" *ngIf="visible;else Data"><span class="material-icons">
+                        control_point
+                        </span> Create New Section
+                    </a>
+
+                    <ng-template #Data>
+                        <input (keydown.enter)="onAddedItem()" type="text" placeholder=" Add a New Section" #newSection>
+                    </ng-template>
+                </li>
+            </ul>
+            <div class="border-up"></div>
+        </div>
+        <div class="admin-tools-inbox">
+            <h2>Administrator Tools</h2>
+            <ul>
+                <li><a routerLink="/manageUsers" routerLinkActive="active"> Manage Users </a></li>
+                <li><a routerLink="/manageUserGroups" routerLinkActive="active"> Manage User Groups </a></li>
+            </ul>
+        </div>
+    </ng-sidebar>
+
+    
+    <div ng-sidebar-content>
+        <div class="sidebar" (click)="onToggleSidebar()">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+            <span class="bar3"></span>
+        </div>
+        
+    </div>
+
+</ng-sidebar-container>
+-->
+
+
+<!-----MIGHT INCLUDE THE NG-SIDEBAR LIBRARY-->
 <div class="logo">
     <img src="../../assets/lemla.jpeg" alt="" srcset="">
 </div>
@@ -29,6 +83,5 @@
     <ul>
         <li><a routerLink="/manageUsers" routerLinkActive="active"> Manage Users </a></li>
         <li><a routerLink="/manageUserGroups" routerLinkActive="active"> Manage User Groups </a></li>
-        <!-- <li><a > Access Overview</a></li> -->
     </ul>
 </div>

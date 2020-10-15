@@ -6,6 +6,11 @@
     border-right: 10px solid #ED1E23;
 }
 
+ng-sidebar-container {
+    display: none;
+    height: 100vh;
+}
+
 .logo img {
     width: 9.25rem;
     height: 3.56rem;
@@ -111,9 +116,45 @@ input {
 
 
 /*
+
 @media screen and (max-width: 800px) {
-    .admin-tools {
+    ng-sidebar-container {
+        display: block;
+        height: 100vh;
+        width: 300px;
+        .sidebar {
+            margin-left: 15%;
+            margin-top: 8%;
+        }
+        .bar1,
+        .bar2,
+        .bar3 {
+            display: block;
+            height: 10px;
+            background-color: #ED1E23;
+            width: 60px;
+            margin: 6px 0px;
+            transition: 0.4s;
+        }
+    }
+     ::ng-deep .ng-sidebar {
+        background-color: white;
+        padding: 2rem 3rem;
+        // width: 400px;
+        box-shadow: 0 0 2.5rem rgba(85, 85, 85, 0.5);
+    }
+    ng-sidebar .admin-tools,
+    .admin-tools-inbox {
+        display: block;
+    }
+    ng-sidebar .admin-tools-inbox {
+        display: block;
+    }
+    .admin-tools,
+    .logo,
+    .admin-tools-inbox {
         // margin-top: 30px;
+        display: none;
     }
     li a {
         text-decoration: none;
