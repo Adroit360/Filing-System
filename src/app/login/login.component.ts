@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    this.route.navigate(['']);
+    this.route.navigate(['home/content/general']);
     console.log(this.LogInForm);
 
   }

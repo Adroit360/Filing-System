@@ -8,11 +8,11 @@ import { User } from '../../models/user.model';
   styleUrls: ['./manage-user.component.scss']
 })
 export class ManageUserComponent implements OnInit {
- userDetails: User[]=[];
+ userDetails: User[] = [];
   constructor( private userdetails: UserService) { }
 
   ngOnInit(): void {
-    this.userDetails=this.userdetails.getuserDetails();
+    this.userDetails = this.userdetails.getuserDetails();
   }
 
 }

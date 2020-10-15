@@ -19,13 +19,13 @@ const routes: Routes = [
       {path: 'manageUsers', component: ManageUserComponent, children: [
         {path: 'AddUser', component: AddNewUserComponent},
       ]},
-      {path: 'manageUserGroups', component: ManageUserGroupsComponent}
+      {path: 'manageUserGroups', component: ManageUserGroupsComponent},
+      {path: 'general', component: EmptyComponent},
     ]}
   ]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'dashboard/:id/:name', component: SectionComponent},
- 
+  // {path: 'dashboard/:id/:name', component: SectionComponent},
 ]
 
 @NgModule({
