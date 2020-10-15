@@ -31,6 +31,8 @@ export class AddNewUserComponent implements OnInit {
       //    console.log('response from server',res);
       //  });
       // console.log(result,"this is the result");
+  
+
     this.router.navigate(['/manageUsers']);
   }
 }

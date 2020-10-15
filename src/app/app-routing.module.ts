@@ -17,19 +17,16 @@ const routes: Routes = [
   {path: 'home', component: HompageComponent, children: [
     {path: 'content', component: ContentComponent, children: [
       {path: 'manageUsers', component: ManageUserComponent, children: [
-        {path: 'AddUser', component: AddNewUserComponent},
+        
       ]},
-      {path: 'manageUserGroups', component: ManageUserGroupsComponent}
+      {path: 'manageUserGroups', component: ManageUserGroupsComponent},
+      {path: 'AddUser', component: AddNewUserComponent},
+      {path: 'general', component: EmptyComponent},
     ]}
   ]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'dashboard/:id/:name', component: SectionComponent},
-  {path: 'manageUsers', component: ManageUserComponent},
-  {path: 'manageUsers/AddUser', component: AddNewUserComponent},
-  {path: 'manageUserGroups', component: ManageUserGroupsComponent}
-  
- 
+  // {path: 'dashboard/:id/:name', component: SectionComponent},
 ]
 
 @NgModule({
