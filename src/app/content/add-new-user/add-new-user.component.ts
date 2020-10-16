@@ -24,9 +24,9 @@ export class AddNewUserComponent implements OnInit {
 
   onSubmit(){
     this.newuser.addNewUser({
-      Email: this.addUserForm.value.email,
-      FirstName: this.addUserForm.value.firstName,
-      LastName: this.addUserForm.value.lastName,
+      email: this.addUserForm.value.email,
+      firstName: this.addUserForm.value.firstName,
+      lastName: this.addUserForm.value.lastName,
       position: this.addUserForm.value.role
     });
 

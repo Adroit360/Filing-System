@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Group } from 'src/app/models/group.model';
+import { UserGroupsService } from 'src/app/services/UserGroups.service';
 
 @Component({
   selector: 'app-manage-user-groups',
@@ -8,17 +9,18 @@ import { Group } from 'src/app/models/group.model';
 })
 export class ManageUserGroupsComponent implements OnInit {
   // will change the date created to a Date type later
-  userGroups: Group[]=[
-    new Group('Finance', '20','20-20-19'),
-    new Group('Finance', '20','20-20-19'),
-    new Group('Finance', '20','20-20-19'),
-    new Group('Finance', '20','20-20-19'),
+  userGroups: Group[]=[];
 
-  ]
-
-  constructor() { }
+  constructor( private usergroups:UserGroupsService) { }
 
   ngOnInit(): void {
+    this.userGroups=this.usergroups.getuserGroups();
   }
+
+  onDeleteGroup(item:any){
+
+  }
+
+
 
 }

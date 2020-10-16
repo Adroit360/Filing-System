@@ -1,4 +1,3 @@
-import { InteractionService } from './../../services/interaction.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/User.service';
@@ -14,7 +13,7 @@ export class ManageUserComponent implements OnInit {
  delete: boolean;
  user: User;
  modalState: boolean;
-  constructor( private userdetails: UserService, private route: Router, private modal: InteractionService) { }
+  constructor( private userdetails: UserService, private route: Router) { }
 
   ngOnInit(): void {
     this.userDetails = this.userdetails.getuserDetails();
@@ -23,7 +22,7 @@ export class ManageUserComponent implements OnInit {
   Ondelected(item:any){
     this.modalState = true;
     this.user = item;
-    
+
   }
 
   onModalResult(result:boolean){
@@ -37,8 +36,9 @@ export class ManageUserComponent implements OnInit {
     }
   }
 
-  onEdit(item: any){
-
+  onEdit(item: any, index:any){
+    this.route.navigate(['/home/content/editUserDetails']);
+    this.userdetails.onEditUSer(item, index);
   }
   addPage(){
     this.route.navigate(['/home/content/AddUser']);

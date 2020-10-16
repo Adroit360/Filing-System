@@ -26,7 +26,9 @@ import { UserService } from './services/User.service';
 import { LoginComponent } from './login/login.component';
 import { HompageComponent } from './hompage/hompage.component';
 import {ModalComponent} from './modal/modal.component';
-import { PasswordComponent} from './forgotPassword/password.component'
+import { PasswordComponent} from './forgotPassword/password.component';
+import { NewFolderComponent } from './new-folder/new-folder.component'
+import { UserGroupsService } from './services/UserGroups.service';
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import { PasswordComponent} from './forgotPassword/password.component'
     LoginComponent,
     HompageComponent,
     ModalComponent,
-    PasswordComponent
+    PasswordComponent,
+    NewFolderComponent
   ],
 
   imports: [
@@ -59,7 +62,7 @@ import { PasswordComponent} from './forgotPassword/password.component'
     SidebarModule.forRoot(),
   ],
 
-  providers: [SectionService,UserService],
+  providers: [SectionService,UserService,UserGroupsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

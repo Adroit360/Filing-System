@@ -2,7 +2,7 @@
 <!--
 <ng-sidebar-container>
 
-    
+
     <ng-sidebar [(opened)]="Opened">
         <h1 (click)="onClose()">Close</h1>
         <div class="admin-tools">
@@ -37,14 +37,14 @@
         </div>
     </ng-sidebar>
 
-    
+
     <div ng-sidebar-content>
         <div class="sidebar" (click)="onToggleSidebar()">
             <span class="bar1"></span>
             <span class="bar2"></span>
             <span class="bar3"></span>
         </div>
-        
+
     </div>
 
 </ng-sidebar-container>
@@ -62,7 +62,7 @@
                 home
                 </span> General</a></li>
         <div class="custom-seciton">
-            <li *ngFor="let item of sections; let i= index"><a [routerLink]="[i]"><span class="material-icons">
+            <li *ngFor="let item of sections; let i= index"><a (click)="onSelected(item)" [routerLink]="['content', i, item.name]"><span class="material-icons">
                     folder_open
                     </span> {{item.name}}</a></li>
         </div>

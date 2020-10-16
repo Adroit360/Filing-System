@@ -15,16 +15,20 @@ import { SectionComponent } from './content/section/section.component';
 
 const routes: Routes = [
   {path: 'home', component: HompageComponent, children: [
+    // {path: '/:id/:name', component: SectionComponent},
     {path: 'content', component: ContentComponent, children: [
+      {path: ':id/:name', component: SectionComponent},
       {path: 'manageUsers', component: ManageUserComponent},
       {path: 'manageUserGroups', component: ManageUserGroupsComponent},
       {path: 'AddUser', component: AddNewUserComponent},
+      {path: 'editUserDetails', component: EditUserDetailsComponent},
       {path: 'general', component: EmptyComponent},
-    ]}
+    ]},
+
   ]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  // {path: 'dashboard/:id/:name', component: SectionComponent},
+
 ]
 
 @NgModule({
