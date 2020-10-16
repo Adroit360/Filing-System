@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/User.service';
 import { User } from '../../models/user.model';
+import {MessengerService} from '../../services/messenger.service';
 
 @Component({
   selector: 'app-manage-user',
@@ -10,10 +11,14 @@ import { User } from '../../models/user.model';
 })
 export class ManageUserComponent implements OnInit {
  userDetails: User[] = [];
-   constructor( private userdetails: UserService, private route: Router) { }
+ users:any;
+   constructor( private userdetails: UserService, private route: Router, private msg:MessengerService) { 
+      this.msg.getUsers().then(result=>{this.users=result;console.log(result,"hello world")});
+  }
 
   ngOnInit(): void {
     this.userDetails = this.userdetails.getuserDetails();
+   
   }
 
   Ondelected(item:any){
@@ -27,6 +32,11 @@ export class ManageUserComponent implements OnInit {
   }
   addPage(){
     this.route.navigate(['/home/content/AddUser']);
+  }
+
+   display(){
+     
+      console.log(this.users, "from constructor");
   }
 
 }

@@ -31,9 +31,5 @@ export class AddNewUserComponent implements OnInit {
        }).catch(err=>{
          if(err){alert(err);}
        });
-    
-  
-
-   
   }
 }

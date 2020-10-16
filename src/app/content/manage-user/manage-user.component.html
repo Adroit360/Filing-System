@@ -19,13 +19,13 @@
     </div>
 
     <div class="list-container">
-        <ul class="list" *ngFor="let item of userDetails;">
+        <ul class="list" *ngFor="let item of users;">
             <li>
                 <div class="box-1">
-                    <h2>{{item.Email}}</h2>
-                    <h2>{{item.FirstName}}</h2>
-                    <h2>{{item.LastName}}</h2>
-                    <h2>{{item.position}}</h2>
+                    <h2>{{item.email}}</h2>
+                    <h2>{{item.firstName}}</h2>
+                    <h2>{{item.lastName}}</h2>
+                    <h2>{{item.role}}</h2>
                     <h2>
                         <div class="sps">
                             <span class="material-icons" style="background-color: white;" (click)="onEdit(item)">

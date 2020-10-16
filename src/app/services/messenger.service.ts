@@ -97,14 +97,47 @@ export class MessengerService {
   }
   // read a user
   async getUser(user_id){
-    return await this.users.doc(user_id).get();
+    
+    let va= await this.users.doc(user_id).get();
+
+
+
   }
   // read all users
-  async getUsers(){
-    let userSet=[];
-    await this.users.get().then(e=>{userSet = e.docs;});
+  async _getUsers() {
+    var users:any=[];
 
-    return userSet;
+    await firebase.firestore().collection("Users")
+    .onSnapshot(
+      function(querySnapshot) {
+
+        querySnapshot.forEach(function(doc) {
+            users.push(doc.data());
+        });
+        console.log("Current users: ", users);
+        return users;
+      }
+      );
+  }
+
+
+  getUsers() : Promise<any[]> {
+    var users:any=[];
+
+    return new Promise((resolve,reject)=>{
+      firebase.firestore().collection("Users")
+      .onSnapshot(
+        function(querySnapshot) {
+  
+          querySnapshot.forEach(function(doc) {
+              users.push(doc.data());
+          });
+          console.log("Current users: ", users);
+          resolve(users);
+          
+        });
+    })
+     
   }
 
 
