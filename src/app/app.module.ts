@@ -27,8 +27,12 @@ import { LoginComponent } from './login/login.component';
 import { HompageComponent } from './hompage/hompage.component';
 import {ModalComponent} from './modal/modal.component';
 import { PasswordComponent} from './forgotPassword/password.component';
+<<<<<<< HEAD
 import { NewFolderComponent } from './new-folder/new-folder.component'
 import { UserGroupsService } from './services/UserGroups.service';
+=======
+import { SearchPageComponent } from './search-page/search-page.component'
+>>>>>>> fbfdcbd7ee4de206c3cbabf7c578414943fc466a
 
 
 @NgModule({
@@ -48,7 +52,11 @@ import { UserGroupsService } from './services/UserGroups.service';
     HompageComponent,
     ModalComponent,
     PasswordComponent,
+<<<<<<< HEAD
     NewFolderComponent
+=======
+    SearchPageComponent
+>>>>>>> fbfdcbd7ee4de206c3cbabf7c578414943fc466a
   ],
 
   imports: [
