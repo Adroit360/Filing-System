@@ -61,7 +61,7 @@ export class MessengerService {
     }
     
     // create user in firestore database
-    await this.authService.signUp(user.email,"@password").then(async res=>{
+    return await this.authService.signUp(user.email,"@password").then(async res=>{
 
       // save user information to the database
       console.log(res);
@@ -74,7 +74,7 @@ export class MessengerService {
       })
       .catch(e=>{console.log(e); return e;})
  
-    }).catch(e=>{console.log(e, "caught error"); return e;});
+    });
     
   }
 

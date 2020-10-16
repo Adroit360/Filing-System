@@ -7,6 +7,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class AuthServiceService {
 
+    
   
   constructor(public afAuth:AngularFireAuth) { }
 
@@ -40,15 +41,8 @@ export class AuthServiceService {
 
 
   SignIn(email,password){
-      return this.afAuth.signInWithEmailAndPassword(email,password)
-        .then((result)=>{
-            console.log("login successful");
-            return result;
-        })
-        .catch((error)=>{
-          console.log("an error occured");
-          return error;
-        });
+      return this.afAuth.signInWithEmailAndPassword(email,password);
+             
   }
 
   SignOut(){

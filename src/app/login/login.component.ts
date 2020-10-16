@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators, } from '@angular/forms';
+import {AuthServiceService} from '../services/auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,9 @@ import {FormControl, FormGroup, Validators, } from '@angular/forms';
 export class LoginComponent implements OnInit {
   LogInForm: FormGroup;
   isValid = false; // this property checks if the form is valid or if the name is in the database
-  constructor(private route: Router) { }
+  errorMessage:string ="";
+
+  constructor(private route: Router,private authService:AuthServiceService) { }
 
   ngOnInit(): void {
     this.LogInForm = new FormGroup({
@@ -21,8 +24,16 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    this.route.navigate(['home/content/general']);
-    console.log(this.LogInForm);
+
+    this.authService.SignIn(this.LogInForm.value.email,this.LogInForm.value.password).then(()=>{
+      this.route.navigate(['home/content/general']);
+      console.log(this.LogInForm);
+    }).catch(err=>{
+      this.errorMessage = err.message;
+      console.log("this is the error from login page",err);
+    });
+
+    
 
   }
 

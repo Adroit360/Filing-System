@@ -10,7 +10,7 @@ import { User } from '../../models/user.model';
 })
 export class ManageUserComponent implements OnInit {
  userDetails: User[] = [];
-  constructor( private userdetails: UserService, private route: Router) { }
+   constructor( private userdetails: UserService, private route: Router) { }
 
   ngOnInit(): void {
     this.userDetails = this.userdetails.getuserDetails();
