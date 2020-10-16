@@ -1,6 +1,6 @@
 import { InteractionService } from './../../services/interaction.service';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { UserService } from 'src/app/services/User.service';
 import { User } from '../../models/user.model';
 
@@ -11,6 +11,7 @@ import { User } from '../../models/user.model';
 })
 export class ManageUserComponent implements OnInit {
  userDetails: User[] = [];
+ @Output() message: string;
  delete: boolean;
  user: User;
  modalState: boolean;
@@ -21,6 +22,7 @@ export class ManageUserComponent implements OnInit {
   }
 
   Ondelected(item:any){
+    this.message = 'Are you sure you want to delete user?';
     this.modalState = true;
     this.user = item;
     

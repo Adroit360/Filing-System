@@ -1,6 +1,39 @@
+.container {
+    margin-top: 30px;
+}
+
+h1 {
+    margin: 0px 50px;
+    // font-size: 33px;
+}
+
+.folders {
+    max-height: 76vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: auto;
+}
+
+a {
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    i {
+        color: #459CE3;
+    }
+}
+
 p {
-    margin: 31px 20px;
-    font-size: 30px;
-    font-family: 'Poppins';
-    font-weight: bold;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: 0em;
+    width: 100px;
+    color: black;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

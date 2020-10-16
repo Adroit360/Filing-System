@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./empty.component.scss']
 })
 export class EmptyComponent implements OnInit {
-
+  departments = ['Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
+  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
+  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
+  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
+];
   constructor() { }
 
   ngOnInit(): void {
