@@ -18,7 +18,8 @@ export class ManageUserGroupsComponent implements OnInit {
   }
 
   onDeleteGroup(item:any){
-
+    this.usergroups.onDeleteuserGroups(item);
+    this.userGroups=this.usergroups.getuserGroups();
   }
 
 

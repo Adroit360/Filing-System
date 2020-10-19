@@ -62,9 +62,25 @@
                 home
                 </span> General</a></li>
         <div class="custom-seciton">
-            <li *ngFor="let item of sections; let i= index"><a (click)="onSelected(item)" [routerLink]="['content', i, item.name]"><span class="material-icons">
-                    folder_open
-                    </span> {{item.name}}</a></li>
+
+            <li *ngFor="let item of sections; let i= index">
+                <div smart-tooltip-container>
+                    <a (click)="onSelected(item)" [routerLink]="['content', i, item.name]">
+                        <span class="material-icons">
+              folder_open
+              </span> {{item.name}}</a>
+                    <div class="tooltip">
+                        <span class="smart-tooltip overlay">
+                        <h4 >rename</h4>
+                        <hr/>
+                        <h4>delete</h4>
+                      </span>
+
+                    </div>
+                </div>
+            </li>
+
+
         </div>
         <li><a (click)="toggle()" *ngIf="visible;else Data"><span class="material-icons">
                 control_point

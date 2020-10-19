@@ -96,6 +96,12 @@ li a {
     margin-bottom: 1rem;
 }
 
+.tooltip>span {
+    height: 60px;
+    width: 80px;
+    font-size: 15px;
+}
+
 
 /*.custom-seciton li:hover {
     @include active();
