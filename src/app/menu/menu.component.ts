@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router'
 import { Section } from '../models/section.model';
 import { SectionService } from '../services/Section.service';
@@ -10,6 +10,7 @@ import { SectionService } from '../services/Section.service';
 export class MenuComponent implements OnInit {
 
 @ViewChild ('newSection') nameInputRef: ElementRef;
+// @Output() sectionClicked = new EventEmitter<any>();
 
   visible = true; // ng template
   Opened = false;
@@ -29,7 +30,18 @@ export class MenuComponent implements OnInit {
   }
 
   onSelected(item){
-    this.sectionService.displaysection(item);
+    //this.sectionService.displaysection(item);
+    // this.sectionClicked.emit();
+    // this.sectionService.onMenuClicked(item);
+
+    // this.router.navigate(["content"],{
+    //   queryParams:{
+    //       id:index,
+    //       name:item.name
+    //     }
+    // })
+
+
   }
 
   onAddedItem(){

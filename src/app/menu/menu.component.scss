@@ -96,6 +96,11 @@ li a {
     margin-bottom: 1rem;
 }
 
+.active2 {
+    @include active();
+    border-right: none;
+}
+
 
 /*.custom-seciton li:hover {
     @include active();

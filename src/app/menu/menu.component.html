@@ -58,11 +58,11 @@
 <div class="admin-tools">
     <h2>sections</h2>
     <ul>
-        <li class="active"><a><span class="material-icons">
+        <li><a routerLink="content/0/general" routerLinkActive="active"><span class="material-icons" >
                 home
                 </span> General</a></li>
         <div class="custom-seciton">
-            <li *ngFor="let item of sections; let i= index"><a (click)="onSelected(item)" [routerLink]="['content', i, item.name]"><span class="material-icons">
+            <li *ngFor="let item of sections; let i= index"><a (click)="onSelected(item)" [routerLink]="['content', i, item.name]" routerLinkActive="active2"><span class="material-icons">
                     folder_open
                     </span> {{item.name}}</a></li>
         </div>
