@@ -2,6 +2,14 @@ import { Subject } from 'rxjs';
 import { Section } from '../models/section.model';
 
 export class SectionService{
+  onDeleteSection(section: Section) {
+    throw new Error('Method not implemented.');
+  }
+  UpdateSection(rename: Section, index: any) {
+    throw new Error('Method not implemented.');
+  }
+
+  // contains an array of departments created by the admin
   private sections: Section [] = [
     new Section('Marketting'),
     new Section('Accounting'),
@@ -9,7 +17,17 @@ export class SectionService{
     new Section ('Engineering'),
   ];
 
+ // holds the folders of the various departments
+  departments = ['Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
+  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
+  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
+  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
+];
+
+  department_files = ['invoice.pdf', 'invoice.doc', 'invoice.txt', 'invoice.jpeg', 'invoice.png',]; // contains the folders and files for each department
+
   sectionName = new Subject<string>();
+
 
   getSection(){
     return this.sections.slice();
@@ -22,19 +40,4 @@ export class SectionService{
   console.log(value.name);
   }
 
-  onDeleteSection(item: Section){
-    let index= this.sections.indexOf(item);
-    if (index!= -1){
-      this.sections.splice(index,1);
-    }
-  }
-
-  //update a section
-  UpdateSection(item:Section, index:any){
-    if(index!=-1){
-      this.sections[index]=item;
-      console.log(item, index);
-    }
-
-  }
 }

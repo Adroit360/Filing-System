@@ -13,6 +13,8 @@ export class MenuComponent implements OnInit {
 @ViewChild ('newSection') nameInputRef: ElementRef;
 @ViewChild ('rename') Rename: ElementRef;
 @Output() message: string;
+// @Output() sectionClicked = new EventEmitter<any>();
+
   visible = true; // ng template
   Opened = false;
   delete: boolean;
@@ -41,7 +43,18 @@ export class MenuComponent implements OnInit {
 
 
   onSelected(item){
-    this.sectionService.displaysection(item);
+    //this.sectionService.displaysection(item);
+    // this.sectionClicked.emit();
+    // this.sectionService.onMenuClicked(item);
+
+    // this.router.navigate(["content"],{
+    //   queryParams:{
+    //       id:index,
+    //       name:item.name
+    //     }
+    // })
+
+
   }
 
   onAddedItem(){
