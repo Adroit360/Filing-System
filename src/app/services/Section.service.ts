@@ -21,4 +21,20 @@ export class SectionService{
   this.sectionName.next(value.name);
   console.log(value.name);
   }
+
+  onDeleteSection(item: Section){
+    let index= this.sections.indexOf(item);
+    if (index!= -1){
+      this.sections.splice(index,1);
+    }
+  }
+
+  //update a section
+  UpdateSection(item:Section, index:any){
+    if(index!=-1){
+      this.sections[index]=item;
+      console.log(item, index);
+    }
+
+  }
 }
