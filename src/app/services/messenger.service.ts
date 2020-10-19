@@ -6,6 +6,7 @@ import * as firebase from 'firebase/app';
 import {User,DocumentApprovalObject,Section,Directory,FileObject,ApprovalResponse,ApprovalRequest } from '../models/model';
 import { AngularFireStorage,AngularFireStorageReference,AngularFireUploadTask } from '@angular/fire/storage';
 import {AuthServiceService} from '../services/auth-service.service';
+import { FirebaseApp } from '@angular/fire';
 
 
 @Injectable({
@@ -93,7 +94,8 @@ export class MessengerService {
 
   // remove user
   async removeUser(user_id){
-    await this.users.doc(user_id).delete().then(e=>{return e;}).catch(e=>{console.log(e)});
+    //await firebase.auth().delete().catch(err=>{return err});
+    await this.users.doc(user_id).delete().catch(e=>{console.log(e)});
   }
   // read a user
   async getUser(user_id){
@@ -106,7 +108,7 @@ export class MessengerService {
   // read all users
   async _getUsers() {
     var users:any=[];
-
+    
     await firebase.firestore().collection("Users")
     .onSnapshot(
       function(querySnapshot) {
@@ -122,13 +124,13 @@ export class MessengerService {
 
 
   getUsers() : Promise<any[]> {
-    var users:any=[];
+    let users:any=[];
 
     return new Promise((resolve,reject)=>{
       firebase.firestore().collection("Users")
       .onSnapshot(
         function(querySnapshot) {
-  
+          users=[];
           querySnapshot.forEach(function(doc) {
               users.push(doc.data());
           });
@@ -137,6 +139,20 @@ export class MessengerService {
           
         });
     })
+     
+  }
+
+  async agetUsers()  {
+    
+      return await this.users
+      .snapshotChanges().map(a=>{
+        const data = a.payload.doc.data();
+        data.id = a.payload.id as User;
+        return data;
+      })
+        
+          
+    
      
   }
 
@@ -158,11 +174,12 @@ export class MessengerService {
   // create user group
 
   // add a section
-  async newSection(section:Section){
+   newSection(section:Section){
     section.id = this.database.createId()
-    let sect = await this.sectionCollection.doc(section.id).set(section);
-    await this.sectionCollection.doc(section.id).collection("Archives");
-    return sect;
+    this.sectionCollection.doc(section.id).set(section).then(()=>{
+      this.sectionCollection.doc(section.id).collection("Archives");
+    });
+    
   }
 
   //remove a section
@@ -187,6 +204,13 @@ export class MessengerService {
      await firebase.firestore().collection('Sections').where('id','==',sectionId).get().then(a=>{a.docs.forEach(doc=>{section.push(doc.data());})});
 
      return section[0];
+  }
+
+   getAllSections(){
+    let sections = []
+    firebase.firestore().collection('Sections').get().then(a=>{a.docs.forEach(doc=>{sections.push(doc.data());console.log("from msg",sections);})});
+    
+    return sections;
   }
 
   // an access list contains the id list of sections available to a user

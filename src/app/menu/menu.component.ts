@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router'
-import { Section } from '../models/section.model';
+import { Section } from '../models/model';
 import { SectionService } from '../services/Section.service';
+import {MessengerService} from '../services/messenger.service';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -14,14 +16,16 @@ export class MenuComponent implements OnInit {
   visible = true; // ng template
   Opened = false;
 
-  sections: Section [];
+  sections: any;
 
 
 
-  constructor(private sectionService: SectionService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private sectionService: SectionService, private router: Router, private route: ActivatedRoute,private msg:MessengerService) { }
 
   ngOnInit(): void {
-    this.sections = this.sectionService.getSection();
+    // this.sections = this.sectionService.getSection();
+    this.sections=this.msg.getAllSections();//.then(result=>{this.sections=result; console.log(this.sections);});
+   
   }
 
   toggle(){
@@ -38,8 +42,9 @@ export class MenuComponent implements OnInit {
   }
 
   onAddedItem(){
-    const newSection = new Section(this.nameInputRef.nativeElement.value);
-    this.sections.push(newSection);
+    let newSection:Section={id:"",name:this.nameInputRef.nativeElement.value,dateCreated:new Date().toDateString(),items:[]};
+    this.msg.newSection(newSection);
+    this.sections=this.msg.getAllSections();
     this.visible = !this.visible;
   }
 

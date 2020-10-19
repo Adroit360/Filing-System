@@ -14,7 +14,9 @@
 
                 <div class="forgot-password">
                     <span><input type="radio" name="rememberMe" id="" formControlName="rememberMe"> Remember me</span>
-                    <span class="psw"><a href="#">Forgot password?</a></span>
+                    <div>
+                        <span class="psw" (click)="onToggle()"><a  >Forgot password?</a></span>
+                    </div>
                 </div>
 
 
@@ -25,4 +27,8 @@
         </form>
     </div>
     <div class="right-side"></div>
+</div>
+
+<div *ngIf="forgot">
+    <app-password (onResult)='onModalResult($event)'></app-password>
 </div>

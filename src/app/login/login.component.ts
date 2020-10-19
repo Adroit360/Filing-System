@@ -11,6 +11,7 @@ import {AuthServiceService} from '../services/auth-service.service';
 export class LoginComponent implements OnInit {
   LogInForm: FormGroup;
   isValid = false; // this property checks if the form is valid or if the name is in the database
+  forgot=false;
   errorMessage:string ="";
 
   constructor(private route: Router,private authService:AuthServiceService) { }
@@ -35,6 +36,15 @@ export class LoginComponent implements OnInit {
 
     
 
+  }
+
+  onToggle(){
+    this.forgot = !this.forgot;
+  }
+
+  onModalResult (result: boolean){
+    console.log(result);
+    this.forgot= result;
   }
 
 }

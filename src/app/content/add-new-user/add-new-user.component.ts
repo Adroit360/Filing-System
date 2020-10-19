@@ -32,4 +32,7 @@ export class AddNewUserComponent implements OnInit {
          if(err){alert(err);}
        });
   }
+  onCancel(){
+
+  }
 }

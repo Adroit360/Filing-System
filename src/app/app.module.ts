@@ -25,6 +25,8 @@ import { SectionComponent } from './content/section/section.component';
 import { UserService } from './services/User.service';
 import { LoginComponent } from './login/login.component';
 import { HompageComponent } from './hompage/hompage.component';
+import {ModalComponent} from './modal/modal.component';
+import { PasswordComponent} from './forgotPassword/password.component'
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { HompageComponent } from './hompage/hompage.component';
     EmptyComponent,
     SectionComponent,
     LoginComponent,
-    HompageComponent
+    HompageComponent,
+    ModalComponent,
+    PasswordComponent
   ],
 
   imports: [

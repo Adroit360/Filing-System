@@ -1,7 +1,8 @@
+import { InteractionService } from './../../services/interaction.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/User.service';
-import { User } from '../../models/user.model';
+import { User } from '../../models/model';
 import {MessengerService} from '../../services/messenger.service';
 
 @Component({
@@ -11,32 +12,43 @@ import {MessengerService} from '../../services/messenger.service';
 })
 export class ManageUserComponent implements OnInit {
  userDetails: User[] = [];
- users:any;
-   constructor( private userdetails: UserService, private route: Router, private msg:MessengerService) { 
-      this.msg.getUsers().then(result=>{this.users=result;console.log(result,"hello world")});
+ delete: boolean;
+ user: User;
+ modalState: boolean;
+ users:any=[];
+  constructor( private userdetails: UserService, private route: Router, private modal: InteractionService,private msg:MessengerService) { 
+    this.msg.getUsers().then(result=>{this.users=result});
   }
 
   ngOnInit(): void {
-    this.userDetails = this.userdetails.getuserDetails();
-   
+    // this.userDetails = this.userdetails.getuserDetails();
+    
   }
 
   Ondelected(item:any){
-    this.userdetails.onDeleteUser(item);
-    this.userDetails=this.userdetails.getuserDetails();
-    console.log(item)
+    this.modalState = true;
+    this.user = item;
+    
+    
   }
 
-  onEdit(item:any){
+  onModalResult(result:boolean){
+    if(result){
+      // this.userdetails.onDeleteUser(this.user);
+      // this.userDetails = this.userdetails.getuserDetails();
+      this.msg.removeUser(this.user.email);
+      this.msg.getUsers().then(result=>{this.users=result});
+      this.modalState=false;
+    }
+    else{
+      this.modalState = false;
+    }
+  }
+
+  onEdit(item: any){
 
   }
   addPage(){
     this.route.navigate(['/home/content/AddUser']);
   }
-
-   display(){
-     
-      console.log(this.users, "from constructor");
-  }
-
 }
