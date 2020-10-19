@@ -35,5 +35,6 @@ export class AddNewUserComponent implements OnInit {
 
   onCancel(){
     this.router.navigate(['home/content/AddUser'])
+    
   }
 }

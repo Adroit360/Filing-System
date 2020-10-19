@@ -1,9 +1,15 @@
 <div class="container">
-    <h1>Welcome</h1>
+    <h1>General {{title}}</h1>
     <div class="folders">
-        <a *ngFor="let item of departments">
-            <i class="fa fa-folder" style='font-size: 50px;'></i>
+        <a *ngFor="let item of departments" (click)="onFolderClicked(item)">
+            <i class="{{fontIcon}}" style='font-size: 50px;'></i>
             <p>{{item}}</p>
         </a>
     </div>
+    <!-- <div class="folders" *ngIf="!showFolders">
+        <a *ngFor="let item of department_files" (click)="onFolderClicked(item)">
+            <i class="{{fontIcon}}" style='font-size: 50px;'></i>
+            <p>{{item}}</p>
+        </a>
+    </div> -->
 </div>
