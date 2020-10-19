@@ -1,5 +1,5 @@
-@import '../../styles/components/buttons';
 .modal {
+    /*display: none;*/
     /* Hidden by default */
     position: fixed;
     /* Stay in place */
@@ -21,16 +21,13 @@
     /* Black w/ opacity */
 }
 
-
-/* Modal Content */
-
 .modal-content {
     background-color: #fefefe;
     margin: 200px auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 374px;
-    height: 149px;
+    width: 350px;
+    height: 110px;
     border-radius: 10px;
 }
 
@@ -38,4 +35,36 @@ h4 {
     text-align: center;
     color: #ED1E23;
     font-size: 20px;
+}
+
+.psd {
+    margin: 10px 85px 5px;
+}
+
+input {
+    width: 99%;
+    height: 50px;
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid red;
+}
+
+.submit {
+    display: flex;
+    grid-gap: 0.94rem;
+    margin: 40px auto;
+    justify-content: center;
+}
+
+button {
+    height: 3.125rem;
+    width: 11.25rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+    border: 2px solid;
+    outline: transparent;
+    cursor: pointer;
+    background-color: #ED1E23;
+    color: aliceblue;
+    border: none;
 }

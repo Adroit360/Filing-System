@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 import { Section } from '../models/section.model';
 
 export class SectionService{
@@ -8,7 +9,16 @@ export class SectionService{
     new Section ('Engineering'),
   ];
 
+  sectionName = new Subject<string>();
+
   getSection(){
     return this.sections.slice();
+  }
+
+  displaysection(value:Section){
+
+  //  return value;
+  this.sectionName.next(value.name);
+  console.log(value.name);
   }
 }

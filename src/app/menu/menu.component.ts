@@ -32,13 +32,8 @@ export class MenuComponent implements OnInit {
     this.visible = !this.visible;
   }
 
-  onselectedSection(id:number){
-    this.route.params
-      .subscribe(
-        (params:Params)=>{
-          //this.id= +params['id'];
-        }
-      );
+  onSelected(item){
+    this.sectionService.displaysection(item);
   }
 
   onAddedItem(){

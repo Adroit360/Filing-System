@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SectionService } from '../services/Section.service';
 
 @Component({
   selector: 'app-content',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
-
-  constructor() { }
+  displaySection:string
+  constructor(private sectionservice: SectionService) { }
 
   ngOnInit(): void {
+  }
+
+  disp(){
+    this.sectionservice.displaysection;
   }
 
 }

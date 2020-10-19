@@ -1,38 +1,48 @@
 @import '../../../styles/components/manage-user';
 @import '../../../styles/components/buttons';
-.container{
-   margin-top: 2.19rem;
-    margin-left: 2.19rem;
+.pad {
+    margin: 36px;
 }
 
-.header span {
-    color: #ED1E23;
-    border: 1px solid #ED1E23;
-    border-radius: 50%;
-    font-size: 16px;
-    padding: 5px;
+h4 {
+    font: 'Poppins';
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1.875rem;
 }
 
-.main {
-    display: grid;
-    padding: 10px 20px;
-    grid-gap: 27px;
-}
-
-.box-1 {
-    display: flex;
-    justify-content: space-between;
-    background-color: rgb(255, 255, 255);
-    height: 45px;
-    width: 85%;
-    padding: 10px 31px;
-    border-radius: 25px;
-}
-
-.box-1>h3 {
-    text-align: center;
+input {
+    width: 80%;
+    padding: 20px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    outline: transparent;
+    border-bottom: 3px solid #ED1E23;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
     background: none;
-    height: 28px;
-    padding: 9px 12px;
-    color: #838383;
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ED1E23;
+    opacity: 1;
+    /* Firefox */
+}
+
+ :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #ED1E23;
+}
+
+ ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #ED1E23;
 }

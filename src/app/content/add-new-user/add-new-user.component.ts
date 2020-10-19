@@ -33,6 +33,5 @@ export class AddNewUserComponent implements OnInit {
        });
   }
   onCancel(){
-
   }
 }

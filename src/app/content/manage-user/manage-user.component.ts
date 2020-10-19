@@ -1,6 +1,5 @@
-import { InteractionService } from './../../services/interaction.service';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { UserService } from 'src/app/services/User.service';
 import { User } from '../../models/model';
 import {MessengerService} from '../../services/messenger.service';
@@ -12,11 +11,12 @@ import {MessengerService} from '../../services/messenger.service';
 })
 export class ManageUserComponent implements OnInit {
  userDetails: User[] = [];
+ @Output() message: string;
  delete: boolean;
  user: User;
  modalState: boolean;
  users:any=[];
-  constructor( private userdetails: UserService, private route: Router, private modal: InteractionService,private msg:MessengerService) { 
+  constructor( private userdetails: UserService, private route: Router, private msg:MessengerService) { 
     this.msg.getUsers().then(result=>{this.users=result});
   }
 
@@ -26,10 +26,10 @@ export class ManageUserComponent implements OnInit {
   }
 
   Ondelected(item:any){
+    this.message = 'Are you sure you want to delete user?';
     this.modalState = true;
     this.user = item;
-    
-    
+      
   }
 
   onModalResult(result:boolean){
@@ -45,10 +45,13 @@ export class ManageUserComponent implements OnInit {
     }
   }
 
-  onEdit(item: any){
-
+  onEdit(item: any, index:any){
+    this.route.navigate(['/home/content/editUserDetails']);
+    this.userdetails.onEditUSer(item, index);
   }
+
   addPage(){
     this.route.navigate(['/home/content/AddUser']);
   }
+
 }
