@@ -18,6 +18,37 @@ export class SectionService{
   'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
 ];
 
+
+//  let files = {
+//     "Marketing":{
+//       "one":{
+//         "four":{},
+//         "five":{},
+//         "six":{}
+//       },
+//       "two":{
+//         "seven":{},
+//       },
+//       "three":{
+//       },
+//     },
+//     "Supply Chain":{
+
+//     },
+//     "IT":{
+
+//     },
+//     "Production":{
+
+//     },
+//     "Finance":{
+
+//     },
+//     "SharedService":{
+
+//     },
+//   }
+
   department_files = ['invoice.pdf', 'invoice.doc', 'invoice.txt', 'invoice.jpeg', 'invoice.png',]; // contains the folders and files for each department
 
   sectionName = new Subject<string>();
