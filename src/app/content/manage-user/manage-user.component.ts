@@ -3,6 +3,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { UserService } from 'src/app/services/User.service';
 import { User } from '../../models/model';
 import {MessengerService} from '../../services/messenger.service';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-manage-user',
@@ -16,7 +17,7 @@ export class ManageUserComponent implements OnInit {
  user: User;
  modalState: boolean;
  users:any=[];
-  constructor( private userdetails: UserService, private route: Router, private msg:MessengerService) { 
+  constructor( private data:DataService,private userdetails: UserService, private route: Router, private msg:MessengerService) { 
     this.msg.getUsers().then(result=>{this.users=result});
   }
 
@@ -34,7 +35,7 @@ export class ManageUserComponent implements OnInit {
 
   onModalResult(result:boolean){
     if(result){
-      // this.userdetails.onDeleteUser(this.user);
+       // this.userdetails.onDeleteUser(this.user);
       // this.userDetails = this.userdetails.getuserDetails();
       this.msg.removeUser(this.user.email);
       this.msg.getUsers().then(result=>{this.users=result});
@@ -45,12 +46,13 @@ export class ManageUserComponent implements OnInit {
     }
   }
 
-  onEdit(item: any, index:any){
+  onEdit(user){
+    this.data.setSelectedUser(user);
     this.route.navigate(['/home/content/editUserDetails']);
-    this.userdetails.onEditUSer(item, index);
   }
 
-  addPage(){
+  addPage()
+  {
     this.route.navigate(['/home/content/AddUser']);
   }
 

@@ -6,7 +6,7 @@ import * as firebase from 'firebase/app';
 import {User,DocumentApprovalObject,Section,Directory,FileObject,ApprovalResponse,ApprovalRequest } from '../models/model';
 import { AngularFireStorage,AngularFireStorageReference,AngularFireUploadTask } from '@angular/fire/storage';
 import {AuthServiceService} from '../services/auth-service.service';
-import { FirebaseApp } from '@angular/fire';
+
 
 
 @Injectable({
@@ -73,22 +73,18 @@ export class MessengerService {
         // send password reset link
         this.authService.ResetPassword(email).catch(err=>{console.log("error from reset password",err);return err});
       })
-      .catch(e=>{console.log(e); return e;})
+      .catch(e=>{console.log(e); return e;});
  
     });
-    
   }
 
   // edit user
-  async updateUser(user:User){
-    await this.users.doc(user.email).updateUser({
+  async updateUser(user){
+    await this.users.doc(user.email).update({
       firstName: user.firstName,
       lastName: user.lastName, 
-      email: user.email,
       role: user.role
-    }).then((result)=>{
-      return result;
-    }).catch((err)=>{console.log(err);return err;})
+    }).catch((err)=>{console.log(err);return err;});
   }
 
 
@@ -97,14 +93,14 @@ export class MessengerService {
     //await firebase.auth().delete().catch(err=>{return err});
     await this.users.doc(user_id).delete().catch(e=>{console.log(e)});
   }
+
+
   // read a user
-  async getUser(user_id){
-    
+  async getUser(user_id){  
     let va= await this.users.doc(user_id).get();
-
-
-
   }
+
+
   // read all users
   async _getUsers() {
     var users:any=[];
@@ -142,19 +138,6 @@ export class MessengerService {
      
   }
 
-  async agetUsers()  {
-    
-      return await this.users
-      .snapshotChanges().map(a=>{
-        const data = a.payload.doc.data();
-        data.id = a.payload.id as User;
-        return data;
-      })
-        
-          
-    
-     
-  }
 
 
   // set user access control
@@ -352,7 +335,7 @@ async setApprovalOnRequest(approvedDoc:ApprovalResponse){
     approvalStatus:approvedDoc.approvalResult,
     dateApproved:approvedDoc.dateApproved,
     returnedDocumentId :returnedDocId,
-    returnedDocumentUrl:returnedDocUrl,
+    returnedDocumentUrl:returnedDocUrl, 
     approvedMessage:approvedDoc.approvedMessage
   });
 }
