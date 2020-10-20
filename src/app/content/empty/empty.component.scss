@@ -1,11 +1,28 @@
-//@import '../../../styles/components/manage-user';
+@import '../../../styles/components/manage-user';
 .container {
     margin-top: 20px;
 }
 
-// .right {
-//     float: right;
-// }
+.right {
+    margin-top: 20px;
+    display: block;
+    margin-left: 50px;
+}
+
+input {
+    //border: none;
+    width: 90px;
+    //visibility: hidden;
+}
+
+.beneath {
+    display: flex;
+    a {
+        display: flex;
+        padding: 0px;
+    }
+}
+
 h1 {
     margin: 0px 50px;
     font-size: 15px;
