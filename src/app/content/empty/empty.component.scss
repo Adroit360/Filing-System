@@ -3,6 +3,11 @@
     margin-top: 20px;
 }
 
+.add-section {
+    // display: flex;
+    // justify-content: space-around;
+}
+
 // .right {
 //     float: right;
 // }
@@ -12,7 +17,7 @@ h1 {
 }
 
 .folders {
-    max-height: 76vh;
+    max-height: 68vh;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;

@@ -1,19 +1,30 @@
-<div class="right-side">
-
-    <i class="material-icons" style="color: #ED1E23;">
-    control_point
-</i>
-    <a class="active" (click)="newfolder()">Add a New folder</a>
-
-</div>
 <div class="container">
-    <h1>General {{title}}</h1>
-    <div class="folders">
-        <a *ngFor="let item of departments" (click)="onFolderClicked(item)">
-            <i class="{{fontIcon}}" style='font-size: 50px;'></i>
-            <p>{{item}}</p>
-        </a>
+    <div class="add-section">
+
+        <!-- <i class="material-icons" style="color: #ED1E23;">
+        control_point
+    </i>
+        <a class="active" (click)="newfolder()">Add a New folder</a> -->
+        <input type="file" id="myfile" name="myfile">
+        <div class="right-side">
+            <a (click)="newfolder()" style="color: #ED1E23; display: flex;">
+                <i class="material-icons" style="color: #ED1E23;">
+              control_point
+          </i> Add a new folder</a>
+        </div>
+
     </div>
+
+    <div class="head">
+        <h1>General {{title}}</h1>
+        <div class="folders">
+            <a *ngFor="let item of departments" (click)="onFolderClicked(item)">
+                <i class="{{fontIcon}}" style='font-size: 50px;'></i>
+                <p>{{item}}</p>
+            </a>
+        </div>
+    </div>
+
     <!-- <div class="folders" *ngIf="!showFolders">
         <a *ngFor="let item of department_files" (click)="onFolderClicked(item)">
             <i class="{{fontIcon}}" style='font-size: 50px;'></i>
