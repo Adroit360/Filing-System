@@ -72,8 +72,6 @@
             </span> {{item.name}}
                     </a>
 
-
-
                     <div class="tooltip">
                         <span class="smart-tooltip overlay stick-200">
                       <h4 (click)="onRenameSection(item, i)" >rename</h4>
@@ -87,14 +85,8 @@
                     </ng-template>
                 </div>
 
-
-
             </li>
 
-
-            <li *ngFor="let item of sections; let i= index"><a (click)="onSelected(item)" [routerLink]="['content', i, item.name]" routerLinkActive="active2"><span class="material-icons">
-                    folder_open
-                    </span> {{item.name}}</a></li>
         </div>
         <li><a (click)="toggle()" *ngIf="visible;else Data"><span class="material-icons">
                 control_point
