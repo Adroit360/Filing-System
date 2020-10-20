@@ -1,3 +1,11 @@
+<div class="right-side">
+
+    <i class="material-icons" style="color: #ED1E23;">
+    control_point
+</i>
+    <a class="active" (click)="newfolder()">Add a New folder</a>
+
+</div>
 <div class="container">
     <h1>General {{title}}</h1>
     <div class="folders">
@@ -12,4 +20,34 @@
             <p>{{item}}</p>
         </a>
     </div> -->
+    <!-- </div>
+
+
+
+
+
+
+
+ <div class="head">
+    <h4> General {{title}}</h4>
+
+    <div class="right">
+        <i class="material-icons" style="color: #ED1E23;">
+          control_point
+      </i>
+        <input type="file" id="myfile" name="myfile">
+        <a class="active" (click)="newfolder()">Add a New folder</a>
+    </div>
 </div>
+
+<div class="folders">
+    <a *ngFor="let item of departments" (click)="onFolderClicked(item)">
+        <i class="{{fontIcon}}" style='font-size: 50px;'></i>
+        <p>{{item}}</p>
+    </a>
+</div>
+
+
+<div *ngIf="createfolder">
+    <app-new-folder (onResult)='onModalResult($event)'></app-new-folder>
+</div> -->

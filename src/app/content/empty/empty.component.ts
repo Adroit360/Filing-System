@@ -19,11 +19,14 @@ department;
 currentIndex;
 currentName;
 
+heading: string;
+createfolder=false;
+
 currentBreadCrump;
   constructor(private  sectionService: SectionService,
     private activatedRoute:ActivatedRoute,private router:Router) {
 
-      
+
 
       this.activatedRoute.queryParams.subscribe(qParams=>{
         let name = qParams.name;
@@ -50,13 +53,13 @@ currentBreadCrump;
    }
 
   ngOnInit(): void {
-    
+
   }
 
   onFolderClicked(item){
     // navigate to another route
     this.router.navigate(["home","content",this.currentIndex,this.currentName],{
-      queryParams:{ 
+      queryParams:{
         name:item
       },
       // fragment: ''
@@ -74,7 +77,7 @@ currentBreadCrump;
     else{
       this.departments = []; // clear the folder
       //  load the files from the server based on the department the user clicked on
-      this.departments = this.department_files;  
+      this.departments = this.department_files;
     }
     this.title = this.currentBreadCrump; // updates the title
   }
@@ -82,4 +85,13 @@ currentBreadCrump;
   resetBreadCrumpOnSameLevel(){
     this.currentBreadCrump = ` > ${this.currentName}`;
   }
+
+  newfolder(){
+    this.createfolder=!this.createfolder;
+     }
+
+     onModalResult (result: boolean){
+       console.log(result);
+       this.createfolder= result;
+     }
 }
