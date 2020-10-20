@@ -21,6 +21,7 @@ currentName;
 
 heading: string;
 createfolder=false;
+addfile=false;
 
 currentBreadCrump;
   constructor(private  sectionService: SectionService,
@@ -94,4 +95,9 @@ currentBreadCrump;
        console.log(result);
        this.createfolder= result;
      }
+
+  Addfile(){
+    this.addfile = !this.addfile;
+
+  }
 }
