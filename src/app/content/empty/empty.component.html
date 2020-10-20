@@ -1,12 +1,12 @@
 <div class="right">
     <span class="material-icons">
   folder_open</span>
-    <a style="font-weight: bold; color: rgba(0, 0, 0, 0.301);" class="active" (click)="newfolder()">Add a New folder</a>
+    <a (click)="newfolder()">Add a New folder</a>
     <div class="beneath">
         <a (click)="Addfile()"><span class="material-icons">
         content_copy
         </span>
-         <p style="font-weight: bold; color: rgba(0, 0, 0, 0.301);">Add a file</p></a>
+         <p >Add a file</p></a>
         <div *ngIf="addfile">
             <input type="file" id="myfile" name="myfile">
         </div>

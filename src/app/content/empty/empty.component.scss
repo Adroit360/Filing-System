@@ -7,6 +7,12 @@
     margin-top: 20px;
     display: block;
     margin-left: 50px;
+    span,
+    a,
+    p {
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.301);
+    }
 }
 
 input {
