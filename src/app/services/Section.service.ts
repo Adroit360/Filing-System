@@ -1,24 +1,54 @@
-import { Subject } from 'rxjs';
-import { Section } from '../models/section.model';
+import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
-export class SectionService{
-  private sections: Section [] = [
-    new Section('Marketting'),
-    new Section('Accounting'),
-    new Section ('Football'),
-    new Section ('Engineering'),
-  ];
 
-  sectionName = new Subject<string>();
 
-  getSection(){
-    return this.sections.slice();
+
+export interface Section{
+  id: string,
+    name: string,
+    dateCreated: string
+}
+
+
+
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class SectionService {
+  
+  private sectionCollection: AngularFirestoreCollection<Section>;
+  private sections:Observable<Section[]>;
+
+  constructor(private afs:AngularFirestore) {
+      this.sectionCollection = afs.collection<Section>('Sections',ref=> ref.orderBy('name'));
+      this.sections = this.sectionCollection.valueChanges();
   }
 
-  displaysection(value:Section){
+    //create section
+   async newSection(sectionName){
+      let id = this.afs.createId();
+      await this.sectionCollection.doc(id).set({id:id,name:sectionName,dateCreated:new Date().toLocaleDateString()});
+    }
 
-  //  return value;
-  this.sectionName.next(value.name);
-  console.log(value.name);
-  }
+    //remove section
+    async removeSection(sectionId){ 
+      await this.sectionCollection.doc(sectionId).delete().catch(err=>{console.log(err)});
+    }
+
+    //update section
+   async updateSection(sectionId,newName){
+      await this.sectionCollection.doc(sectionId).update({
+        name:newName
+      });
+    }
+
+    //read sections
+    getSections(){
+      return this.sections;
+    }
+  
 }

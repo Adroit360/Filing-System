@@ -17,12 +17,12 @@ const routes: Routes = [
   {path: 'home', component: HompageComponent, children: [
     // {path: '/:id/:name', component: SectionComponent},
     {path: 'content', component: ContentComponent, children: [
-      {path: ':id/:name', component: SectionComponent},
+      {path: ':id/:name', component: EmptyComponent},
       {path: 'manageUsers', component: ManageUserComponent},
       {path: 'manageUserGroups', component: ManageUserGroupsComponent},
       {path: 'AddUser', component: AddNewUserComponent},
-      {path: 'editUserDetails', component: EditUserDetailsComponent},
-      {path: 'general', component: EmptyComponent},
+      {path: 'editUserDetails', component: EditUserDetailsComponent}
+      // {path: 'general', component: EmptyComponent},
     ]},
 
   ]},

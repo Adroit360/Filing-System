@@ -47,7 +47,7 @@ export class ManageUserComponent implements OnInit {
   }
 
   onEdit(user){
-    this.data.setSelectedUser(user);
+    this.data.setActiveUser(user);
     this.route.navigate(['/home/content/editUserDetails']);
   }
 

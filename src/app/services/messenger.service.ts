@@ -58,7 +58,8 @@ export class MessengerService {
       firstName:firstName,
       role:role,
       accessList:[],
-      deletionPrivilege:false
+      creationdeletionPrivilege:false,
+      isAdmin:false
     }
     
     // create user in firestore database
@@ -96,8 +97,10 @@ export class MessengerService {
 
 
   // read a user
-  async getUser(user_id){  
-    let va= await this.users.doc(user_id).get();
+  async getUser(userEmail){  
+    let user = await firebase.firestore().collection('Users').doc(userEmail).get();
+    console.log("user form msg",user.data());
+    return user.data();
   }
 
 
@@ -115,7 +118,7 @@ export class MessengerService {
         console.log("Current users: ", users);
         return users;
       }
-      );
+    );
   }
 
 
@@ -198,23 +201,25 @@ export class MessengerService {
 
   // an access list contains the id list of sections available to a user
   // this method loads the sections accessible to a user defined by the access control list
-  async loadSectionByAccess(accessList){
+   getSectionByAccess(accessList){
     let access_sections=[];
     // let accessList = await this.getUserAccessList(userId);
-    await firebase.firestore().collection('Sections').get().then(a=>{a.docs.forEach(doc=>{
+     firebase.firestore().collection('Sections').get().then(a=>{a.docs.forEach(doc=>{
       if (accessList.includes(doc.id) ){
         access_sections.push({id:doc.data().id,name:doc.data().name});
       }
      
-    });});
-
+    });
+    console.log("accessed sections",access_sections);
+  });
+    
     return access_sections;
   }
 
   // get content of a directory
-  async getDirectoryContent(sectionId,directoryId,accessList){
+   getDirectoryContent(sectionId,directoryId,accessList){
     let contents=[];
-    await firebase.firestore().collection('Sections').doc(sectionId).collection("Archives").where('parentId','==',directoryId).get().then(a=>{a.docs.forEach(doc=>{
+     firebase.firestore().collection('Sections').doc(sectionId).collection("archives").where('parentId','==',directoryId).get().then(a=>{a.docs.forEach(doc=>{
       if (doc.data().parentId == directoryId){
         if(doc.data().itemType=="folder" && doc.data().lock){
             if(accessList.includes(doc.data().id)){
@@ -226,6 +231,19 @@ export class MessengerService {
       }
      
     });});
+
+    return contents;
+  }
+
+
+  // get content of a general
+   getGeneralcontent(){
+    let contents=[];
+     firebase.firestore().collection('Sections').doc("general").collection("archives").get().then(a=>{a.docs.forEach(doc=>{
+      
+      contents.push(doc.data());
+     
+    });console.log(contents)});
 
     return contents;
   }
@@ -339,5 +357,7 @@ async setApprovalOnRequest(approvedDoc:ApprovalResponse){
     approvedMessage:approvedDoc.approvedMessage
   });
 }
+
+// get
 
 }

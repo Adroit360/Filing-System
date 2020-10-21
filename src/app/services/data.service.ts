@@ -13,17 +13,23 @@ export class DataService {
     role:"",
     email:"",
     accessList:[],
-    deletionPrivilege:false
+    creationdeletionPrivilege:false,
+    isAdmin:false
   }
 
   constructor() { }
 
-  setSelectedUser(passedData:User){
+  setActiveUser(passedData:User){
     this.user = passedData;
   }
 
-  getSelectedUser(){
+  getActiveUser(){
     return this.user;
+  }
+
+  // get access list of user
+  getAccessList(){
+    return this.user.accessList;
   }
 
 }

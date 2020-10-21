@@ -26,9 +26,8 @@ firstName: string;
 lastName: string;
 role:string;
 email: string;
-  constructor(private userdetails: UserService,private route:Router,private data:DataService,private msg:MessengerService) {
-      console.log("data from data service",data.getSelectedUser());
-      this.selectedUser = data.getSelectedUser();
+  constructor(private userdetails: UserService,private route:Router,private data:DataService,private msg:MessengerService) {    
+      this.selectedUser = data.getActiveUser();
    }
 
   ngOnInit(): void {

@@ -20,7 +20,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {EditUserDetailsComponent} from './content/edit-user-details/edit-user-details.component'
 import { SidebarModule } from 'ng-sidebar';
 import { EmptyComponent } from './content/empty/empty.component';
-import { SectionService } from './services/Section.service';
+
 import { SectionComponent } from './content/section/section.component';
 import { UserService } from './services/User.service';
 import { LoginComponent } from './login/login.component';
@@ -64,7 +64,7 @@ import { SearchPageComponent } from './search-page/search-page.component'
     SidebarModule.forRoot(),
   ],
 
-  providers: [SectionService,UserService,UserGroupsService],
+  providers: [UserService,UserGroupsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

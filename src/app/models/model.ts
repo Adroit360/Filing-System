@@ -4,14 +4,14 @@ export interface User{
     email:string,
     role:string,
     accessList:[],
-    deletionPrivilege:Boolean
+    creationdeletionPrivilege:Boolean,
+    isAdmin:Boolean
   }
 
   export interface Section{
     id: string,
     name: string,
     dateCreated: string
-    items:[]
   }
 
   export interface FileObject{
