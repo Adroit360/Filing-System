@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    this.route.navigate(['home/content/0/general']);
+    this.route.navigate(['home/content/0/General']);
     //console.log(this.LogInForm);
 
   }

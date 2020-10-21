@@ -1,73 +1,34 @@
-<div class="right">
-    <span class="material-icons">
-  folder_open</span>
-    <a (click)="newfolder()">Add a New folder</a>
-    <div class="beneath">
-        <a (click)="Addfile()"><span class="material-icons">
-        content_copy
-        </span>
-         <p >Add a file</p></a>
-        <div *ngIf="addfile">
-            <input type="file" id="myfile" name="myfile">
-        </div>
-
-    </div>
-
-</div>
 <div class="container">
+    <div class="head">
+        <h1>{{currentName | uppercase}}</h1>
 
-    <h1>General {{title}}</h1>
+        <div class="right">
+            <div class="add-folder">
+                <a (click)="newfolder()"><span class="material-icons">
+                folder_open</span>
+                 <p>New Folder</p></a>
+            </div>
 
+            <div class="beneath">
+                <a (click)="Addfile()"><span class="material-icons">
+            content_copy
+            </span>
+             <p >New File</p></a>
+                <div *ngIf="addfile">
+                    <input type="file" id="myfile" name="myfile">
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <h4>{{title}}</h4>
     <div class="folders">
         <a *ngFor="let item of departments" (click)="onFolderClicked(item)">
             <i class="{{fontIcon}}" style='font-size: 50px;'></i>
             <p>{{item}}</p>
         </a>
     </div>
-
-    <!-- <div class="head">
-        <h1>General {{title}}</h1>
-        <div class="folders">
-            <a *ngFor="let item of departments" (click)="onFolderClicked(item)">
-                <i class="{{fontIcon}}" style='font-size: 50px;'></i>
-                <p>{{item}}</p>
-            </a>
-        </div>
-    </div> -->
-
-    <!-- <div class="folders" *ngIf="!showFolders">
-        <a *ngFor="let item of department_files" (click)="onFolderClicked(item)">
-            <i class="{{fontIcon}}" style='font-size: 50px;'></i>
-            <p>{{item}}</p>
-        </a>
-    </div> -->
-    <!-- </div>
-
-
-
-
-
-
-
- <div class="head">
-    <h4> General {{title}}</h4>
-
-    <div class="right">
-        <i class="material-icons" style="color: #ED1E23;">
-          control_point
-      </i>
-        <input type="file" id="myfile" name="myfile">
-        <a class="active" (click)="newfolder()">Add a New folder</a>
-    </div>
-</div>
-
-<div class="folders">
-    <a *ngFor="let item of departments" (click)="onFolderClicked(item)">
-        <i class="{{fontIcon}}" style='font-size: 50px;'></i>
-        <p>{{item}}</p>
-    </a>
-</div>-->
-
 
     <div *ngIf="createfolder">
         <app-new-folder (onResult)='onModalResult($event)'></app-new-folder>

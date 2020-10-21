@@ -14,12 +14,11 @@ departments: any[] = this.sectionService.departments;
 // alternate array to load the files from the server when a user clicks on a folder
 department_files = this.sectionService.department_files;
 title="";
+heading: string;
 fontIcon = "fa fa-folder";
 department;
 currentIndex;
 currentName;
-
-heading: string;
 createfolder=false;
 addfile=false;
 
@@ -72,7 +71,7 @@ currentBreadCrump;
   routeChanged(item: string){
     // if we are on the general page
     console.log(item);
-    if(item =='general'){
+    if(item =='General'){
       this.departments = this.sectionService.departments
     }
     else{
