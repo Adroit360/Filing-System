@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import {FormsModule} from '@angular/forms'
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -13,7 +15,6 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MenuComponent } from './menu/menu.component';
 import { ContentComponent } from './content/content.component';
 import { ManageUserComponent } from './content/manage-user/manage-user.component';
-import { ManageUserGroupsComponent } from './content/manage-user-groups/manage-user-groups.component';
 import { EditUserComponent } from './content/edit-user/edit-user.component';
 import { AddNewUserComponent } from './content/add-new-user/add-new-user.component';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -31,6 +32,7 @@ import { NewFolderComponent } from './new-folder/new-folder.component'
 import { UserGroupsService } from './services/UserGroups.service';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { SmartTooltipAngularModule } from 'smart-tooltip-angular';
+import { SharedResourcesComponent } from './content/shared-resources/shared-resources.component';
 
 
 
@@ -41,7 +43,6 @@ import { SmartTooltipAngularModule } from 'smart-tooltip-angular';
     MenuComponent,
     ContentComponent,
     ManageUserComponent,
-    ManageUserGroupsComponent,
     EditUserComponent,
     AddNewUserComponent,
     EditUserDetailsComponent,
@@ -52,7 +53,8 @@ import { SmartTooltipAngularModule } from 'smart-tooltip-angular';
     ModalComponent,
     PasswordComponent,
     NewFolderComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    SharedResourcesComponent
   ],
 
   imports: [
@@ -64,7 +66,7 @@ import { SmartTooltipAngularModule } from 'smart-tooltip-angular';
     AngularFireStorageModule , // for storage
     ReactiveFormsModule ,
     SmartTooltipAngularModule,//tooltip
-
+    FormsModule,
     SidebarModule.forRoot(),
   ],
 

@@ -3,15 +3,13 @@ import { Group } from 'src/app/models/group.model';
 import { UserGroupsService } from 'src/app/services/UserGroups.service';
 
 @Component({
-  selector: 'app-manage-user-groups',
-  templateUrl: './manage-user-groups.component.html',
-  styleUrls: ['./manage-user-groups.component.scss']
+  selector: 'app-shared-resources',
+  templateUrl: './shared-resources.component.html',
+  styleUrls: ['./shared-resources.component.scss']
 })
-export class ManageUserGroupsComponent implements OnInit {
-  // will change the date created to a Date type later
+export class SharedResourcesComponent implements OnInit {
   userGroups: Group[]=[];
-
-  constructor( private usergroups:UserGroupsService) { }
+  constructor(private usergroups:UserGroupsService) { }
 
   ngOnInit(): void {
     this.userGroups=this.usergroups.getuserGroups();
@@ -21,7 +19,4 @@ export class ManageUserGroupsComponent implements OnInit {
     this.usergroups.onDeleteuserGroups(item);
     this.userGroups=this.usergroups.getuserGroups();
   }
-
-
-
 }

@@ -14,6 +14,7 @@ export class ManageUserComponent implements OnInit {
  delete: boolean;
  user: User;
  modalState: boolean;
+ searchText;
   constructor( private userdetails: UserService, private route: Router) { }
 
   ngOnInit(): void {
