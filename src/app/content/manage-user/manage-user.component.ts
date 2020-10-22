@@ -14,7 +14,7 @@ export class ManageUserComponent implements OnInit {
  delete: boolean;
  user: User;
  modalState: boolean;
- searchText;
+
   constructor( private userdetails: UserService, private route: Router) { }
 
   ngOnInit(): void {
@@ -43,6 +43,7 @@ export class ManageUserComponent implements OnInit {
     this.route.navigate(['/home/content/editUserDetails']);
     this.userdetails.onEditUSer(item, index);
   }
+
   addPage(){
     this.route.navigate(['/home/content/AddUser']);
   }

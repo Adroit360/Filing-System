@@ -10,7 +10,9 @@ import { EditUserComponent } from './content/edit-user/edit-user.component';
 import { AddNewUserComponent } from './content/add-new-user/add-new-user.component';
 import {EditUserDetailsComponent} from './content/edit-user-details/edit-user-details.component';
 import { EmptyComponent } from './content/empty/empty.component';
-import { SharedResourcesComponent} from './content/shared-resources/shared-resources.component'
+import { SharedResourcesComponent} from './content/shared-resources/shared-resources.component';
+import { NewResourceComponent} from './content/new-resource/new-resource.component';
+import { EditResourceComponent} from './content/edit-resource/edit-resource.component'
 //import { SectionComponent } from './content/section/section.component';
 //import { SharedResourcesComponent } from './content/SharedResources/sharedResources.component';
 
@@ -23,7 +25,9 @@ const routes: Routes = [
       {path: 'manageUsers', component: ManageUserComponent},
       {path: 'SharedResources', component: SharedResourcesComponent},
       {path: 'AddUser', component: AddNewUserComponent},
-      {path: 'editUserDetails', component: EditUserDetailsComponent}
+      {path: 'editUserDetails', component: EditUserDetailsComponent},
+      {path: 'CreateResource', component:NewResourceComponent},
+      {path: 'EditResource', component: EditResourceComponent},
       // {path: 'general', component: EmptyComponent},
     ]},
 

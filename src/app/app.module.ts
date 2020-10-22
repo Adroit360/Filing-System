@@ -29,10 +29,12 @@ import { HompageComponent } from './hompage/hompage.component';
 import {ModalComponent} from './modal/modal.component';
 import { PasswordComponent} from './forgotPassword/password.component';
 import { NewFolderComponent } from './new-folder/new-folder.component'
-import { UserGroupsService } from './services/UserGroups.service';
+import { AdminResourceService } from './services/AdminResource.service';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { SmartTooltipAngularModule } from 'smart-tooltip-angular';
 import { SharedResourcesComponent } from './content/shared-resources/shared-resources.component';
+import { NewResourceComponent } from './content/new-resource/new-resource.component';
+import { EditResourceComponent } from './content/edit-resource/edit-resource.component';
 
 
 
@@ -54,7 +56,9 @@ import { SharedResourcesComponent } from './content/shared-resources/shared-reso
     PasswordComponent,
     NewFolderComponent,
     SearchPageComponent,
-    SharedResourcesComponent
+    SharedResourcesComponent,
+    NewResourceComponent,
+    EditResourceComponent
   ],
 
   imports: [
@@ -70,7 +74,7 @@ import { SharedResourcesComponent } from './content/shared-resources/shared-reso
     SidebarModule.forRoot(),
   ],
 
-  providers: [SectionService,UserService,UserGroupsService],
+  providers: [SectionService,UserService,AdminResourceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

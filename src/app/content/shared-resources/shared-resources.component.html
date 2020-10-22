@@ -4,28 +4,28 @@
         <i class="material-icons" style="color: #ED1E23;">
             control_point
         </i>
-        <a class="active">Create a new User</a>
+        <a class="active" (click)="onAdd()">Add a new resource</a>
     </div>
 </div>
 
 <div class="main">
 
     <div class="content-1">
-        <h5>Group Name</h5>
-        <h5>No. of People</h5>
+        <h5>Resource Name</h5>
+
         <h5>Date Created</h5>
         <h5>Action</h5>
     </div>
     <div class="list-container">
-        <ul class="list" *ngFor="let user of userGroups">
+        <ul class="list" *ngFor="let user of NewResource; let i = index ">
             <li>
-                <div class="box-1">
-                    <h2>{{user.Department}}</h2>
-                    <h2>{{user.numb}}</h2>
+                <div class="box-1" (click)="onSelected(user, i)">
+                    <h2>{{user.Name}}</h2>
+
                     <h2>{{user.date}}</h2>
                     <h2>
                         <div class="sps">
-                            <span class="material-icons" style="background-color: white;">
+                            <span (click)="onEdit(user, i)" class="material-icons" style="background-color: white;">
                         create
                         </span>
                             <span (click)="onDeleteGroup(user)" class="material-icons" style="background-color: white;">
@@ -39,4 +39,8 @@
         </ul>
     </div>
 
+</div>
+
+<div class="modal" *ngIf="modalState">
+    <app-modal [title]="message" (onResult)="onModalResult($event)"></app-modal>
 </div>
