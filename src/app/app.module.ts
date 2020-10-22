@@ -35,6 +35,8 @@ import { SmartTooltipAngularModule } from 'smart-tooltip-angular';
 import { SharedResourcesComponent } from './content/shared-resources/shared-resources.component';
 import { NewResourceComponent } from './content/new-resource/new-resource.component';
 import { EditResourceComponent } from './content/edit-resource/edit-resource.component';
+import { DisplayResourceComponent } from './content/display-resource/display-resource.component';
+import { PreviewComponent } from './preview/preview.component';
 
 
 
@@ -58,7 +60,9 @@ import { EditResourceComponent } from './content/edit-resource/edit-resource.com
     SearchPageComponent,
     SharedResourcesComponent,
     NewResourceComponent,
-    EditResourceComponent
+    EditResourceComponent,
+    DisplayResourceComponent,
+    PreviewComponent
   ],
 
   imports: [

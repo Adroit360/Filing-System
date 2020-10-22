@@ -50,6 +50,6 @@ export class SharedResourcesComponent implements OnInit {
   }
 
   onSelected(user, i){
-    console.log(user, i);
+    console.log(user.Name, i);
   }
 }

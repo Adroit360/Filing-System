@@ -90,13 +90,18 @@ currentBreadCrump;
     this.createfolder=!this.createfolder;
      }
 
-     onModalResult (result: boolean){
+ onModalResult (result: boolean){
        console.log(result);
        this.createfolder= result;
+
      }
 
   Addfile(){
     this.addfile = !this.addfile;
+  }
 
+  onPreviewResult(result: boolean){
+    this.addfile=result;
+    console.log(result)
   }
 }

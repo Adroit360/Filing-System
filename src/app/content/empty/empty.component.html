@@ -14,9 +14,6 @@
             content_copy
             </span>
              <p >New File</p></a>
-                <div *ngIf="addfile">
-                    <input type="file" id="myfile" name="myfile">
-                </div>
 
             </div>
 
@@ -32,4 +29,8 @@
 
     <div *ngIf="createfolder">
         <app-new-folder (onResult)='onModalResult($event)'></app-new-folder>
+    </div>
+
+    <div *ngIf="addfile">
+        <app-preview (onResult)='onPreviewResult($event)'></app-preview>
     </div>

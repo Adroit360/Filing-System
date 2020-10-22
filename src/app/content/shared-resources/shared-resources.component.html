@@ -19,7 +19,7 @@
     <div class="list-container">
         <ul class="list" *ngFor="let user of NewResource; let i = index ">
             <li>
-                <div class="box-1" (click)="onSelected(user, i)">
+                <div class="box-1" (click)="onSelected(user, i)" [routerLink]="[ i, user.Name]">
                     <h2>{{user.Name}}</h2>
 
                     <h2>{{user.date}}</h2>
