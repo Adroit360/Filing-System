@@ -22,8 +22,16 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    this.route.navigate(['home/content/0/General']);
-    //console.log(this.LogInForm);
+
+    // checks if the form is valid
+    if(this.LogInForm.valid){
+      this.route.navigate(['home/content/0/General']);
+    }
+    else{
+      this.isValid = true;
+    }
+    
+  
 
   }
   onToggle(){

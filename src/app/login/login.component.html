@@ -4,9 +4,9 @@
             <img src="../../assets/lemla.jpeg" alt="" srcset="">
         </div>
         <form [formGroup]="LogInForm" (ngSubmit)="onSubmit()">
-            <div class="container">
+            <div class="container" [ngStyle]="{'grid-template-rows': isValid? '1fr 1.2fr 1fr 1fr 2fr 1.3fr':'2fr 1.4fr 1.4fr 3fr' }">
                 <h1>Login into your account</h1>
-                <span class="email-checker" *ngIf="!isValid">Incorrect email or Password</span>
+                <span class="email-checker" *ngIf="isValid">Incorrect email or Password</span>
 
                 <input type="email" placeholder="email" formControlName="email">
 
