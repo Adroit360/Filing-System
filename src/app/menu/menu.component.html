@@ -60,7 +60,7 @@
     <ul>
         <li><a routerLink="content/0/general" routerLinkActive="active"><span class="material-icons" >
                 home
-                </span> General</a></li>
+                </span> <p>General</p> </a></li>
         <div class="custom-seciton">
 
             <li *ngFor="let item of sections; let i= index">
@@ -69,7 +69,8 @@
                     <a (click)="onSelected(item)" [routerLink]="['content', i, item.name]" *ngIf="hooks[i];else renameData">
                         <span class="material-icons">
                              folder_open
-            </span> {{item.name}}
+            </span>
+                        <p>{{item.name}}</p>
                     </a>
 
                     <div class="tooltip">
@@ -90,7 +91,7 @@
         </div>
         <li><a (click)="toggle()" *ngIf="visible;else Data"><span class="material-icons">
                 control_point
-                </span> Create New Section
+                </span> <p>Create New Section</p> 
             </a>
 
             <ng-template #Data>

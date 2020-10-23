@@ -1,8 +1,7 @@
 @import '../../../styles/components/manage-user';
 @import '../../../styles/components/buttons';
-
-.pad{
-        margin: 36px ;
+.pad {
+    margin: 36px;
 }
 
 h1 {
@@ -11,14 +10,15 @@ h1 {
     font-style: normal;
     font-size: 1.875rem;
 }
-input{
+
+input {
     width: 80%;
     padding: 20px 20px;
     margin: 8px 0;
     display: inline-block;
     border: none;
     outline: transparent;
-    border-bottom: 3px solid  #ED1E23;
+    border-bottom: 3px solid #ED1E23;
     box-sizing: border-box;
     font-family: 'Poppins';
     font-size: 1rem;
@@ -46,7 +46,3 @@ input{
     /* Microsoft Edge */
     color: #ED1E23;
 }
-
-
-
-

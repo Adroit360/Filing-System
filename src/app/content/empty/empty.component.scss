@@ -1,10 +1,9 @@
 @import '../../../styles/components/manage-user';
 .container {
-    //margin-top: 20px;
     margin-top: 20px;
     display: grid;
     grid-auto-flow: row;
-    grid-template-rows: 0fr 0fr 1fr;
+    grid-template-rows: auto auto 1fr;
 }
 
 .add-folder {
@@ -14,8 +13,14 @@
     }
 }
 
+h1 {
+    margin: 0px 20px;
+    font-weight: 900;
+    font-size: 3rem;
+}
+
 .right {
-    margin-left: 28%;
+    margin-left: 45%;
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 4fr 3fr;
@@ -58,11 +63,11 @@ h1 {
 
 h4 {
     margin: 20px 50px;
-    // font-size: 15px;
+    font-weight: 600;
 }
 
 .folders {
-    max-height: 67vh;
+    max-height: 70vh;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -83,7 +88,7 @@ a {
 
 p {
     font-family: Poppins;
-    font-size: 16px;
+    // font-size: 16px;
     font-style: normal;
     font-weight: 300;
     letter-spacing: 0em;
@@ -91,4 +96,5 @@ p {
     color: black;
     text-overflow: ellipsis;
     overflow: hidden;
+    line-height: 20px;
 }

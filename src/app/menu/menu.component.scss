@@ -12,10 +12,10 @@ ng-sidebar-container {
 }
 
 .logo img {
-    width: 9.25rem;
-    height: 3.56rem;
-    margin-left: 43px;
-    margin-top: 0.63rem;
+    width: 13.25rem;
+    height: 5.56rem;
+    margin-left: 4.3rem;
+    margin-top: 1.63rem;
 }
 
 h2 {
@@ -39,8 +39,12 @@ ul {
     list-style: none;
 }
 
+p {
+    margin-top: 0.8rem;
+}
+
 li {
-    padding: 0.06rem;
+    padding: 0.2rem;
     font-family: Poppins;
     font-size: 18px;
     font-style: normal;
@@ -61,13 +65,13 @@ li span {
 li a {
     text-decoration: none;
     color: #808080;
-    padding: 0.63rem;
+    padding: 1.1rem;
     cursor: pointer;
 }
 
 .admin-tools li a {
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 4.5fr;
 }
 
 .admin-tools-inbox li {
