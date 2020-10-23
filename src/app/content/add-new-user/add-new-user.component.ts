@@ -10,6 +10,7 @@ import {MessengerService} from '../../services/messenger.service';
 })
 export class AddNewUserComponent implements OnInit {
   addUserForm: FormGroup;
+  errorMessage:string="";
 
   constructor( private router: Router, private messenger:MessengerService ) { }
 
@@ -23,13 +24,19 @@ export class AddNewUserComponent implements OnInit {
 
   }
 
-  async onSubmit(){
+  onSubmit(){
     console.log(this.addUserForm.value);
-     await this.messenger.NewUser(this.addUserForm.value.firstName,this.addUserForm.value.lastName,
-      this.addUserForm.value.email,this.addUserForm.value.role).then(()=>{
-        this.router.navigate(['home/content/manageUsers']);
+    this.messenger.NewUser(this.addUserForm.value.firstName,this.addUserForm.value.lastName,
+      this.addUserForm.value.email,this.addUserForm.value.role).then((res)=>{
+        
+        this.errorMessage=res;
+        if(!res){
+          this.router.navigate(['home/content/manageUsers']);
+        }
+       
        }).catch(err=>{
-         if(err){alert(err);}
+         console.log(err);
+         return;
        });
   }
   onCancel(){

@@ -96,6 +96,16 @@ li a {
     margin-bottom: 1rem;
 }
 
+.tooltip>span {
+    height: 50px;
+    width: 70px;
+    font-size: 15px;
+}
+
+span>h4 {
+    cursor: pointer;
+}
+
 .active2 {
     @include active();
     border-right: none;

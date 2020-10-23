@@ -23,7 +23,8 @@
     "firebase": "~7.23.0",
     "ng-sidebar": "~9.4.2",
     "rxjs": "~6.6.3",
-    "tslib": "~2.0.0",
+    "smart-tooltip-angular": "^1.1.9",
+    "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

@@ -1,15 +1,36 @@
 <div class="container">
-    <h1>General {{title}}</h1>
+    <div class="head">
+        <h3>{{currentName | uppercase}}</h3>
+
+        <div class="right">
+            <div class="add-folder">
+                <a (click)="newfolder()"><span class="material-icons">
+                folder_open</span>
+                 <p>New Folder</p></a>
+            </div>
+
+            <div class="beneath">
+                <a (click)="Addfile()"><span class="material-icons">
+            content_copy
+            </span>
+             <p >New File</p></a>
+                <div *ngIf="addfile">
+                    <input type="file" id="myfile" name="myfile">
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <h4><span *ngFor="let item of hierrachy"> <a>{{item}}</a>>  </span></h4>
+    
     <div class="folders">
         <a *ngFor="let item of dirContent|async" (click)="onFolderClicked(item)">
             <i class="{{fontIcon}}" style='font-size: 50px;'></i>
             <p>{{item.name}}</p>
         </a>
     </div>
-    <!-- <div class="folders" *ngIf="!showFolders">
-        <a *ngFor="let item of department_files" (click)="onFolderClicked(item)">
-            <i class="{{fontIcon}}" style='font-size: 50px;'></i>
-            <p>{{item}}</p>
-        </a>
-    </div> -->
-</div>
+
+    <div *ngIf="createfolder">
+        <app-new-folder (onResult)='onModalResult($event)'></app-new-folder>
+    </div>

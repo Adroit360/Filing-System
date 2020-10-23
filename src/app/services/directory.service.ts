@@ -74,4 +74,31 @@ export class DirectoryService {
     console.log('from dir service', this.subarchives);
     return this.subarchives;
   }
+
+  newArchive:Archives={
+    id:"",
+    sectionId:"",
+    parentId:"",
+    name:"",
+    itemType:"",
+    contentType:"",
+    url:"",
+    lastUploadUser:"",
+    lastUpdated:"",
+    owner:"",
+    lock:false,
+    dateCreated:""
+  }
+  createDirectory(directoryName,sectionId,parentId,user){
+    this.newArchive.id=this.afs.createId();
+    this.newArchive.name = directoryName;
+    this.newArchive.parentId=parentId;
+    this.newArchive.sectionId=sectionId;
+    this.newArchive.owner =user;
+    this.newArchive.dateCreated = new Date().toLocaleDateString();
+    this.newArchive.itemType = "folder";
+
+    this.archivesCollection.doc(this.newArchive.id).set(this.newArchive);
+
+  }
 }

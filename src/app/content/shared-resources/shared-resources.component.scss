@@ -1,7 +1,5 @@
 @import '../../../styles/components/item-box';
 @import '../../../styles/components/manage-user';
-
-
 h1 {
     font: 'Poppins';
     font-weight: 600;
@@ -9,12 +7,10 @@ h1 {
     font-size: 30px;
 }
 
-
 .content-1 {
     display: grid;
     grid-template-columns: 2.5fr 1.7fr 1fr 0.5fr;
     grid-gap: 2px;
-
     padding: 10px 36px;
 }
 
@@ -33,4 +29,3 @@ h1 {
     font-weight: normal;
     font-style: normal;
 }
-

@@ -15,17 +15,18 @@ import {AuthServiceService} from '../services/auth-service.service';
 
 export class MessengerService {
   private usersCollection: AngularFirestoreCollection<User>;
-  //  private users:Observable<User[]>;
+  private users:Observable<User[]>;
   private sectionCollection: AngularFirestoreCollection<Section>;
   // private sections:Observable<Section[]>;
 
-  users:any;
+  // users:any;
   approvalDocs:any;
   // storageRef : AngularFireStorageReference;
   // storageTask: AngularFireUploadTask;
 
   constructor(private database: AngularFirestore,private authService:AuthServiceService,private afStorage:AngularFireStorage) { 
-      this.users = database.collection('Users');
+    this.usersCollection = database.collection<User>('Users', ref=>ref.orderBy('firstName'));
+    this.users = this.usersCollection.valueChanges();
       this.sectionCollection = database.collection<Section>('Sections',ref=> ref.orderBy('dateCreated'));
       this.approvalDocs = database.collection('ApprovalDocuments');
   }
@@ -70,18 +71,18 @@ export class MessengerService {
       if(res=="auth/email-already-in-use" || res=="auth/invalid-email"){
         return res;
       }
-      await this.users.doc(user.email).set(user).then(()=>{
+      await this.usersCollection.doc(user.email).set(user).catch(e=>{console.log(e); return e;});
+ 
         // send password reset link
         this.authService.ResetPassword(email).catch(err=>{console.log("error from reset password",err);return err});
-      })
-      .catch(e=>{console.log(e); return e;});
- 
+      
+     
     });
   }
 
   // edit user
   async updateUser(user){
-    await this.users.doc(user.email).update({
+    await this.usersCollection.doc(user.email).update({
       firstName: user.firstName,
       lastName: user.lastName, 
       role: user.role
@@ -92,7 +93,7 @@ export class MessengerService {
   // remove user
   async removeUser(user_id){
     //await firebase.auth().delete().catch(err=>{return err});
-    await this.users.doc(user_id).delete().catch(e=>{console.log(e)});
+    await this.usersCollection.doc(user_id).delete().catch(e=>{console.log(e)});
   }
 
 
@@ -105,24 +106,12 @@ export class MessengerService {
 
 
   // read all users
-  async _getUsers() {
-    var users:any=[];
-    
-    await firebase.firestore().collection("Users")
-    .onSnapshot(
-      function(querySnapshot) {
-
-        querySnapshot.forEach(function(doc) {
-            users.push(doc.data());
-        });
-        console.log("Current users: ", users);
-        return users;
-      }
-    );
+ getUsers() {
+   return this.users;
   }
 
 
-  getUsers() : Promise<any[]> {
+  _getUsers() : Promise<any[]> {
     let users:any=[];
 
     return new Promise((resolve,reject)=>{
@@ -145,14 +134,14 @@ export class MessengerService {
 
   // set user access control
   async setAccessControl(userId,resourceId){
-     this.users.doc(userId).update({
+     this.usersCollection.doc(userId).update({
        accessList:firebase.firestore.FieldValue.arrayUnion(resourceId)
      });
   }
 
   // revoke access
   async revokeAccess(userId,resourceId){
-    this.users.doc(userId).update({
+    this.usersCollection.doc(userId).update({
       accessList:firebase.firestore.FieldValue.arrayRemove(resourceId)
     });
   }
@@ -359,5 +348,5 @@ async setApprovalOnRequest(approvedDoc:ApprovalResponse){
 }
 
 // get
-
+  
 }

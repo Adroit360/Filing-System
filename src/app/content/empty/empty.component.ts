@@ -2,6 +2,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 // import { SectionService } from 'src/app/services/section.service';
 import { Component, OnInit } from '@angular/core';
 import { DirectoryService } from '../../services/directory.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-empty',
@@ -9,75 +10,100 @@ import { DirectoryService } from '../../services/directory.service';
   styleUrls: ['./empty.component.scss']
 })
 export class EmptyComponent implements OnInit {
-//  holds the folders of the various departments you will load everything in the service
-// departments: any[] = this.sectionService.departments;
+  //  holds the folders of the various departments you will load everything in the service
+  // departments: any[] = this.sectionService.departments;
 
-// alternate array to load the files from the server when a user clicks on a folder
-// department_files = this.sectionService.department_files;
-title="";
-fontIcon = "fa fa-folder";
-department;
-currentIndex;
-currentName;
-dirContent:any;
+  // alternate array to load the files from the server when a user clicks on a folder
+  // department_files = this.sectionService.department_files;
+  title = "";
+  heading: string;
+  fontIcon = "fa fa-folder";
+  department;
+  currentIndex:string="";
+  currentName;
+  dirContent: any;
+  createfolder = false;
+  addfile = false;
+  hierrachy:any=[];
+  currentBreadCrump;
 
-currentBreadCrump;
-  constructor(
-    private activatedRoute:ActivatedRoute,private router:Router, private directory:DirectoryService) {
+  constructor(private data: DataService,
+    private activatedRoute: ActivatedRoute, private router: Router, private directory: DirectoryService) {
 
-      // this.dirContent = this.directory.getActiveDirectoryItems();
-      // console.log("here we are",this.dirContent);
+    // this.dirContent = this.directory.getActiveDirectoryItems();
+    // console.log("here we are",this.dirContent);
+    // this.hierrachy = this.data.getDirectoryHierrachy();
 
-      this.activatedRoute.queryParams.subscribe(qParams=>{
-        let name = qParams.name;  
-        if(name){
-          this.resetBreadCrumpOnSameLevel();
-          this.currentBreadCrump += ` > ${name}`;
-          this.routeChanged(name);
-        }
-      });
+    // this.activatedRoute.queryParams.subscribe(qParams => {
+    //   let name = qParams.name;
+    //   console.log("qparam", qParams);
+    //   if (name) {
+    //     this.resetBreadCrumpOnSameLevel();
+    //     this.currentBreadCrump += ` > ${name}`;
+    //     this.routeChanged(name);
+    //   } else {
+    //     console.log("FAlsy Name");
+    //     this.computeRoute();
+    //   }
 
-      this.activatedRoute.paramMap.subscribe(param=>{
 
-        var hasQueryParams = this.activatedRoute.snapshot.queryParams.name;
+    // });
 
-        let name = param.get("name");
-        this.department = name;
+    this.activatedRoute.paramMap.subscribe(param => {
 
-        this.currentIndex = param.get("id");
-        console.log(this.currentIndex,"from empty");
-        this.dirContent = this.directory.getSubDirectoryContent(this.currentIndex,this.currentIndex);
-        console.log("directory content",this.dirContent);
-        this.currentName = name;
+      //var hasQueryParams = this.activatedRoute.snapshot.queryParams.name;
+      console.log("param", param);
 
-        this.currentBreadCrump = ` > ${name}`;
-        this.routeChanged(name);
-      });
-   }
+      let name = param.get("name");
+      this.department = name;
 
-  ngOnInit(): void {
-   
+
+      this.currentIndex = param.get("id");
+      console.log(this.currentIndex, "from empty");
+
+
+      this.computeRoute();
+    });
+  
   }
 
-  onFolderClicked(item){
-    // navigate to another route
-    this.router.navigate(["home","content",this.currentIndex,this.currentName],{
-      queryParams:{ 
-        name:item
-      },
-      // fragment: ''
-      // queryParamsHandling: 'preserve'
+  computeRoute() {
+    let name = this.department;
+    this.dirContent = this.directory.getSubDirectoryContent(this.currentIndex, this.currentIndex);
+
+    console.log("directory content", this.dirContent);
+    this.currentName = name;
+    if(this.hierrachy.includes(name)){
+      this.hierrachy = this.hierrachy.splice(0,this.hierrachy.indexOf(name)+1);
+    }else{
+      this.hierrachy.push(name);
     }
+    
+    this.currentBreadCrump = ` > ${name}`;
+    this.routeChanged(name);
+  }
+
+
+  ngOnInit(): void {
+
+  }
+
+  onFolderClicked(item) {
+    // this.data.setCurrentDirectory(item.id, item.name);
+    this.dirContent = this.directory.getSubDirectoryContent(this.currentIndex, item.id);
+    //this.hierrachy.push(item.name);
+    console.log(this.hierrachy,"this is the hierrachy");
+    this.router.navigate(["home", "content", item.id, item.name]
     )
   }
 
-  routeChanged(item: string){
+  routeChanged(item: string) {
     // if we are on the general page
     console.log(item);
-    if(item =='general'){
+    if (item == 'general') {
       // this.departments = this.sectionService.departments
     }
-    else{
+    else {
       // this.departments = []; // clear the folder
       //  load the files from the server based on the department the user clicked on
       // this.departments = this.department_files;  
@@ -85,7 +111,22 @@ currentBreadCrump;
     this.title = this.currentBreadCrump; // updates the title
   }
 
-  resetBreadCrumpOnSameLevel(){
-    this.currentBreadCrump = ` > ${this.currentName}`;
+  resetBreadCrumpOnSameLevel() {
+    // this.currentBreadCrump = ` > ${this.currentName}`;
+  }
+
+  newfolder() {
+    this.createfolder = !this.createfolder;
+  }
+
+  onModalResult(result: boolean) {
+    console.log(result);
+    this.createfolder = result;
+
+  }
+
+  Addfile() {
+    this.addfile = !this.addfile;
+
   }
 }

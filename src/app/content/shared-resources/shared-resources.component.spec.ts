@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchPageComponent } from './search-page.component';
+import { SharedResourcesComponent } from './shared-resources.component';
 
-describe('SearchPageComponent', () => {
-  let component: SearchPageComponent;
-  let fixture: ComponentFixture<SearchPageComponent>;
+describe('SharedResourcesComponent', () => {
+  let component: SharedResourcesComponent;
+  let fixture: ComponentFixture<SharedResourcesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchPageComponent ]
+      declarations: [ SharedResourcesComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchPageComponent);
+    fixture = TestBed.createComponent(SharedResourcesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, Output } from '@angular/core';
-import { UserService } from 'src/app/services/User.service';
+// import { UserService } from 'src/app/services/User.service';
 import { User } from '../../models/model';
 import {MessengerService} from '../../services/messenger.service';
 import {DataService} from '../../services/data.service';
@@ -16,9 +16,9 @@ export class ManageUserComponent implements OnInit {
  delete: boolean;
  user: User;
  modalState: boolean;
- users:any=[];
-  constructor( private data:DataService,private userdetails: UserService, private route: Router, private msg:MessengerService) { 
-    this.msg.getUsers().then(result=>{this.users=result});
+ users:any;
+  constructor( private data:DataService, private route: Router, private msg:MessengerService) { 
+    this.users = this.msg.getUsers();
   }
 
   ngOnInit(): void {
@@ -38,7 +38,6 @@ export class ManageUserComponent implements OnInit {
        // this.userdetails.onDeleteUser(this.user);
       // this.userDetails = this.userdetails.getuserDetails();
       this.msg.removeUser(this.user.email);
-      this.msg.getUsers().then(result=>{this.users=result});
       this.modalState=false;
     }
     else{

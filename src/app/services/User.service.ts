@@ -9,6 +9,8 @@ export class  UserService{
     new User('adatta@gmail.com','Nana', 'Kwaku', 'director'),
     new User('a@gmail.com','Nana', 'Kwaku', 'director')
   ];
+
+
   EditUser = new BehaviorSubject<any>({});
 
   getuserDetails(){
@@ -29,6 +31,8 @@ export class  UserService{
     }
 
   }
+
+
 
   //delete user
   onDeleteUser(item:User){

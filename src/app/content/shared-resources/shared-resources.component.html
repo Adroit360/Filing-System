@@ -1,10 +1,10 @@
 <div class="header">
-    <h2>Manage User Groups</h2>
+    <h2>Shared Resources</h2>
     <div class="right-side">
         <i class="material-icons" style="color: #ED1E23;">
-              control_point
-          </i>
-        <a class="active">Add a New folder</a>
+            control_point
+        </i>
+        <a class="active">Create a new User</a>
     </div>
 </div>
 
@@ -26,11 +26,11 @@
                     <h2>
                         <div class="sps">
                             <span class="material-icons" style="background-color: white;">
-                          create
-                          </span>
-                            <span class="material-icons" style="background-color: white;">
-                     delete_outline
-                      </span>
+                        create
+                        </span>
+                            <span (click)="onDeleteGroup(user)" class="material-icons" style="background-color: white;">
+                   delete_outline
+                    </span>
                         </div>
                     </h2>
                 </div>
