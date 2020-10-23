@@ -51,5 +51,7 @@ export class SharedResourcesComponent implements OnInit {
 
   onSelected(user, i){
     console.log(user.Name, i);
+    this.adminresource.onEditResource(user,i);
+    //this.route.navigate(["/home/content/SharedResources", i, user.Name]);
   }
 }

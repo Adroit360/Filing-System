@@ -25,7 +25,7 @@ EditResource= new BehaviorSubject<any>({});
     return this.resources.slice();
   }
 
-  //delete resource
+//delete resource
 onDeleteuserGroups(item: Resource){
   let index= this.resources.indexOf(item);
   if(index != -1){

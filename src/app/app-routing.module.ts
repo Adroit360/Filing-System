@@ -22,9 +22,8 @@ const routes: Routes = [
     {path: 'content', component: ContentComponent, children: [
       {path: ':id/:name', component: EmptyComponent},
       {path: 'manageUsers', component: ManageUserComponent},
-      {path: 'SharedResources', component: SharedResourcesComponent, children:[
-        {path: ':id/: Name', component: DisplayResourceComponent},
-      ]},
+      {path: 'SharedResources', component: SharedResourcesComponent},
+      {path: 'SharedResources/:id/:Name', component: DisplayResourceComponent},
       {path: 'AddUser', component: AddNewUserComponent},
       {path: 'editUserDetails', component: EditUserDetailsComponent},
       {path: 'CreateResource', component:NewResourceComponent},
