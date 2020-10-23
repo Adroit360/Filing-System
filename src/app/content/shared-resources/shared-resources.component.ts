@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {  Router } from '@angular/router';
 import { Resource } from 'src/app/models/resources.model';
 import { AdminResourceService } from 'src/app/services/AdminResource.service';
@@ -21,11 +21,12 @@ export class SharedResourcesComponent implements OnInit {
     this.NewResource=this.adminresource.getAllResources();
   }
 
-  onDeleteGroup(item:any){
+  onDeleteGroup(item:any,event){
     this.message="Are you sure you want to delete Resource?"
     this.modalState= true;
     this.resource=item;
-
+    console.log("worked");
+    event.stopPropagation();
   }
 
   onModalResult(result: boolean){
