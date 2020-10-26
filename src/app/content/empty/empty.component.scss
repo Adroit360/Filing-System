@@ -19,8 +19,13 @@ h1 {
     font-size: 3rem;
 }
 
+<<<<<<< HEAD
 .right {
     margin-left: 45%; // will change to 30% when it's responsive
+=======
+.ssp {
+    margin-left: 45%;
+>>>>>>> f6d192ea8d0560feb601dc351314975c53f61426
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 4fr 3fr;
