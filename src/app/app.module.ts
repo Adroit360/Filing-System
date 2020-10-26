@@ -38,6 +38,7 @@ import { EditResourceComponent } from './content/edit-resource/edit-resource.com
 import { DisplayResourceComponent } from './content/display-resource/display-resource.component';
 import { PreviewComponent } from './preview/preview.component';
 import { TruncatePipe } from './truncate.pipe';
+import { PermissionsComponent } from './content/permissions/permissions.component';
 
 
 
@@ -64,7 +65,8 @@ import { TruncatePipe } from './truncate.pipe';
     EditResourceComponent,
     DisplayResourceComponent,
     PreviewComponent,
-    TruncatePipe
+    TruncatePipe,
+    PermissionsComponent
   ],
 
   imports: [

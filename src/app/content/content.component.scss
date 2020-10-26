@@ -2,6 +2,19 @@
     // border: 1px solid red;
 }*/
 
+.container {
+    //grid-area: main;
+    border-top-left-radius: 3.13rem;
+    background-color: #E5E5E5;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 3fr 1fr;
+}
+
+.folders {
+    height: calc(100vh - 6.8rem);
+}
+
 .user-permissions {
     background: #FFFFFF;
     margin-top: 1.88rem;
