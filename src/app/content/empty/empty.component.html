@@ -21,6 +21,7 @@
     </div>
     <h4>{{title}}</h4>
     <div class="folders">
+<<<<<<< HEAD
         <a class="folder-container" *ngFor="let item of departments">
             <div (click)="onFolderClicked(item, $event)" class="component">
                 <i id="hoverDiv" class="{{fontIcon}}" style='font-size: 50px;'></i>
@@ -47,6 +48,11 @@
             </span>
 
             <p (click)="onFolderClicked(item, $event)">{{item}}</p>
+=======
+        <a *ngFor="let item of departments" (click)="onFolderClicked(item)">
+            <i class="{{fontIcon}}" style='font-size: 50px;'></i>
+            <p>{{item | truncate : 12}}</p>
+>>>>>>> d48d1ae7b947783184238d34f33c156251dcdc77
         </a>
     </div>
 
