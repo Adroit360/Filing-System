@@ -13,7 +13,7 @@ export class SectionService{
   ];
 
  // holds the folders of the various departments
-  departments = ['Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
+  departments = ['MarkettingMarketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
   'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
   'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
   'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
