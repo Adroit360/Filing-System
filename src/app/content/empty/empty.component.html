@@ -2,7 +2,7 @@
     <div class="head">
         <h1>{{currentName | uppercase}}</h1>
 
-        <div class="right">
+        <div class="righ">
             <div class="add-folder">
                 <a (click)="newfolder()"><span class="material-icons">
                 folder_open</span>
@@ -24,11 +24,12 @@
         <a class="folder-container" *ngFor="let item of departments">
             <div (click)="onFolderClicked(item, $event)" class="component">
                 <i id="hoverDiv" class="{{fontIcon}}" style='font-size: 50px;'></i>
+                <p (click)="onFolderClicked(item, $event)">{{item | truncate: 12}}</p>
             </div>
 
             <span id="hiddenText" class="material-icons clicktoshow" smart-tooltip-container>
               arrow_drop_down
-              <span class="smart-tooltip stay-right overlay stick" id="tooltip">
+              <span class="smart-tooltip stick stay-down overlay" id="tooltip">
                 <div class="text">
                   <h5>share</h5>
                   <p>share</p>
@@ -46,7 +47,7 @@
             </span>
             </span>
 
-            <p (click)="onFolderClicked(item, $event)">{{item | truncate: 12}}</p>
+
         </a>
     </div>
 

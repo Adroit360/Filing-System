@@ -95,7 +95,7 @@ export class MenuComponent implements OnInit {
       }
 
     }
-    this.hooks[index] = false;
+   this.hooks[index] = false;
 
   }
 

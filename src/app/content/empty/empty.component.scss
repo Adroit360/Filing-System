@@ -19,8 +19,13 @@ h1 {
     font-size: 3rem;
 }
 
+<<<<<<< HEAD
 .right {
     margin-left: 45%; // will change to 30% when it's responsive
+=======
+.righ {
+    margin-left: 45%;
+>>>>>>> 5e5dcf0c684a9f82c32265be14dea8e9f049ea71
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 4fr 3fr;
@@ -100,8 +105,12 @@ p {
 }
 
 #hiddenText {
-    display: none;
+    opacity: 0;
     padding: .2rem;
+    display: block;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
 }
 
 #hoverDiv {
@@ -109,17 +118,17 @@ p {
 }
 
 .folder-container:hover #hiddenText {
-    display: block;
-    position: absolute;
-    transition-delay: 2s;
-    top: 1rem;
-    right: 3rem;
+    opacity: 1;
     background-color: rgba(0, 0, 0, 0.692);
     color: white;
 }
 
 .component {
     position: relative;
+}
+
+.component:hover {
+    background-color: rgba(0, 0, 0, 0.24);
 }
 
 .folder-container {
