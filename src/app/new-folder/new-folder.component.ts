@@ -13,7 +13,8 @@ export class NewFolderComponent implements OnInit {
 
   ngOnInit(): void {
     this.NewFolder=new FormGroup({
-      newfolder: new FormControl(null, Validators.required)
+      newfolder: new FormControl(null, Validators.required),
+      security: new FormControl('public', Validators.required)
     })
   }
 

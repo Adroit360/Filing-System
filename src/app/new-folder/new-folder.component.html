@@ -9,11 +9,19 @@
             <input type="email" placeholder="new Folder" formControlName="newfolder">
 
             <div class="psd">
-                <input type="radio" id="public" name="public" value="public" checked>
-                <label for="public">Public</label>
+                <div class="radio">
+                    <div class="public">
+                        <input type="radio" id="public" name="security" value="public" formControlName="security">
+                        <label for="public">Public</label>
+                    </div>
+                    <div class="private">
+                        <input type="radio" id="private" name="security" value="private" formControlName="security">
+                        <label for="private">Private</label>
+                    </div>
+
+                </div>
+
                 <button type="submit">Ok</button>
-                <input type="radio" id="private" name="private" value="private">
-                <label for="private">Private</label>
             </div>
 
         </form>
