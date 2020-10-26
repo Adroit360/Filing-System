@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>Permissions </h1>
+    <div class="options">
+        <div class="sent-recieve">
+            <a class="active">Sent</a>
+            <a>Received</a>
+        </div>
+    </div>
+    <div class="d-container">
+        <div class="details" *ngFor="let item of permissionDetails">
+            <div class="user-details">
+                <h2>{{item.email | truncate: 20}}</h2>
+                <p>{{item.date}}</p>
+                <p>Please grant me approval</p>
+            </div>
+            <i class="fa fa-check-circle"></i>
+        </div>
+    </div>
+
+
+</div>

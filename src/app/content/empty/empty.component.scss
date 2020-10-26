@@ -20,7 +20,7 @@ h1 {
 }
 
 .right {
-    margin-left: 45%;
+    margin-left: 45%; // will change to 30% when it's responsive
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 4fr 3fr;
