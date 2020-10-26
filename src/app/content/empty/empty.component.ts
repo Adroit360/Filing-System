@@ -56,16 +56,20 @@ currentBreadCrump;
 
   }
 
-  onFolderClicked(item){
+  onFolderClicked(item, event){
     // navigate to another route
+    event.stopPropagation();
     this.router.navigate(["home","content",this.currentIndex,this.currentName],{
       queryParams:{
         name:item
+
       },
       // fragment: ''
       // queryParamsHandling: 'preserve'
+
     }
     )
+
   }
 
   routeChanged(item: string){

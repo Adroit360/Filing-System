@@ -60,7 +60,10 @@ export class MenuComponent implements OnInit {
   onAddedItem(){
     const newSection = new Section(this.nameInputRef.nativeElement.value);
     this.sections.push(newSection);
+    this.hooks.push(true);
     this.visible = !this.visible;
+    console.log(newSection.name);
+    //this.sections = this.sectionService.getSection();
   }
 
   onDeleteSection(item: Section){
