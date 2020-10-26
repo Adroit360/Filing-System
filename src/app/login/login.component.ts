@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       , isAdmin:userobj.isAdmin,accessList:userobj.accessList};
        console.log("lgoing",this.user, "email",this.LogInForm.value.email);
        this.userInfo.setActiveUser(this.user);
-      this.route.navigate(['home/content/0/general']);
+      this.route.navigate(['home/content/0/general/0/general']);
       console.log(this.LogInForm);
     }).catch(err=>{
       this.errorMessage = err.message; 

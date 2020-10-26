@@ -14,10 +14,6 @@
             content_copy
             </span>
              <p >New File</p></a>
-                <div *ngIf="addfile">
-                    <input type="file" id="myfile" name="myfile">
-                </div>
-
             </div>
 
         </div>
@@ -26,11 +22,21 @@
     
     <div class="folders">
         <a *ngFor="let item of dirContent|async" (click)="onFolderClicked(item)">
-            <i class="{{fontIcon}}" style='font-size: 50px;'></i>
+            <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="https://img.icons8.com/fluent/48/000000/pdf.png"/>
+            <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12'" src="https://img.icons8.com/fluent/48/000000/microsoft-powerpoint-2019.png"/>
+            <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'"src="https://img.icons8.com/color/48/000000/microsoft-word-2019--v2.png"/>
+            <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'"src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png"/>
+            <img *ngIf="item.itemType=='file' && item.contentType=='text/plain' || item.itemType=='file' && item.contentType==''" src="https://img.icons8.com/color/48/000000/txt.png"/>
+            <i *ngIf="item.itemType=='folder'" class="{{fontIcon}}" style='font-size: 50px;'></i>
+           
             <p>{{item.name}}</p>
         </a>
     </div>
 
     <div *ngIf="createfolder">
         <app-new-folder (onResult)='onModalResult($event)'></app-new-folder>
+    </div>
+
+    <div *ngIf="addfile">
+        <app-preview (onResult)='onPreviewResult($event)'></app-preview>
     </div>

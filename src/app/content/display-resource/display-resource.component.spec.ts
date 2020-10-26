@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SharedResourcesComponent } from './shared-resources.component';
+import { DisplayResourceComponent } from './display-resource.component';
 
-describe('SharedResourcesComponent', () => {
-  let component: SharedResourcesComponent;
-  let fixture: ComponentFixture<SharedResourcesComponent>;
+describe('DisplayResourceComponent', () => {
+  let component: DisplayResourceComponent;
+  let fixture: ComponentFixture<DisplayResourceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SharedResourcesComponent ]
+      declarations: [ DisplayResourceComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SharedResourcesComponent);
+    fixture = TestBed.createComponent(DisplayResourceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

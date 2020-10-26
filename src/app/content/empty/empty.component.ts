@@ -19,7 +19,10 @@ export class EmptyComponent implements OnInit {
   heading: string;
   fontIcon = "fa fa-folder";
   department;
-  currentIndex:string="";
+  currentSectionId:string="";
+  currentSectionName:string="";
+  currentDirectoryId:string="";
+  currentDirectoryName:string="";
   currentName;
   dirContent: any;
   createfolder = false;
@@ -54,14 +57,12 @@ export class EmptyComponent implements OnInit {
       //var hasQueryParams = this.activatedRoute.snapshot.queryParams.name;
       console.log("param", param);
 
-      let name = param.get("name");
-      this.department = name;
+      this.currentSectionId = param.get("sectionId");
+      this.currentSectionName = param.get("sectionName");
+      this.currentDirectoryId = param.get("directoryId");
+      this.currentDirectoryName = param.get("directoryName");
 
-
-      this.currentIndex = param.get("id");
-      console.log(this.currentIndex, "from empty");
-
-
+      console.log(this.currentSectionName, "from empty");
       this.computeRoute();
     });
   
@@ -69,7 +70,7 @@ export class EmptyComponent implements OnInit {
 
   computeRoute() {
     let name = this.department;
-    this.dirContent = this.directory.getSubDirectoryContent(this.currentIndex, this.currentIndex);
+    this.dirContent = this.directory.getSubDirectoryContent(this.currentSectionId, this.currentDirectoryId);
 
     console.log("directory content", this.dirContent);
     this.currentName = name;
@@ -88,13 +89,13 @@ export class EmptyComponent implements OnInit {
 
   }
 
-  onFolderClicked(item) {
+  onFolderClicked(directory) {
     // this.data.setCurrentDirectory(item.id, item.name);
-    this.dirContent = this.directory.getSubDirectoryContent(this.currentIndex, item.id);
+    this.dirContent = this.directory.getSubDirectoryContent(this.currentSectionId, directory.id);
+    this.data.setCurrentDirectory(directory.id, directory.name);
     //this.hierrachy.push(item.name);
     console.log(this.hierrachy,"this is the hierrachy");
-    this.router.navigate(["home", "content", item.id, item.name]
-    )
+    this.router.navigate(["home", "content",this.currentSectionId,this.currentSectionName, directory.id, directory.name])
   }
 
   routeChanged(item: string) {
@@ -127,6 +128,10 @@ export class EmptyComponent implements OnInit {
 
   Addfile() {
     this.addfile = !this.addfile;
+  }
 
+  onPreviewResult(result: boolean){
+    this.addfile=result;
+    console.log(result)
   }
 }

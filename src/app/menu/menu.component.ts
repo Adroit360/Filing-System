@@ -53,7 +53,7 @@ export class MenuComponent implements OnInit {
 
   async onSelected(sectionId,sectionName){
    
-    // this.data.setCurrentSection(sectionId,sectionName);
+    this.data.setCurrentSection(sectionId,sectionName);
     console.log(sectionName);
     // await this.directory.setActiveSectionItems(id,id,this.accessList);
     

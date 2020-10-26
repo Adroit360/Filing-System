@@ -62,7 +62,7 @@
                 home
                 </span> General</a></li>
         <div class="custom-seciton">
-            <li *ngFor="let item of sections|async; let i= index"><a (click)="onSelected(item.id,item.name)" [routerLink]="['content', item.id, item.name]" routerLinkActive="active2"><span class="material-icons">
+            <li *ngFor="let item of sections|async; let i= index"><a (click)="onSelected(item.id,item.name)" [routerLink]="['content', item.id, item.name,item.id,item.name]" routerLinkActive="active2"><span class="material-icons">
                     folder_open
                     </span> {{item.name}}</a></li>
         </div>
