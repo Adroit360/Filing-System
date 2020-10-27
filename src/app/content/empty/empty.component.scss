@@ -20,6 +20,8 @@ h1 {
 }
 
 .right {
+    margin-left: 45%; // will change to 30% when it's responsive
+.ssp {
     margin-left: 45%;
     display: grid;
     grid-auto-flow: column;
@@ -72,7 +74,7 @@ h4 {
     flex-wrap: wrap;
     align-items: flex-start;
     // justify-content: center;
-    margin: 0px 30px;
+    margin: 0px 60px;
     overflow: auto;
 }
 
@@ -97,4 +99,52 @@ p {
     text-overflow: ellipsis;
     overflow: hidden;
     line-height: 20px;
+}
+
+#hiddenText {
+    opacity: 0;
+    padding: .2rem;
+    display: block;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
+#hoverDiv {
+    position: relative;
+}
+
+.folder-container:hover #hiddenText {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.692);
+    color: white;
+}
+
+.component {
+    position: relative;
+}
+
+.component:hover {
+    background-color: rgba(0, 0, 0, 0.24);
+}
+
+.folder-container {
+    position: relative;
+}
+
+#tooltip {
+    //height: 90px;
+    width: 90px;
+}
+
+.text {
+    display: flex;
+}
+
+.text>p {
+    font-size: 12px;
+    color: white;
+    // overflow: hidden;
+    // line-height: 20px;
+}
 }

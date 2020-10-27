@@ -2,18 +2,12 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
-
-
-
 export interface Section{
   id: string,
     name: string,
     dateCreated: string,
     default:Boolean
 }
-
-
-
 
 @Injectable({
   providedIn: 'root'

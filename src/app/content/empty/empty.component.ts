@@ -38,7 +38,7 @@ export class EmptyComponent implements OnInit {
       this.currentSectionName = param.get("sectionName");
       this.currentDirectoryId = param.get("directoryId");
       this.currentDirectoryName = param.get("directoryName");
-
+      
       console.log(this.currentSectionName, "from empty");
       this.computeRoute();
     });
@@ -93,9 +93,6 @@ export class EmptyComponent implements OnInit {
     this.title = this.currentBreadCrump; // updates the title
   }
 
-  resetBreadCrumpOnSameLevel() {
-    // this.currentBreadCrump = ` > ${this.currentName}`;
-  }
 
   newfolder() {
     this.createfolder = !this.createfolder;

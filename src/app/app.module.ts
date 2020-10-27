@@ -37,6 +37,8 @@ import { NewResourceComponent } from './content/new-resource/new-resource.compon
 import { EditResourceComponent } from './content/edit-resource/edit-resource.component';
 import { DisplayResourceComponent } from './content/display-resource/display-resource.component';
 import { PreviewComponent } from './preview/preview.component';
+import { TruncatePipe } from './truncate.pipe';
+import { PermissionsComponent } from './content/permissions/permissions.component';
 
 
 
@@ -62,7 +64,9 @@ import { PreviewComponent } from './preview/preview.component';
     NewResourceComponent,
     EditResourceComponent,
     DisplayResourceComponent,
-    PreviewComponent
+    PreviewComponent,
+    TruncatePipe,
+    PermissionsComponent
   ],
 
   imports: [
@@ -79,7 +83,7 @@ import { PreviewComponent } from './preview/preview.component';
     SmartTooltipAngularModule,
   ],
 
-  providers: [UserService],
+  providers: [UserService,AdminResourceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

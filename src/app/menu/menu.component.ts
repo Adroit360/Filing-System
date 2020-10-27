@@ -77,11 +77,9 @@ export class MenuComponent implements OnInit {
   }
 
   onAddedItem(){
-    // let newSection:Section={id:"",name:this.nameInputRef.nativeElement.value,dateCreated:new Date().toDateString()};
-    // this.msg.newSection(newSection);
-    // this.sections=this.msg.getAllSections();
     this.sectionService.newSection(this.nameInputRef.nativeElement.value);
     this.visible = !this.visible;
+
   }
 
   onDeleteSection(item: Section){
@@ -113,7 +111,7 @@ export class MenuComponent implements OnInit {
       }
 
     }
-    this.hooks[index] = false;
+   this.hooks[index] = false;
 
   }
 
