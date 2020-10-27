@@ -19,13 +19,8 @@ h1 {
     font-size: 3rem;
 }
 
-<<<<<<< HEAD
-.right {
-    margin-left: 45%; // will change to 30% when it's responsive
-=======
 .ssp {
     margin-left: 45%;
->>>>>>> f6d192ea8d0560feb601dc351314975c53f61426
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 4fr 3fr;
@@ -160,6 +155,27 @@ p {
     padding: 9px 0px 9px
 }
 
+.second-tooltip {
+    position: absolute;
+    left: calc(90px + 20px);
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.596);
+    color: white;
+    border-radius: 10px;
+    height: auto;
+    width: 100px;
+    text-align: center;
+    font-size: 15px;
+    /* line-height: 50px; */
+    padding: 10px 15px 12px 13px;
+    opacity: 0;
+}
+
+.text:hover .second-tooltip {
+    //display: block;
+    opacity: 1;
+}
+
 .text>p {
     font-size: 12px;
     color: white;
@@ -169,4 +185,5 @@ p {
 
 .listtext {
     font-size: 12px;
+    padding: 9px 0px 9px;
 }

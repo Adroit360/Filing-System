@@ -28,7 +28,6 @@
       <div class="toggler">
 
         <span class="more-icon material-icons">arrow_drop_down</span>
-
         <span
         id="hiddenText"
         class="material-icons clicktoshow"
@@ -36,22 +35,30 @@
         <span class="smart-tooltip stick stay-down overlay" id="tooltip">
           <div class="text">
             <h5>share</h5>
-            <p (click)="onShare()" smart-tooltip-container>
-              share
-              <span
-                class="smart-tooltip stay-right overlay"
-                style="background-color: rgba(0, 0, 0, 0.685)"
+            <p class="disp">share</p>
+
+            <div>
+              <ul class="second-tooltip">
+                <li *ngFor="let list of NewResource; let i = index" (click)="onSelected(list, $event,i, item)" >
+                  <p style="color:white;">{{ list.Name }}</p>
+                </li>
+                <!-- <hr /> -->
+              </ul>
+            </div>
+              <!-- <span
+                class="smart-tooltip stay-right stayonhover stick"
+                style="background-color: rgba(0, 0, 0, 0.685);position: relative;"
               >
                 <ul *ngFor="let list of NewResource; let i = index">
                   <li>
                     <div>
-                      <h2 class="listtext">{{ list.Name }}</h2>
-                      <hr />
+                      <h2 class="listtext" (click)="onSelected(list, $event)">{{ list.Name }}</h2>
                     </div>
                   </li>
+                  <hr />
                 </ul>
               </span>
-            </p>
+            </p> -->
           </div>
           <hr />
           <div class="text">

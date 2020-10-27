@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { SectionService } from 'src/app/services/Section.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AdminResourceService } from 'src/app/services/AdminResource.service';
 import { Resource } from 'src/app/models/resources.model';
 
@@ -113,10 +113,6 @@ currentBreadCrump;
   }
 
 
-  onShare(){
-    console.log("We've been clicked")
-  }
-
   onDownload(){
     console.log("downloading...");
   }
@@ -124,4 +120,16 @@ currentBreadCrump;
   onDelete(){
     console.log("deleted")
   }
+
+  onSelected(list, event ,index, item){
+    event.stopPropagation();
+    //console.log(list.Name);
+    event.target.closest(".smart-tooltip").blur();
+    //this.router.navigate(['home/content/SharedResources', index, list.Name ]);
+    //this.fontIcon;
+    console.log(item);
+
+  }
+
+
 }
