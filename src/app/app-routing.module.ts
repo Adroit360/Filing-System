@@ -1,3 +1,6 @@
+import { ReceivedComponent } from './content/permissions/received/received.component';
+import { SentComponent } from './content/permissions/sent/sent.component';
+import { PermissionsComponent } from './content/permissions/permissions.component';
 import { HompageComponent } from './hompage/hompage.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
@@ -20,7 +23,7 @@ const routes: Routes = [
   {path: 'home', component: HompageComponent, children: [
     // {path: '/:id/:name', component: SectionComponent},
     {path: 'content', component: ContentComponent, children: [
-      {path: ':id/:name', component: EmptyComponent},
+      {path: ':sectionId/:sectionName/:directoryId/:directory', component: EmptyComponent},
       {path: 'manageUsers', component: ManageUserComponent},
       {path: 'SharedResources', component: SharedResourcesComponent},
       {path: 'SharedResources/:id/:Name', component: DisplayResourceComponent},
@@ -28,8 +31,13 @@ const routes: Routes = [
       {path: 'editUserDetails', component: EditUserDetailsComponent},
       {path: 'CreateResource', component:NewResourceComponent},
       {path: 'EditResource', component: EditResourceComponent},
+      {path: 'approvals', component: PermissionsComponent, children: [
+        {path: 'sent', component: SentComponent},
+        {path: 'received', component: ReceivedComponent},
+      ]},
       // {path: 'general', component: EmptyComponent},
     ]},
+
 
   ]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},

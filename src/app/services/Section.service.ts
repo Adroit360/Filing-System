@@ -1,74 +1,49 @@
-import { Subject } from 'rxjs';
-import { Section } from '../models/section.model';
+import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
-export class SectionService{
+export interface Section{
+  id: string,
+    name: string,
+    dateCreated: string,
+    default:Boolean
+}
 
+@Injectable({
+  providedIn: 'root'
+})
 
-  // contains an array of departments created by the admin
-  private sections: Section [] = [
-    new Section('Marketting'),
-    new Section('Accounting'),
-    new Section ('Football'),
-    new Section ('Engineering'),
-  ];
-
- // holds the folders of the various departments
-  departments = ['MarkettingMarketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
-  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
-  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
-  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
+export class SectionService {
   
-  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
-  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
-  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
-  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
+  private sectionCollection: AngularFirestoreCollection<Section>;
+  private sections:Observable<Section[]>;
 
-  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
-  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
-  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
-  'Marketting', 'Accounting', 'Finance', 'Football', 'Cleaning',
-
-];
-
-
-  department_files = ['invoice.pdf', 'invoice.doc', 'invoice.txt', 'invoice.jpeg', 'invoice.png',]; // contains the folders and files for each department
-
-  sectionName = new Subject<string>();
-
-
-  getSection(){
-    return this.sections.slice();
+  constructor(private afs:AngularFirestore) {
+      this.sectionCollection = afs.collection<Section>('Sections',ref=> ref.orderBy('name'));
+      this.sections = this.sectionCollection.valueChanges();
   }
 
-//displaying a section by name
-  displaysection(value:Section){
-  this.sectionName.next(value.name);
-
-  }
-
-  //update section
-  updateSection(item:Section, index){
-    if (index !=-1){
-      this.sections[index]= item
+    //create section
+   async newSection(sectionName){
+      let id = this.afs.createId();
+      await this.sectionCollection.doc(id).set({id:id,name:sectionName,dateCreated:new Date().toLocaleDateString(),default:false});
     }
-  }
 
-  //Deleting a  section
-  onDeleteSection(section: Section) {
-    //throw new Error('Method not implemented.');
-    let index = this.sections.indexOf(section);
-    if (index != -1) {
-      this.sections.splice(index, 1);
+    //remove section
+    async removeSection(sectionId){ 
+      await this.sectionCollection.doc(sectionId).delete().catch(err=>{console.log(err)});
     }
-  }
 
-  //Renaming and updating a section
-  UpdateSection(rename: Section, index: any) {
-    //throw new Error('Method not implemented.');
-    if(index!=-1){
-      this.sections[index]=rename;
-
+    //update section
+   async updateSection(sectionId,newName){
+      await this.sectionCollection.doc(sectionId).update({
+        name:newName
+      });
     }
-  }
 
+    //read sections
+    getSections(){
+      return this.sections;
+    }
+  
 }

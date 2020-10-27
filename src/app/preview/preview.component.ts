@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {DataService}  from "../services/data.service";
+import { DirectoryService } from "../services/directory.service";
 
 @Component({
   selector: 'app-preview',
@@ -7,7 +9,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class PreviewComponent implements OnInit {
   @Output('onResult') onResult:EventEmitter<boolean>=new EventEmitter();
-  constructor() { }
+  file:any;
+  constructor(private data:DataService,private directory:DirectoryService) { }
 
   ngOnInit(): void {
   }
@@ -17,11 +20,12 @@ export class PreviewComponent implements OnInit {
     console.log('onBack',value);
     }
 
-    onUpload(){
-      console.log("Submitted");
+    async onUpload(){
+      let res = await this.directory.uploadFile(this.file,this.data.getActiveUser().email,this.data.getCurrentSection(),this.data.getCurrentDirectory());
+      console.log(res,"response from upload");
     }
 
-    onChange(){
-
+  onChange(event:any){
+      this.file = event.target.files[0];
     }
 }

@@ -17,6 +17,7 @@ export class  UserService{
     return this.userDetails.slice();
   }
 
+  
   //adding User
   addNewUser(newuser:User){
     this.userDetails.push(newuser);

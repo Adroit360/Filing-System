@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SectionService } from '../services/Section.service';
+// import { SectionService } from '../services/section.service';
+import {DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-content',
@@ -8,13 +9,15 @@ import { SectionService } from '../services/Section.service';
 })
 export class ContentComponent implements OnInit {
   displaySection:string
-  constructor(private sectionservice: SectionService) { }
+  constructor(private userInfo:DataService) {
+      userInfo.getAccessList();
+   }
 
   ngOnInit(): void {
   }
 
   disp(){
-    this.sectionservice.displaysection;
+    // this.sectionservice.displaysection;
   }
 
 }

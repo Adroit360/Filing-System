@@ -6,24 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./permissions.component.scss']
 })
 export class PermissionsComponent implements OnInit {
-  permissionDetails =[{email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'}
-
-
-
-]
+  showSent = true;
+  showReceived = false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSentClicked(){
+    this.showSent = true;
+    this.showReceived = false;
+  }
+
+  onReceivedClicked(){
+    this.showReceived= true;
+    this.showSent= false;
   }
 
 }
