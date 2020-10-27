@@ -26,8 +26,8 @@
     margin: 200px auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 350px;
-    height: 110px;
+    width: 370px;
+    height: 196px;
     border-radius: 10px;
 }
 
@@ -38,33 +38,45 @@ h4 {
 }
 
 .psd {
-    margin: 10px 85px 5px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-rows: 1.3fr 1fr;
 }
 
-input {
+input[type=email] {
     width: 99%;
-    height: 50px;
+    height: 5rem;
+    font-size: 1.7rem;
     text-align: center;
     border: none;
-    border-bottom: 1px solid red;
-}
-
-.submit {
-    display: flex;
-    grid-gap: 0.94rem;
-    margin: 40px auto;
-    justify-content: center;
+    outline: none;
+    border-bottom: 2px solid red;
 }
 
 button {
-    height: 3.125rem;
-    width: 11.25rem;
-    border-radius: 1rem;
-    font-size: 1rem;
-    border: 2px solid;
+    height: 5.125rem;
+    width: 16.25rem;
+    border-radius: 3rem;
+    font-size: 1.5rem;
     outline: transparent;
     cursor: pointer;
     background-color: #ED1E23;
     color: aliceblue;
     border: none;
+    margin: 0px auto;
+}
+
+.radio {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.8rem;
+    .public,
+    .private {
+        display: flex;
+    }
+    input {
+        height: 2rem;
+        width: 2rem;
+        margin-right: 0.2rem;
+    }
 }

@@ -10,11 +10,7 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./empty.component.scss']
 })
 export class EmptyComponent implements OnInit {
-  //  holds the folders of the various departments you will load everything in the service
-  // departments: any[] = this.sectionService.departments;
-
-  // alternate array to load the files from the server when a user clicks on a folder
-  // department_files = this.sectionService.department_files;
+ 
   title = "";
   heading: string;
   fontIcon = "fa fa-folder";
@@ -32,25 +28,6 @@ export class EmptyComponent implements OnInit {
 
   constructor(private data: DataService,
     private activatedRoute: ActivatedRoute, private router: Router, private directory: DirectoryService) {
-
-    // this.dirContent = this.directory.getActiveDirectoryItems();
-    // console.log("here we are",this.dirContent);
-    // this.hierrachy = this.data.getDirectoryHierrachy();
-
-    // this.activatedRoute.queryParams.subscribe(qParams => {
-    //   let name = qParams.name;
-    //   console.log("qparam", qParams);
-    //   if (name) {
-    //     this.resetBreadCrumpOnSameLevel();
-    //     this.currentBreadCrump += ` > ${name}`;
-    //     this.routeChanged(name);
-    //   } else {
-    //     console.log("FAlsy Name");
-    //     this.computeRoute();
-    //   }
-
-
-    // });
 
     this.activatedRoute.paramMap.subscribe(param => {
 
@@ -91,11 +68,15 @@ export class EmptyComponent implements OnInit {
 
   onFolderClicked(directory) {
     // this.data.setCurrentDirectory(item.id, item.name);
-    this.dirContent = this.directory.getSubDirectoryContent(this.currentSectionId, directory.id);
-    this.data.setCurrentDirectory(directory.id, directory.name);
-    //this.hierrachy.push(item.name);
-    console.log(this.hierrachy,"this is the hierrachy");
-    this.router.navigate(["home", "content",this.currentSectionId,this.currentSectionName, directory.id, directory.name])
+    if(directory.itemType=='folder'){
+      this.dirContent = this.directory.getSubDirectoryContent(this.currentSectionId, directory.id);
+      this.data.setCurrentDirectory(directory.id, directory.name);
+      console.log(this.hierrachy,"this is the hierrachy");
+      this.router.navigate(["home", "content",this.currentSectionId,this.currentSectionName, directory.id, directory.name])
+    }else{
+      return;
+    }
+    
   }
 
   routeChanged(item: string) {

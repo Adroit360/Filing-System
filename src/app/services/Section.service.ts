@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 export interface Section{
   id: string,
     name: string,
-    dateCreated: string
+    dateCreated: string,
+    default:Boolean
 }
 
 
@@ -31,7 +32,7 @@ export class SectionService {
     //create section
    async newSection(sectionName){
       let id = this.afs.createId();
-      await this.sectionCollection.doc(id).set({id:id,name:sectionName,dateCreated:new Date().toLocaleDateString()});
+      await this.sectionCollection.doc(id).set({id:id,name:sectionName,dateCreated:new Date().toLocaleDateString(),default:false});
     }
 
     //remove section

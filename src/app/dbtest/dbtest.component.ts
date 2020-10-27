@@ -72,7 +72,7 @@ state:any;
     console.log('done with upload');
   }
 
-  async createDirectory( ){
+  async createDirectory(){
     let parentId="BARCHITECUTE";
     const directory: Directory={
       id: "",

@@ -29,7 +29,8 @@
             <img *ngIf="item.itemType=='file' && item.contentType=='text/plain' || item.itemType=='file' && item.contentType==''" src="https://img.icons8.com/color/48/000000/txt.png"/>
             <i *ngIf="item.itemType=='folder'" class="{{fontIcon}}" style='font-size: 50px;'></i>
            
-            <p>{{item.name}}</p>
+            <p *ngIf="item.itemType=='folder'" style="font-size: 12px;">{{item.name}}</p>
+            <p *ngIf="item.itemType=='file'" style="font-size: 12px;"><a [href]="item.url">{{item.name}}></a></p>
         </a>
     </div>
 
