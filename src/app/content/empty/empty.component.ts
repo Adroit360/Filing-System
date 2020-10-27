@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DirectoryService } from '../../services/directory.service';
 import { DataService } from '../../services/data.service';
+import { AdminResourceService } from 'src/app/services/AdminResource.service';
+import { Resource } from 'src/app/models/resources.model';
 
 @Component({
   selector: 'app-empty',
@@ -25,21 +27,22 @@ export class EmptyComponent implements OnInit {
   addfile = false;
   hierrachy:any=[];
   currentBreadCrump;
+  NewResource:any;
 
-  constructor(private data: DataService,
+  constructor(private data: DataService,private adminResource:AdminResourceService,
     private activatedRoute: ActivatedRoute, private router: Router, private directory: DirectoryService) {
 
     this.activatedRoute.paramMap.subscribe(param => {
 
       //var hasQueryParams = this.activatedRoute.snapshot.queryParams.name;
-      console.log("param", param);
+      // console.log("param", param);
 
       this.currentSectionId = param.get("sectionId");
       this.currentSectionName = param.get("sectionName");
       this.currentDirectoryId = param.get("directoryId");
-      this.currentDirectoryName = param.get("directoryName");
+      this.currentDirectoryName = param.get("directory");
+      console.log("current directory name",this.currentDirectoryName);
       
-      console.log(this.currentSectionName, "from empty");
       this.computeRoute();
     });
   
@@ -63,7 +66,7 @@ export class EmptyComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    this.NewResource=this.adminResource.getAllResources();
   }
 
   onFolderClicked(directory) {
@@ -111,5 +114,18 @@ export class EmptyComponent implements OnInit {
   onPreviewResult(result: boolean){
     this.addfile=result;
     console.log(result)
+  }
+
+
+  onShare(){
+    console.log("We've been clicked")
+  }
+
+  onDownload(){
+    console.log("downloading...");
+  }
+
+  onDelete(){
+    console.log("deleted")
   }
 }
