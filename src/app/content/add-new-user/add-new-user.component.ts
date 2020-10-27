@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/User.service';
+import {MessengerService} from '../../services/messenger.service';
+
 @Component({
   selector: 'app-add-new-user',
   templateUrl: './add-new-user.component.html',
@@ -9,8 +10,9 @@ import { UserService } from 'src/app/services/User.service';
 })
 export class AddNewUserComponent implements OnInit {
   addUserForm: FormGroup;
+  errorMessage:string="";
 
-  constructor( private newuser:UserService, private router: Router ) { }
+  constructor( private router: Router, private messenger:MessengerService ) { }
 
   ngOnInit(): void {
     this.addUserForm = new FormGroup({
@@ -23,18 +25,20 @@ export class AddNewUserComponent implements OnInit {
   }
 
   onSubmit(){
-    this.newuser.addNewUser({
-      email: this.addUserForm.value.email,
-      firstName: this.addUserForm.value.firstName,
-      lastName: this.addUserForm.value.lastName,
-      position: this.addUserForm.value.role
-    });
-
-    this.router.navigate(['home/content/manageUsers']);
+    console.log(this.addUserForm.value);
+    this.messenger.NewUser(this.addUserForm.value.firstName,this.addUserForm.value.lastName,
+      this.addUserForm.value.email,this.addUserForm.value.role).then((res)=>{
+        
+        this.errorMessage=res;
+        if(!res){
+          this.router.navigate(['home/content/manageUsers']);
+        }
+       
+       }).catch(err=>{
+         console.log(err);
+         return;
+       });
   }
-
   onCancel(){
-    this.router.navigate(['home/content/manageUsers'])
-
   }
 }

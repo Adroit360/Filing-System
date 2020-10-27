@@ -5,7 +5,7 @@
     <!-- Modal content -->
     <div class="modal-content ">
         <h2>Upload a file</h2>
-        <input type="file" name="file" (change)="onChange()">
+        <input type="file" name="file" (change)="onChange($event)">
         <div class="position">
             <button type="button" (click)="onUpload()">Upload</button>
         </div>

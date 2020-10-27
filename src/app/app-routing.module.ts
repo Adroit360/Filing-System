@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'home', component: HompageComponent, children: [
     // {path: '/:id/:name', component: SectionComponent},
     {path: 'content', component: ContentComponent, children: [
-      {path: ':id/:name', component: EmptyComponent},
+      {path: ':sectionId/:sectionName/:directoryId/:directory', component: EmptyComponent},
       {path: 'manageUsers', component: ManageUserComponent},
       {path: 'SharedResources', component: SharedResourcesComponent},
       {path: 'SharedResources/:id/:Name', component: DisplayResourceComponent},

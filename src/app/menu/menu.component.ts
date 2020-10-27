@@ -1,8 +1,12 @@
 import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router'
+import { Section } from '../models/model';
+import { SectionService } from '../services/section.service';
+import { DataService } from '../services/data.service';
+import {MessengerService} from '../services/messenger.service';
+import { DirectoryService } from '../services/directory.service';
+import { Observable } from 'rxjs';
 
-import { Section } from '../models/section.model';
-import { SectionService } from '../services/Section.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -17,53 +21,65 @@ export class MenuComponent implements OnInit {
 
   visible = true; // ng template
   Opened = false;
+
+  sections: Section[];
+  accessList:any;
+  user:any;
   delete: boolean;
   modalState: boolean;
-  sections: Section [];
   section: Section;
 
 
   hooks = [];
   nameSections = [];
 
-
-  constructor(private sectionService: SectionService, private router: Router, private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    this.sections = this.sectionService.getSection();
-    this.hooks = this.sections.map(i=>true);
-    this.nameSections = this.sections.map(i=>"");
-    console.log(this.hooks);
+  constructor(private directory:DirectoryService, private sectionService:SectionService, private router: Router, private route: ActivatedRoute,private msg:MessengerService, private data:DataService) {
+   
   }
+
+   ngOnInit(): void {
+    // this.sections = this.sectionService.getSection();
+    
+    this.user= this.data.getActiveUser();
+    console.log("from menu comp",this.data.getAccessList());
+    this.accessList = this.data.getAccessList();
+    // this.sections=this.msg.getSectionByAccess(this.userInfo.getAccessList());//.then(result=>{this.sections=result; console.log(this.sections);});
+    
+
+    this.sectionService.getSections().subscribe(_sections=>{
+      this.sections = _sections
+      this.hooks = _sections.map(i=>true);
+    });
+    
+    console.log("sections",this.sections);
+  }
+
 
   toggle(){
     this.visible = !this.visible;
   }
 
+  async onSelected(sectionId,sectionName){
+   
+    this.data.setCurrentSection(sectionId,sectionName);
+    console.log(sectionName);
+    // await this.directory.setActiveSectionItems(id,id,this.accessList);
+    
+  }
 
-
-  onSelected(item){
-    //this.sectionService.displaysection(item);
-    // this.sectionClicked.emit();
-    // this.sectionService.onMenuClicked(item);
-
-    // this.router.navigate(["content"],{
-    //   queryParams:{
-    //       id:index,
-    //       name:item.name
-    //     }
-    // })
-
-
+  async onSelectedGeneral(sectionId,sectionName){
+   
+    this.data.setCurrentSection(sectionId,sectionName);
+    this.data.setCurrentDirectory(sectionId,sectionName);
+    console.log(sectionName);
+    // await this.directory.setActiveSectionItems(id,id,this.accessList);
+    
   }
 
   onAddedItem(){
-    const newSection = new Section(this.nameInputRef.nativeElement.value);
-    this.sections.push(newSection);
-    this.hooks.push(true);
+    this.sectionService.newSection(this.nameInputRef.nativeElement.value);
     this.visible = !this.visible;
-    console.log(newSection.name);
-    //this.sections = this.sectionService.getSection();
+
   }
 
   onDeleteSection(item: Section){
@@ -75,8 +91,8 @@ export class MenuComponent implements OnInit {
 
   onModalResult(result:boolean){
     if(result){
-      this.sectionService.onDeleteSection(this.section)
-      this.sections = this.sectionService.getSection();
+      // this.sectionService.onDeleteSection(this.section)
+      // this.sections = this.sectionService.getSection();
       this.modalState=false;
     }
     else{
@@ -100,9 +116,9 @@ export class MenuComponent implements OnInit {
   }
 
   onUpdate(index){
-    const rename= new Section(this.Rename.nativeElement.value);
-    this.sectionService.UpdateSection(rename,index);
-    this.sections = this.sectionService.getSection();
+    // const rename= new Section(this.Rename.nativeElement.value);
+    // this.sectionService.UpdateSection(rename,index);
+    // this.sections = this.sectionService.getSection();
     this.hooks[index]=true;
     //console.log(rename, index);
   }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Section } from 'src/app/models/section.model';
-import { SectionService } from 'src/app/services/Section.service';
 
 @Component({
   selector: 'app-section',
@@ -10,16 +9,15 @@ import { SectionService } from 'src/app/services/Section.service';
 export class SectionComponent implements OnInit {
   heading: string;
   createfolder=false;
-  constructor(private section: SectionService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.section.sectionName
-      .subscribe(item => {this.heading = item; console.log(this.heading)});
-
+    // this.section.sectionName
+      // .subscribe(item => {this.heading = item; console.log(this.heading)});
   }
 
   newfolder(){
- this.createfolder=!this.createfolder;
+    this.createfolder=!this.createfolder;
   }
 
   onModalResult (result: boolean){

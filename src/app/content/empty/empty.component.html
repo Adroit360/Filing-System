@@ -1,60 +1,90 @@
 <div class="container">
     <div class="head">
-        <h1>{{currentName | uppercase}}</h1>
+        <h3>{{ currentDirectoryName | uppercase }}</h3>
 
         <div class="ssp">
             <div class="add-folder">
-                <a (click)="newfolder()"><span class="material-icons">
-                folder_open</span>
-                 <p>New Folder</p></a>
+                <a (click)="newfolder()"><span class="material-icons"> folder_open</span>
+          <p>New Folder</p></a
+        >
+      </div>
+
+      <div class="beneath">
+        <a (click)="Addfile()"
+          ><span class="material-icons"> content_copy </span>
+          <p>New File</p></a
+        >
+      </div>
+    </div>
+  </div>
+  <h4>{{ currentDirectoryName }}</h4>
+  <div class="folders">
+    <a class="folder-container" *ngFor="let item of dirContent|async">
+      <div (click)="onFolderClicked(item)" class="component">
+        <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="https://img.icons8.com/fluent/48/000000/pdf.png"/>
+        <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12'" src="https://img.icons8.com/fluent/48/000000/microsoft-powerpoint-2019.png"/>
+        <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'"src="https://img.icons8.com/color/48/000000/microsoft-word-2019--v2.png"/>
+        <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'"src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png"/>
+        <img *ngIf="item.itemType=='file' && item.contentType=='text/plain' || item.itemType=='file' && item.contentType==''" src="https://img.icons8.com/color/48/000000/txt.png"/>
+        <i *ngIf="item.itemType=='folder'" class="{{fontIcon}}" style='font-size: 50px;'></i>
+
+        <p *ngIf="item.itemType=='folder'" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
+        <p *ngIf="item.itemType=='file'" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
+      </div>
+
+      <div class="toggler">
+
+        <span class="more-icon material-icons">arrow_drop_down</span>
+
+        <span
+        id="hiddenText"
+        class="material-icons clicktoshow"
+        smart-tooltip-container>
+        <span class="smart-tooltip stick stay-down overlay" id="tooltip">
+          <div *ngIf="item.itemType=='file'" class="text">
+            <h5>share</h5>
+            <p (click)="onShare()" smart-tooltip-container>
+              share
+              <span
+                class="smart-tooltip stay-right overlay"
+                style="background-color: rgba(0, 0, 0, 0.685)"
+              >
+                <ul *ngFor="let list of NewResource; let i = index">
+                  <li>
+                    <div>
+                      <h2 class="listtext">{{ list.Name }}</h2>
+                      <hr />
+                    </div>
+                  </li>
+                </ul>
+              </span>
+            </p>
+          </div>
+          <hr />
+          <div *ngIf="item.itemType=='file'" class="text">
+            <h5>arrow_downward</h5>
+            <p ><a [href]="item.url">Download</a></p>
+          </div>
+          <hr />
+          <div class="text">
+            <h5>delete</h5>
+            <p (click)="onDelete()">Delete</p>
+          </div>
+        </span>
+      </span>
+
+      </div>
+
+
+
+    </a>
             </div>
 
-            <div class="beneath">
-                <a (click)="Addfile()"><span class="material-icons">
-            content_copy
-            </span>
-             <p >New File</p></a>
-
+            <div *ngIf="createfolder">
+                <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>
             </div>
 
+            <div *ngIf="addfile">
+                <app-preview (onResult)="onPreviewResult($event)"></app-preview>
+            </div>
         </div>
-    </div>
-    <h4>{{title}}</h4>
-    <div class="folders">
-        <a class="folder-container" *ngFor="let item of departments">
-            <div (click)="onFolderClicked(item, $event)" class="component">
-                <i id="hoverDiv" class="{{fontIcon}}" style='font-size: 50px;'></i>
-                <p (click)="onFolderClicked(item, $event)">{{item | truncate: 12}}</p>
-            </div>
-
-            <span id="hiddenText" class="material-icons clicktoshow" smart-tooltip-container>
-              arrow_drop_down
-              <span class="smart-tooltip stick stay-down overlay" id="tooltip">
-                <div class="text">
-                  <h5>share</h5>
-                  <p>share</p>
-                </div>
-                <hr/>
-                <div class="text">
-                  <h5> arrow_downward</h5>
-                  <p>Download</p>
-                </div>
-                <hr/>
-                <div class="text">
-                  <h5>delete</h5>
-                  <p>Delete</p>
-                </div>
-            </span>
-            </span>
-
-
-        </a>
-    </div>
-
-    <div *ngIf="createfolder">
-        <app-new-folder (onResult)='onModalResult($event)'></app-new-folder>
-    </div>
-
-    <div *ngIf="addfile">
-        <app-preview (onResult)='onPreviewResult($event)'></app-preview>
-    </div>

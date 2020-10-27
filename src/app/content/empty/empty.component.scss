@@ -99,23 +99,38 @@ p {
     line-height: 20px;
 }
 
-#hiddenText {
-    opacity: 0;
-    padding: .2rem;
-    display: block;
+.folder-container:hover .more-icon {
+    opacity: 1;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.692), transparent);
+    color: white;
+}
+
+.toggler {
     position: absolute;
     top: 2rem;
-    right: 2rem;
+    right: 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    .more-icon {
+        opacity: 0;
+        padding: .2rem;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    #hiddenText {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 }
 
 #hoverDiv {
     position: relative;
-}
-
-.folder-container:hover #hiddenText {
-    opacity: 1;
-    background-color: rgba(0, 0, 0, 0.692);
-    color: white;
 }
 
 .component {
@@ -137,6 +152,7 @@ p {
 
 .text {
     display: flex;
+    padding: 9px 0px 9px
 }
 
 .text>p {
@@ -144,4 +160,11 @@ p {
     color: white;
     // overflow: hidden;
     // line-height: 20px;
+<<<<<<< HEAD
+=======
+}
+
+.listtext {
+    font-size: 12px;
+>>>>>>> c8988eb214da70e1d2ac8d4b8c91f0dbb3e98240
 }

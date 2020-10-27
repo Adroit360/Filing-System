@@ -19,16 +19,16 @@
     </div>
 
     <div class="list-container">
-        <ul class="list" *ngFor="let item of userDetails ; let i =index">
+        <ul class="list" *ngFor="let item of users|async;">
             <li>
                 <div class="box-1">
                     <h2>{{item.email }}</h2>
                     <h2>{{item.firstName}}</h2>
                     <h2>{{item.lastName}}</h2>
-                    <h2>{{item.position}}</h2>
+                    <h2>{{item.role}}</h2>
                     <h2>
                         <div class="sps">
-                            <span class="material-icons" style="background-color: white;" (click)="onEdit(item, i)">
+                            <span class="material-icons" style="background-color: white;" (click)="onEdit(item)">
                       create
                       </span>
                             <span class="material-icons" style="background-color: white;" (click)="Ondelected(item)">
