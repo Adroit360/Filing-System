@@ -1,6 +1,8 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { SectionService } from 'src/app/services/Section.service';
 import { Component, OnInit } from '@angular/core';
+import { AdminResourceService } from 'src/app/services/AdminResource.service';
+import { Resource } from 'src/app/models/resources.model';
 
 @Component({
   selector: 'app-empty',
@@ -21,10 +23,11 @@ currentIndex;
 currentName;
 createfolder=false;
 addfile=false;
+NewResource: Resource[]=[];
 
 currentBreadCrump;
   constructor(private  sectionService: SectionService,
-    private activatedRoute:ActivatedRoute,private router:Router) {
+    private activatedRoute:ActivatedRoute,private router:Router, private adminresource: AdminResourceService) {
 
 
 
@@ -53,7 +56,7 @@ currentBreadCrump;
    }
 
   ngOnInit(): void {
-
+    this.NewResource=this.adminresource.getAllResources();
   }
 
   onFolderClicked(item, event){
@@ -107,5 +110,18 @@ currentBreadCrump;
   onPreviewResult(result: boolean){
     this.addfile=result;
     console.log(result)
+  }
+
+
+  onShare(){
+    console.log("We've been clicked")
+  }
+
+  onDownload(){
+    console.log("downloading...");
+  }
+
+  onDelete(){
+    console.log("deleted")
   }
 }
