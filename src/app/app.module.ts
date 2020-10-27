@@ -39,6 +39,8 @@ import { DisplayResourceComponent } from './content/display-resource/display-res
 import { PreviewComponent } from './preview/preview.component';
 import { TruncatePipe } from './truncate.pipe';
 import { PermissionsComponent } from './content/permissions/permissions.component';
+import { SentComponent } from './content/permissions/sent/sent.component';
+import { ReceivedComponent } from './content/permissions/received/received.component';
 
 
 
@@ -66,7 +68,9 @@ import { PermissionsComponent } from './content/permissions/permissions.componen
     DisplayResourceComponent,
     PreviewComponent,
     TruncatePipe,
-    PermissionsComponent
+    PermissionsComponent,
+    SentComponent,
+    ReceivedComponent
   ],
 
   imports: [
