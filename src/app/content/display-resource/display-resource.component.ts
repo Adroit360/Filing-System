@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 //import { Console } from 'console';
 import { AdminResourceService } from 'src/app/services/AdminResource.service';
+import { SectionService } from 'src/app/services/section.service';
 
 @Component({
   selector: 'app-display-resource',
@@ -10,7 +12,8 @@ import { AdminResourceService } from 'src/app/services/AdminResource.service';
 export class DisplayResourceComponent implements OnInit {
 
   ResourceName: string;
-  constructor(private adminresource: AdminResourceService) { }
+  fontIcon = "fa fa-folder";
+  constructor(private adminresource: AdminResourceService, private section: SectionService, private route: Router ) { }
 
   ngOnInit(): void {
     this.adminresource.EditResource.
@@ -19,11 +22,14 @@ export class DisplayResourceComponent implements OnInit {
 
       //console.log(this.ResourceName);
     })
+
+
+    //this.files = this.section.department_files.map(i=>true)
   }
 
 
 AddUser(){
-console.log("i have added you");
+  this.route.navigate(['home/content/userlists']);
 }
 
 }

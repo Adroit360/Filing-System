@@ -12,7 +12,7 @@ import { Resource } from 'src/app/models/resources.model';
   styleUrls: ['./empty.component.scss']
 })
 export class EmptyComponent implements OnInit {
- 
+
   title = "";
   heading: string;
   fontIcon = "fa fa-folder";
@@ -43,10 +43,10 @@ export class EmptyComponent implements OnInit {
       this.currentDirectoryId = param.get("directoryId");
       this.currentDirectoryName = param.get("directory");
       console.log("current directory name",this.currentDirectoryName);
-      
+
       this.computeRoute();
     });
-  
+
   }
 
   computeRoute() {
@@ -60,7 +60,7 @@ export class EmptyComponent implements OnInit {
     }else{
       this.hierrachy.push(name);
     }
-    
+
     this.currentBreadCrump = ` > ${name}`;
     this.routeChanged(name);
   }
@@ -80,7 +80,7 @@ export class EmptyComponent implements OnInit {
     }else{
       return;
     }
-    
+
   }
 
   routeChanged(item: string) {
@@ -92,7 +92,7 @@ export class EmptyComponent implements OnInit {
     else {
       // this.departments = []; // clear the folder
       //  load the files from the server based on the department the user clicked on
-      // this.departments = this.department_files;  
+      // this.departments = this.department_files;
     }
     this.title = this.currentBreadCrump; // updates the title
   }
@@ -118,10 +118,6 @@ export class EmptyComponent implements OnInit {
   }
 
 
-  onShare(){
-    console.log("We've been clicked")
-  }
-
   onDownload(){
     console.log("downloading...");
   }
@@ -129,4 +125,16 @@ export class EmptyComponent implements OnInit {
   onDelete(){
     console.log("deleted")
   }
+
+  onSelected(list, event ,index, item){
+    event.stopPropagation();
+    //console.log(list.Name);
+    event.target.closest(".smart-tooltip").blur();
+    //this.router.navigate(['home/content/SharedResources', index, list.Name ]);
+    //this.fontIcon;
+    console.log(item);
+
+  }
+
+  onShare(){}
 }

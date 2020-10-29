@@ -1,3 +1,6 @@
+import { ReceivedComponent } from './content/permissions/received/received.component';
+import { SentComponent } from './content/permissions/sent/sent.component';
+import { PermissionsComponent } from './content/permissions/permissions.component';
 import { HompageComponent } from './hompage/hompage.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
@@ -11,7 +14,8 @@ import {EditUserDetailsComponent} from './content/edit-user-details/edit-user-de
 import { EmptyComponent } from './content/empty/empty.component';
 import { SharedResourcesComponent} from './content/shared-resources/shared-resources.component';
 import { NewResourceComponent} from './content/new-resource/new-resource.component';
-import { EditResourceComponent} from './content/edit-resource/edit-resource.component'
+import { EditResourceComponent} from './content/edit-resource/edit-resource.component';
+import { UserListComponent } from './content/user-list/user-list.component';
 //import { SectionComponent } from './content/section/section.component';
 
 
@@ -22,14 +26,21 @@ const routes: Routes = [
     {path: 'content', component: ContentComponent, children: [
       {path: ':sectionId/:sectionName/:directoryId/:directory', component: EmptyComponent},
       {path: 'manageUsers', component: ManageUserComponent},
+
       {path: 'SharedResources', component: SharedResourcesComponent},
       {path: 'SharedResources/:id/:Name', component: DisplayResourceComponent},
+      {path: 'userlists', component:UserListComponent},
       {path: 'AddUser', component: AddNewUserComponent},
       {path: 'editUserDetails', component: EditUserDetailsComponent},
       {path: 'CreateResource', component:NewResourceComponent},
       {path: 'EditResource', component: EditResourceComponent},
+      {path: 'approvals', component: PermissionsComponent, children: [
+        {path: 'sent', component: SentComponent},
+        {path: 'received', component: ReceivedComponent},
+      ]},
       // {path: 'general', component: EmptyComponent},
     ]},
+
 
   ]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},

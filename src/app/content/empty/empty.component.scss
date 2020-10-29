@@ -13,6 +13,10 @@
     }
 }
 
+h2 {
+    margin: auto;
+}
+
 h1 {
     margin: 0px 20px;
     font-weight: 900;
@@ -147,12 +151,33 @@ p {
 
 #tooltip {
     //height: 90px;
-    width: 90px;
+    width: 100px;
 }
 
 .text {
-    display: flex;
+    //display: flex;
     padding: 9px 0px 9px
+}
+
+.second-tooltip {
+    position: absolute;
+    left: calc(90px + 20px);
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.596);
+    color: white;
+    border-radius: 10px;
+    height: auto;
+    width: 100px;
+    text-align: center;
+    font-size: 15px;
+    /* line-height: 50px; */
+    padding: 10px 15px 12px 13px;
+    opacity: 0;
+}
+
+.text:hover .second-tooltip {
+    //display: block;
+    opacity: 1;
 }
 
 .text>p {

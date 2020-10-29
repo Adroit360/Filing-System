@@ -20,25 +20,6 @@ h1 {
     overflow: auto;
 }
 
-.details {
-    background: #F6F6F6;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 1rem;
-    margin-bottom: 10px;
-}
-
-.user-details {
-    line-height: 25px;
-}
-
-i {
-    margin-top: 20px;
-    font-size: 20px;
-    color: #71B71B;
-}
-
 .sent-recieve {
     display: grid;
     grid-auto-flow: column;

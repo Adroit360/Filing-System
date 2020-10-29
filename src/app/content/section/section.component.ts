@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Section } from 'src/app/models/section.model';
-
+//src/app/services/section.service
 @Component({
   selector: 'app-section',
   templateUrl: './section.component.html',

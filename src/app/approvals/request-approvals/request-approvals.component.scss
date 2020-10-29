@@ -1,0 +1,94 @@
+
+.modal {
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content */
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 350px;
+    height: 406px;
+    border-radius: 10px;
+    -webkit-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 8px 9px rgba(0, 0, 0, 0.1);
+}
+
+.pad {
+    margin: 36px;
+}
+
+button {
+    width: 140px;
+    height: 40px;
+    color: white;
+    background-color: red;
+    border: white;
+    border-radius: 10px;
+    font-size: 20px;
+    float: right;
+    margin-top: 40px;
+}
+
+input {
+    width: 80%;
+    padding: 17px 10px;
+    margin: 5px 0;
+    display: inline-block;
+    border: none;
+    outline: transparent;
+    border-bottom: 2px solid #5751519f;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 200;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #1b1a1ab6;
+    font-weight: bold;
+    line-height: 22px;
+    opacity: 1;
+    /* Firefox */
+}
+
+ :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #1b1a1ab6;
+    line-height: 22px;
+    font-weight: bold;
+}
+
+ ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #1b1a1ab6;
+    line-height: 22px;
+    font-weight: bold;
+}

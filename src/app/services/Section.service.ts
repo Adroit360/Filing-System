@@ -14,7 +14,7 @@ export interface Section{
 })
 
 export class SectionService {
-  
+
   private sectionCollection: AngularFirestoreCollection<Section>;
   private sections:Observable<Section[]>;
 
@@ -30,7 +30,7 @@ export class SectionService {
     }
 
     //remove section
-    async removeSection(sectionId){ 
+    async removeSection(sectionId){
       await this.sectionCollection.doc(sectionId).delete().catch(err=>{console.log(err)});
     }
 
@@ -45,5 +45,5 @@ export class SectionService {
     getSections(){
       return this.sections;
     }
-  
+
 }

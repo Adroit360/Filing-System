@@ -39,6 +39,13 @@ import { DisplayResourceComponent } from './content/display-resource/display-res
 import { PreviewComponent } from './preview/preview.component';
 import { TruncatePipe } from './truncate.pipe';
 import { PermissionsComponent } from './content/permissions/permissions.component';
+import { SentComponent } from './content/permissions/sent/sent.component';
+import { ReceivedComponent } from './content/permissions/received/received.component';
+import { SectionService } from './services/section.service';
+import { UserListComponent } from './content/user-list/user-list.component';
+import { SentApprovalsComponent } from './approvals/sent-approvals/sent-approvals.component';
+import { RequestApprovalsComponent } from './approvals/request-approvals/request-approvals.component';
+import { ReplyApprovalsComponent } from './approvals/reply-approvals/reply-approvals.component';
 
 
 
@@ -66,7 +73,13 @@ import { PermissionsComponent } from './content/permissions/permissions.componen
     DisplayResourceComponent,
     PreviewComponent,
     TruncatePipe,
-    PermissionsComponent
+    PermissionsComponent,
+    SentComponent,
+    ReceivedComponent,
+    UserListComponent,
+    SentApprovalsComponent,
+    RequestApprovalsComponent,
+    ReplyApprovalsComponent
   ],
 
   imports: [
@@ -83,7 +96,7 @@ import { PermissionsComponent } from './content/permissions/permissions.componen
     SmartTooltipAngularModule,
   ],
 
-  providers: [UserService,AdminResourceService],
+  providers: [UserService,AdminResourceService, SectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
