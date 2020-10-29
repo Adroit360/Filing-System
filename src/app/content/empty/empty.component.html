@@ -26,8 +26,8 @@
         <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'"src="https://img.icons8.com/color/48/000000/microsoft-word-2019--v2.png"/>
         <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'"src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png"/>
         <img *ngIf="item.itemType=='file' && item.contentType=='text/plain' || item.itemType=='file' && item.contentType==''" src="https://img.icons8.com/color/48/000000/txt.png"/>
-        <i *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" class="{{fontIcon}}" style='font-size: 50px;'></i>
-        <p *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
+        <i *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && item.public && item.owner==currentUser" class="{{fontIcon}}" style='font-size: 50px;'></i>
+        <p *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && item.public && item.owner==currentUser" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
         <p *ngIf="item.itemType=='file'" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
       </div>
 
@@ -63,24 +63,24 @@
           <div *ngIf="item.itemType=='file'" class="text">
             <h5>arrow_downward</h5>
             <p ><a [href]="item.url">Download</a></p>
-          </div>
-          <hr />
-          <div class="text">
-            <h5>delete</h5>
-            <p (click)="onDelete()">Delete</p>
-          </div>
-        </span>
-      </span>
-
-      </div>
-    </a>
             </div>
-
-            <div *ngIf="createfolder">
-                <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>
+            <hr />
+            <div class="text">
+                <h5>delete</h5>
+                <p (click)="onDelete()">Delete</p>
             </div>
+            </span>
+            </span>
 
-            <div *ngIf="addfile">
-                <app-preview (onResult)="onPreviewResult($event)"></app-preview>
-            </div>
         </div>
+        </a>
+    </div>
+
+    <div *ngIf="createfolder">
+        <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>
+    </div>
+
+    <div *ngIf="addfile">
+        <app-preview (onResult)="onPreviewResult($event)"></app-preview>
+    </div>
+</div>
