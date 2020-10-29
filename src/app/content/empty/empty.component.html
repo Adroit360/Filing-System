@@ -41,7 +41,6 @@
         smart-tooltip-container>
         <span class="smart-tooltip stick stay-down overlay" id="tooltip">
           <div *ngIf="item.itemType=='file'" class="text">
-            <!-- <h5>share</h5> -->
             <p (click)="onShare()" smart-tooltip-container>
               share
               <span
@@ -59,19 +58,15 @@
               </span>
             </p>
           </div>
-          <!-- <hr /> -->
-          <div *ngIf="item.itemType=='file'" class="text">
-            <!-- <h5>arrow_downward</h5> -->
-            <p ><a [href]="item.url">Download</a></p>
 
+          <div *ngIf="item.itemType=='file'" class="text">
+            <p ><a [href]="item.url">Download</a></p>
             </div>
-            <!-- <hr /> -->
+
             <div class="text" *ngIf="item.itemType=='file'">
-                <!-- <h5>delete</h5> -->
                 <p>Request Approval</p>
             </div>
             <div class="text">
-                <!-- <h5>delete</h5> -->
                 <p (click)="onDelete()">Delete</p>
             </div>
             </span>
