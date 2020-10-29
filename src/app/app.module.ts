@@ -43,6 +43,9 @@ import { SentComponent } from './content/permissions/sent/sent.component';
 import { ReceivedComponent } from './content/permissions/received/received.component';
 import { SectionService } from './services/section.service';
 import { UserListComponent } from './content/user-list/user-list.component';
+import { SentApprovalsComponent } from './approvals/sent-approvals/sent-approvals.component';
+import { RequestApprovalsComponent } from './approvals/request-approvals/request-approvals.component';
+import { ReplyApprovalsComponent } from './approvals/reply-approvals/reply-approvals.component';
 
 
 
@@ -73,7 +76,10 @@ import { UserListComponent } from './content/user-list/user-list.component';
     PermissionsComponent,
     SentComponent,
     ReceivedComponent,
-    UserListComponent
+    UserListComponent,
+    SentApprovalsComponent,
+    RequestApprovalsComponent,
+    ReplyApprovalsComponent
   ],
 
   imports: [

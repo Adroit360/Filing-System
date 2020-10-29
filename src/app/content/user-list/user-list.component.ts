@@ -38,9 +38,7 @@ export class UserListComponent implements OnInit {
       if(i == index){
         this.hooks[i]= false;
         //this.checked=true;
-
       }
-
     }
 
   }
