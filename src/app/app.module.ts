@@ -41,6 +41,8 @@ import { TruncatePipe } from './truncate.pipe';
 import { PermissionsComponent } from './content/permissions/permissions.component';
 import { SentComponent } from './content/permissions/sent/sent.component';
 import { ReceivedComponent } from './content/permissions/received/received.component';
+import { SectionService } from './services/section.service';
+import { UserListComponent } from './content/user-list/user-list.component';
 
 
 
@@ -70,7 +72,8 @@ import { ReceivedComponent } from './content/permissions/received/received.compo
     TruncatePipe,
     PermissionsComponent,
     SentComponent,
-    ReceivedComponent
+    ReceivedComponent,
+    UserListComponent
   ],
 
   imports: [
@@ -87,7 +90,7 @@ import { ReceivedComponent } from './content/permissions/received/received.compo
     SmartTooltipAngularModule,
   ],
 
-  providers: [UserService,AdminResourceService],
+  providers: [UserService,AdminResourceService, SectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

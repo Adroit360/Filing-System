@@ -1,13 +1,8 @@
 import { ActivatedRoute, Router } from '@angular/router';
-<<<<<<< HEAD
-import { SectionService } from 'src/app/services/Section.service';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-=======
 // import { SectionService } from 'src/app/services/section.service';
 import { Component, OnInit } from '@angular/core';
 import { DirectoryService } from '../../services/directory.service';
 import { DataService } from '../../services/data.service';
->>>>>>> 3dd0071f1af15facc544e3ea969f1c224fc04980
 import { AdminResourceService } from 'src/app/services/AdminResource.service';
 import { Resource } from 'src/app/models/resources.model';
 
@@ -17,7 +12,7 @@ import { Resource } from 'src/app/models/resources.model';
   styleUrls: ['./empty.component.scss']
 })
 export class EmptyComponent implements OnInit {
- 
+
   title = "";
   heading: string;
   fontIcon = "fa fa-folder";
@@ -47,10 +42,10 @@ export class EmptyComponent implements OnInit {
       this.currentDirectoryId = param.get("directoryId");
       this.currentDirectoryName = param.get("directory");
       console.log("current directory name",this.currentDirectoryName);
-      
+
       this.computeRoute();
     });
-  
+
   }
 
   computeRoute() {
@@ -64,7 +59,7 @@ export class EmptyComponent implements OnInit {
     }else{
       this.hierrachy.push(name);
     }
-    
+
     this.currentBreadCrump = ` > ${name}`;
     this.routeChanged(name);
   }
@@ -84,7 +79,7 @@ export class EmptyComponent implements OnInit {
     }else{
       return;
     }
-    
+
   }
 
   routeChanged(item: string) {
@@ -96,7 +91,7 @@ export class EmptyComponent implements OnInit {
     else {
       // this.departments = []; // clear the folder
       //  load the files from the server based on the department the user clicked on
-      // this.departments = this.department_files;  
+      // this.departments = this.department_files;
     }
     this.title = this.currentBreadCrump; // updates the title
   }
