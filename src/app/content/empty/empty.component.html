@@ -30,7 +30,7 @@
       <p *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
       <p *ngIf="item.itemType=='file'" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
     </div>
-
+<!-- toggler -->
     <div class="toggler">
 
       <span class="more-icon material-icons">arrow_drop_down</span>
