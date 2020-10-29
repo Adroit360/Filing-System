@@ -1,6 +1,6 @@
 <div class="container">
     <div class="head">
-        <h3>{{ currentDirectoryName | uppercase }}</h3>
+        <h2>{{ currentDirectoryName | uppercase }}</h2>
 
         <div class="ssp">
             <div class="add-folder">
@@ -71,27 +71,27 @@
           <div *ngIf="item.itemType=='file'" class="text">
             <h5>arrow_downward</h5>
             <p ><a [href]="item.url">Download</a></p>
-          </div>
-          <hr />
-          <div class="text">
-            <h5>delete</h5>
-            <p (click)="onDelete()">Delete</p>
-          </div>
-        </span>
-      </span>
-
-      </div>
-
-
-
-    </a>
             </div>
-
-            <div *ngIf="createfolder">
-                <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>
+            <hr />
+            <div class="text">
+                <h5>delete</h5>
+                <p (click)="onDelete()">Delete</p>
             </div>
+            </span>
+            </span>
 
-            <div *ngIf="addfile">
-                <app-preview (onResult)="onPreviewResult($event)"></app-preview>
-            </div>
         </div>
+
+
+
+        </a>
+    </div>
+
+    <div *ngIf="createfolder">
+        <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>
+    </div>
+
+    <div *ngIf="addfile">
+        <app-preview (onResult)="onPreviewResult($event)"></app-preview>
+    </div>
+</div>

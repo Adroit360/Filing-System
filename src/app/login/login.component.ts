@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
     }).catch(err=>{
       this.errorMessage = err.message; 
       console.log("this is the error from login page",err);
+      this.isValid = true;
     });
 
     
