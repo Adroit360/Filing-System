@@ -13,7 +13,7 @@ export class UserListComponent implements OnInit {
   user: User;
   modalState: boolean;
   users:any;
-  checked=false;
+  checked;
   status=true;
   hooks=[];
   constructor(private data: DataService, private msg: MessengerService ) {
@@ -23,15 +23,36 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.users = this.msg.getUsers();
+     this.msg.getUsers().subscribe(users=>{
+      this.users = users;
+      console.log(this.users);
+    this.hooks=this.users.map(i=>true);
+    });
 
   }
 
-  add(item,index){
-    //console.log(this.hooks);
-   console.log(this.users)
-    this.checked=true;
-    this.status=false;
+  add(index){
+    console.log(index);
+
+    for (let i = 0; i < this.hooks.length; i++) {
+      if(i == index){
+        this.hooks[i]= false;
+        //this.checked=true;
+
+      }
+
+    }
+
+  }
+
+  unAdd(index){
+    for (let i = 0; i < this.hooks.length; i++) {
+      if(i==index){
+        this.hooks[i]=true;
+       // this.checked=false;
+      }
+
+    }
   }
 
 }

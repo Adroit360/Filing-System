@@ -17,7 +17,7 @@
     </div>
 
     <div class="list-container">
-        <ul class="list" *ngFor="let item of users|async;let i = index ">
+        <ul class="list" *ngFor="let item of users;let i = index ">
             <li>
                 <div class="box-1">
                     <h2>{{item.email }}</h2>
@@ -25,21 +25,15 @@
                     <h2>{{item.lastName}}</h2>
                     <h2>{{item.role}}</h2>
                     <h2>
-                        <!-- <div class="sps">
-                          <span class="material-icons" style="background-color: white;" (click)="onEdit(item)">
-                    create
-                    </span>
-                          <span class="material-icons" style="background-color: white;" (click)="Ondelected(item)">
-               delete_outline
-                </span>
-                      </div> -->
-                        <i class="material-icons" style="color: #ED1E23;" *ngIf="status" (click)="add(item,i)">
+
+                        <i *ngIf="hooks[i]" class="material-icons" style="color: #ED1E23;" (click)="add(i)">
                         control_point
                     </i>
 
-                        <span *ngIf="checked" class="material-icons" style="color: green;">
+                        <span *ngIf="!hooks[i]" (click)="unAdd(i)" class="material-icons" style="color: green;">
                         check_circle_outline
-                        </span>
+                    </span>
+
 
 
 
