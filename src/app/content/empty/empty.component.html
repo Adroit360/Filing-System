@@ -26,8 +26,8 @@
         <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'"src="https://img.icons8.com/color/48/000000/microsoft-word-2019--v2.png"/>
         <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'"src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png"/>
         <img *ngIf="item.itemType=='file' && item.contentType=='text/plain' || item.itemType=='file' && item.contentType==''" src="https://img.icons8.com/color/48/000000/txt.png"/>
-        <i *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" class="{{fontIcon}}" style='font-size: 50px;'></i>
-        <p *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
+        <i *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && item.public && item.owner==currentUser" class="{{fontIcon}}" style='font-size: 50px;'></i>
+        <p *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && item.public && item.owner==currentUser" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
         <p *ngIf="item.itemType=='file'" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
       </div>
 
@@ -41,12 +41,12 @@
         smart-tooltip-container>
         <span class="smart-tooltip stick stay-down overlay" id="tooltip">
           <div *ngIf="item.itemType=='file'" class="text">
-            <h5>share</h5>
+            <!-- <h5>share</h5> -->
             <p (click)="onShare()" smart-tooltip-container>
               share
               <span
                 class="smart-tooltip stay-right overlay"
-                style="background-color: rgba(0, 0, 0, 0.685)"
+                style="background-color: rgba(233, 141, 141, 0.685)"
               >
                 <ul *ngFor="let list of NewResource; let i = index">
                   <li>
@@ -66,7 +66,7 @@
           </div>
           <hr />
           <div class="text">
-            <h5>delete</h5>
+            <!-- <h5>delete</h5> -->
             <p (click)="onDelete()">Delete</p>
           </div>
         </span>
