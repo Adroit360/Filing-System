@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Resource } from 'src/app/models/resources.model';
 import { AdminResourceService } from 'src/app/services/AdminResource.service';
+import { SharedResourceService } from '../../services/shared-resource.service';
 
 @Component({
   selector: 'app-edit-resource',
@@ -17,19 +18,18 @@ export class EditResourceComponent implements OnInit {
  });
 
  Name: string;
- index: any;
+ id: string;
  date: string;
 
 
-  constructor( private adminresource: AdminResourceService, private route: Router) { }
+  constructor( private adminresource: AdminResourceService, private route: Router,private resourceManager:SharedResourceService) { }
 
   ngOnInit(): void {
       this.adminresource.EditResource
-      .subscribe((item:{details: any,position: any}) =>{
-        this.Name= item.details.Name,
-        this.index = item.position;
+      .subscribe((item:{details: any}) =>{
+        this.Name= item.details.name,
         this.date = item.details.date;
-
+        this.id = item.details.id;
 
         this.EditResource.setValue({
           "Name": this.Name ?? "",
@@ -43,8 +43,9 @@ export class EditResourceComponent implements OnInit {
 
 
   onEdit(){
-    this.adminresource.UpdateResource(this.EditResource.value,this.index);
-    //console.log(this.EditResource.value);
+    // this.adminresource.UpdateResource(this.EditResource.value,this.index);
+    console.log("id to be edited",this.id);
+    this.resourceManager.EditResource(this.EditResource.value.Name,this.id);
     this.route.navigate(['home/content/SharedResources'])
   }
 }

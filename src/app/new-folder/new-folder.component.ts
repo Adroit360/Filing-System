@@ -17,14 +17,19 @@ export class NewFolderComponent implements OnInit {
     this.NewFolder=new FormGroup({
       newfolder: new FormControl(null, Validators.required),
       security: new FormControl('public', Validators.required)
-    })
+    });
   }
 
   onSubmit(value:boolean){
     console.log(this.NewFolder.value, "folder name");
+    console.log(this.NewFolder.value.security);
+    let folderSecurityPublic = true;
+    if(this.NewFolder.value.security=="private"){
+        folderSecurityPublic = false;
+    }
     let currentDirectory="";
     if(this.data.getCurrentDirectory()==""){currentDirectory =this.data.getCurrentSection(); }else{currentDirectory=this.data.getCurrentDirectory();}
-    this.directory.createDirectory(this.NewFolder.value.newfolder,this.data.getCurrentSection(),currentDirectory,this.data.getActiveUser().email);
+    this.directory.createDirectory(this.NewFolder.value.newfolder,this.data.getCurrentSection(),currentDirectory,this.data.getActiveUser().email,folderSecurityPublic);
     this.onResult.emit(value);
   }
 

@@ -26,9 +26,8 @@
         <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'"src="https://img.icons8.com/color/48/000000/microsoft-word-2019--v2.png"/>
         <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'"src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png"/>
         <img *ngIf="item.itemType=='file' && item.contentType=='text/plain' || item.itemType=='file' && item.contentType==''" src="https://img.icons8.com/color/48/000000/txt.png"/>
-        <i *ngIf="item.itemType=='folder'" class="{{fontIcon}}" style='font-size: 50px;'></i>
-
-        <p *ngIf="item.itemType=='folder'" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
+        <i *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" class="{{fontIcon}}" style='font-size: 50px;'></i>
+        <p *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
         <p *ngIf="item.itemType=='file'" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
       </div>
 
@@ -74,8 +73,6 @@
       </span>
 
       </div>
-
-
 
     </a>
             </div>

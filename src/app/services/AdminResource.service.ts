@@ -34,8 +34,8 @@ onDeleteuserGroups(item: Resource){
 }
 
 //Edit resource
-onEditResource(item: Resource, index: any){
-  this.EditResource.next({details: item,position: index});
+onEditResource(item){
+  this.EditResource.next({details: item});
 }
 
 //update resource

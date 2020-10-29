@@ -28,10 +28,11 @@ export class EmptyComponent implements OnInit {
   hierrachy:any=[];
   currentBreadCrump;
   NewResource:any;
+  currentUser:string="";
 
   constructor(private data: DataService,private adminResource:AdminResourceService,
     private activatedRoute: ActivatedRoute, private router: Router, private directory: DirectoryService) {
-
+    this.currentUser = data.getActiveUser().email;
     this.activatedRoute.paramMap.subscribe(param => {
 
       //var hasQueryParams = this.activatedRoute.snapshot.queryParams.name;
