@@ -24,7 +24,7 @@ export class RequestApprovalsComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.RequestApproval);
+
   }
 
 }
