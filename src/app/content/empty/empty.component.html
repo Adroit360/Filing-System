@@ -41,12 +41,12 @@
         smart-tooltip-container>
         <span class="smart-tooltip stick stay-down overlay" id="tooltip">
           <div *ngIf="item.itemType=='file'" class="text">
-            <h5>share</h5>
+            <!-- <h5>share</h5> -->
             <p (click)="onShare()" smart-tooltip-container>
               share
               <span
                 class="smart-tooltip stay-right overlay"
-                style="background-color: rgba(0, 0, 0, 0.685)"
+                style="background-color: rgba(233, 141, 141, 0.685)"
               >
                 <ul *ngFor="let list of NewResource; let i = index">
                   <li>
@@ -63,6 +63,20 @@
           <div *ngIf="item.itemType=='file'" class="text">
             <h5>arrow_downward</h5>
             <p ><a [href]="item.url">Download</a></p>
+<<<<<<< HEAD
+=======
+          </div>
+          <hr />
+          <div class="text">
+            <!-- <h5>delete</h5> -->
+            <p (click)="onDelete()">Delete</p>
+          </div>
+        </span>
+      </span>
+
+      </div>
+    </a>
+>>>>>>> 92067704f5497f21c48bc480956d68415956a7c5
             </div>
             <hr />
             <div class="text">
