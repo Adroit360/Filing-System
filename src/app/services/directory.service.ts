@@ -17,7 +17,7 @@ export interface Archives{
   lastUploadUser:string,
   lastUpdated:string,
   owner:string,
-  lock:Boolean,
+  public:Boolean,
   dateCreated:string
 }
 
@@ -37,7 +37,7 @@ export class DirectoryService {
   private subarchives:Observable<Archives[]>;
 
   constructor(private afs:AngularFirestore,private afStorage:AngularFireStorage) {
-      this.archivesCollection = afs.collection<Archives>('Archives',ref=> ref.orderBy('date'));
+      this.archivesCollection = afs.collection<Archives>('Archives',ref=> ref.orderBy('dateCreated'));
       this.archives = this.archivesCollection.valueChanges();
   }
 
@@ -87,10 +87,10 @@ export class DirectoryService {
     lastUploadUser:"",
     lastUpdated:"",
     owner:"",
-    lock:false,
+    public:true,
     dateCreated:""
   }
-  createDirectory(directoryName,sectionId,parentId,user){
+  createDirectory(directoryName,sectionId,parentId,user,directoryLevel:Boolean){
     this.newArchive.id=this.afs.createId();
     this.newArchive.name = directoryName;
     this.newArchive.parentId=parentId;
@@ -98,6 +98,7 @@ export class DirectoryService {
     this.newArchive.owner =user;
     this.newArchive.dateCreated = new Date().toLocaleDateString();
     this.newArchive.itemType = "folder";
+    this.newArchive.public = directoryLevel;
 
     this.archivesCollection.doc(this.newArchive.id).set(this.newArchive);
 
@@ -127,7 +128,7 @@ export class DirectoryService {
             parentId:directoryId,
             sectionId:sectionId,
             owner:userId,
-            lock:false,
+            public:false,
             dateCreated:new Date().toLocaleDateString()
           }
           this.archivesCollection.doc(id).set(file).catch(e=>{console.log(e); return e;});

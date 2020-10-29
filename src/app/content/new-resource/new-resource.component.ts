@@ -4,7 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminResourceService } from 'src/app/services/AdminResource.service';
-
+import { SharedResourceService } from '../../services/shared-resource.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-new-resource',
@@ -16,7 +17,7 @@ export class NewResourceComponent implements OnInit {
   today= new Date();
   cValue = formatDate(this.today, 'yyyy-MM-dd',"en-US'");
 
-  constructor( private resource: AdminResourceService, private route: Router) {
+  constructor( private resource: AdminResourceService, private route: Router,private resourceManager:SharedResourceService,private volatileData:DataService) {
 
    }
 
@@ -25,15 +26,15 @@ export class NewResourceComponent implements OnInit {
       newresource: new FormControl(null, Validators.required)
     });
   }
+ 
 
-
-  onCreate(){
-    this.resource.addResource({
-      Name: this.newResource.value.newresource,
-      date: this.cValue,
-    });
-
-    this.route.navigate(['home/content/SharedResources'])
+  async onCreate(){
+    // this.resource.addResource({
+    //   Name: this.newResource.value.newresource,
+    //   date: this.cValue,
+    // });
+    await this.resourceManager.createResource(this.newResource.value.newresource,this.volatileData.getActiveUser().email);
+    this.route.navigate(['home/content/SharedResources']);
   }
 
 }

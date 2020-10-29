@@ -1,6 +1,6 @@
 <div class="container">
     <div class="head">
-        <h2>{{ currentDirectoryName | uppercase }}</h2>
+        <h3>{{ currentDirectoryName | uppercase }}</h3>
 
         <div class="ssp">
             <div class="add-folder">
@@ -26,15 +26,15 @@
         <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'"src="https://img.icons8.com/color/48/000000/microsoft-word-2019--v2.png"/>
         <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'"src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png"/>
         <img *ngIf="item.itemType=='file' && item.contentType=='text/plain' || item.itemType=='file' && item.contentType==''" src="https://img.icons8.com/color/48/000000/txt.png"/>
-        <i *ngIf="item.itemType=='folder'" class="{{fontIcon}}" style='font-size: 50px;'></i>
-
-        <p *ngIf="item.itemType=='folder'" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
+        <i *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && item.public && item.owner==currentUser" class="{{fontIcon}}" style='font-size: 50px;'></i>
+        <p *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && item.public && item.owner==currentUser" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
         <p *ngIf="item.itemType=='file'" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
       </div>
 
       <div class="toggler">
 
         <span class="more-icon material-icons">arrow_drop_down</span>
+
         <span
         id="hiddenText"
         class="material-icons clicktoshow"
@@ -42,63 +42,45 @@
         <span class="smart-tooltip stick stay-down overlay" id="tooltip">
           <div *ngIf="item.itemType=='file'" class="text">
             <!-- <h5>share</h5> -->
-            <p class="disp">share</p>
-
-            <div>
-              <ul class="second-tooltip">
-                <li *ngFor="let list of NewResource; let i = index" (click)="onSelected(list, $event,i, item)" >
-                  <p style="color:white;">{{ list.Name }}</p>
-                </li>
-
-              </ul>
-            </div>
-              <!-- <span
-                class="smart-tooltip stay-right stayonhover stick"
-                style="background-color: rgba(0, 0, 0, 0.685);position: relative;"
+            <p (click)="onShare()" smart-tooltip-container>
+              share
+              <span
+                class="smart-tooltip stay-right overlay"
+                style="background-color: rgba(233, 141, 141, 0.685)"
               >
                 <ul *ngFor="let list of NewResource; let i = index">
                   <li>
                     <div>
-                      <h2 class="listtext" (click)="onSelected(list, $event)">{{ list.Name }}</h2>
+                      <h2 class="listtext">{{ list.Name }}</h2>
+                      <hr />
                     </div>
                   </li>
-                  <hr />
                 </ul>
               </span>
-            </p> -->
+            </p>
           </div>
           <hr />
           <div *ngIf="item.itemType=='file'" class="text">
-            <!-- <h5>arrow_downward</h5> -->
+            <h5>arrow_downward</h5>
             <p ><a [href]="item.url">Download</a></p>
-                <hr>
+          </div>
+          <hr />
+          <div class="text">
+            <!-- <h5>delete</h5> -->
+            <p (click)="onDelete()">Delete</p>
+          </div>
+        </span>
+      </span>
+
+      </div>
+    </a>
             </div>
 
-            <div class="text">
-                <!-- <h5>delete</h5> -->
-                <p (click)="onDelete()">Delete</p>
-                <hr>
+            <div *ngIf="createfolder">
+                <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>
             </div>
-            <div class="text" *ngIf="item.itemType=='file'">
-                <!-- <h5>request_page</h5> -->
-                <p (click)="onDelete()">Request Approval</p>
-                <hr>
-            </div>
-            </span>
-            </span>
 
+            <div *ngIf="addfile">
+                <app-preview (onResult)="onPreviewResult($event)"></app-preview>
+            </div>
         </div>
-
-
-
-        </a>
-    </div>
-
-    <div *ngIf="createfolder">
-        <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>
-    </div>
-
-    <div *ngIf="addfile">
-        <app-preview (onResult)="onPreviewResult($event)"></app-preview>
-    </div>
-</div>

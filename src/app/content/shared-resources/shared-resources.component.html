@@ -15,19 +15,19 @@
             <h5>Action</h5>
         </div>
         <div class="list-container">
-            <ul class="list" *ngFor="let user of NewResource; let i = index">
+            <ul class="list" *ngFor="let resource of resources|async; let i = index">
                 <li>
-                    <div class="box-1" (click)="onSelected(user, i)" [routerLink]="[i, user.Name]">
-                        <h2>{{ user.Name }}</h2>
+                    <div class="box-1" (click)="onSelected(resource, i)" [routerLink]="[i, resource.name]">
+                        <h2>{{ resource.name }}</h2>
 
-                        <h2>{{ user.date }}</h2>
+                        <h2>{{ resource.date }}</h2>
                         <h2>
                             <div class="sps">
-                                <span (click)="onEdit(user, i)" class="material-icons" style="background-color: white">
+                                <span (click)="onEdit(resource)" class="material-icons" style="background-color: white">
                   create
                 </span>
 
-                                <span (click)="onDeleteGroup(user,$event)">
+                                <span (click)="onDeleteGroup(resource.id,$event)">
                   <span class="material-icons" style="background-color: white">
                     delete_outline
                   </span>
