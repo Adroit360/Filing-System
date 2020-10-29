@@ -21,7 +21,7 @@ export class SharedResourcesComponent implements OnInit {
 
   constructor( private adminresource: AdminResourceService ,private route: Router,private resourceManager:SharedResourceService,private volatileData:DataService) {
     this.resources = this.resourceManager.getMyResources(this.volatileData.getActiveUser().email);
-    
+
   }
 
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class SharedResourcesComponent implements OnInit {
     this.message="Are you sure you want to delete Resource?"
     this.modalState= true;
     this.resource=item;
-  
+
     event.stopPropagation();
   }
 
@@ -60,7 +60,7 @@ export class SharedResourcesComponent implements OnInit {
   }
 
   onSelected(user, i){
-    console.log(user.Name, i);
+    //console.log(user.Name, i);
     // this.adminresource.onEditResource(user,i);
     //this.route.navigate(["/home/content/SharedResources", i, user.Name]);
   }

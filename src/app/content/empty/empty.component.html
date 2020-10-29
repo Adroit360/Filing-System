@@ -46,7 +46,7 @@
               share
               <span
                 class="smart-tooltip stay-right overlay"
-                style="background-color: rgba(233, 141, 141, 0.685)"
+                style="background-color: rgba(100, 54, 54, 0.822)"
               >
                 <ul *ngFor="let list of NewResource; let i = index">
                   <li>
@@ -59,28 +59,32 @@
               </span>
             </p>
           </div>
-          <hr />
+          <!-- <hr /> -->
           <div *ngIf="item.itemType=='file'" class="text">
-            <h5>arrow_downward</h5>
+            <!-- <h5>arrow_downward</h5> -->
             <p ><a [href]="item.url">Download</a></p>
-          </div>
-          <hr />
-          <div class="text">
-            <!-- <h5>delete</h5> -->
-            <p (click)="onDelete()">Delete</p>
-          </div>
-        </span>
-      </span>
-
-      </div>
-    </a>
             </div>
-
-            <div *ngIf="createfolder">
-                <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>
+            <!-- <hr /> -->
+            <div class="text">
+                <!-- <h5>delete</h5> -->
+                <p>Request Approval</p>
             </div>
-
-            <div *ngIf="addfile">
-                <app-preview (onResult)="onPreviewResult($event)"></app-preview>
+            <div class="text">
+                <!-- <h5>delete</h5> -->
+                <p (click)="onDelete()">Delete</p>
             </div>
+            </span>
+            </span>
+
         </div>
+        </a>
+    </div>
+
+    <div *ngIf="createfolder">
+        <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>
+    </div>
+
+    <div *ngIf="addfile">
+        <app-preview (onResult)="onPreviewResult($event)"></app-preview>
+    </div>
+</div>

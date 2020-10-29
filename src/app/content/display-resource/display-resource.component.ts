@@ -20,7 +20,7 @@ export class DisplayResourceComponent implements OnInit {
     subscribe((item: {details:any,postion:any})=>{
       this.ResourceName=item.details.Name
 
-      //console.log(this.ResourceName);
+      console.log(this.ResourceName);
     })
 
 
