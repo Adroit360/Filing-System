@@ -18,9 +18,9 @@ export class DisplayResourceComponent implements OnInit {
   ngOnInit(): void {
     this.adminresource.EditResource.
     subscribe((item: {details:any,postion:any})=>{
-      this.ResourceName=item.details.Name
+      this.ResourceName=item.details.name
 
-      console.log(this.ResourceName);
+      //console.log(this.ResourceName);
     })
 
 
