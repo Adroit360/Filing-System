@@ -6,5 +6,6 @@
         <p>Please grant me approval</p>
     </div>
     <i class="fa fa-download" style="color: black;"></i>
-    <i class="fa fa-thumbs-up"></i>
+    <i class="fa fa-thumbs-up" (click)="onThumbClicked()"></i>
 </div>
+<app-reply-approvals *ngIf="thumbClicked" (onResult)="onModalResult($event)"></app-reply-approvals>

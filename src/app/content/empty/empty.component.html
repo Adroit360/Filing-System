@@ -66,7 +66,7 @@
             </div>
 
             <div class="text" *ngIf="item.itemType=='file'">
-                <p>Request Approval</p>
+                <p (click)="onShowRequest()">Request Approval</p>
             </div>
             <div class="text">
                 <p (click)="onDelete()">Delete</p>
@@ -87,3 +87,4 @@
             <app-preview (onResult)="onPreviewResult($event)"></app-preview>
         </div>
     </div>
+    <app-request-approvals *ngIf="requestModal" (onRequest)="onRequestModal($event)"></app-request-approvals>

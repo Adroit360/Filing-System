@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class RequestApprovalsComponent implements OnInit {
   RequestApproval: FormGroup
+  @Output("onRequest") OnResult:EventEmitter<boolean> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -20,11 +21,11 @@ export class RequestApprovalsComponent implements OnInit {
   }
 
   chooseOption(value: boolean){
-
+    
   }
 
   onSubmit(){
-
+    this.OnResult.emit(false);
   }
 
 }
