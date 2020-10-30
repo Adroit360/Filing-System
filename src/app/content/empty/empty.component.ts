@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DirectoryService } from '../../services/directory.service';
 import { DataService } from '../../services/data.service';
+import { SharedResourceService } from '../../services/shared-resource.service';
 import { AdminResourceService } from 'src/app/services/AdminResource.service';
 import { Resource } from 'src/app/models/resources.model';
 
@@ -29,14 +30,13 @@ export class EmptyComponent implements OnInit {
   currentBreadCrump;
   NewResource:any;
   currentUser:string="";
+  resources:any;
 
-  constructor(private data: DataService,private adminResource:AdminResourceService,
+  constructor(private data: DataService,private adminResource:AdminResourceService,private resourceManager:SharedResourceService,
     private activatedRoute: ActivatedRoute, private router: Router, private directory: DirectoryService) {
     this.currentUser = data.getActiveUser().email;
+    this.resources = this.resourceManager.getMyResources(this.currentUser);
     this.activatedRoute.paramMap.subscribe(param => {
-
-      //var hasQueryParams = this.activatedRoute.snapshot.queryParams.name;
-      // console.log("param", param);
 
       this.currentSectionId = param.get("sectionId");
       this.currentSectionName = param.get("sectionName");
@@ -68,6 +68,7 @@ export class EmptyComponent implements OnInit {
 
   ngOnInit(): void {
     this.NewResource=this.adminResource.getAllResources();
+   
   }
 
   onFolderClicked(directory) {
@@ -136,5 +137,11 @@ export class EmptyComponent implements OnInit {
 
   }
 
-  onShare(){}
+  onShare(){
+   
+  }
+
+  sendToResource(resource,item){
+    this.resourceManager.AddFileToResource(item,resource);
+  }
 }
