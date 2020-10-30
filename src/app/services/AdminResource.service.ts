@@ -1,4 +1,4 @@
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Resource } from '../models/resources.model';
 
 export class AdminResourceService{
@@ -13,6 +13,7 @@ private resources: Resource[]=[
   ];
 
 EditResource= new BehaviorSubject<any>({});
+header= new BehaviorSubject<any>({});
 
 // Adding a resource
   addResource(item:Resource){
@@ -44,6 +45,11 @@ UpdateResource(item:Resource, index){
   if (index != -1){
     this.resources[index]=item;
   }
+}
+
+//displaying the head
+onDisplay(item){
+  this.header.next({details:item})
 }
 
 }

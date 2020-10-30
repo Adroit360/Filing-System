@@ -20,9 +20,11 @@ export class PreviewComponent implements OnInit {
     console.log('onBack',value);
     }
 
-    async onUpload(){
+    async onUpload(value: boolean){
       let res = await this.directory.uploadFile(this.file,this.data.getActiveUser().email,this.data.getCurrentSection(),this.data.getCurrentDirectory());
       console.log(res,"response from upload");
+      //this.onBack;
+      this.onResult.emit(value);
     }
 
   onChange(event:any){
