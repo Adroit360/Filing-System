@@ -29,6 +29,7 @@ export class EmptyComponent implements OnInit {
   currentBreadCrump;
   NewResource:any;
   currentUser:string="";
+  requestModal = false; // turns on the request approval component
 
   constructor(private data: DataService,private adminResource:AdminResourceService,
     private activatedRoute: ActivatedRoute, private router: Router, private directory: DirectoryService) {
@@ -135,6 +136,13 @@ export class EmptyComponent implements OnInit {
     console.log(item);
 
   }
+  // displays the modal
+  onShowRequest(){
+    this.requestModal = !this.requestModal;
+  }
 
+  onRequestModal(value){
+    this.requestModal = value;
+  }
   onShare(){}
 }

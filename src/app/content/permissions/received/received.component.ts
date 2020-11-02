@@ -19,9 +19,17 @@ export class ReceivedComponent implements OnInit {
   {email: 'nadum@adroit360.com', date: '18/09/2020'},
 
 ]
+thumbClicked = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+
+  onThumbClicked(){
+    this.thumbClicked = !this.thumbClicked;
+  }
+  onModalResult(value){
+    this.thumbClicked = value;
+  }
 }
