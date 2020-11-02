@@ -16,7 +16,7 @@ export class DisplayResourceComponent implements OnInit {
   ResourceName: string;
   ResourceId:string;
   fontIcon = "fa fa-folder";
-  resources:[];
+  filesItemIds:[];
   files:any =[];
   constructor(private directoryManager:DirectoryService, private resourceManager:SharedResourceService, private adminresource: AdminResourceService, private section: SectionService, private route: Router ) 
   {
@@ -24,13 +24,13 @@ export class DisplayResourceComponent implements OnInit {
     subscribe((item: {details:any})=>{
       this.ResourceName=item.details.name
       this.ResourceId = item.details.id;
-      this.resources = item.details.objects;
+      this.filesItemIds = item.details.objects;
       console.log("this resource name ",this.ResourceName);
       // this.resources = this.resourceManager.getResourceObjects(this.ResourceId);
-      console.log("this are the content of " ,this.resources);
+      // console.log("this are the content of " ,this.resources);
     });
 
-    directoryManager.getFileList(this.resources).subscribe(result=>{
+    directoryManager.getFileList(this.filesItemIds).subscribe(result=>{
         this.files = result;
         console.log("this are the content of files " ,this.files);
     })

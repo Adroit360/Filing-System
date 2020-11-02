@@ -5,6 +5,7 @@ export interface User{
     role:string,
     accessList:[],
     creationdeletionPrivilege:Boolean,
+    sharedResources:[],
     isAdmin:Boolean
   }
 
