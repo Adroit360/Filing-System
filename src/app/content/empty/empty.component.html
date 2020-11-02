@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="head">
-      <h3 style="margin-left: 12px;
+    <div class="head">
+        <h3 style="margin-left: 12px;
       font-size: 30px;
       font-weight: bold;">{{ currentDirectoryName | uppercase }}</h3>
 
-      <div class="ssp">
-          <div class="add-folder">
-              <a (click)="newfolder()"><span class="material-icons"> folder_open</span>
+        <div class="ssp">
+            <div class="add-folder">
+                <a (click)="newfolder()"><span class="material-icons"> folder_open</span>
       <p>New Folder</p></a
     >
   </div>
@@ -43,11 +43,12 @@
       smart-tooltip-container>
       <span class="smart-tooltip stick stay-down overlay" id="tooltip">
         <div *ngIf="item.itemType=='file'" class="text">
-          <p  smart-tooltip-container>
+          <p >
             share
             <span
-              class="second-tooltip"
+
               style="background-color: rgba(100, 54, 54, 0.822)"
+              class="second-tooltip"
             >
               <ul *ngFor="let res of resources|async; let i = index">
                 <li>
@@ -62,29 +63,29 @@
         </div>
 
         <div *ngIf="item.itemType=='file'" class="text">
-          <p ><a [href]="item.url">Download</a></p>
-          </div>
+          <p ><a [href]="item.url" style="color: white; text-decoration: none;">Download</a></p>
+            </div>
 
-          <div class="text" *ngIf="item.itemType=='file'">
-              <p (click)="onShowRequest()">Request Approval</p>
-          </div>
-          <div class="text">
-              <p (click)="onDelete()">Delete</p>
-          </div>
-          </span>
-          </span>
+            <div class="text" *ngIf="item.itemType=='file'">
+                <p (click)="onShowRequest()">Request Approval</p>
+            </div>
+            <div class="text">
+                <p (click)="onDelete()">Delete</p>
+            </div>
+            </span>
+            </span>
 
-      </div>
-      </a>
+        </div>
+        </a>
 
 
 
-      <div *ngIf="createfolder">
-          <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>
-      </div>
+        <div *ngIf="createfolder">
+            <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>
+        </div>
 
-      <div *ngIf="addfile">
-          <app-preview (onResult)="onPreviewResult($event)"></app-preview>
-      </div>
-  </div>
-  <app-request-approvals *ngIf="requestModal" (onRequest)="onRequestModal($event)"></app-request-approvals>
+        <div *ngIf="addfile">
+            <app-preview (onResult)="onPreviewResult($event)"></app-preview>
+        </div>
+    </div>
+    <app-request-approvals *ngIf="requestModal" (onRequest)="onRequestModal($event)"></app-request-approvals>
