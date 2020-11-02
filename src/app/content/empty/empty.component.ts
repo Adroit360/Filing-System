@@ -6,6 +6,7 @@ import { DataService } from '../../services/data.service';
 import { SharedResourceService } from '../../services/shared-resource.service';
 import { AdminResourceService } from 'src/app/services/AdminResource.service';
 import { Resource } from 'src/app/models/resources.model';
+import { ApprovalService } from 'src/app/services/approval.service';
 
 @Component({
   selector: 'app-empty',
@@ -32,9 +33,10 @@ export class EmptyComponent implements OnInit {
   currentUser:string="";
   resources:any;
   requestModal = false; // turns on the request approval component
+  showTooltip = true;
 
   constructor(private data: DataService,private adminResource:AdminResourceService,private resourceManager:SharedResourceService,
-    private activatedRoute: ActivatedRoute, private router: Router, private directory: DirectoryService) {
+    private activatedRoute: ActivatedRoute, private router: Router, private directory: DirectoryService, private approve: ApprovalService) {
     this.currentUser = data.getActiveUser().email;
     this.resources = this.resourceManager.getMyResources(this.currentUser);
     // console.log("resources form ",this.resources);
@@ -70,7 +72,7 @@ export class EmptyComponent implements OnInit {
 
   ngOnInit(): void {
     this.NewResource=this.adminResource.getAllResources();
-   
+
   }
 
   onFolderClicked(directory) {
@@ -139,8 +141,16 @@ export class EmptyComponent implements OnInit {
 
   }
   // displays the modal
-  onShowRequest(){
+  onShowRequest(item , i, event){
+    this.showTooltip=false;
+    event.stopPropagation();
     this.requestModal = !this.requestModal;
+    this.approve.requestapprove(i,item);
+
+
+  }
+  onshow(){
+    this.showTooltip = true;
   }
 
 

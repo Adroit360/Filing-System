@@ -21,7 +21,7 @@
 </div>
 <h4>{{ currentDirectoryName }}</h4>
 <div class="folders">
-<a class="folder-container" *ngFor="let item of dirContent|async">
+<a class="folder-container" *ngFor="let item of dirContent|async;let i = index">
   <div (click)="onFolderClicked(item)" class="component">
     <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="https://img.icons8.com/fluent/48/000000/pdf.png"/>
     <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12'" src="https://img.icons8.com/fluent/48/000000/microsoft-powerpoint-2019.png"/>
@@ -35,12 +35,12 @@
 
   <div class="toggler">
 
-    <span class="more-icon material-icons">arrow_drop_down</span>
+    <span class="more-icon material-icons" (click)="onshow()">arrow_drop_down</span>
 
       <span
       id="hiddenText"
       class="material-icons clicktoshow"
-      smart-tooltip-container>
+      smart-tooltip-container *ngIf="showTooltip">
       <span class="smart-tooltip stick stay-down overlay" id="tooltip">
         <div *ngIf="item.itemType=='file'" class="text">
           <p >
@@ -67,7 +67,7 @@
             </div>
 
             <div class="text" *ngIf="item.itemType=='file'">
-                <p (click)="onShowRequest()">Request Approval</p>
+                <p (click)="onShowRequest(item ,i, $event)">Request Approval</p>
             </div>
             <div class="text">
                 <p (click)="onDelete()">Delete</p>
@@ -88,4 +88,4 @@
             <app-preview (onResult)="onPreviewResult($event)"></app-preview>
         </div>
     </div>
-    <app-request-approvals *ngIf="requestModal" (onRequest)="onRequestModal($event)"></app-request-approvals>
+    <app-request-approvals *ngIf="requestModal" (onResult)="onRequestModal($event)"></app-request-approvals>

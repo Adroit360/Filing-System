@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import {finalize} from 'rxjs/operators';
 import * as firebase from 'firebase/app';
 
@@ -21,5 +21,11 @@ interface Approval{
 })
 export class ApprovalService {
 
+  requestApproval= new BehaviorSubject<any>({})
   constructor() { }
+
+
+  requestapprove(index, item: any){
+    this.requestApproval.next({index,item});
+  }
 }
