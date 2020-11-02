@@ -142,7 +142,7 @@ export class EmptyComponent implements OnInit {
   }
   // displays the modal
   onShowRequest(item , i, event){
-    this.showTooltip=false;
+    //this.showTooltip=false;
     event.stopPropagation();
     this.requestModal = !this.requestModal;
     this.approve.requestapprove(i,item);
