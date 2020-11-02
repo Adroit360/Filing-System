@@ -10,5 +10,13 @@
         </div>
     </div>
 
+    <div class="folders">
+        <a class="folder-container" *ngFor="let item of files">
+            <div class="component">
+                <img src="https://img.icons8.com/fluent/48/000000/pdf.png" />
+                <p>{{item.name| truncate: 12}}</p>
+            </div>
+        </a>
+    </div>
 
 </div>
