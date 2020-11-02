@@ -1,4 +1,15 @@
 // @import '../../styles/components/buttons';
+@keyframes example {
+    from {
+        top: -100px;
+        opacity: 0;
+    }
+    to {
+        top: 0px;
+        opacity: 1;
+    }
+}
+
 .modal {
     /* Hidden by default */
     position: fixed;
@@ -19,6 +30,9 @@
     /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
     /* Black w/ opacity */
+    // ANIMATION
+    animation-name: example;
+    animation-duration: 1.5s;
 }
 
 
@@ -30,7 +44,7 @@
     padding: 19px;
     border: 1px solid #888;
     width: 500px;
-    height: 200px;
+    //height: 375px;
     border-radius: 10px;
 }
 
@@ -41,22 +55,35 @@ h2 {
 }
 
 input {
-    width: 90%;
-    height: 40px;
+    width: 70%;
+    // height: 40px;
     margin-top: 30px;
 }
 
 button {
-    width: 113px;
-    height: 50px;
+    width: 90px;
+    height: 40px;
     color: white;
     background-color: red;
     border: white;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 15px;
+    margin-top: 20px;
+    float: right;
 }
 
 .position {
     display: block;
     margin-top: 20px;
+}
+
+.imagePreview {
+    width: 64%;
+    //background: black;
+}
+
+img {
+    height: 200px;
+    width: 300px;
+    margin: 10px;
 }

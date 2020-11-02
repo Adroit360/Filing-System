@@ -43,15 +43,15 @@
         smart-tooltip-container>
         <span class="smart-tooltip stick stay-down overlay" id="tooltip">
           <div *ngIf="item.itemType=='file'" class="text">
-            <p (click)="onShare()" smart-tooltip-container>
+            <p>
               share
               <span
-                class="smart-tooltip stay-right overlay"
                 style="background-color: rgba(100, 54, 54, 0.822)"
+                class="second-tooltip"
               >
-                <ul *ngFor="let list of NewResource; let i = index">
-                  <li>
-                    <div>
+                <ul *ngFor="let list of NewResource; let i = index" >
+                  <li   (click)="selectedResource(list,$event)">
+                    <div >
                       <h2 class="listtext">{{ list.Name }}</h2>
                       <hr />
                     </div>
@@ -62,7 +62,7 @@
           </div>
 
           <div *ngIf="item.itemType=='file'" class="text">
-            <p ><a [href]="item.url">Download</a></p>
+            <p ><a [href]="item.url" style="text-decoration: none; color: white;">Download</a></p>
             </div>
 
             <div class="text" *ngIf="item.itemType=='file'">

@@ -5,9 +5,19 @@
     <!-- Modal content -->
     <div class="modal-content ">
         <h2>Upload a file</h2>
-        <input type="file" name="file" (change)="onChange($event)">
-        <div class="position">
-            <button type="button" (click)="onUpload( false)">Upload</button>
-        </div>
+        <form [formGroup]="uploadForm" style="display: grid;">
+            <input type="file" accept=" file_type| image/*" (change)="onChange($event)">
+
+            <!-- Image preview -->
+            <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+                <img [src]="imageURL" [alt]="uploadForm.value.name">
+
+            </div>
+
+
+            <button type="submit" (click)="onUpload( false)">Upload</button>
+
+        </form>
+
 
     </div>

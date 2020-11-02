@@ -144,5 +144,11 @@ export class EmptyComponent implements OnInit {
   onRequestModal(value){
     this.requestModal = value;
   }
-  onShare(){}
+
+  selectedResource(item, event){
+    //event.stopPropagation();
+    console.log(item);
+
+  }
 }
+
