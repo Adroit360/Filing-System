@@ -17,7 +17,7 @@
         <div class="list-container">
             <ul class="list" *ngFor="let resource of resources|async; let i = index">
                 <li>
-                    <div class="box-1" (click)="onSelected(resource, i)" [routerLink]="[i, resource.name]">
+                    <div class="box-1" (click)="onSelected(resource)" [routerLink]="[i, resource.name]">
                         <h2>{{ resource.name }}</h2>
 
                         <h2>{{ resource.date }}</h2>
