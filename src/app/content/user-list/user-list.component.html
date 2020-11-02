@@ -26,16 +26,13 @@
                     <h2>{{item.role}}</h2>
                     <h2>
 
-                        <i *ngIf="hooks[i]" class="material-icons" style="color: #ED1E23;" (click)="add(i)">
+                        <i *ngIf="!existInResource(item.email)" class="material-icons" style="color: #ED1E23;" (click)="add(item.email)">
                         control_point
                     </i>
 
-                        <span *ngIf="!hooks[i]" (click)="unAdd(i)" class="material-icons" style="color: green;">
+                        <span *ngIf="existInResource(item.email)" (click)="unAdd(item.email)" class="material-icons" style="color: green;">
                         check_circle_outline
                     </span>
-
-
-
 
                     </h2>
                 </div>

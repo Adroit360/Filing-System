@@ -1,5 +1,7 @@
 import { BehaviorSubject, Subject } from 'rxjs';
 import { User } from '../models/user.model';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 export class  UserService{
   private userDetails: User[]=[

@@ -17,6 +17,14 @@ h2 {
     margin: auto;
 }
 
+h3 {
+    margin: auto 20px;
+    font: 'Poppins';
+    font-weight: 900;
+    font-style: normal;
+    font-size: 30px;
+}
+
 h1 {
     margin: 0px 20px;
     font-weight: 900;
@@ -158,7 +166,10 @@ p {
 
 .text {
     //display: flex;
-    padding: 9px 0px 9px
+    padding: 9px 0px 9px a {
+        text-decoration: none;
+        color: white;
+    }
 }
 
 .second-tooltip {

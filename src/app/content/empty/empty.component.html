@@ -1,15 +1,15 @@
 <div class="container">
-    <div class="head">
-        <h3 style="margin-left: 12px;
-        font-size: 30px;
-        font-weight: bold;">{{ currentDirectoryName | uppercase }}</h3>
+  <div class="head">
+      <h3 style="margin-left: 12px;
+      font-size: 30px;
+      font-weight: bold;">{{ currentDirectoryName | uppercase }}</h3>
 
-        <div class="ssp">
-            <div class="add-folder">
-                <a (click)="newfolder()"><span class="material-icons"> folder_open</span>
-        <p>New Folder</p></a
-      >
-    </div>
+      <div class="ssp">
+          <div class="add-folder">
+              <a (click)="newfolder()"><span class="material-icons"> folder_open</span>
+      <p>New Folder</p></a
+    >
+  </div>
 
   <div class="beneath">
     <a (click)="Addfile()"
@@ -24,7 +24,6 @@
 <a class="folder-container" *ngFor="let item of dirContent|async">
   <div (click)="onFolderClicked(item)" class="component">
     <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="https://img.icons8.com/fluent/48/000000/pdf.png"/>
-    <img *ngIf="item.itemType=='file' && item.contentType=='image/png' || item.itemType=='file' && item.contentType=='image/jpeg' "  src="https://img.icons8.com/fluent/48/000000/pdf.png"/>
     <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12'" src="https://img.icons8.com/fluent/48/000000/microsoft-powerpoint-2019.png"/>
     <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'"src="https://img.icons8.com/color/48/000000/microsoft-word-2019--v2.png"/>
     <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'"src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png"/>
@@ -34,51 +33,58 @@
     <p *ngIf="item.itemType=='file'" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
   </div>
 
+  <div class="toggler">
 
-        <span
-        id="hiddenText"
-        class="material-icons clicktoshow"
-        smart-tooltip-container>
-        <span class="smart-tooltip stick stay-down overlay" id="tooltip">
-          <div *ngIf="item.itemType=='file'" class="text">
-            <p (click)="onShare()" smart-tooltip-container>
-              share
-              <span
-                class="smart-tooltip stay-right overlay"
-                style="background-color: rgba(100, 54, 54, 0.822)"
-              >
-                <ul *ngFor="let list of NewResource; let i = index">
-                  <li>
-                    <div>
-                      <h2 class="listtext">{{ list.Name }}</h2>
-                      <hr />
-                    </div>
-                  </li>
-                </ul>
-              </span>
-            </p>
-          </div>
+    <span class="more-icon material-icons">arrow_drop_down</span>
 
-          <div *ngIf="item.itemType=='file'" class="text">
-            <p ><a [href]="item.url">Download</a></p>
-          </div>
-
-            <div class="text" *ngIf="item.itemType=='file'">
-                <p>Request Approval</p>
-            </div>
-            <div class="text">
-                <p (click)="onDelete()">Delete</p>
-            </div>
+      <span
+      id="hiddenText"
+      class="material-icons clicktoshow"
+      smart-tooltip-container>
+      <span class="smart-tooltip stick stay-down overlay" id="tooltip">
+        <div *ngIf="item.itemType=='file'" class="text">
+          <p (click)="onShare()" smart-tooltip-container>
+            share
+            <span
+              class="smart-tooltip stay-right overlay"
+              style="background-color: rgba(100, 54, 54, 0.822)"
+            >
+              <ul *ngFor="let res of resources|async; let i = index">
+                <li>
+                  <div  (click)="sendFileToResource(item.id,res.id)">
+                    <h2 class="listtext">{{ res.name }}</h2>
+                    <hr />
+                  </div>
+                </li>
+              </ul>
             </span>
-            </span>
-    </a>
-
-
-        <div *ngIf="createfolder">
-            <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>
+          </p>
         </div>
 
-        <div *ngIf="addfile">
-            <app-preview (onResult)="onPreviewResult($event)"></app-preview>
-        </div>
-    </div>
+        <div *ngIf="item.itemType=='file'" class="text">
+          <p ><a [href]="item.url">Download</a></p>
+          </div>
+
+          <div class="text" *ngIf="item.itemType=='file'">
+              <p (click)="onShowRequest()">Request Approval</p>
+          </div>
+          <div class="text">
+              <p (click)="onDelete()">Delete</p>
+          </div>
+          </span>
+          </span>
+
+      </div>
+      </a>
+
+
+
+      <div *ngIf="createfolder">
+          <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>
+      </div>
+
+      <div *ngIf="addfile">
+          <app-preview (onResult)="onPreviewResult($event)"></app-preview>
+      </div>
+  </div>
+  <app-request-approvals *ngIf="requestModal" (onRequest)="onRequestModal($event)"></app-request-approvals>

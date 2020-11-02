@@ -31,25 +31,6 @@ export class MessengerService {
       this.approvalDocs = database.collection('ApprovalDocuments');
   }
 
-  //  private basePath="uploads/archives/uy"
-  // async uploadEvent(uploadFile:any){
-  //   let fileUpload:any={}
-  //   const filePath = `${this.basePath}/${uploadFile.name}`;
-  //   const storageRef = this.afStorage.ref(filePath);
-  //   const uploadTask = this.afStorage.upload(filePath, uploadFile);
-
-  //   uploadTask.snapshotChanges().pipe(
-  //         finalize(() => {
-  //           storageRef.getDownloadURL().subscribe(downloadURL => {
-  //             console.log('File available at', downloadURL);
-  //             fileUpload={url: downloadURL, name: uploadFile.name};
-  //            console.log("what will be saved in the db",fileUpload);
-              
-  //           });
-  //         })
-  //       ).subscribe();
-  // }
-
 
   // create user
   async NewUser(firstName,lastName,email,role){
@@ -326,7 +307,7 @@ async createApprovalRequest(request:ApprovalRequest){
   
   await this.approvalDocs.doc(reqDoc.id).set(reqDoc).catch(e=>{console.log(e);return false;});
 
-  return true;
+   
 }
 
 

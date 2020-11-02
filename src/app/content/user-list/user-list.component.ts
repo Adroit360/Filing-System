@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 import { DataService } from 'src/app/services/data.service';
 import { MessengerService } from 'src/app/services/messenger.service';
+import { SharedResourceService } from 'src/app/services/shared-resource.service';
+import { AdminResourceService } from 'src/app/services/AdminResource.service';
 
 @Component({
   selector: 'app-user-list',
@@ -16,41 +18,63 @@ export class UserListComponent implements OnInit {
   checked;
   status=true;
   hooks=[];
-  constructor(private data: DataService, private msg: MessengerService ) {
+  ResourceId:string;
+  resource:any;
+  subjects:any=[];
+  subs:[];
 
-    //this.hooks=this.users.map(i=>true);
-
+  constructor(private adminresource: AdminResourceService,private data: DataService, private msg: MessengerService,private resourceManager:SharedResourceService ) {
+    this.adminresource.EditResource.
+    subscribe((item: {details:any})=>{     
+      this.ResourceId = item.details.id;
+      // this.subjects = item.details.subjects;
+      // console.log("subjects",this.subjects);
+    });
+     this.resourceManager.getResourceSubjects(this.ResourceId).subscribe(result=>{
+      this.subjects = result.data().subjects;
+      this.subs =  result.data().subjects;
+      console.log(this.subjects, "this is subject array")
+    })
+  
+   
   }
 
   ngOnInit(): void {
      this.msg.getUsers().subscribe(users=>{
       this.users = users;
       console.log(this.users);
-    this.hooks=this.users.map(i=>true);
+    // this.hooks=this.users.map(i=>true);
     });
 
   }
 
-  add(index){
-    console.log(index);
-
-    for (let i = 0; i < this.hooks.length; i++) {
-      if(i == index){
-        this.hooks[i]= false;
-        //this.checked=true;
-      }
-    }
+  async add(userEmail){
+    
+       await  this.resourceManager.AddSubjectToResource(userEmail,this.ResourceId);
+      this.updateSubjects();
+    
 
   }
 
-  unAdd(index){
-    for (let i = 0; i < this.hooks.length; i++) {
-      if(i==index){
-        this.hooks[i]=true;
-       // this.checked=false;
-      }
+  async unAdd(userEmail){
+    // for (let i = 0; i < this.hooks.length; i++) {
+    //   if(i==index){
+    //     // this.hooks[i]=true;
+        await this.resourceManager.RemoveSubjectFromResource(userEmail,this.ResourceId);
+        this.updateSubjects();
+    //   }
 
-    }
+    // }
   }
 
+  existInResource(em:string){
+      return   this.subjects.includes(em);
+  }
+
+ async updateSubjects(){
+    await this.resourceManager.getResourceSubjects(this.ResourceId).subscribe(result=>{
+      this.subjects = result.data().subjects;
+      console.log(this.subjects, "this is subject array")
+    })
+  }
 }

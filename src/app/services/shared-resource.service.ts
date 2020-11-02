@@ -63,10 +63,11 @@ export class SharedResourceService {
 
   async AddFileToResource(fileId,resourceId){
     let objects=[];
-    await firebase.firestore().collection("SharedResources").where("id","==",resourceId).get().then(a=>objects=a.docs[0].data().objects);
-    if(!objects.includes(fileId)){
+    // await firebase.firestore().collection("SharedResources").where("id","==",resourceId).get().then(a=>objects=a.docs[0].data().objects);
+    // if(!objects.includes(fileId)){
+      console.log("resource id",resourceId,'file id ', fileId);
       await this.resourceCollection.doc(resourceId).update({objects:this.arrayUnion(fileId)});
-    }  
+    // }  
   }
 
   async RemoveFileFromResource(fileId,resourceId){
@@ -88,16 +89,26 @@ export class SharedResourceService {
 
   // add a user to a shared resource
   async AddSubjectToResource(subjectId,resourceId){
-    let subjects=[];
-    await firebase.firestore().collection("SharedResources").where("id","==",resourceId).get().then(a=>subjects=a.docs[0].data().subjects);
-    if(!subjects.includes(subjectId)){
+    // let subjects=[];
+    // await firebase.firestore().collection("SharedResources").where("id","==",resourceId).get().then(a=>subjects=a.docs[0].data().subjects);
+    // if(!subjects.includes(subjectId)){
       await this.resourceCollection.doc(resourceId).update({subjects:this.arrayUnion(subjectId)});
-    }  
+    // }  
   }
 
   // remove a user
   async RemoveSubjectFromResource(subjectId,resourceId){
     await this.resourceCollection.doc(resourceId).update({subjects:this.arrayRemove(subjectId)});
+  }
+
+  async getResourceObjects(resource){
+    let items=[];
+    return this.resourceCollection.doc(resource).get();
+  }
+
+  getResourceSubjects(resource){
+    
+    return this.resourceCollection.doc(resource).get();
   }
 
 }

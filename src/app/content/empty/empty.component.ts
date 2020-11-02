@@ -31,11 +31,13 @@ export class EmptyComponent implements OnInit {
   NewResource:any;
   currentUser:string="";
   resources:any;
+  requestModal = false; // turns on the request approval component
 
   constructor(private data: DataService,private adminResource:AdminResourceService,private resourceManager:SharedResourceService,
     private activatedRoute: ActivatedRoute, private router: Router, private directory: DirectoryService) {
     this.currentUser = data.getActiveUser().email;
     this.resources = this.resourceManager.getMyResources(this.currentUser);
+    // console.log("resources form ",this.resources);
     this.activatedRoute.paramMap.subscribe(param => {
 
       this.currentSectionId = param.get("sectionId");
@@ -136,12 +138,18 @@ export class EmptyComponent implements OnInit {
     console.log(item);
 
   }
-
-  onShare(){
-   
+  // displays the modal
+  onShowRequest(){
+    this.requestModal = !this.requestModal;
   }
 
-  sendToResource(resource,item){
+
+  sendFileToResource(item,resource){
+    console.log("resource clicked");
     this.resourceManager.AddFileToResource(item,resource);
   }
+  onRequestModal(value){
+    this.requestModal = value;
+  }
+  onShare(){}
 }
