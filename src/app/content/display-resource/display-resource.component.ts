@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AdminResourceService } from 'src/app/services/AdminResource.service';
 import { SectionService } from 'src/app/services/section.service';
 import { SharedResourceService } from 'src/app/services/shared-resource.service';
+import { DirectoryService } from 'src/app/services/directory.service';
 
 @Component({
   selector: 'app-display-resource',
@@ -16,7 +17,8 @@ export class DisplayResourceComponent implements OnInit {
   ResourceId:string;
   fontIcon = "fa fa-folder";
   resources:[];
-  constructor(private resourceManager:SharedResourceService, private adminresource: AdminResourceService, private section: SectionService, private route: Router ) 
+  files:any =[];
+  constructor(private directoryManager:DirectoryService, private resourceManager:SharedResourceService, private adminresource: AdminResourceService, private section: SectionService, private route: Router ) 
   {
     this.adminresource.EditResource.
     subscribe((item: {details:any})=>{
@@ -25,8 +27,14 @@ export class DisplayResourceComponent implements OnInit {
       this.resources = item.details.objects;
       console.log("this resource name ",this.ResourceName);
       // this.resources = this.resourceManager.getResourceObjects(this.ResourceId);
-      console.log("this are the content of " ,item.details.objects);
+      console.log("this are the content of " ,this.resources);
+    });
+
+    directoryManager.getFileList(this.resources).subscribe(result=>{
+        this.files = result;
+        console.log("this are the content of files " ,this.files);
     })
+
   }
 
   ngOnInit(): void {

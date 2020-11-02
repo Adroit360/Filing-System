@@ -43,16 +43,16 @@
       smart-tooltip-container>
       <span class="smart-tooltip stick stay-down overlay" id="tooltip">
         <div *ngIf="item.itemType=='file'" class="text">
-          <p (click)="onShare()" smart-tooltip-container>
+          <p  smart-tooltip-container>
             share
             <span
-              class="smart-tooltip stay-right overlay"
+              class="second-tooltip"
               style="background-color: rgba(100, 54, 54, 0.822)"
             >
               <ul *ngFor="let res of resources|async; let i = index">
                 <li>
-                  <div  (click)="sendFileToResource(item.id,res.id)">
-                    <h2 class="listtext">{{ res.name }}</h2>
+                  <div >
+                    <h2  (click)="sendFileToResource(item.id,res.id)" class="listtext">{{ res.name }}</h2>
                     <hr />
                   </div>
                 </li>

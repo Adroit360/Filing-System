@@ -180,11 +180,11 @@ p {
     color: white;
     border-radius: 10px;
     height: auto;
-    width: 100px;
+    // width: 50px;
     text-align: center;
     font-size: 15px;
     /* line-height: 50px; */
-    padding: 10px 15px 12px 13px;
+    padding: 8px 15px 12px 13px;
     opacity: 0;
 }
 
@@ -202,4 +202,13 @@ p {
 
 .listtext {
     font-size: 12px;
+    padding: 10px;
+}
+
+.smart-tooltip {
+    padding: 0px;
+    // height: 200px;
+    p {
+        padding: 8px 0px 5px 3px;
+    }
 }

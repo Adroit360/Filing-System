@@ -76,6 +76,14 @@ export class DirectoryService {
     return this.subarchives;
   }
 
+  getFileList(listItems:[]){
+    console.log("listitems in getfilelist ", listItems);
+    this.subarchivesCollection = this.afs.collection<Archives>('Archives',ref=> ref.where('id','in',listItems));
+    this.subarchives = this.subarchivesCollection.valueChanges();
+    return this.subarchives;
+  }
+
+
   newArchive:Archives={
     id:"",
     sectionId:"",
