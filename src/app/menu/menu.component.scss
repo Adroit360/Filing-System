@@ -1,0 +1,184 @@
+@mixin active() {
+    background-color: #FFFFFF;
+    -webkit-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    border-right: 10px solid #ED1E23;
+}
+
+ng-sidebar-container {
+    display: none;
+    height: 100vh;
+}
+
+.logo img {
+    width: 13.25rem;
+    height: 5.56rem;
+    margin-left: 4.3rem;
+    margin-top: 1.63rem;
+}
+
+h2 {
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    padding-left: 1.25rem;
+    color: #808080;
+}
+
+.admin-tools {
+    box-sizing: border-box;
+}
+
+ul {
+    padding: 1.25rem;
+    list-style: none;
+}
+
+p {
+    margin-top: 0.8rem;
+}
+
+li {
+    padding: 0.2rem;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.44rem;
+    letter-spacing: 0em;
+    text-align: left;
+    &:hover {
+        @include active();
+        border-right: none;
+    }
+}
+
+li span {
+    font-size: 30px;
+}
+
+li a {
+    text-decoration: none;
+    color: #808080;
+    padding: 1.1rem;
+    cursor: pointer;
+}
+
+.admin-tools li a {
+    display: grid;
+    grid-template-columns: 1fr 4.5fr;
+}
+
+.admin-tools-inbox li {
+    display: grid;
+}
+
+.active {
+    @include active();
+}
+
+.admin-tools-inbox {
+    margin-top: 1rem;
+}
+
+.border-up {
+    border-top: 2px solid;
+    width: 85%;
+    margin-left: 1.25rem;
+    color: #808080;
+}
+
+.admin-tools .custom-seciton {
+    height: 33vh;
+    overflow: auto;
+    margin-top: 0.94rem;
+    margin-bottom: 1rem;
+}
+
+.tooltip>span {
+    height: 30px;
+    width: 60px;
+    font-size: 15px;
+}
+
+span>h4 {
+    cursor: pointer;
+}
+
+.active2 {
+    @include active();
+    border-right: none;
+}
+
+
+/*.custom-seciton li:hover {
+    @include active();
+    border-right: none;
+}*/
+
+input {
+    border: none;
+    outline: transparent;
+    border-bottom: 3px solid #ED1E23;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+    font-size: 1.7rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+
+/*
+
+@media screen and (max-width: 800px) {
+    ng-sidebar-container {
+        display: block;
+        height: 100vh;
+        width: 300px;
+        .sidebar {
+            margin-left: 15%;
+            margin-top: 8%;
+        }
+        .bar1,
+        .bar2,
+        .bar3 {
+            display: block;
+            height: 10px;
+            background-color: #ED1E23;
+            width: 60px;
+            margin: 6px 0px;
+            transition: 0.4s;
+        }
+    }
+     ::ng-deep .ng-sidebar {
+        background-color: white;
+        padding: 2rem 3rem;
+        // width: 400px;
+        box-shadow: 0 0 2.5rem rgba(85, 85, 85, 0.5);
+    }
+    ng-sidebar .admin-tools,
+    .admin-tools-inbox {
+        display: block;
+    }
+    ng-sidebar .admin-tools-inbox {
+        display: block;
+    }
+    .admin-tools,
+    .logo,
+    .admin-tools-inbox {
+        // margin-top: 30px;
+        display: none;
+    }
+    li a {
+        text-decoration: none;
+        color: #ED1E23;
+        padding: 0.63rem;
+        cursor: pointer;
+    }
+}*/

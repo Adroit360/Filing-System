@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Approvals </h1>
+    <div class="options">
+        <div class="sent-recieve">
+            <a [ngClass]="{'active': showSent}" (click)="onSentClicked()">Sent</a>
+            <a [ngClass]="{'active': showReceived}" (click)="onReceivedClicked()">Received</a>
+        </div>
+    </div>
+    <div class="d-container">
+        <!-- <div class="details" *ngFor="let item of permissionDetails">
+            <div class="user-details">
+                <h2>{{item.email | truncate: 20}}</h2>
+                <p>{{item.date}}</p>
+                <p>Please grant me approval</p>
+            </div>
+            <i class="fa fa-check-circle"></i>
+        </div> -->
+        <app-sent *ngIf="showSent"></app-sent>
+        <app-received *ngIf="showReceived"></app-received>
+    </div>
+
+
+</div>

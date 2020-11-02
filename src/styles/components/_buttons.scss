@@ -1,0 +1,24 @@
+/*****for buttons*********/
+
+.submit {
+    display: flex;
+    grid-gap: 0.94rem;
+    margin: 40px auto;
+    justify-content: center;
+}
+
+button {
+    height: 6rem;
+    width: 20rem;
+    border-radius: 2rem;
+    font-size: 1.6rem;
+    border: 2px solid;
+    outline: transparent;
+    cursor: pointer;
+}
+
+#btn {
+    background-color: #ED1E23;
+    color: aliceblue;
+    border: none;
+}
