@@ -17,7 +17,15 @@ export class DisplayResourceComponent implements OnInit {
   {name: 'maketting'},{name: 'maketting'},{name: 'maketting'},{name: 'maketting'},
   {name: 'maketting'},{name: 'maketting'},{name: 'maketting'},{name: 'maketting'},
   {name: 'maketting'},{name: 'maketting'},{name: 'maketting'},{name: 'maketting'},
-  {name: 'maketting'},{name: 'maketting'},{name: 'maketting'},{name: 'maketting'}
+  {name: 'maketting'},{name: 'maketting'},{name: 'maketting'},{name: 'maketting'},
+  {name: 'maketting'},{name: 'maketting'},{name: 'maketting'},{name: 'maketting'},
+  {name: 'maketting'},{name: 'maketting'},{name: 'maketting'},{name: 'maketting'},
+  {name: 'maketting'},{name: 'maketting'},{name: 'maketting'},{name: 'maketting'},
+  {name: 'maketting'},{name: 'maketting'},{name: 'maketting'},{name: 'maketting'},
+  {name: 'maketting'},{name: 'maketting'},{name: 'maketting'},{name: 'maketting'},
+  {name: 'maketting'},{name: 'maketting'},{name: 'maketting'},{name: 'maketting'},
+  {name: 'maketting'},{name: 'maketting'},{name: 'maketting'},{name: 'maketting'},
+  {name: 'maketting'},{name: 'maketting'},{name: 'maketting'},{name: 'maketting'},
 ]
   constructor(private adminresource: AdminResourceService, private section: SectionService, private route: Router ) { }
 

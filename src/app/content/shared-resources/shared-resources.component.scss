@@ -7,6 +7,35 @@
     padding: 10px 36px;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.main .list-container {
+    height: 32vh;
+    overflow: auto;
+    // border: 1px solid blue;
+    margin-bottom: 1rem;
+}
+
+.main-2 {
+    .list-container {
+        height: 31vh;
+        overflow: auto;
+    }
+    h2 {
+        font-size: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+.border {
+    border-bottom: 6px solid #b3b3b3;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+}
+
 .right-side {
     cursor: pointer;
 }

@@ -19,6 +19,12 @@ export class SharedResourcesComponent implements OnInit {
   resource: any;
   resources:any;
 
+  dummyResource = [{name:'kwaku', date: '10/09/98'}, {name:'kwaku', date: '10/09/98'},
+  {name:'kwaku', date: '10/09/98'},{name:'kwaku', date: '10/09/98'}, {name:'kwaku', date: '10/09/98'},
+  {name:'kwaku', date: '10/09/98'},{name:'kwaku', date: '10/09/98'}, {name:'kwaku', date: '10/09/98'},
+  {name:'kwaku', date: '10/09/98'}
+]
+
   constructor( private adminresource: AdminResourceService ,private route: Router,private resourceManager:SharedResourceService,private volatileData:DataService) {
     this.resources = this.resourceManager.getMyResources(this.volatileData.getActiveUser().email);
 
