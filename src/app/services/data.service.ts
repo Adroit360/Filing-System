@@ -14,6 +14,7 @@ export class DataService {
     email:"",
     accessList:[],
     creationdeletionPrivilege:false,
+    sharedResources:[],
     isAdmin:false
   }
 

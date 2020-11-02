@@ -44,7 +44,7 @@
             <div class="main-2">
                 <h2>External Shared Resources</h2>
                 <div class="list-container" style="cursor: pointer;">
-                    <ul class="list" *ngFor="let resource of dummyResource; let i = index">
+                    <ul class="list" *ngFor="let resource of externalResources|async; let i = index">
                         <li>
                             <div class="box-1">
                                 <h2>{{ resource.name }}</h2>
@@ -53,7 +53,7 @@
                                 <h2>
                                     <div class="sps">
                                         <span>
-                      <span class="material-icons" style="background-color: white">
+                      <span (click)="onDeleteGroup(resource.id,$event)" class="material-icons" style="background-color: white">
                         delete_outline
                       </span>
                                         </span>

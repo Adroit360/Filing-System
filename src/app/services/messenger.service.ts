@@ -41,6 +41,7 @@ export class MessengerService {
       role:role,
       accessList:[],
       creationdeletionPrivilege:false,
+      sharedResources:[],
       isAdmin:false
     }
     
