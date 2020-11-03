@@ -1,7 +1,7 @@
 <div>
     <div class="header">
         <h2>{{ResourceName}}</h2>
-        <div class="right-side">
+        <div *ngIf="CurrentUser==ResourceOwner" class="right-side">
 
             <i class="material-icons" style="color: #ED1E23;">
           control_point
@@ -9,9 +9,7 @@
             <a class="active" (click)="AddUser()">Add User</a>
         </div>
     </div>
-    <div>
-        <h3 *ngFor="let item of filesItemIds;">{{item}}</h3>
-    </div>
+   
 
     <div class="folders">
         <a class="folder-container" *ngFor="let item of files">

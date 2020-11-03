@@ -46,15 +46,16 @@ export class SharedResourceService {
   }
 
   getMyExternalResources(user:string){
-    this.userCollection = this.afs.collection<User>('User',ref=>ref.where("id",'==',user));
+
+    this.userCollection = this.afs.collection<User>('Users',ref=>ref.where("email",'==',user));
     this.users = this.userCollection.valueChanges();
-   
     return this.users;
   }
 
   async getAssignedResources(user:string){
 
   }
+
   private newResource:Resource;
   async createResource(resourceName:string,owner:string){
     let id = this.afs.createId();
@@ -100,27 +101,23 @@ export class SharedResourceService {
   }
 
   // add a user to a shared resource
-  async AddSubjectToResource(subjectId,resourceId){
+  async AddSubjectToResource(subjectId,resourceId,resourceName,owner){
   
       await this.resourceCollection.doc(resourceId).update({subjects:this.arrayUnion(subjectId)});
-      await this.userCollection.doc(subjectId).update({sharedResources:this.arrayUnion(resourceId)});
+      await this.userCollection.doc(subjectId).update({sharedResources:this.arrayUnion({id:resourceId,name:resourceName,owner:owner})});
     
   }
 
   // remove a user
-  async RemoveSubjectFromResource(subjectId,resourceId){
+  async RemoveSubjectFromResource(subjectId,resourceId,resourceName,owner){
     await this.resourceCollection.doc(resourceId).update({subjects:this.arrayRemove(subjectId)});
-    await this.userCollection.doc(subjectId).update({sharedResources:this.arrayRemove(resourceId)});
+    await this.userCollection.doc(subjectId).update({sharedResources:this.arrayRemove({id:resourceId,name:resourceName,owner:owner})});
   }
 
-  async getResourceObjects(resource){
+   GetResource(resource){
     let items=[];
     return this.resourceCollection.doc(resource).get();
   }
 
-  getResourceSubjects(resource){
-    
-    return this.resourceCollection.doc(resource).get();
-  }
-
+ 
 }
