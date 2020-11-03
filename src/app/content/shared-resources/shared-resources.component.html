@@ -49,16 +49,17 @@
                             <div class="box-1" (click)="getResource(resource.id)" [routerLink]="[i, resource.name]">
                                 <h2>{{ resource.name }}</h2>
 
-                                <!-- <h2>{{ resource }}</h2> -->
-                                <h2>
-                                    <div class="sps">
+                                
+                                <div>
+                                    {{resource.owner}}
+                                    <!-- <div class="sps">
                                         <span>
                       <span (click)="onDeleteGroup(resource.id,$event)" class="material-icons" style="background-color: white">
-                        delete_outline
+                        {{resource.owner}}
                       </span>
                                         </span>
-                                    </div>
-                                </h2>
+                                    </div> -->
+                                </div>
                             </div>
                         </li>
                     </ul>
