@@ -20,12 +20,8 @@ export class DisplayResourceComponent implements OnInit {
   fontIcon = "fa fa-folder";
   filesItemIds:[];
   files:any =[];
-<<<<<<< HEAD
-  showTooltip: any= 1;
-  constructor(private directoryManager:DirectoryService, private resourceManager:SharedResourceService, private adminresource: AdminResourceService, private section: SectionService, private route: Router )
-=======
-  constructor(private directoryManager:DirectoryService, userVolatileData:DataService, private adminresource: AdminResourceService, private section: SectionService, private route: Router ) 
->>>>>>> b7d608e720af566a8f8978bdb39270a65328751c
+  showTooltip: any =1
+  constructor(private directoryManager:DirectoryService, userVolatileData:DataService, private adminresource: AdminResourceService, private section: SectionService, private route: Router )
   {
     this.adminresource.EditResource.
     subscribe((item: {details:any})=>{
@@ -41,12 +37,12 @@ export class DisplayResourceComponent implements OnInit {
     if (this.filesItemIds.length>0){
       directoryManager.getFileList(this.filesItemIds).subscribe(result=>{
         this.files = result;
-        
+
       });
     }
 
     this.CurrentUser = userVolatileData.getActiveUser().email;
-   
+
 
   }
 

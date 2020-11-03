@@ -34,7 +34,7 @@ export class SharedResourcesComponent implements OnInit {
      });
 
     // this.externalResources = this.volatileData.getActiveUser().sharedResources;
-    
+
 
   }
 
