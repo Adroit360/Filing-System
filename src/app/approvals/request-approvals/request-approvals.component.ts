@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApprovalService } from 'src/app/services/approval.service';
 
 @Component({
   selector: 'app-request-approvals',
@@ -8,8 +9,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class RequestApprovalsComponent implements OnInit {
   RequestApproval: FormGroup
-  @Output("onRequest") OnResult:EventEmitter<boolean> = new EventEmitter();
-  constructor() { }
+  @Output("onResult") OnResult:EventEmitter<boolean> = new EventEmitter();
+  constructor( private approve: ApprovalService) { }
 
   ngOnInit(): void {
     this.RequestApproval = new FormGroup({
@@ -21,11 +22,12 @@ export class RequestApprovalsComponent implements OnInit {
   }
 
   chooseOption(value: boolean){
-    
+    this.OnResult.emit(value);
   }
 
   onSubmit(){
-    this.OnResult.emit(false);
+    //this.OnResult.emit(false);
+    this.approve.requestApproval.subscribe((item)=>console.log(item));
   }
 
 }
