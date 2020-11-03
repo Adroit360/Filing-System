@@ -33,7 +33,7 @@ export class EmptyComponent implements OnInit {
   currentUser:string="";
   resources:any;
   requestModal = false; // turns on the request approval component
-  showTooltip = true;
+  showTooltip: any= 1;
 
   constructor(private data: DataService,private adminResource:AdminResourceService,private resourceManager:SharedResourceService,
     private activatedRoute: ActivatedRoute, private router: Router, private directory: DirectoryService, private approve: ApprovalService) {
@@ -142,15 +142,14 @@ export class EmptyComponent implements OnInit {
   }
   // displays the modal
   onShowRequest(item , i, event){
-    //this.showTooltip=false;
+    this.showTooltip= +!this.showTooltip;
     event.stopPropagation();
     this.requestModal = !this.requestModal;
     this.approve.requestapprove(i,item);
 
-
   }
   onshow(){
-    this.showTooltip = true;
+    //this.showTooltip = 0;
   }
 
 
@@ -159,7 +158,9 @@ export class EmptyComponent implements OnInit {
     this.resourceManager.AddFileToResource(item,resource);
   }
   onRequestModal(value){
+    this.showTooltip = +true;
     this.requestModal = value;
+
   }
 
   selectedResource(item, event){
