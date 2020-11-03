@@ -19,6 +19,8 @@ export class UserListComponent implements OnInit {
   status=true;
   hooks=[];
   ResourceId:string;
+  ResourceName:string;
+  ResourceOwner:string;
   resource:any;
   subjects:any=[];
   subs:[];
@@ -27,10 +29,12 @@ export class UserListComponent implements OnInit {
     this.adminresource.EditResource.
     subscribe((item: {details:any})=>{     
       this.ResourceId = item.details.id;
+      this.ResourceName = item.details.name;
+      this.ResourceOwner = item.details.owner;
       // this.subjects = item.details.subjects;
       // console.log("subjects",this.subjects);
     });
-     this.resourceManager.getResourceSubjects(this.ResourceId).subscribe(result=>{
+     this.resourceManager.GetResource(this.ResourceId).subscribe(result=>{
       this.subjects = result.data().subjects;
       this.subs =  result.data().subjects;
       console.log(this.subjects, "this is subject array")
@@ -50,7 +54,7 @@ export class UserListComponent implements OnInit {
 
   async add(userEmail){
     
-       await  this.resourceManager.AddSubjectToResource(userEmail,this.ResourceId);
+       await  this.resourceManager.AddSubjectToResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner);
       this.updateSubjects();
     
 
@@ -60,7 +64,7 @@ export class UserListComponent implements OnInit {
     // for (let i = 0; i < this.hooks.length; i++) {
     //   if(i==index){
     //     // this.hooks[i]=true;
-        await this.resourceManager.RemoveSubjectFromResource(userEmail,this.ResourceId);
+        await this.resourceManager.RemoveSubjectFromResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner);
         this.updateSubjects();
     //   }
 
@@ -72,7 +76,7 @@ export class UserListComponent implements OnInit {
   }
 
  async updateSubjects(){
-    await this.resourceManager.getResourceSubjects(this.ResourceId).subscribe(result=>{
+    await this.resourceManager.GetResource(this.ResourceId).subscribe(result=>{
       this.subjects = result.data().subjects;
       console.log(this.subjects, "this is subject array")
     })

@@ -18,7 +18,7 @@ export class SharedResourcesComponent implements OnInit {
   today: number= Date.now();
   resource: any;
   resources:any;
- externalResources:any;
+ externalResources:[];
 
   dummyResource = [
     {name: 'beans', date: '10-22-1998'}, {name: 'beans', date: '10-22-1998'}, {name: 'beans', date: '10-22-1998'},
@@ -28,7 +28,13 @@ export class SharedResourcesComponent implements OnInit {
   ]
   constructor( private adminresource: AdminResourceService ,private route: Router,private resourceManager:SharedResourceService,private volatileData:DataService) {
     this.resources = this.resourceManager.getMyResources(this.volatileData.getActiveUser().email);
-    this.externalResources = this.resourceManager.getMyExternalResources(this.volatileData.getActiveUser().email);
+     this.resourceManager.getMyExternalResources(this.volatileData.getActiveUser().email).subscribe(result=>{
+       this.externalResources = result[0].sharedResources;
+       console.log("my external resource", this.externalResources);
+     });
+
+    // this.externalResources = this.volatileData.getActiveUser().sharedResources;
+    
 
   }
 
@@ -67,11 +73,18 @@ export class SharedResourcesComponent implements OnInit {
     this.adminresource.onEditResource(resource);
   }
 
-  onSelected(user:any){
-
-    this.adminresource.onEditResource(user);
+  onSelected(resource:any){
+    this.adminresource.onEditResource(resource);
     //console.log(user.Name, i);
     // this.adminresource.onEditResource(user,i);
     //this.route.navigate(["/home/content/SharedResources", i, user.Name]);
+  }
+
+  async getResource(id){
+    await this.resourceManager.GetResource(id).subscribe(result=>{
+      let resource = result.data();
+      console.log("resource for external",resource);
+      this.adminresource.onEditResource(resource);
+    });
   }
 }

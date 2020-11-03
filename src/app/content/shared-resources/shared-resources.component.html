@@ -44,12 +44,12 @@
             <div class="main-2">
                 <h2>External Shared Resources</h2>
                 <div class="list-container" style="cursor: pointer;">
-                    <ul class="list" *ngFor="let resource of externalResources|async; let i = index">
+                    <ul class="list" *ngFor="let resource of externalResources; let i = index">
                         <li>
-                            <div class="box-1">
+                            <div class="box-1" (click)="getResource(resource.id)" [routerLink]="[i, resource.name]">
                                 <h2>{{ resource.name }}</h2>
 
-                                <h2>{{ resource.date }}</h2>
+                                <!-- <h2>{{ resource }}</h2> -->
                                 <h2>
                                     <div class="sps">
                                         <span>
