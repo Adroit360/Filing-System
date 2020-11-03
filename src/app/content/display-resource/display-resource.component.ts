@@ -18,7 +18,8 @@ export class DisplayResourceComponent implements OnInit {
   fontIcon = "fa fa-folder";
   filesItemIds:[];
   files:any =[];
-  constructor(private directoryManager:DirectoryService, private resourceManager:SharedResourceService, private adminresource: AdminResourceService, private section: SectionService, private route: Router ) 
+  showTooltip: any= 1;
+  constructor(private directoryManager:DirectoryService, private resourceManager:SharedResourceService, private adminresource: AdminResourceService, private section: SectionService, private route: Router )
   {
     this.adminresource.EditResource.
     subscribe((item: {details:any})=>{
@@ -38,7 +39,7 @@ export class DisplayResourceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
 
 
     //this.files = this.section.department_files.map(i=>true)
@@ -47,6 +48,9 @@ export class DisplayResourceComponent implements OnInit {
 
 AddUser(){
   this.route.navigate(['home/content/userlists']);
+}
+onDelete(){
+
 }
 
 }

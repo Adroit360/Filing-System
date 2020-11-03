@@ -1,25 +1,40 @@
 <div>
     <div class="header">
-        <h2>{{ResourceName}}</h2>
+        <h2>{{ ResourceName }}</h2>
         <div class="right-side">
-
-            <i class="material-icons" style="color: #ED1E23;">
-          control_point
-      </i>
+            <i class="material-icons" style="color: #ed1e23"> control_point </i>
             <a class="active" (click)="AddUser()">Add User</a>
         </div>
     </div>
     <div>
-        <h3 *ngFor="let item of filesItemIds;">{{item}}</h3>
+        <h3 *ngFor="let item of filesItemIds">{{ item }}</h3>
     </div>
 
     <div class="folders">
         <a class="folder-container" *ngFor="let item of files">
             <div class="component">
                 <img src="https://img.icons8.com/fluent/48/000000/pdf.png" />
-                <p>{{item.name| truncate: 12}}</p>
+                <p>{{ item.name | truncate: 12 }}</p>
+            </div>
+
+            <!-- tooltip -->
+            <div class="toggler">
+                <span class="more-icon material-icons">arrow_drop_down</span>
+                <span id="hiddenText" class="material-icons clicktoshow" smart-tooltip-container>
+          <span class="smart-tooltip stick stay-down overlay" id="tooltip">
+            <div *ngIf="item.itemType == 'file'" class="text">
+              <p>
+                <a [href]="item.url" style="color: white; text-decoration: none"
+                  >Download</a
+                >
+              </p>
+            </div>
+            <div class="text">
+              <p (click)="onDelete()">Delete</p>
+            </div>
+          </span>
+                </span>
             </div>
         </a>
     </div>
-
 </div>
