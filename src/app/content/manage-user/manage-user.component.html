@@ -1,7 +1,9 @@
 <div class="header">
     <h2>Manage Users</h2>
-    <div class="right-side">
-        <i class="material-icons" style="color: #ED1E23;">
+    <div class="right-side" style="cursor: pointer">
+        <i class="material-icons" style="color: #ED1E23; font-weight: 500;
+        font-style: normal;
+        font-size: 26px;">
           control_point
       </i>
         <a class="active" (click)="addPage()">Add a New user</a>
@@ -28,6 +30,9 @@
                     <h2>{{item.role}}</h2>
                     <h2>
                         <div class="sps">
+                            <span class="material-icons" style="background-color: white;" (click)="OnSettings(item.email)">
+                                settings
+                                </span>
                             <span class="material-icons" style="background-color: white;" (click)="onEdit(item)">
                       create
                       </span>
