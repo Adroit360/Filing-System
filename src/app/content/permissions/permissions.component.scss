@@ -1,3 +1,12 @@
+@keyframes move {
+    from {
+        left: 0px;
+    }
+    to {
+        left: 300px;
+    }
+}
+
 .container {
     // border: 1px solid red;
     margin: 7%;
@@ -13,6 +22,8 @@ h1 {
 .active {
     border-bottom: 3px solid #ED1E23;
     width: 70%;
+    animation-timing-function: linear;
+    animation: move 1s
 }
 
 .d-container {
@@ -33,5 +44,28 @@ h1 {
         text-align: center;
         cursor: pointer;
         font-weight: 400;
+    }
+}
+
+.msgs {
+    position: relative;
+    display: flex;
+}
+
+p {
+    opacity: 1;
+    position: absolute;
+    top: -10px;
+    left: 95px;
+    font-size: 12px;
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.numvan {
+    p {
+        display: none;
     }
 }
