@@ -46,6 +46,7 @@ import { UserListComponent } from './content/user-list/user-list.component';
 import { SentApprovalsComponent } from './approvals/sent-approvals/sent-approvals.component';
 import { RequestApprovalsComponent } from './approvals/request-approvals/request-approvals.component';
 import { ReplyApprovalsComponent } from './approvals/reply-approvals/reply-approvals.component';
+import { UserSettingsComponent } from './content/user-settings/user-settings.component';
 
 
 
@@ -79,7 +80,8 @@ import { ReplyApprovalsComponent } from './approvals/reply-approvals/reply-appro
     UserListComponent,
     SentApprovalsComponent,
     RequestApprovalsComponent,
-    ReplyApprovalsComponent
+    ReplyApprovalsComponent,
+    UserSettingsComponent
   ],
 
   imports: [

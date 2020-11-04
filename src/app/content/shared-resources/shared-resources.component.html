@@ -1,8 +1,10 @@
 <div>
     <div class="header">
         <h2>Shared Resources</h2>
-        <div class="right-side">
-            <i class="material-icons" style="color: #ed1e23"> control_point </i>
+        <div class="right-side" style="cursor: pointer;">
+            <i class="material-icons" style="color: #ed1e23; font-weight: 500;
+            font-style: normal;
+            font-size: 26px;"> control_point </i>
             <a class="active" (click)="onAdd()">Add a new resource</a>
         </div>
     </div>
@@ -49,7 +51,7 @@
                             <div class="box-1" (click)="getResource(resource.id)" [routerLink]="[i, resource.name]">
                                 <h2>{{ resource.name }}</h2>
 
-                                
+
                                 <div>
                                     {{resource.owner}}
                                     <!-- <div class="sps">
