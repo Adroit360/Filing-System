@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ApprovalService } from 'src/app/services/approval.service';
+import { AnonymousSubject } from 'rxjs/internal/Subject';
+import { ApprovalService } from '../../services/approval.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-request-approvals',
@@ -10,7 +12,12 @@ import { ApprovalService } from 'src/app/services/approval.service';
 export class RequestApprovalsComponent implements OnInit {
   RequestApproval: FormGroup
   @Output("onResult") OnResult:EventEmitter<boolean> = new EventEmitter();
-  constructor( private approve: ApprovalService) { }
+
+  currentUser:string;
+  constructor( private approvalManager: ApprovalService,private userVolatileData:DataService) { 
+    this.currentUser = userVolatileData.getActiveUser().email;
+   
+  }
 
   ngOnInit(): void {
     this.RequestApproval = new FormGroup({
@@ -27,7 +34,15 @@ export class RequestApprovalsComponent implements OnInit {
 
   onSubmit(){
     //this.OnResult.emit(false);
-    this.approve.requestApproval.subscribe((item)=>console.log(item));
+    this.approvalManager.requestBehavior.subscribe((result)=>{ console.log(result, "requsest doc");
+      let request = {documentId:result.item.id,documentName:result.item.name,documentUrl:result.item.url,requestMessage:this.RequestApproval.value.Message, title:this.RequestApproval.value.Title,
+                  senderId:this.currentUser,dateCreated:new Date().toLocaleDateString(),latestApprovalDate:this.RequestApproval.value.Deadline,
+                  approverId:this.RequestApproval.value.email}
+        console.log(request, "request ");
+      this.approvalManager.createApprovalRequest(request);
+    });
+    
+
   }
 
 }

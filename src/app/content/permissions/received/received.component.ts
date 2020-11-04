@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApprovalService } from '../../../services/approval.service';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-received',
@@ -20,7 +22,13 @@ export class ReceivedComponent implements OnInit {
 
 ]
 thumbClicked = false;
-  constructor() { }
+sentRequests:any;
+receivedRequests:any;
+currentUser:string;
+  constructor(private approvalManager: ApprovalService,private userVolatileData:DataService) { 
+    this.currentUser = userVolatileData.getActiveUser().email;
+    this.receivedRequests = approvalManager.GetReceiveRequest(this.currentUser);
+  }
 
   ngOnInit(): void {
   }

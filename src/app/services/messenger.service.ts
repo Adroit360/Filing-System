@@ -113,7 +113,6 @@ export class MessengerService {
   }
 
 
-
   // set user access control
   async setAccessControl(userId,resourceId){
      this.usersCollection.doc(userId).update({
@@ -285,49 +284,6 @@ export class MessengerService {
   }
  
 // create document approval request
-async createApprovalRequest(request:ApprovalRequest){
-
-  let reqDoc:DocumentApprovalObject={
-    id:this.database.createId(),
-    documentId:request.documentId,
-    documentName:request.documentName,
-    documentUrl:request.documentId,
-    requestMessage: request.requestMessage,
-    senderId:request.senderId,
-    senderName: request.senderName,
-    dateCreated:request.dateCreated,
-    latestApprovalDate:request.latestApprovalDate,
-    approverId:request.approverId,
-
-    approvalStatus:0,
-     dateApproved:"",
-     returnedDocumentId :"",
-     returnedDocumentUrl:"",
-     approvedMessage:""
-  }
-  
-  await this.approvalDocs.doc(reqDoc.id).set(reqDoc).catch(e=>{console.log(e);return false;});
-
-   
-}
-
-
-// approval confirmation of document
-async setApprovalOnRequest(approvedDoc:ApprovalResponse){
-  let returnedDocUrl="";
-  let returnedDocId="";
-  // check if response comes with a file
-  if(approvedDoc.returnedDocument){
-    // save document to database
-  }
-  await this.approvalDocs.where('id','==',approvedDoc.requestId).update({
-    approvalStatus:approvedDoc.approvalResult,
-    dateApproved:approvedDoc.dateApproved,
-    returnedDocumentId :returnedDocId,
-    returnedDocumentUrl:returnedDocUrl, 
-    approvedMessage:approvedDoc.approvedMessage
-  });
-}
 
 // get
   

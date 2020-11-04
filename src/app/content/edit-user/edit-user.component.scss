@@ -1,11 +1,10 @@
 @import '../../../styles/components/item-box';
 @import '../../../styles/components/manage-user';
-
-.header span{
-    color:#ED1E23;
+.header span {
+    color: #ED1E23;
     border: 1px solid #ED1E23;
-    border-radius:50%;
-    font-size:16px;
+    border-radius: 50%;
+    font-size: 16px;
     padding: 5px;
 }
 
@@ -21,7 +20,7 @@
     grid-template-columns: 2.3fr 1.5fr 0.5fr;
     grid-gap: 2px;
     background-color: #ffffff;
-    padding: 10px;
+    // padding: 1rem 0.63rem 0.2rem 0.63rem;
     border-radius: 35px;
 }
 
