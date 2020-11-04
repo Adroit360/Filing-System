@@ -8,14 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class PermissionsComponent implements OnInit {
   showSent = true;
   showReceived = false;
-<<<<<<< HEAD
   numvan: any= true
-=======
 
-
->>>>>>> 5403dab0890a25dbb659b43abce8f06cc6a9d01d
   constructor() { }
-    
+
 
   ngOnInit(): void {
   }
