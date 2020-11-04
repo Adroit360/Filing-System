@@ -1,4 +1,6 @@
 import { Component, OnInit,EventEmitter, Output } from '@angular/core';
+import { ApprovalService } from '../../services/approval.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-reply-approvals',
@@ -7,7 +9,12 @@ import { Component, OnInit,EventEmitter, Output } from '@angular/core';
 })
 export class ReplyApprovalsComponent implements OnInit {
   @Output("onResult") OnResult:EventEmitter<boolean> = new EventEmitter();
-  constructor() { }
+  currentUser:string;
+
+  constructor(private approvalManager: ApprovalService,private userVolatileData:DataService) 
+  {
+    this.currentUser = userVolatileData.getActiveUser().email;
+  }
 
   ngOnInit(): void {
   }
@@ -18,3 +25,4 @@ export class ReplyApprovalsComponent implements OnInit {
 
   }
 }
+8

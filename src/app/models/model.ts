@@ -54,18 +54,16 @@ export interface User{
      documentUrl:string,
      requestMessage:string,
      senderId:string,
-     senderName:string,
      dateCreated:string,
      latestApprovalDate:string,
+     title:string,
 
-     approvalStatus:number,
-
+     approvalStatus:boolean,
      approverId:string,
      dateApproved:string,
      returnedDocumentId :string,
      returnedDocumentUrl:string,
-     approvedMessage:string
-     
+     approvedMessage:string    
   }
 
   export interface ApprovalResponse{
