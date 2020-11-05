@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApprovalService } from '../../services/approval.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-permissions',
@@ -8,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 export class PermissionsComponent implements OnInit {
   showSent = true;
   showReceived = false;
-  numvan: any= true
+  numvan: any= true;
+  currentUser:string;
+  receivedRequests:any;
+  unapprovedRequest=0;
 
-  constructor() { }
+
+  constructor(private approvalManager: ApprovalService,private userVolatileData:DataService) {
+    this.currentUser = userVolatileData.getActiveUser().email;
+    approvalManager.GetReceiveRequest(this.currentUser).subscribe(result=>{
+      this.unapprovedRequest =0;
+      if(result){
+        result.forEach(req=>{if (!req.approvalStatus){this.unapprovedRequest++;}})
+      }
+    });
+  }
 
 
   ngOnInit(): void {

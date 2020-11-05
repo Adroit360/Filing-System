@@ -5,7 +5,7 @@
             <a [ngClass]="{'active': showSent}" (click)="onSentClicked()">Sent</a>
             <div class="msgs" (click)="onReceivedClicked()">
                 <a [ngClass]="{'active': showReceived}">Received </a>
-                <p [ngStyle]="{'opacity': numvan}">2</p>
+                <p *ngIf="unapprovedRequest>0" [ngStyle]="{'opacity': numvan}">{{unapprovedRequest}}</p>
             </div>
 
         </div>
