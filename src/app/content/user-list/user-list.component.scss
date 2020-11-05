@@ -28,8 +28,10 @@
     font-size: 15px;
     font-weight: normal;
     font-style: normal;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    /* text-overflow: ellipsis; */
+    /* overflow: hidden; */
+    white-space: nowrap;
+    margin: 0 1rem;
 }
 
 a {

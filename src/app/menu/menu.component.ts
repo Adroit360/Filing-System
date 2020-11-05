@@ -118,7 +118,6 @@ export class MenuComponent implements OnInit {
   onUpdate(index){
     this.sectionService.updateSection(this.currentSection,this.Rename.nativeElement.value);
     this.hooks[index]=true;
-<<<<<<< HEAD
     console.log(this.Rename.nativeElement.value, index);
   }
   // onToggleSidebar() {
@@ -135,8 +134,6 @@ export class MenuComponent implements OnInit {
   reset(){
     this.ResetModal=!this.ResetModal;
   }
-=======
   }
- 
->>>>>>> be15dd2a97cf11080c85ed6af988973c1aa1f293
-}
+
+
