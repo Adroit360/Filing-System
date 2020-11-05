@@ -38,6 +38,7 @@ currentUser:string;
     console.log(item);
     this.approvalManager.onthumbsUps(item);
   }
+  
   onModalResult(value){
     this.thumbClicked = value;
   }
