@@ -62,4 +62,13 @@ export class DataService {
     return this.currentDirectory;
   }
 
+  accessSetting:string;
+  selectUserForAccessSetting(user){
+      this.accessSetting = user;
+  }
+
+  getUserToSetAccess(){
+    return this.accessSetting;
+  }
+
 }

@@ -46,7 +46,7 @@ export class MenuComponent implements OnInit {
     // this.sections=this.msg.getSectionByAccess(this.userInfo.getAccessList());//.then(result=>{this.sections=result; console.log(this.sections);});
     
 
-    this.sectionService.getSections().subscribe(_sections=>{
+    this.sectionService.getSectionByAccess(this.accessList).subscribe(_sections=>{
       this.sections = _sections
       this.hooks = _sections.map(i=>true);
     });
@@ -80,9 +80,10 @@ export class MenuComponent implements OnInit {
 
   }
 
-  onDeleteSection(item: Section){
+  currentSection:string;
+  onDeleteSection(item){
     this.modalState= true;
-    this.section=item;
+    this.currentSection=item;
     this.message='Are you sure you want to delete Section?'
 
   }
@@ -91,6 +92,8 @@ export class MenuComponent implements OnInit {
     if(result){
       // this.sectionService.onDeleteSection(this.section)
       // this.sections = this.sectionService.getSection();
+      console.log("section to be deleted",this.currentSection);
+      this.sectionService.removeSection(this.currentSection);
       this.modalState=false;
     }
     else{
@@ -100,30 +103,21 @@ export class MenuComponent implements OnInit {
 
   onRenameSection(item,index){
     this.nameSections[index] = item.name;
-
+    this.currentSection = item.id;
     for (let i = 0; i < this.hooks.length; i++) {
       if(i == index){
         this.hooks[i]= false;
       }else{
         this.hooks[i]=true;
       }
-
     }
    this.hooks[index] = false;
 
   }
 
   onUpdate(index){
-    // const rename= new Section(this.Rename.nativeElement.value);
-    // this.sectionService.UpdateSection(rename,index);
-    // this.sections = this.sectionService.getSection();
+    this.sectionService.updateSection(this.currentSection,this.Rename.nativeElement.value);
     this.hooks[index]=true;
-    //console.log(rename, index);
   }
-  // onToggleSidebar() {
-  //   this.Opened = !this.Opened;
-  // }
-  // onClose(){
-  //   this.Opened = !this.Opened;
-  // }
+ 
 }
