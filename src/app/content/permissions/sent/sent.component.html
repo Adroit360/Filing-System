@@ -3,6 +3,10 @@
         <h2>title: {{item.title}}</h2>
         <p>To: {{item.approverId | truncate: 20}}</p>
         <p>created: {{item.dateCreated}}</p>
+        <p *ngIf="item.approvedMessage"><span>Response from:<br></span> <span>{{item.approverId}}<br></span>
+            <span>{{item.approvalMessage}}</span>
+        </p>
+        <p *ngIf="item.returnedDocumentUrl">download response document <a [href]="item.returnedDocumentUrl">here</a></p>
     </div>
     
     <i *ngIf="item.approvalStatus" class="fa fa-check-circle"></i>

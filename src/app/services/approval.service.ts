@@ -28,7 +28,7 @@ export class ApprovalService {
   private receiveRequests:Observable<DocumentApprovalObject[]>;
 
 
-  constructor(private afs:AngularFirestore ) {
+  constructor(private afs:AngularFirestore,private afStorage:AngularFireStorage ) {
     this.approvalCollection = afs.collection<DocumentApprovalObject>('Approvals');
     this.approvals = this.approvalCollection.valueChanges();
 
@@ -56,7 +56,7 @@ export class ApprovalService {
       senderId:request.senderId,
       dateCreated:request.dateCreated,
       latestApprovalDate:request.latestApprovalDate,
-      approverId:request.approverId,
+      approverId:request.approverId, 
 
       approvalStatus:false,
        dateApproved:"",
@@ -70,35 +70,72 @@ export class ApprovalService {
 
 
   // approval confirmation of document
-async setApprovalOnRequest(approvedDoc:any){
+  // upload file
+  private basePath="uploads/archives"
+async RespondToRequest(approvedDoc:any){
     let returnedDocUrl="";
     let returnedDocId="";
     // check if response comes with a file
-    if(approvedDoc.returnedDocument){
+    if(approvedDoc.file){
       // save document to database
+       await this.uploadFile(approvedDoc.file,approvedDoc);
+       return;
     }
     await this.approvalCollection.doc(approvedDoc.id).update({
-      approvalStatus:approvedDoc.approvalResult,
-      dateApproved:approvedDoc.dateApproved,
+      approvalStatus:true,
+      dateApproved:new Date().toLocaleString(),
       returnedDocumentId :returnedDocId,
       returnedDocumentUrl:returnedDocUrl,
-      approvedMessage:approvedDoc.approvedMessage
+      approvedMessage:approvedDoc.message
     });
   }
 
   GetSentRequest(user){
-    this.sentReqCollection = this.afs.collection<DocumentApprovalObject>('Approvals',ref=>ref.where("senderId","==",user));
+    this.sentReqCollection = this.afs.collection<DocumentApprovalObject>('Approvals',ref=>ref.where("senderId","==",user).orderBy("dateCreated","desc").limit(6));
     this.sentRequests = this.sentReqCollection.valueChanges();
     return this.sentRequests;
   }
 
   GetReceiveRequest(user){
-    this.receiveReqCollection = this.afs.collection<DocumentApprovalObject>('Approvals',ref=>ref.where("approverId","==",user));
+    this.receiveReqCollection = this.afs.collection<DocumentApprovalObject>('Approvals',ref=>ref.where("approverId","==",user).orderBy("dateCreated","desc").limit(6));
     this.receiveRequests = this.receiveReqCollection.valueChanges();
     return this.receiveRequests;
   }
 
   RemoveRequest(reqId){
     this.approvalCollection.doc(reqId).delete();
+  }
+
+  
+  // upload new response document
+  responseDocId:string;
+
+  async uploadFile(fileItem,docObj) {
+    let responseDocUrl:string="";
+    const id = await this.afs.createId(); 
+    const filePath = `${this.basePath}/${id}`;
+    const storageRef = this.afStorage.ref(filePath);
+    const uploadTask = this.afStorage.upload(filePath, fileItem);
+ 
+    uploadTask.snapshotChanges().pipe(
+      finalize(() => {
+        storageRef.getDownloadURL().subscribe(downloadURL => {
+          console.log('File available at', downloadURL);
+          this.responseDocId = id;
+          
+          responseDocUrl= downloadURL;
+          this.approvalCollection.doc(docObj.id).update({
+            approvalStatus:true,
+            dateApproved:new Date().toLocaleString(),
+            returnedDocumentId :id,
+            returnedDocumentUrl:downloadURL,
+            approvedMessage:docObj.message
+          });
+          console.log("successfully saved");
+        });
+      })
+    ).subscribe();
+ 
+    
   }
 }

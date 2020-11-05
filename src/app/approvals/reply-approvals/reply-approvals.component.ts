@@ -10,18 +10,25 @@ import { DataService } from '../../services/data.service';
 export class ReplyApprovalsComponent implements OnInit {
   @Output("onResult") OnResult:EventEmitter<boolean> = new EventEmitter();
   currentUser:string;
+  message:string="";
+  file:any;
+  approvDoc:any;
 
   constructor(private approvalManager: ApprovalService,private userVolatileData:DataService)
   {
-    this.approvalManager.thumbsUp.subscribe(result=>console.log("this is the approve doc",result));
     this.currentUser = userVolatileData.getActiveUser().email;
+    this.getdoc();
   }
 
   ngOnInit(): void 
   {
-
+    
+    
   }
 
+  async getdoc(){
+    return await this.approvalManager.thumbsUp.subscribe(result=>{this.approvDoc=result.item;console.log("approv doc",result)});
+  }
   chooseOption(value:boolean)
   {
     this.OnResult.emit(value);
@@ -29,7 +36,15 @@ export class ReplyApprovalsComponent implements OnInit {
 
   onOkay(value:boolean)
   {
-    
+    console.log("id of docu",this.approvDoc.id);
+    let obj={id:this.approvDoc.id,message:this.message,file:this.file,}
+    this.approvalManager.RespondToRequest(obj); 
     this.OnResult.emit(value);
   }
+
+  onChange(event){
+    this.file = (event.target as HTMLInputElement).files[0];
+  }
+
+
 }

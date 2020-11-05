@@ -7,10 +7,10 @@
       font-size: 20px;
       margin: 10px;">Reply Approval</h3>
 
-        <textarea placeholder="message" style="width: 90%;border: none; border-bottom: 1px solid black; height: 120px;" name="review" cols="30" rows="10">
+        <textarea [(ngModel)]="message" placeholder="message" style="width: 90%;border: none; border-bottom: 1px solid black; height: 120px;" name="review" cols="30" rows="5" >
            message
       </textarea>
-        <input type="file" id="myFile" name="filename" style="margin: 12px;">
+        <input type="file" id="myFile" name="filename" style="margin: 12px;" (change)="onChange($event)">
 
         <button type="submit" id="btn" (click)="onOkay(false) ">Ok</button>
 
