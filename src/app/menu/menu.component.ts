@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
 
   visible = true; // ng template
   Opened = false;
-
+  ResetModal=false;
   sections: Section[];
   accessList:any;
   user:any;
@@ -34,23 +34,23 @@ export class MenuComponent implements OnInit {
   nameSections = [];
 
   constructor(private directory:DirectoryService, private sectionService:SectionService, private router: Router, private route: ActivatedRoute,private msg:MessengerService, private data:DataService) {
-   
+
   }
 
    ngOnInit(): void {
     // this.sections = this.sectionService.getSection();
-    
+
     this.user= this.data.getActiveUser();
     console.log("from menu comp",this.data.getAccessList());
     this.accessList = this.data.getAccessList();
     // this.sections=this.msg.getSectionByAccess(this.userInfo.getAccessList());//.then(result=>{this.sections=result; console.log(this.sections);});
-    
+
 
     this.sectionService.getSections().subscribe(_sections=>{
       this.sections = _sections
       this.hooks = _sections.map(i=>true);
     });
-    
+
     console.log("sections",this.sections);
   }
 
@@ -60,14 +60,14 @@ export class MenuComponent implements OnInit {
   }
 
   async onSelected(sectionId,sectionName){
-   
+
     this.data.setCurrentSection(sectionId,sectionName);
     console.log(sectionName);
     // await this.directory.setActiveSectionItems(id,id,this.accessList);
-    
+
   }
 
-  async onSelectedGeneral(sectionId,sectionName){ 
+  async onSelectedGeneral(sectionId,sectionName){
     this.data.setCurrentSection(sectionId,sectionName);
     this.data.setCurrentDirectory(sectionId,sectionName);
     console.log(sectionName);
@@ -118,7 +118,7 @@ export class MenuComponent implements OnInit {
     // this.sectionService.UpdateSection(rename,index);
     // this.sections = this.sectionService.getSection();
     this.hooks[index]=true;
-    //console.log(rename, index);
+    console.log(this.Rename.nativeElement.value, index);
   }
   // onToggleSidebar() {
   //   this.Opened = !this.Opened;
@@ -126,4 +126,12 @@ export class MenuComponent implements OnInit {
   // onClose(){
   //   this.Opened = !this.Opened;
   // }
+
+  onReset(value: boolean){
+    this.ResetModal=value;
+  }
+
+  reset(){
+    this.ResetModal=!this.ResetModal;
+  }
 }
