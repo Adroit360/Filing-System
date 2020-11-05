@@ -8,19 +8,19 @@ import { DataService } from '../../../services/data.service';
   styleUrls: ['./received.component.scss']
 })
 export class ReceivedComponent implements OnInit {
- receivedPermissionDetails =[{email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
+//  receivedPermissionDetails =[{email: 'nadum@adroit360.com', date: '18/09/2020'},
+//   {email: 'nadum@adroit360.com', date: '18/09/2020'},
+//   {email: 'nadum@adroit360.com', date: '18/09/2020'},
+//   {email: 'nadum@adroit360.com', date: '18/09/2020'},
+//   {email: 'nadum@adroit360.com', date: '18/09/2020'},
+//   {email: 'nadum@adroit360.com', date: '18/09/2020'},
+//   {email: 'nadum@adroit360.com', date: '18/09/2020'},
+//   {email: 'nadum@adroit360.com', date: '18/09/2020'},
+//   {email: 'nadum@adroit360.com', date: '18/09/2020'},
+//   {email: 'nadum@adroit360.com', date: '18/09/2020'},
+//   {email: 'nadum@adroit360.com', date: '18/09/2020'},
 
-]
+// ]
 thumbClicked = false;
 sentRequests:any;
 receivedRequests:any;
@@ -32,7 +32,6 @@ currentUser:string;
 
   ngOnInit(): void {
   }
-
 
   onThumbClicked(item){
     this.thumbClicked = !this.thumbClicked;

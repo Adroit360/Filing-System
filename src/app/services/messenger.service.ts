@@ -86,6 +86,10 @@ export class MessengerService {
     return user.data();
   }
 
+  _getUser(userEmail){  
+    return this.usersCollection.doc(userEmail).get();
+  }
+
 
   // read all users
  getUsers() {
@@ -171,20 +175,7 @@ export class MessengerService {
 
   // an access list contains the id list of sections available to a user
   // this method loads the sections accessible to a user defined by the access control list
-   getSectionByAccess(accessList){
-    let access_sections=[];
-    // let accessList = await this.getUserAccessList(userId);
-     firebase.firestore().collection('Sections').get().then(a=>{a.docs.forEach(doc=>{
-      if (accessList.includes(doc.id) ){
-        access_sections.push({id:doc.data().id,name:doc.data().name});
-      }
-     
-    });
-    console.log("accessed sections",access_sections);
-  });
-    
-    return access_sections;
-  }
+  
 
   // get content of a directory
    getDirectoryContent(sectionId,directoryId,accessList){

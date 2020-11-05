@@ -13,19 +13,23 @@ export class ReplyApprovalsComponent implements OnInit {
 
   constructor(private approvalManager: ApprovalService,private userVolatileData:DataService)
   {
+    this.approvalManager.thumbsUp.subscribe(result=>console.log("this is the approve doc",result));
     this.currentUser = userVolatileData.getActiveUser().email;
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+
   }
 
-  chooseOption(value:boolean){
-
+  chooseOption(value:boolean)
+  {
     this.OnResult.emit(value);
-
   }
-  onOkay(value:boolean){
-    this.approvalManager.thumbsUp.subscribe(result=>console.log(result));
+
+  onOkay(value:boolean)
+  {
+    
     this.OnResult.emit(value);
   }
 }

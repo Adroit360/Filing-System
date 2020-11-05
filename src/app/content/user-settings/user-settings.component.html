@@ -17,14 +17,13 @@
         <ul class="list" *ngFor="let item of sections">
             <li>
                 <div class="box-1">
-                    <h2>{{item}}</h2>
+                    <h2>{{item.name}}</h2>
                     <h2>
-
-                        <i *ngIf="!show_checked " class="material-icons" style="color: #ED1E23;" (click)="add()">
+                        <i *ngIf="!existInAccessList(item.id) " class="material-icons" style="color: #ED1E23;" (click)="add(item.id)">
                         control_point
                     </i>
 
-                        <span *ngIf="show_checked " (click)="unAdd()" class="material-icons" style="color: green;">
+                        <span *ngIf="existInAccessList(item.id) " (click)="unAdd(item.id)" class="material-icons" style="color: green;">
                         check_circle_outline
                     </span>
 
