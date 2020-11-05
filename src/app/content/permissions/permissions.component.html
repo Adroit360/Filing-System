@@ -3,7 +3,11 @@
     <div class="options">
         <div class="sent-recieve">
             <a [ngClass]="{'active': showSent}" (click)="onSentClicked()">Sent</a>
-            <a [ngClass]="{'active': showReceived}" (click)="onReceivedClicked()">Received</a>
+            <div class="msgs" (click)="onReceivedClicked()">
+                <a [ngClass]="{'active': showReceived}">Received </a>
+                <p [ngStyle]="{'opacity': numvan}">2</p>
+            </div>
+
         </div>
     </div>
     <div class="d-container">

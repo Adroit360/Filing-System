@@ -6,7 +6,7 @@
         <h3 style="color: rgba(10, 10, 10, 0.897); font-weight: bold;
       font-size: 20px;
       margin: 10px;">Request Approval</h3>
-        <form [formGroup]="RequestApproval" (ngSubmit)="onSubmit()">
+        <form [formGroup]="RequestApproval" (ngSubmit)="onSubmit(false)">
             <input type="title" placeholder="Title" formControlName="Title">
             <input type="Message" placeholder="Message" formControlName="Message">
             <input type="Date" placeholder=" Deadline" formControlName="Deadline">

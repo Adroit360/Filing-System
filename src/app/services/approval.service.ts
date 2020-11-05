@@ -22,6 +22,9 @@ interface Approval{
 })
 export class ApprovalService {
 
+  //for thumbs up
+  thumbsUp= new BehaviorSubject<any>({})
+
   requestBehavior= new BehaviorSubject<any>({})
   private approvalCollection: AngularFirestoreCollection<DocumentApprovalObject>;
   private approvals:Observable<DocumentApprovalObject[]>;
@@ -35,7 +38,7 @@ export class ApprovalService {
   private receiveRequests:Observable<DocumentApprovalObject[]>;
 
 
-  constructor(private afs:AngularFirestore ) { 
+  constructor(private afs:AngularFirestore ) {
     this.approvalCollection = afs.collection<DocumentApprovalObject>('Approvals');
     this.approvals = this.approvalCollection.valueChanges();
 
@@ -43,6 +46,11 @@ export class ApprovalService {
 
   requestapprove(index, item: any){
     this.requestBehavior.next({index,item});
+  }
+
+  //service for clciking thumbs up
+  onthumbsUps(item){
+    this.thumbsUp.next({item});
   }
 
 
@@ -59,18 +67,18 @@ export class ApprovalService {
       dateCreated:request.dateCreated,
       latestApprovalDate:request.latestApprovalDate,
       approverId:request.approverId,
-  
+
       approvalStatus:false,
        dateApproved:"",
        returnedDocumentId :"",
        returnedDocumentUrl:"",
        approvedMessage:""
     }
-    
-    this.approvalCollection.doc(reqDoc.id).set(reqDoc).catch(e=>{console.log(e);return false;});  
+
+    this.approvalCollection.doc(reqDoc.id).set(reqDoc).catch(e=>{console.log(e);return false;});
   }
-  
-  
+
+
   // approval confirmation of document
 async setApprovalOnRequest(approvedDoc:any){
     let returnedDocUrl="";
@@ -83,7 +91,7 @@ async setApprovalOnRequest(approvedDoc:any){
       approvalStatus:approvedDoc.approvalResult,
       dateApproved:approvedDoc.dateApproved,
       returnedDocumentId :returnedDocId,
-      returnedDocumentUrl:returnedDocUrl, 
+      returnedDocumentUrl:returnedDocUrl,
       approvedMessage:approvedDoc.approvedMessage
     });
   }

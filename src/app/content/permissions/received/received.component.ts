@@ -25,7 +25,7 @@ thumbClicked = false;
 sentRequests:any;
 receivedRequests:any;
 currentUser:string;
-  constructor(private approvalManager: ApprovalService,private userVolatileData:DataService) { 
+  constructor(private approvalManager: ApprovalService,private userVolatileData:DataService) {
     this.currentUser = userVolatileData.getActiveUser().email;
     this.receivedRequests = approvalManager.GetReceiveRequest(this.currentUser);
   }
@@ -34,8 +34,10 @@ currentUser:string;
   }
 
 
-  onThumbClicked(){
+  onThumbClicked(item){
     this.thumbClicked = !this.thumbClicked;
+    console.log(item);
+    this.approvalManager.onthumbsUps(item);
   }
   onModalResult(value){
     this.thumbClicked = value;

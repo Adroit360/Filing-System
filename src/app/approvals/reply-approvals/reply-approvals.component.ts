@@ -11,7 +11,7 @@ export class ReplyApprovalsComponent implements OnInit {
   @Output("onResult") OnResult:EventEmitter<boolean> = new EventEmitter();
   currentUser:string;
 
-  constructor(private approvalManager: ApprovalService,private userVolatileData:DataService) 
+  constructor(private approvalManager: ApprovalService,private userVolatileData:DataService)
   {
     this.currentUser = userVolatileData.getActiveUser().email;
   }
@@ -24,5 +24,8 @@ export class ReplyApprovalsComponent implements OnInit {
     this.OnResult.emit(value);
 
   }
+  onOkay(value:boolean){
+    this.approvalManager.thumbsUp.subscribe(result=>console.log(result));
+    this.OnResult.emit(value);
+  }
 }
-8

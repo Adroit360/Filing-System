@@ -5,10 +5,10 @@
         <h2>from: {{item.senderId | truncate: 20}}</h2>
         <p>Due date: {{item.latestApprovalDate}}</p>
         <p>{{item.dateCreated}}</p>
-        
-        
+
+
     </div>
     <a [href]="item.documentUrl"><i class="fa fa-download" style="color: black;" ></i></a>
-    <i class="fa fa-thumbs-up" (click)="onThumbClicked()"></i>
+    <i class="fa fa-thumbs-up" (click)="onThumbClicked( item)"></i>
 </div>
 <app-reply-approvals *ngIf="thumbClicked" (onResult)="onModalResult($event)"></app-reply-approvals>

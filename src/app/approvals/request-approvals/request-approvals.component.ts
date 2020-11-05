@@ -14,9 +14,9 @@ export class RequestApprovalsComponent implements OnInit {
   @Output("onResult") OnResult:EventEmitter<boolean> = new EventEmitter();
 
   currentUser:string;
-  constructor( private approvalManager: ApprovalService,private userVolatileData:DataService) { 
+  constructor( private approvalManager: ApprovalService,private userVolatileData:DataService) {
     this.currentUser = userVolatileData.getActiveUser().email;
-   
+
   }
 
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class RequestApprovalsComponent implements OnInit {
     this.OnResult.emit(value);
   }
 
-  onSubmit(){
+  onSubmit(value: boolean){
     //this.OnResult.emit(false);
     this.approvalManager.requestBehavior.subscribe((result)=>{ console.log(result, "requsest doc");
       let request = {documentId:result.item.id,documentName:result.item.name,documentUrl:result.item.url,requestMessage:this.RequestApproval.value.Message, title:this.RequestApproval.value.Title,
@@ -41,7 +41,8 @@ export class RequestApprovalsComponent implements OnInit {
         console.log(request, "request ");
       this.approvalManager.createApprovalRequest(request);
     });
-    
+
+    this.OnResult.emit(value);
 
   }
 
