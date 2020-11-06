@@ -148,9 +148,7 @@ export class EmptyComponent implements OnInit {
     this.approve.requestapprove(i,item);
 
   }
-  onshow(){
-    //this.showTooltip = 0;
-  }
+
 
 
   sendFileToResource(item,resource){
