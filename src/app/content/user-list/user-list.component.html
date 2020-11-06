@@ -8,15 +8,41 @@
 
 <div class="main">
 
-    <div class="content-1">
-        <h5>Email</h5>
-        <h5>First Name</h5>
-        <h5>Last Name</h5>
-        <h5>Role</h5>
-        <h5>Action</h5>
-    </div>
+    <table class="content-table">
+        <!-- heading of the table ---->
+        <thead>
+            <tr>
 
-    <div class="list-container">
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let item of users;let i = index ">
+                <td>{{item.email }}</td>
+                <td>{{item.firstName}}</td>
+                <td>{{item.lastName}}</td>
+                <td>{{item.role}}</td>
+                <!----Action tools-->
+                <td class="h2">
+                    <i *ngIf="!existInResource(item.email)" class="material-icons" style="color: #ED1E23;" (click)="add(item.email)">
+                        control_point
+                    </i>
+
+                    <span *ngIf="existInResource(item.email)" (click)="unAdd(item.email)" class="material-icons" style="color: green;">
+                        check_circle_outline
+                    </span>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- <div class="list-container">
         <ul class="list" *ngFor="let item of users;let i = index ">
             <li>
                 <div class="box-1">
@@ -39,7 +65,7 @@
             </li>
 
         </ul>
-    </div>
+    </div> -->
 
 
     <!-- <div class="modal" *ngIf="modalState">
