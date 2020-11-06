@@ -109,11 +109,7 @@
     <ul>
         <li  *ngIf="user.isAdmin"><a routerLink="content/manageUsers" routerLinkActive="active"> Manage Users </a></li>
         <li><a routerLink="content/SharedResources" routerLinkActive="active"> Shared Resources </a></li>
-<<<<<<< HEAD
         <li><a (click)="reset()" routerLinkActive="active"> Reset password</a></li>
-=======
-        
->>>>>>> cb50e8d8fd571c89cf3990828181aa096c545e55
     </ul>
 </div>
 
@@ -129,7 +125,7 @@
         </div>
         <!-- Modal content -->
         <div class="modal-content ">
-            <h4>A link has been sent to your Gmail Account</h4>
+            <h4>A password reset link has been sent to your email address</h4>
 
             <button (click)="onReset(false)">Ok </button>
         </div>

@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-
+import {AuthServiceService} from '../services/auth-service.service';
 import { UserService } from '../services/User.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { UserService } from '../services/User.service';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-  constructor( private userservice: UserService, private router: Router) { }
+  constructor( private authManager:AuthServiceService,private userservice: UserService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -20,6 +20,7 @@ export class NavBarComponent implements OnInit {
 
   // routes to the log in page 
   onLogOut(){
+    this.authManager.SignOut();
     this.router.navigate(["login"]);
   }
 

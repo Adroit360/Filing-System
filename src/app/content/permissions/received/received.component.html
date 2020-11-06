@@ -1,11 +1,10 @@
 <!-- <p>received works!</p> -->
 <div class="details" *ngFor="let item of receivedRequests|async">
-    <div class="user-details" style="font-size: 12px;">
+    <div class="user-details" style="font-size: 14px;">
         <p>{{item.requestMessage}}</p>
         <h2>from: {{item.senderId | truncate: 20}}</h2>
         <p>Due date: {{item.latestApprovalDate}}</p>
         <p>{{item.dateCreated}}</p>
-
 
     </div>
     <a [href]="item.documentUrl"><i class="fa fa-download" style="color: black;" ></i></a>

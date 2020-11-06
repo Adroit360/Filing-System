@@ -1,9 +1,9 @@
 <div class="details" *ngFor="let item of sentRequests|async">
-    <div class="user-details" style="font-size: 13px;">
-        <h2>title: {{item.title}}</h2>
-        <p>To: {{item.approverId | truncate: 20}}</p>
-        <p>created: {{item.dateCreated}}</p>
-        <p *ngIf="item.approvedMessage"><span>Response from:<br></span> <span>{{item.approverId}}<br></span>
+    <div class="user-details" style="font-size: 14px;">
+        <h2><span style="font-weight: bold;">title:<br></span> {{item.title}}</h2>
+        <p><span style="font-weight: bold;">To:<br></span> {{item.approverId | truncate: 20}}</p>
+        <p><span style="font-weight: bold;">created:</span> {{item.dateCreated}}</p>
+        <p *ngIf="item.approvedMessage"><span style="font-weight: bold;">Response from:<br></span> <span>{{item.approverId}}<br></span>
             <span>{{item.approvalMessage}}</span>
         </p>
         <p *ngIf="item.returnedDocumentUrl">download response document <a [href]="item.returnedDocumentUrl">here</a></p>
