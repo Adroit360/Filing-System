@@ -166,5 +166,9 @@ export class EmptyComponent implements OnInit {
     console.log(item);
 
   }
+
+  Back(){
+    console.log('back');
+  }
 }
 

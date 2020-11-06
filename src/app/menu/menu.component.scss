@@ -32,6 +32,7 @@ h2 {
 
 .admin-tools {
     box-sizing: border-box;
+    overflow: auto;
 }
 
 ul {
@@ -230,7 +231,7 @@ input {
     padding: 19px;
     border: 1px solid #888;
     width: 400px;
-    height: 70px;
+    height: 86px;
     border-radius: 10px;
 }
 
@@ -261,4 +262,13 @@ button {
 .position {
     display: block;
     margin-top: 20px;
+}
+
+.tooltip>span {
+    height: 35px;
+    width: 70px;
+}
+
+.tooltip>span>h4 {
+    color: white;
 }
