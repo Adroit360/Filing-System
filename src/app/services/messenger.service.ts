@@ -41,6 +41,7 @@ export class MessengerService {
       role:role,
       accessList:[],
       creationdeletionPrivilege:false,
+      sharedResources:[],
       isAdmin:false
     }
     
@@ -85,6 +86,10 @@ export class MessengerService {
     return user.data();
   }
 
+  _getUser(userEmail){  
+    return this.usersCollection.doc(userEmail).get();
+  }
+
 
   // read all users
  getUsers() {
@@ -110,7 +115,6 @@ export class MessengerService {
     })
      
   }
-
 
 
   // set user access control
@@ -171,20 +175,7 @@ export class MessengerService {
 
   // an access list contains the id list of sections available to a user
   // this method loads the sections accessible to a user defined by the access control list
-   getSectionByAccess(accessList){
-    let access_sections=[];
-    // let accessList = await this.getUserAccessList(userId);
-     firebase.firestore().collection('Sections').get().then(a=>{a.docs.forEach(doc=>{
-      if (accessList.includes(doc.id) ){
-        access_sections.push({id:doc.data().id,name:doc.data().name});
-      }
-     
-    });
-    console.log("accessed sections",access_sections);
-  });
-    
-    return access_sections;
-  }
+  
 
   // get content of a directory
    getDirectoryContent(sectionId,directoryId,accessList){
@@ -284,49 +275,6 @@ export class MessengerService {
   }
  
 // create document approval request
-async createApprovalRequest(request:ApprovalRequest){
-
-  let reqDoc:DocumentApprovalObject={
-    id:this.database.createId(),
-    documentId:request.documentId,
-    documentName:request.documentName,
-    documentUrl:request.documentId,
-    requestMessage: request.requestMessage,
-    senderId:request.senderId,
-    senderName: request.senderName,
-    dateCreated:request.dateCreated,
-    latestApprovalDate:request.latestApprovalDate,
-    approverId:request.approverId,
-
-    approvalStatus:0,
-     dateApproved:"",
-     returnedDocumentId :"",
-     returnedDocumentUrl:"",
-     approvedMessage:""
-  }
-  
-  await this.approvalDocs.doc(reqDoc.id).set(reqDoc).catch(e=>{console.log(e);return false;});
-
-   
-}
-
-
-// approval confirmation of document
-async setApprovalOnRequest(approvedDoc:ApprovalResponse){
-  let returnedDocUrl="";
-  let returnedDocId="";
-  // check if response comes with a file
-  if(approvedDoc.returnedDocument){
-    // save document to database
-  }
-  await this.approvalDocs.where('id','==',approvedDoc.requestId).update({
-    approvalStatus:approvedDoc.approvalResult,
-    dateApproved:approvedDoc.dateApproved,
-    returnedDocumentId :returnedDocId,
-    returnedDocumentUrl:returnedDocUrl, 
-    approvedMessage:approvedDoc.approvedMessage
-  });
-}
 
 // get
   

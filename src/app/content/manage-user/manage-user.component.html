@@ -1,46 +1,91 @@
-<div class="header">
-    <h2>Manage Users</h2>
-    <div class="right-side">
-        <i class="material-icons" style="color: #ED1E23;">
+<div>
+    <div class="header">
+        <h2>Manage Users</h2>
+        <div class="right-side" style="cursor: pointer">
+            <i class="material-icons" style="color: #ED1E23; font-weight: 500;
+        font-style: normal;
+        font-size: 26px;">
           control_point
       </i>
-        <a class="active" (click)="addPage()">Add a New user</a>
-    </div>
-</div>
-
-<div class="main">
-
-    <div class="content-1">
-        <h5>Email</h5>
-        <h5>First Name</h5>
-        <h5>Last Name</h5>
-        <h5>Role</h5>
-        <h5>Action</h5>
+            <a class="active" (click)="addPage()">Add a New user</a>
+        </div>
     </div>
 
-    <div class="list-container">
-        <ul class="list" *ngFor="let item of users|async;">
-            <li>
-                <div class="box-1">
-                    <h2>{{item.email }}</h2>
-                    <h2>{{item.firstName}}</h2>
-                    <h2>{{item.lastName}}</h2>
-                    <h2>{{item.role}}</h2>
-                    <h2>
+    <div class="main">
+
+        <table class="content-table">
+            <!-- heading of the table ---->
+            <thead>
+                <tr>
+
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <!---- content in the table-->
+            <tbody>
+                <tr *ngFor="let item of users|async;">
+                    <td>{{item.email }}</td>
+                    <td>{{item.firstName}}</td>
+                    <td>{{item.lastName}}</td>
+                    <td>{{item.role}}</td>
+                    <!----Action-->
+                    <td>
                         <div class="sps">
-                            <span class="material-icons" style="background-color: white;" (click)="onEdit(item)">
+                            <span class="material-icons" (click)="OnSettings(item.email)">
+                            settings
+                            </span>
+                            <span class="material-icons" (click)="onEdit(item)">
+                            create
+                            </span>
+                            <span class="material-icons" (click)="Ondelected(item)">
+                            delete_outline
+                            </span>
+                        </div>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+        <!-- <div class="content-1">
+            <h5>Email</h5>
+            <h5>First Name</h5>
+            <h5>Last Name</h5>
+            <h5>Role</h5>
+            <h5>Action</h5>
+        </div>
+
+        <div class="list-container">
+            <ul class="list" *ngFor="let item of users|async;">
+                <li>
+                    <div class="box-1">
+                        <h2>{{item.email }}</h2>
+                        <h2>{{item.firstName}}</h2>
+                        <h2>{{item.lastName}}</h2>
+                        <h2>{{item.role}}</h2>
+                        <h2>
+                            <div class="sps">
+                                <span class="material-icons" style="background-color: white;" (click)="OnSettings(item.email)">
+                                settings
+                                </span>
+                                <span class="material-icons" style="background-color: white;" (click)="onEdit(item)">
                       create
                       </span>
-                            <span class="material-icons" style="background-color: white;" (click)="Ondelected(item)">
+                                <span class="material-icons" style="background-color: white;" (click)="Ondelected(item)">
                  delete_outline
                   </span>
-                        </div>
+                            </div>
 
-                    </h2>
-                </div>
-            </li>
+                        </h2>
+                    </div>
+                </li>
 
-        </ul>
+            </ul>
+        </div> -->
+
     </div>
 
 

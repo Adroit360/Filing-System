@@ -9,10 +9,10 @@
             <input type="file" accept=" file_type| image/*" (change)="onChange($event)">
 
             <!-- Image preview -->
-            <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+            <!-- <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
                 <img [src]="imageURL" [alt]="uploadForm.value.name">
 
-            </div>
+            </div> -->
 
 
             <button type="submit" (click)="onUpload( false)">Upload</button>

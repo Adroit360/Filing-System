@@ -5,6 +5,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import {finalize} from 'rxjs/operators';
+import * as firebase from 'firebase/app';
 
 export interface Archives{
   id:string,
@@ -77,10 +78,12 @@ export class DirectoryService {
   }
 
   getFileList(listItems:[]){
-    console.log("listitems in getfilelist ", listItems);
+    // console.log("listitems in getfilelist ", listItems);
     this.subarchivesCollection = this.afs.collection<Archives>('Archives',ref=> ref.where('id','in',listItems));
     this.subarchives = this.subarchivesCollection.valueChanges();
     return this.subarchives;
+  
+
   }
 
 

@@ -21,13 +21,14 @@
 </div>
 <h4>{{ currentDirectoryName }}</h4>
 <div class="folders">
-<a class="folder-container" *ngFor="let item of dirContent|async">
+<a class="folder-container" *ngFor="let item of dirContent|async;let i = index">
   <div (click)="onFolderClicked(item)" class="component">
-    <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="https://img.icons8.com/fluent/48/000000/pdf.png"/>
-    <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12'" src="https://img.icons8.com/fluent/48/000000/microsoft-powerpoint-2019.png"/>
-    <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'"src="https://img.icons8.com/color/48/000000/microsoft-word-2019--v2.png"/>
-    <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'"src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png"/>
-    <img *ngIf="item.itemType=='file' && item.contentType=='text/plain' || item.itemType=='file' && item.contentType==''" src="https://img.icons8.com/color/48/000000/txt.png"/>
+    <img *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' " src="../../../assets/image.png" style="height: 50px; width: 50px;"/>
+    <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="../../../assets/pdf.png" style="height: 50px; width: 50px;"/>
+    <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12' || item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint'" src="../../../assets/pp.png"  style="height: 50px; width: 50px;"/>
+    <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||item.itemType=='file' && item.contentType=='application/msword'"src="../../../assets/word.png" style="height: 50px; width: 50px;"/>
+    <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'"src="../../../assets/excel.png" style="height: 50px; width: 50px;"/>
+    <img *ngIf="item.itemType=='file' && item.contentType=='text/plain'" src="../../../assets/text.png" style="height: 50px; width: 50px;"/>
     <i *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" class="{{fontIcon}}" style='font-size: 50px;'></i>
     <p *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
     <p *ngIf="item.itemType=='file'" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
@@ -35,12 +36,12 @@
 
   <div class="toggler">
 
-    <span class="more-icon material-icons">arrow_drop_down</span>
+    <span class="more-icon material-icons" >arrow_drop_down</span>
 
       <span
       id="hiddenText"
       class="material-icons clicktoshow"
-      smart-tooltip-container>
+      smart-tooltip-container [ngStyle]="{'opacity': showTooltip}">
       <span class="smart-tooltip stick stay-down overlay" id="tooltip">
         <div *ngIf="item.itemType=='file'" class="text">
           <p >
@@ -67,7 +68,7 @@
             </div>
 
             <div class="text" *ngIf="item.itemType=='file'">
-                <p (click)="onShowRequest()">Request Approval</p>
+                <p (click)="onShowRequest(item ,i, $event)">Request Approval</p>
             </div>
             <div class="text">
                 <p (click)="onDelete()">Delete</p>
@@ -88,4 +89,4 @@
             <app-preview (onResult)="onPreviewResult($event)"></app-preview>
         </div>
     </div>
-    <app-request-approvals *ngIf="requestModal" (onRequest)="onRequestModal($event)"></app-request-approvals>
+    <app-request-approvals *ngIf="requestModal" (onResult)="onRequestModal($event)"></app-request-approvals>

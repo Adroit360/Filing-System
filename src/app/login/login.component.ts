@@ -5,6 +5,7 @@ import {AuthServiceService} from '../services/auth-service.service';
 import {DataService } from '../services/data.service';
 import {MessengerService} from '../services/messenger.service';
 import {User } from '../models/model';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
     let email = this.LogInForm.value.email;
     this.authService.SignIn(this.LogInForm.value.email,this.LogInForm.value.password).then(async ()=>{
        let userobj =  await this.msg.getUser(email);
-       this.user={firstName:userobj.firstName,lastName:userobj.lastName,email:userobj.email,role:userobj.role,creationdeletionPrivilege:userobj.creationdeletionPrivilege
+       this.user={firstName:userobj.firstName,lastName:userobj.lastName,email:userobj.email,role:userobj.role,creationdeletionPrivilege:userobj.creationdeletionPrivilege,sharedResources:userobj.sharedResources
       , isAdmin:userobj.isAdmin,accessList:userobj.accessList};
        console.log("lgoing",this.user, "email",this.LogInForm.value.email);
        this.userInfo.setActiveUser(this.user);

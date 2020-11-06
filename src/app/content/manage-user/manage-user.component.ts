@@ -55,4 +55,9 @@ export class ManageUserComponent implements OnInit {
     this.route.navigate(['/home/content/AddUser']);
   }
 
+  OnSettings(email){
+    this.data.selectUserForAccessSetting(email);
+    this.route.navigate(['/home/content/user-settings']);
+  }
+
 }

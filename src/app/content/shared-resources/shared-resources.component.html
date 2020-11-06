@@ -1,8 +1,10 @@
 <div>
     <div class="header">
         <h2>Shared Resources</h2>
-        <div class="right-side">
-            <i class="material-icons" style="color: #ed1e23"> control_point </i>
+        <div class="right-side" style="cursor: pointer;">
+            <i class="material-icons" style="color: #ed1e23; font-weight: 500;
+            font-style: normal;
+            font-size: 26px;"> control_point </i>
             <a class="active" (click)="onAdd()">Add a new resource</a>
         </div>
     </div>
@@ -24,13 +26,12 @@
                             <h2>
                                 <div class="sps">
                                     <span (click)="onEdit(resource)" class="material-icons" style="background-color: white">
-                  create
-                </span>
-
+                                            create
+                                            </span>
                                     <span (click)="onDeleteGroup(resource.id,$event)">
-                  <span class="material-icons" style="background-color: white">
-                    delete_outline
-                  </span>
+                                    <span class="material-icons" style="background-color: white">
+                                        delete_outline
+                                    </span>
                                     </span>
                                 </div>
                             </h2>
@@ -44,21 +45,22 @@
             <div class="main-2">
                 <h2>External Shared Resources</h2>
                 <div class="list-container" style="cursor: pointer;">
-                    <ul class="list" *ngFor="let resource of dummyResource; let i = index">
+                    <ul class="list" *ngFor="let resource of externalResources; let i = index">
                         <li>
-                            <div class="box-1">
+                            <div class="box-1" (click)="getResource(resource.id)" [routerLink]="[i, resource.name]">
                                 <h2>{{ resource.name }}</h2>
 
-                                <h2>{{ resource.date }}</h2>
-                                <h2>
-                                    <div class="sps">
+
+                                <div>
+                                    {{resource.owner}}
+                                    <!-- <div class="sps">
                                         <span>
-                      <span class="material-icons" style="background-color: white">
-                        delete_outline
+                      <span (click)="onDeleteGroup(resource.id,$event)" class="material-icons" style="background-color: white">
+                        {{resource.owner}}
                       </span>
                                         </span>
-                                    </div>
-                                </h2>
+                                    </div> -->
+                                </div>
                             </div>
                         </li>
                     </ul>
@@ -72,3 +74,4 @@
 
 
     </div>
+</div>

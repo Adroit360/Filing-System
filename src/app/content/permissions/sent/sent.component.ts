@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApprovalService } from '../../../services/approval.service';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-sent',
@@ -20,7 +22,15 @@ export class SentComponent implements OnInit {
   {email: 'nadum@adroit360.com', date: '18/09/2020'},
 
 ]
-  constructor() { }
+
+sentRequests:any;
+receiveRequests:any;
+currentUser:string;
+  constructor(private approvalManager: ApprovalService,private userVolatileData:DataService) {
+    this.currentUser = userVolatileData.getActiveUser().email;
+    this.getRequests();
+  }
+
 
   ngOnInit(): void {
   }
@@ -29,4 +39,12 @@ export class SentComponent implements OnInit {
 
   }
 
+  async getRequests(){
+    this.sentRequests = await this.approvalManager.GetSentRequest(this.currentUser);
+  }
+
+
+  onDelete(){
+    console.log('deleted')
+  }
 }
