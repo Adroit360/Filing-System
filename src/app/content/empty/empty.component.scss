@@ -6,6 +6,10 @@
     grid-template-rows: auto auto 1fr;
 }
 
+span:hover {
+    cursor: pointer;
+}
+
 .add-folder {
     padding: 0px;
     a {
