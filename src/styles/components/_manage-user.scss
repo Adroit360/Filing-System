@@ -1,3 +1,45 @@
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15)
+}
+
+.content-table thead tr {
+    background-color: #ED1E23;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 15px;
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+    background-color: #ffffff;
+}
+
+
+/*** give each second child a background of light grey*/
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #ED1E23;
+}
+
+
+/*************************/
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -10,6 +52,10 @@ h2 {
     font-weight: 900;
     font-style: normal;
     font-size: 30px;
+}
+
+.box-1 {
+    padding: 1rem 0.63rem 0.2rem 0.63rem;
 }
 
 h5 {
@@ -32,8 +78,6 @@ h5 {
 
 .main {
     padding: 2.2rem 1.25rem;
-    // position: inherit;
-    // background-color: red;
 }
 
 .list {

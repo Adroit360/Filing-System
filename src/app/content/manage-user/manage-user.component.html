@@ -13,41 +13,43 @@
 
     <div class="main">
 
-        <div class="content-1">
-            <h5>Email</h5>
-            <h5>First Name</h5>
-            <h5>Last Name</h5>
-            <h5>Role</h5>
-            <h5>Action</h5>
-        </div>
+        <table class="content-table">
+            <!-- heading of the table ---->
+            <thead>
+                <tr>
 
-        <div class="list-container">
-            <ul class="list" *ngFor="let item of users|async;">
-                <li>
-                    <div class="box-1">
-                        <h2>{{item.email }}</h2>
-                        <h2>{{item.firstName}}</h2>
-                        <h2>{{item.lastName}}</h2>
-                        <h2>{{item.role}}</h2>
-                        <h2>
-                            <div class="sps">
-                                <span class="material-icons" style="background-color: white;" (click)="OnSettings(item.email)">
-                                settings
-                                </span>
-                                <span class="material-icons" style="background-color: white;" (click)="onEdit(item)">
-                      create
-                      </span>
-                                <span class="material-icons" style="background-color: white;" (click)="Ondelected(item)">
-                 delete_outline
-                  </span>
-                            </div>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <!---- content in the table-->
+            <tbody>
+                <tr *ngFor="let item of users|async;">
+                    <td>{{item.email }}</td>
+                    <td>{{item.firstName}}</td>
+                    <td>{{item.lastName}}</td>
+                    <td>{{item.role}}</td>
+                    <!----Action tools-->
+                    <td>
+                        <div class="sps">
+                            <span class="material-icons" (click)="OnSettings(item.email)">
+                            settings
+                            </span>
+                            <span class="material-icons" (click)="onEdit(item)">
+                            create
+                            </span>
+                            <span class="material-icons" (click)="Ondelected(item)">
+                            delete_outline
+                            </span>
+                        </div>
+                    </td>
 
-                        </h2>
-                    </div>
-                </li>
-
-            </ul>
-        </div>
+                </tr>
+            </tbody>
+        </table>
 
     </div>
 
