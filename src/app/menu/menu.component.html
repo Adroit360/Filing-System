@@ -65,32 +65,32 @@
             <!-- <li *ngFor="let item of sections|async; let i= index"><a (click)="onSelected(item.id,item.name)" [routerLink]="['content', item.id, item.name,item.id,item.name]" routerLinkActive="active2"><span class="material-icons">
                     folder_open
                     </span> {{item.name}}</a></li> -->
-            <div  *ngFor="let item of sections; let i= index">
-            <li >
+            <div *ngFor="let item of sections; let i= index">
+                <li>
 
-                <div *ngIf="!item.default " smart-tooltip-container>
-                    <a (click)="onSelected(item.id,item.name)" [routerLink]="['content', item.id, item.name,item.id,item.name]" *ngIf="hooks[i];else renameData">
-                        <span class="material-icons">
+                    <div *ngIf="!item.default " smart-tooltip-container>
+                        <a (click)="onSelected(item.id,item.name)" [routerLink]="['content', item.id, item.name,item.id,item.name]" *ngIf="hooks[i];else renameData">
+                            <span class="material-icons">
                              folder_open
                         </span>
-                        <p>{{item.name}}</p>
-                    </a>
+                            <p>{{item.name}}</p>
+                        </a>
 
-                    <div class="tooltip">
-                        <span class="smart-tooltip overlay stick-200">
+                        <div class="tooltip">
+                            <span class="smart-tooltip overlay stick-200">
                       <h4 (click)="onRenameSection(item, i)" >rename</h4>
                       <hr/>
                       <h4 (click)="onDeleteSection(item.id)">delete</h4>
                     </span>
 
+                        </div>
+                        <ng-template #renameData>
+                            <input (keydown.enter)="onUpdate(i)" value="{{nameSections[i]}}" type="text" #rename>
+                        </ng-template>
                     </div>
-                    <ng-template #renameData>
-                        <input (keydown.enter)="onUpdate(i)" value="{{nameSections[i]}}" type="text" #rename>
-                    </ng-template>
-                </div>
 
-            </li>
-        </div>
+                </li>
+            </div>
         </div>
         <li *ngIf="user.isAdmin"><a (click)="toggle()" *ngIf="visible;else Data"><span class="material-icons">
                 control_point
@@ -107,9 +107,13 @@
 <div class="admin-tools-inbox">
     <h2>Others</h2>
     <ul>
-        <li  *ngIf="user.isAdmin"><a routerLink="content/manageUsers" routerLinkActive="active"> Manage Users </a></li>
+        <li *ngIf="user.isAdmin"><a routerLink="content/manageUsers" routerLinkActive="active"> Manage Users </a></li>
         <li><a routerLink="content/SharedResources" routerLinkActive="active"> Shared Resources </a></li>
         <li><a (click)="reset()" routerLinkActive="active"> Reset password</a></li>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2c92980c997a253ae49650bb1bbb1d2915a079f5
     </ul>
 </div>
 

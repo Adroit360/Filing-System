@@ -8,6 +8,16 @@
         </p>
         <p *ngIf="item.returnedDocumentUrl">download response document <a [href]="item.returnedDocumentUrl">here</a></p>
     </div>
-    
-    <i *ngIf="item.approvalStatus" class="fa fa-check-circle"></i>
+    <div class="icon">
+
+        <span class="" id="hidden" smart-tooltip-container>
+          <p class="material-icons">more_vert</p>
+          <span class="smart-tooltip stay-bottom overlay stick" id="tooltip" (click)="onDelete()">
+           <h3>Delete</h3>
+          </span>
+        </span>
+        <!-- <a id="del" class=del> Delete</a> -->
+        <i *ngIf="item.approvalStatus" class="fa fa-check-circle"></i>
+    </div>
+
 </div>

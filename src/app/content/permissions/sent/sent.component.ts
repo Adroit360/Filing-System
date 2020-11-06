@@ -26,11 +26,11 @@ export class SentComponent implements OnInit {
 sentRequests:any;
 receiveRequests:any;
 currentUser:string;
-  constructor(private approvalManager: ApprovalService,private userVolatileData:DataService) { 
+  constructor(private approvalManager: ApprovalService,private userVolatileData:DataService) {
     this.currentUser = userVolatileData.getActiveUser().email;
     this.getRequests();
   }
-  
+
 
   ngOnInit(): void {
   }
@@ -40,7 +40,11 @@ currentUser:string;
   }
 
   async getRequests(){
-    this.sentRequests = await this.approvalManager.GetSentRequest(this.currentUser); 
+    this.sentRequests = await this.approvalManager.GetSentRequest(this.currentUser);
   }
 
+
+  onDelete(){
+    console.log('deleted')
+  }
 }
