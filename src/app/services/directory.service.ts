@@ -150,5 +150,22 @@ export class DirectoryService {
  
     return uploadTask.percentageChanges();
   }
+
+  async deleteFile(fileId){
+    const filePath = `${this.basePath}`;
+    const storageRef = this.afStorage.ref(filePath).child(fileId);
+    await storageRef.delete();
+    await this.archivesCollection.doc(fileId).delete();
+  }
+
+ deleteDirectory(directoryId){
+   firebase.firestore().collection("Archives").where('parentId','==',directoryId)
+  .get().then(a=>{a.docs.forEach(doc=>{
+      if(doc.data().itemType == "folder"){this.deleteDirectory(doc.data().id);}
+      else{ this.deleteFile(doc.data().id);}
+  })});
+    
+   this.archivesCollection.doc(directoryId).delete().catch(e=>{console.log(e)});
+  }
  
 }

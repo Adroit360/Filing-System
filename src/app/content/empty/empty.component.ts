@@ -127,8 +127,10 @@ export class EmptyComponent implements OnInit {
     console.log("downloading...");
   }
 
-  onDelete(id,type){
-    console.log("deleted")
+  onDelete(item){
+    console.log("deleted");
+    if (item.itemType=="file"){this.directory.deleteFile(item.id);}
+    else if (item.itemType=="folder"){this.directory.deleteDirectory(item.id);}
   }
 
   onSelected(list, event ,index, item){
