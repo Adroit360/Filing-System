@@ -12,18 +12,27 @@
     flex-direction: column;
 }
 
+.component {
+    position: relative;
+    padding: 10px;
+}
+
+.component:hover {
+    background-color: rgba(0, 0, 0, 0.24);
+}
+
 .main {
-    height: 32vh;
+    // height: 32vh;
     overflow: auto;
     // border: 1px solid blue;
     margin-bottom: 1rem;
 }
 
 .main-2 {
-    // .list-container {
-    //     height: 31vh;
-    //     overflow: auto;
-    // }
+    .list-container {
+        height: 31vh;
+        overflow: auto;
+    }
     h2 {
         font-size: 20px;
         padding-bottom: 20px;
@@ -57,7 +66,7 @@
 //     cursor: pointer;
 // }
 .folder {
-    max-height: 70vh;
+    height: 40vh;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -69,14 +78,51 @@
 }
 
 .folder a {
+    position: relative;
     padding: 25px;
     text-decoration: none;
     text-align: center;
+    cursor: pointer;
 }
 
 // .Resource {
 //     position: relative;
 // }
-.folder a :hover {
+// .folder a:hover {
+//     background-color: rgba(34, 32, 32, 0.486);
+// }
+.toggler {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    .more-icon {
+        opacity: 0;
+        padding: .2rem;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: -5px;
+        top: 5px;
+    }
+    #hiddenText {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
+
+.folder a:hover .more-icon {
+    opacity: 1;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.692), transparent);
     background-color: rgba(34, 32, 32, 0.486);
+    color: white;
+}
+
+#tooltip {
+    height: 30px;
+    width: 60px;
 }
