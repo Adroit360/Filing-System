@@ -14,7 +14,12 @@
     <div class="folders">
         <a class="folder-container" *ngFor="let item of files">
             <div class="component">
-                <img src="https://img.icons8.com/fluent/48/000000/pdf.png" />
+                <img *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' " src="../../../assets/image.png" style="height: 50px; width: 50px;"/>
+                <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="../../../assets/pdf.png" style="height: 50px; width: 50px;"/>
+                <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12' || item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint'" src="../../../assets/pp.png"  style="height: 50px; width: 50px;"/>
+                <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||item.itemType=='file' && item.contentType=='application/msword'"src="../../../assets/word.png" style="height: 50px; width: 50px;"/>
+                <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'"src="../../../assets/excel.png" style="height: 50px; width: 50px;"/>
+                <img *ngIf="item.itemType=='file' && item.contentType=='text/plain'" src="../../../assets/text.png" style="height: 50px; width: 50px;"/>
                 <p>{{ item.name | truncate: 12 }}</p>
             </div>
 

@@ -127,7 +127,7 @@ export class EmptyComponent implements OnInit {
     console.log("downloading...");
   }
 
-  onDelete(){
+  onDelete(id,type){
     console.log("deleted")
   }
 
