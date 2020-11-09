@@ -18,10 +18,16 @@ export class NavBarComponent implements OnInit {
 
   }
 
-  // routes to the log in page 
+  // routes to the log in page
   onLogOut(){
     this.authManager.SignOut();
     this.router.navigate(["login"]);
+  }
+
+  updateSearch(searchTextValue: string) {
+    // this._searchSubject.next( searchTextValue );
+    this.router.navigate(['home/content/search'])
+    console.log(searchTextValue);
   }
 
 

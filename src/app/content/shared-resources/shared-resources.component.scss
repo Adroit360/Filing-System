@@ -12,7 +12,7 @@
     flex-direction: column;
 }
 
-.main .list-container {
+.main {
     height: 32vh;
     overflow: auto;
     // border: 1px solid blue;
@@ -20,10 +20,10 @@
 }
 
 .main-2 {
-    .list-container {
-        height: 31vh;
-        overflow: auto;
-    }
+    // .list-container {
+    //     height: 31vh;
+    //     overflow: auto;
+    // }
     h2 {
         font-size: 20px;
         padding-bottom: 20px;
@@ -36,30 +36,26 @@
     margin-bottom: 1rem;
 }
 
-.right-side {
-    cursor: pointer;
-}
-
-.box-1 {
-    display: grid;
-    grid-template-columns: 2.5fr 1.3fr 0.8fr;
-    grid-gap: 2px;
-    background-color: #ffffff;
-    padding: 5px 0px 0px 0px;
-    border-radius: 35px;
-}
-
-.box-1>h2 {
-    padding: 4px 8px;
-    font-size: 15px;
-    font-weight: normal;
-    font-style: normal;
-}
-
-a :hover {
-    cursor: pointer;
-}
-
+// .right-side {
+//     cursor: pointer;
+// }
+// .box-1 {
+//     display: grid;
+//     grid-template-columns: 2.5fr 1.3fr 0.8fr;
+//     grid-gap: 2px;
+//     background-color: #ffffff;
+//     padding: 5px 0px 0px 0px;
+//     border-radius: 35px;
+// }
+// .box-1>h2 {
+//     padding: 4px 8px;
+//     font-size: 15px;
+//     font-weight: normal;
+//     font-style: normal;
+// }
+// a :hover {
+//     cursor: pointer;
+// }
 .folder {
     max-height: 70vh;
     display: flex;
@@ -72,4 +68,15 @@ a :hover {
     overflow-y: auto;
 }
 
-.folder-resource {}
+.folder a {
+    padding: 25px;
+    text-decoration: none;
+    text-align: center;
+}
+
+// .Resource {
+//     position: relative;
+// }
+.folder a :hover {
+    background-color: rgba(34, 32, 32, 0.486);
+}
