@@ -66,7 +66,7 @@
                     folder_open
                     </span> {{item.name}}</a></li> -->
             <div *ngFor="let item of sections; let i= index">
-                <li>
+                <li style="overflow: auto;">
 
                     <div *ngIf="!item.default " smart-tooltip-container>
                         <a (click)="onSelected(item.id,item.name)" [routerLink]="['content', item.id, item.name,item.id,item.name]" *ngIf="hooks[i];else renameData">

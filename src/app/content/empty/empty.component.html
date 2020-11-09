@@ -1,5 +1,10 @@
 <div class="container">
-    <div class="head">
+    <div class="head" (click)="Back()">
+        <span style="padding: 10px;
+        margin: 0px 0px;
+        font-weight: bold;" class="material-icons">
+        arrow_back
+        </span>
         <h3 style="margin-left: 12px;
       font-size: 30px;
       font-weight: bold;">{{ currentDirectoryName | uppercase }}</h3>
