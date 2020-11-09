@@ -1,45 +1,12 @@
 @import '../../../styles/components/item-box';
 @import '../../../styles/components/manage-user';
-.content-1 {
-    display: grid;
-    grid-template-columns: 2fr 1.5fr 1.5fr 1fr 0.5fr;
-    grid-gap: 0.13rem;
-    padding: 0.63rem 2.25rem;
-}
-
-.box-1 {
-    display: grid;
-    grid-template-columns: 23fr 1fr;
-    grid-gap: 0.13rem;
-    background-color: #ffffff;
-    padding: 1rem 0.63rem 0.2rem 0.63rem;
-    border-radius: 2.19rem;
+.h2 {
+    float: right;
     i,
     span {
         font-weight: 500;
         font-style: normal;
         font-size: 26px;
+        cursor: pointer;
     }
-}
-
-.box-1>h2 {
-    //  background-color: rgba(255, 255, 255, 0.8);
-    padding: 0.06rem 0.25rem;
-    font-size: 15px;
-    font-weight: normal;
-    font-style: normal;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-a {
-    cursor: pointer;
-}
-
-span :hover {
-    cursor: pointer;
-}
-
-i:hover {
-    cursor: pointer;
 }
