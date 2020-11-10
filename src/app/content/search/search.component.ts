@@ -16,6 +16,7 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.directoryManager.getAccessibleArchives(this.volatileInfo.getActiveUser().accessList).subscribe(result=>{
         this.archives = result;
+        console.log("this is the searched archives",this.archives);
     });
   }
   onSelected(item){
