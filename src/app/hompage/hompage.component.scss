@@ -17,6 +17,7 @@ app-menu {
     grid-area: side;
     display: grid;
     grid-auto-flow: row;
+    grid-template-rows: 1fr 4fr 1fr;
 }
 
 app-nav-bar {
@@ -26,7 +27,7 @@ app-nav-bar {
 .app-content {
     grid-area: main;
     // border-top-left-radius: 3.13rem;
-    // background-color: #E5E5E5;
+    // background-color: #E5E5E5;S
     // display: grid;
     // grid-auto-flow: column;
     // grid-template-columns: 3fr 1fr;

@@ -20,10 +20,12 @@ h1 {
 }
 
 .active {
-    border-bottom: 3px solid #ED1E23;
+    border-bottom: 3px solid #459ce3;
+    font-weight: bold;
     width: 70%;
     animation-timing-function: linear;
-    animation: move 1s
+    animation: move 1s;
+    color: #459ce3;
 }
 
 .d-container {
@@ -40,10 +42,10 @@ h1 {
     margin-bottom: 2rem;
     a {
         text-decoration: none;
-        color: black;
+        // color: black;
         text-align: center;
         cursor: pointer;
-        font-weight: 400;
+        // font-weight: 400;
     }
 }
 

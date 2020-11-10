@@ -1,9 +1,22 @@
 @import '../../../styles/components/manage-user';
 .container {
-    margin-top: 20px;
+    // margin-top: 20px;
+    padding: 25px;
     display: grid;
     grid-auto-flow: row;
     grid-template-rows: auto auto 1fr;
+}
+
+.back {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    padding: 12px;
+    // margin: 0px 0px;
+    font-weight: bold;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background: white;
 }
 
 span:hover {
@@ -36,18 +49,19 @@ h1 {
 }
 
 .ssp {
-    margin-left: 45%;
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 4fr 3fr;
     padding: 10px;
     a {
         display: flex;
+        color: #808080;
     }
     span,
     a,
     p {
         font-weight: bold;
+        color: #808080;
         // color: rgba(0, 0, 0, 0.301);
     }
 }
@@ -59,9 +73,14 @@ input {
 }
 
 .head {
-    display: flex;
+    // display: flex;
+    // margin: 0px;
+    // padding: 0px;
     margin: 0px;
     padding: 0px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 7fr 1fr;
 }
 
 .beneath {
@@ -83,19 +102,20 @@ h4 {
 }
 
 .folders {
-    // height: 550px;
+    //height: 68vh;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     // justify-content: center;
-    margin: 0px 60px;
+    // margin: 0px 60px;
     overflow-x: hidden;
     /* overflow: auto; */
     overflow-y: auto;
 }
 
 a {
-    padding: 20px;
+    padding: 13px;
+    padding-bottom: 20px;
     text-align: center;
     text-decoration: none;
     cursor: pointer;

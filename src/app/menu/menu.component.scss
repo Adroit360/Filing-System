@@ -3,7 +3,12 @@
     -webkit-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
     box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
-    border-right: 10px solid #ED1E23;
+    // border-right: 10px solid #ED1E23;
+    border-radius: 10px;
+    span,
+    p {
+        color: #459ce3;
+    }
 }
 
 ng-sidebar-container {
@@ -29,7 +34,7 @@ h2 {
     line-height: 18px;
     letter-spacing: 0em;
     text-align: left;
-    padding-left: 1.25rem;
+    padding-left: 13%;
     color: #808080;
 }
 
@@ -39,12 +44,13 @@ h2 {
 }
 
 ul {
-    padding: 1.25rem;
+    padding: 5% 0 5% 10%;
     list-style: none;
 }
 
 p {
     margin-top: 0.8rem;
+    font-size: 1.6rem;
 }
 
 li {
@@ -56,6 +62,7 @@ li {
     line-height: 1.44rem;
     letter-spacing: 0em;
     text-align: left;
+    overflow: hidden;
     &:hover {
         @include active();
         border-right: none;
@@ -74,8 +81,10 @@ li a {
 }
 
 .admin-tools li a {
+    position: relative;
     display: grid;
-    grid-template-columns: 1fr 4.5fr;
+    grid-template-columns: 1fr 2.9fr 1fr;
+    overflow: none;
 }
 
 .admin-tools-inbox li {
@@ -115,8 +124,13 @@ span>h4 {
 }
 
 .active2 {
-    @include active();
-    border-right: none;
+    background-color: #FFFFFF;
+    -webkit-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    // border-right: 10px solid #ED1E23;
+    border-radius: 10px;
+    color: #459ce3;
 }
 
 
@@ -267,11 +281,28 @@ button {
     margin-top: 20px;
 }
 
+.more-icons {
+    // position: absolute;
+    opacity: 0;
+}
+
+.admin-tools li a:hover .more-icons {
+    opacity: 1;
+}
+
 .tooltip>span {
+    background-color: white;
     height: 35px;
     width: 70px;
 }
 
 .tooltip>span>h4 {
-    color: white;
+    color: black;
+    padding-bottom: 7px;
+    font-size: 15px;
+    text-align: left;
+}
+
+.tooltip>span>h4:hover {
+    color: #459ce3
 }
