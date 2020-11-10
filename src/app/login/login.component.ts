@@ -4,7 +4,7 @@ import {FormControl, FormGroup, Validators, } from '@angular/forms';
 import {AuthServiceService} from '../services/auth-service.service';
 import {DataService } from '../services/data.service';
 import {MessengerService} from '../services/messenger.service';
-import { SectionService } from '../services/Section.service';
+import { SectionService } from '../services/section.service';
 import {User } from '../models/model';
 
 @Component({
@@ -12,6 +12,7 @@ import {User } from '../models/model';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
   LogInForm: FormGroup;
   isValid = false; // this property checks if the form is valid or if the name is in the database
@@ -51,9 +52,6 @@ export class LoginComponent implements OnInit {
       console.log("this is the error from login page",err);
       this.isValid = true;
     });
-
-    
-
   }
 
   onToggle(){

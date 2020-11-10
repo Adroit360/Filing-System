@@ -1,14 +1,14 @@
 <div class="content">
     <div class="head">
-        <h2>Search Results</h2>
+        <h3>Search Results</h3>
     </div>
 
     <ul>
         <div class="folder">
-            <a class="container" *ngFor="let item of items; let i = index">
+            <a class="container" *ngFor="let item of archives; let i = index">
                 <div class="Resource" (click)="onSelected(item)" [routerLink]="[i, item]">
                     <i class="{{fontIcon}}" style='font-size: 50px; color: rgba(134, 134, 219, 0.76);'></i>
-                    <p style="font-size: 14px;"> {{item}}</p>
+                    <p style="font-size: 14px;"> {{item.alias}}</p>
                 </div>
 
                 <div class="toggler">

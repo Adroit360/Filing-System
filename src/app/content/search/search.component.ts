@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DirectoryService } from '../../services/directory.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-search',
@@ -8,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class SearchComponent implements OnInit {
   items=['text', 'yele', 'yawa','qwerty','yaw'];
   fontIcon = "fa fa-folder";
-  constructor() { }
+  archives:any=[];
+  constructor(private directoryManager: DirectoryService, private volatileInfo:DataService) { }
 
   ngOnInit(): void {
+    this.directoryManager.getAccessibleArchives(this.volatileInfo.getActiveUser().accessList).subscribe(result=>{
+        this.archives = result;
+    });
   }
   onSelected(item){
   console.log(item)
