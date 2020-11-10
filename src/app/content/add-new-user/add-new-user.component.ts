@@ -28,17 +28,18 @@ export class AddNewUserComponent implements OnInit {
     console.log(this.addUserForm.value);
     this.messenger.NewUser(this.addUserForm.value.firstName,this.addUserForm.value.lastName,
       this.addUserForm.value.email,this.addUserForm.value.role).then((res)=>{
-        
+
         this.errorMessage=res;
         if(!res){
           this.router.navigate(['home/content/manageUsers']);
         }
-       
+
        }).catch(err=>{
          console.log(err);
          return;
        });
   }
   onCancel(){
+    this.router.navigate(['home/content/manageUsers']);
   }
 }

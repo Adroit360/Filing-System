@@ -30,7 +30,7 @@ import {ModalComponent} from './modal/modal.component';
 import { PasswordComponent} from './forgotPassword/password.component';
 import { NewFolderComponent } from './new-folder/new-folder.component'
 import { AdminResourceService } from './services/AdminResource.service';
-import { SearchPageComponent } from './search-page/search-page.component';
+
 import { SmartTooltipAngularModule } from 'smart-tooltip-angular';
 import { SharedResourcesComponent } from './content/shared-resources/shared-resources.component';
 import { NewResourceComponent } from './content/new-resource/new-resource.component';
@@ -47,6 +47,7 @@ import { SentApprovalsComponent } from './approvals/sent-approvals/sent-approval
 import { RequestApprovalsComponent } from './approvals/request-approvals/request-approvals.component';
 import { ReplyApprovalsComponent } from './approvals/reply-approvals/reply-approvals.component';
 import { UserSettingsComponent } from './content/user-settings/user-settings.component';
+import { SearchComponent } from './content/search/search.component';
 
 
 
@@ -67,7 +68,6 @@ import { UserSettingsComponent } from './content/user-settings/user-settings.com
     ModalComponent,
     PasswordComponent,
     NewFolderComponent,
-    SearchPageComponent,
     SharedResourcesComponent,
     NewResourceComponent,
     EditResourceComponent,
@@ -81,7 +81,8 @@ import { UserSettingsComponent } from './content/user-settings/user-settings.com
     SentApprovalsComponent,
     RequestApprovalsComponent,
     ReplyApprovalsComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    SearchComponent
   ],
 
   imports: [

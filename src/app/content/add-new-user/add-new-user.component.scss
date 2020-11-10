@@ -11,6 +11,13 @@ h1 {
     font-size: 1.875rem;
 }
 
+.submit {
+    display: flex;
+    grid-gap: 0.94rem;
+    margin: 40px auto;
+    justify-content: center;
+}
+
 input {
     width: 80%;
     padding: 20px 20px;

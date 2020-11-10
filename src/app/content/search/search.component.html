@@ -1,0 +1,26 @@
+<div class="content">
+    <div class="head">
+        <h2>Search Results</h2>
+    </div>
+
+    <ul>
+        <div class="folder">
+            <a class="container" *ngFor="let item of items; let i = index">
+                <div class="Resource" (click)="onSelected(item)" [routerLink]="[i, item]">
+                    <i class="{{fontIcon}}" style='font-size: 50px; color: rgba(134, 134, 219, 0.76);'></i>
+                    <p style="font-size: 14px;"> {{item}}</p>
+                </div>
+
+                <div class="toggler">
+                    <span class="more-icon material-icons">arrow_drop_down</span>
+                    <span id="hiddenText" class="material-icons clicktoshow" smart-tooltip-container>
+                  <span class="smart-tooltip stick stay-down"> hello</span>
+
+                    </span>
+                </div>
+
+            </a>
+        </div>
+
+    </ul>
+</div>

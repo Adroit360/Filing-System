@@ -18,6 +18,7 @@ export class SharedResourcesComponent implements OnInit {
   today: number= Date.now();
   resource: any;
   resources:any;
+  fontIcon = "fa fa-folder";
  externalResources:[];
 
   dummyResource = [

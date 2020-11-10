@@ -12,43 +12,40 @@
     </div>
 
     <div class="main">
-
         <table class="content-table">
-            <!-- heading of the table ---->
             <thead>
                 <tr>
-
-                    <th>Email</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Role</th>
-                    <th>Action</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
-            <!---- content in the table-->
             <tbody>
                 <tr *ngFor="let item of users|async;">
-                    <td>{{item.email }}</td>
-                    <td>{{item.firstName}}</td>
-                    <td>{{item.lastName}}</td>
+                    <td>{{item.email }} </td>
+                    <td>{{item.firstName}} </td>
+                    <td>{{item.lastName}} </td>
                     <td>{{item.role}}</td>
                     <!----Action tools-->
                     <td>
                         <div class="sps">
                             <span class="material-icons" (click)="OnSettings(item.email)">
-                            settings
-                            </span>
+                        settings
+                        </span>
                             <span class="material-icons" (click)="onEdit(item)">
-                            create
-                            </span>
+                        create
+                        </span>
                             <span class="material-icons" (click)="Ondelected(item)">
-                            delete_outline
-                            </span>
+                        delete_outline
+                        </span>
                         </div>
                     </td>
-
                 </tr>
+
             </tbody>
+
         </table>
 
     </div>

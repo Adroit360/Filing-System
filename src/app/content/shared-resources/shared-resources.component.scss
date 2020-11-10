@@ -12,8 +12,17 @@
     flex-direction: column;
 }
 
-.main .list-container {
-    height: 32vh;
+.component {
+    position: relative;
+    padding: 10px;
+}
+
+.component:hover {
+    background-color: rgba(0, 0, 0, 0.24);
+}
+
+.main {
+    // height: 32vh;
     overflow: auto;
     // border: 1px solid blue;
     margin-bottom: 1rem;
@@ -36,26 +45,84 @@
     margin-bottom: 1rem;
 }
 
-.right-side {
+// .right-side {
+//     cursor: pointer;
+// }
+// .box-1 {
+//     display: grid;
+//     grid-template-columns: 2.5fr 1.3fr 0.8fr;
+//     grid-gap: 2px;
+//     background-color: #ffffff;
+//     padding: 5px 0px 0px 0px;
+//     border-radius: 35px;
+// }
+// .box-1>h2 {
+//     padding: 4px 8px;
+//     font-size: 15px;
+//     font-weight: normal;
+//     font-style: normal;
+// }
+// a :hover {
+//     cursor: pointer;
+// }
+.folder {
+    height: 40vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    // justify-content: center;
+    margin: 0px 60px;
+    overflow-x: hidden;
+    /* overflow: auto; */
+    overflow-y: auto;
+}
+
+.folder a {
+    position: relative;
+    padding: 25px;
+    text-decoration: none;
+    text-align: center;
     cursor: pointer;
 }
 
-.box-1 {
-    display: grid;
-    grid-template-columns: 2.5fr 1.3fr 0.8fr;
-    grid-gap: 2px;
-    background-color: #ffffff;
-    padding: 5px 0px 0px 0px;
-    border-radius: 35px;
+// .Resource {
+//     position: relative;
+// }
+// .folder a:hover {
+//     background-color: rgba(34, 32, 32, 0.486);
+// }
+.toggler {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    .more-icon {
+        opacity: 0;
+        padding: .2rem;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: -5px;
+        top: 5px;
+    }
+    #hiddenText {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 }
 
-.box-1>h2 {
-    padding: 4px 8px;
-    font-size: 15px;
-    font-weight: normal;
-    font-style: normal;
+.folder a:hover .more-icon {
+    opacity: 1;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.692), transparent);
+    background-color: rgba(34, 32, 32, 0.486);
+    color: white;
 }
 
-a :hover {
-    cursor: pointer;
+#tooltip {
+    height: 30px;
+    width: 60px;
 }
