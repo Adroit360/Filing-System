@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import {AuthServiceService} from '../services/auth-service.service';
 import { UserService } from '../services/User.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,7 +12,7 @@ import { UserService } from '../services/User.service';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-  constructor( private authManager:AuthServiceService,private userservice: UserService, private router: Router) { }
+  constructor( private authManager:AuthServiceService,private userservice: UserService, private router: Router, private data: DataService) { }
 
   ngOnInit(): void {
 
@@ -26,7 +27,8 @@ export class NavBarComponent implements OnInit {
 
   updateSearch(searchTextValue: string) {
     // this._searchSubject.next( searchTextValue );
-    this.router.navigate(['home/content/search'])
+    this.router.navigate(['home/content/search']);
+    this.data.search(searchTextValue);
     console.log(searchTextValue);
   }
 

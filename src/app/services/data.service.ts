@@ -1,17 +1,17 @@
 // ############################################################################
-//  This file contains volatile data during execution. Volatile data consists of runtime information about 
+//  This file contains volatile data during execution. Volatile data consists of runtime information about
 //   user, sections, and other software objects of the system.
 //  ###########################################################################
 
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import {User } from '../models/model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-
+  searchItem= new Subject<any>();
   user:User={
     firstName:"",
     lastName:"",
@@ -28,13 +28,16 @@ export class DataService {
   directoryHierachy:string="";
 
   constructor() { }
-
+  //searching a document
+  search(results){
+    this.searchItem.next(results);
+  }
   // setting current user info
   setActiveUser(passedData:User){
     this.user = passedData;
   }
 
-  // returns all info about current user 
+  // returns all info about current user
   getActiveUser(){
     return this.user;
   }
@@ -44,7 +47,7 @@ export class DataService {
     return this.user.accessList;
   }
 
-  // Set the current section the user is navigating 
+  // Set the current section the user is navigating
   setCurrentSection(sectionId,sectionName){
     this.currentSection = sectionId;
    this.currentDirectory = "";
@@ -58,9 +61,9 @@ export class DataService {
 
   // set the current directory of the user
   setCurrentDirectory(directoryId,directoryName){
-    
+
     this.currentDirectory = directoryId;
-    
+
     console.log(this.directoryHierachy,"directory hiererachy");
   }
 

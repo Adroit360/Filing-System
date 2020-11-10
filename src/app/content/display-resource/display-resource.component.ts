@@ -60,5 +60,8 @@ AddUser(){
 onDelete(){
 
 }
+onBack(){
+  this.route.navigate(['home/content/SharedResources']);
+}
 
 }

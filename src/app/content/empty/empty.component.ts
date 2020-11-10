@@ -154,6 +154,7 @@ export class EmptyComponent implements OnInit {
   sendFileToResource(item,resource){
     console.log("resource clicked");
     this.resourceManager.AddFileToResource(item,resource);
+    this.showTooltip= +!this.showTooltip;
   }
   onRequestModal(value){
     this.showTooltip = +true;

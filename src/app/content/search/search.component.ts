@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-search',
@@ -8,11 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class SearchComponent implements OnInit {
   items=['text', 'yele', 'yawa','qwerty','yaw'];
   fontIcon = "fa fa-folder";
-  constructor() { }
+  constructor( private data: DataService) { }
 
   ngOnInit(): void {
   }
+
   onSelected(item){
-  console.log(item)
+  console.log(item);
+
+  //the search item
+  this.data.searchItem.subscribe(item=>console.log(item));
  }
 }

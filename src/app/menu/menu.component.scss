@@ -11,11 +11,14 @@ ng-sidebar-container {
     height: 100vh;
 }
 
-.logo img {
-    width: 13.25rem;
-    height: 5.56rem;
-    margin-left: 4.3rem;
-    margin-top: 1.63rem;
+.logo {
+    height: 0;
+    img {
+        width: 202px;
+        height: 74px;
+        // margin-left: 4.3rem;
+        // margin-top: 1.63rem;
+    }
 }
 
 h2 {
