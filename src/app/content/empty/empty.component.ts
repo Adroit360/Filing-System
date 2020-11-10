@@ -79,8 +79,9 @@ export class EmptyComponent implements OnInit {
     // this.data.setCurrentDirectory(item.id, item.name);
     if(directory.itemType=='folder'){
       this.dirContent = this.directory.getSubDirectoryContent(this.currentSectionId, directory.id);
-      this.data.setCurrentDirectory(directory.id, directory.name);
-      console.log(this.hierrachy,"this is the hierrachy");
+      this.data.setCurrentDirectory(directory.id,directory.name);
+      
+      console.log("directory is set");
       this.router.navigate(["home", "content",this.currentSectionId,this.currentSectionName, directory.id, directory.name])
     }else{
       return;
@@ -154,7 +155,7 @@ export class EmptyComponent implements OnInit {
 
 
   sendFileToResource(item,resource){
-    console.log("resource clicked");
+    // console.log("resource clicked");
     this.resourceManager.AddFileToResource(item,resource);
   }
   onRequestModal(value){
@@ -169,8 +170,16 @@ export class EmptyComponent implements OnInit {
 
   }
 
-  Back(){
-    console.log('back');
+  async Back(){
+    console.log("back clicked")
+    let parent = await this.directory.getParent(this.data.currentDirectory);
+    console.log("parent", parent);
+    if(parent){
+      this.dirContent = await this.directory._getSubDirectoryContent(parent.id);
+      await this.data.setCurrentDirectory(parent.id,parent.name);
+      console.log(this.hierrachy,"this is the hierrachy");
+      this.router.navigate(["home", "content",this.currentSectionId,this.currentSectionName, parent.id, parent.name])
+    }
   }
 }
 

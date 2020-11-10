@@ -30,7 +30,6 @@ export class  UserService{
   UpdateUser(item:User, index:any){
     if(index!=-1){
       this.userDetails[index]=item;
-
     }
 
   }
@@ -48,8 +47,6 @@ export class  UserService{
   //Edit user
   onEditUSer(item:User, index:any){
     this.EditUser.next({details: item, position: index});
-
   }
-
 
 }
