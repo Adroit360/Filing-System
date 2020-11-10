@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="head" (click)="Back()">
-        <span style="padding: 10px;
+    <div class="head" >
+        <span (click)="Back()" style="padding: 10px;
         margin: 0px 0px;
         font-weight: bold;" class="material-icons">
         arrow_back
@@ -35,8 +35,8 @@
     <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'"src="../../../assets/excel.png" style="height: 50px; width: 50px;"/>
     <img *ngIf="item.itemType=='file' && item.contentType=='text/plain'" src="../../../assets/text.png" style="height: 50px; width: 50px;"/>
     <i *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" class="{{fontIcon}}" style='font-size: 50px;'></i>
-    <p *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
-    <p *ngIf="item.itemType=='file'" style="font-size: 14px;">{{item.name| truncate: 12}}</p>
+    <p *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" style="font-size: 14px;">{{item.alias| truncate: 12}}</p>
+    <p *ngIf="item.itemType=='file'" style="font-size: 14px;">{{item.alias| truncate: 12}}</p>
   </div>
 
   <div class="toggler">
@@ -76,7 +76,7 @@
                 <p (click)="onShowRequest(item ,i, $event)">Request Approval</p>
             </div>
             <div class="text">
-                <p (click)="onDelete()">Delete</p>
+                <p (click)="onDelete(item)">Delete</p>
             </div>
             </span>
             </span>

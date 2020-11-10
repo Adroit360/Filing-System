@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators, } from '@angular/forms';
 import {AuthServiceService} from '../services/auth-service.service';
 import {DataService } from '../services/data.service';
 import {MessengerService} from '../services/messenger.service';
+import { SectionService } from '../services/section.service';
 import {User } from '../models/model';
 
 @Component({
@@ -11,20 +12,29 @@ import {User } from '../models/model';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
   LogInForm: FormGroup;
   isValid = false; // this property checks if the form is valid or if the name is in the database
   forgot=false;
   errorMessage:string ="";
   user:User;
-  constructor(private route: Router,private authService:AuthServiceService,private userInfo:DataService,private msg:MessengerService) { }
+  generalSection:any;
+
+  constructor(private route: Router,private authService:AuthServiceService,private userInfo:DataService,private msg:MessengerService,private sectionService:SectionService) { }
 
   ngOnInit(): void {
+    this.getGeneralSection();
     this.LogInForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, Validators.required),
       rememberMe: new FormControl(null),
     });
+  }
+
+  async getGeneralSection(){
+    this.generalSection = await this.sectionService.getGeneralSection();
+    console.log("general section info",this.generalSection.id);
   }
 
   onSubmit(){
@@ -35,16 +45,13 @@ export class LoginComponent implements OnInit {
       , isAdmin:userobj.isAdmin,accessList:userobj.accessList};
        console.log("lgoing",this.user, "email",this.LogInForm.value.email);
        this.userInfo.setActiveUser(this.user);
-      this.route.navigate(['home/content/general/general/general/general']);
+      this.route.navigate(["home/content/"+this.generalSection.id+"/"+this.generalSection.name+"/"+this.generalSection.id+"/"+this.generalSection.name]);
       console.log(this.LogInForm);
     }).catch(err=>{
       this.errorMessage = err.message; 
       console.log("this is the error from login page",err);
       this.isValid = true;
     });
-
-    
-
   }
 
   onToggle(){

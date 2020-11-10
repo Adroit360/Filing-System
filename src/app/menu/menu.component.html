@@ -57,8 +57,8 @@
 </div>
 <div class="admin-tools">
     <h2>sections</h2>
-    <ul>
-        <li><a (click)="onSelectedGeneral('general','general')" [routerLink]="['content', 'general', 'general','general','general']" routerLinkActive="active"><span class="material-icons" >
+    <ul *ngIf="generalSection">
+        <li><a (click)="onSelectedGeneral(generalSection.id,generalSection.name)" [routerLink]="['content', generalSection.id, generalSection.name,generalSection.id,generalSection.name]" routerLinkActive="active"><span class="material-icons" >
                 home
                 </span> <p>General</p> </a></li>
         <div class="custom-section">

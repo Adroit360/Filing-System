@@ -5,7 +5,8 @@
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import {User } from '../models/model';
+import { User } from '../models/model';
+import { DirectoryService } from './directory.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,16 +26,23 @@ export class DataService {
 
   currentSection:string="";
   currentDirectory:string="";
+  currentDirectoryName:string="";
   directoryHierachy:string="";
+  accessibleDocs:any =[];
 
-  constructor() { }
-  //searching a document
+  constructor(private directoryManager: DirectoryService) { }
+
   search(results){
     this.searchItem.next(results);
   }
+
   // setting current user info
-  setActiveUser(passedData:User){
-    this.user = passedData;
+  async setActiveUser(passedData:User){
+    this.user = await passedData;
+    this.directoryManager.getAccessibleArchives(this.user.accessList).subscribe(result=>{
+      this.accessibleDocs = result;
+    });
+
   }
 
   // returns all info about current user
@@ -63,13 +71,19 @@ export class DataService {
   setCurrentDirectory(directoryId,directoryName){
 
     this.currentDirectory = directoryId;
+    this.currentDirectoryName= directoryName;
 
-    console.log(this.directoryHierachy,"directory hiererachy");
+    console.log(this.currentDirectoryName,"directory name set");
   }
 
-  // returns the current directory of the user
+  // returns the current directory of the user by id
   getCurrentDirectory(){
     return this.currentDirectory;
+  }
+
+   // returns the current directory of the user by name
+   getCurrentDirectoryName(){
+    return this.currentDirectoryName;
   }
 
   // returns the navigation path of the user
@@ -97,6 +111,10 @@ export class DataService {
   // get current approval document to be replied to
   getApproveDoc(doc:any){
     return this.approvDoc;
+  }
+
+  getAccessibleDocumentsByUser(user){
+
   }
 
 }

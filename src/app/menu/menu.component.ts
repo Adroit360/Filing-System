@@ -29,23 +29,24 @@ export class MenuComponent implements OnInit {
   delete: boolean;
   modalState: boolean;
   section: Section;
-
+  generalSection:any;
 
   hooks = [];
   nameSections = [];
 
   constructor(private authManager:AuthServiceService,private directory:DirectoryService, private sectionService:SectionService, private router: Router, private route: ActivatedRoute,private msg:MessengerService, private data:DataService) {
-
+    
+   
   }
 
    ngOnInit(): void {
     // this.sections = this.sectionService.getSection();
-
+    this.getGeneralSection();
     this.user= this.data.getActiveUser();
     console.log("from menu comp",this.data.getAccessList());
     this.accessList = this.data.getAccessList();
     // this.sections=this.msg.getSectionByAccess(this.userInfo.getAccessList());//.then(result=>{this.sections=result; console.log(this.sections);});
-
+   
     if (this.user.isAdmin){
       console.log("this is admin");
       this.sectionService.getSections().subscribe(_sections=>{
@@ -59,12 +60,13 @@ export class MenuComponent implements OnInit {
         this.hooks = _sections.map(i=>true);
       });
     }
-   
-
     console.log("sections",this.sections);
   }
 
-
+  async getGeneralSection(){
+    this.generalSection = await this.sectionService.getGeneralSection();
+    console.log("general section info",this.generalSection.id);
+  }
   toggle(){
     this.visible = !this.visible;
   }
@@ -72,6 +74,7 @@ export class MenuComponent implements OnInit {
   async onSelected(sectionId,sectionName){
 
     this.data.setCurrentSection(sectionId,sectionName);
+    this.data.setCurrentDirectory(sectionId,sectionName);
     console.log(sectionName);
     // await this.directory.setActiveSectionItems(id,id,this.accessList);
 

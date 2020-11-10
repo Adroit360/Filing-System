@@ -18,6 +18,6 @@ export class SearchComponent implements OnInit {
   console.log(item);
 
   //the search item
-  this.data.searchItem.subscribe(item=>console.log(item));
+  this.data.searchItem.subscribe(item=>console.log(item))
  }
 }

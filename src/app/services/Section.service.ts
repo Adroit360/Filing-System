@@ -26,6 +26,12 @@ export class SectionService {
       this.sections = this.sectionCollection.valueChanges();
   }
 
+  async getGeneralSection(){
+    let general:any;
+    await firebase.firestore().collection("Sections").where("name","==","general").get().then(a=>{general = a.docs[0].data();console.log("from service general", general.name)});
+    
+    return general;
+  }
     //create section
    async newSection(sectionName){
       let id = this.afs.createId();

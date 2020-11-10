@@ -78,7 +78,7 @@ export class UserListComponent implements OnInit {
  async updateSubjects(){
     await this.resourceManager.GetResource(this.ResourceId).subscribe(result=>{
       this.subjects = result.data().subjects;
-      console.log(this.subjects, "this is subject array")
-    })
+      console.log(this.subjects, "this is subject array");
+    });
   }
 }
