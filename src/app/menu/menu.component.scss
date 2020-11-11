@@ -3,7 +3,6 @@
     -webkit-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
     box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
-    // border-right: 10px solid #ED1E23;
     border-radius: 10px;
     span,
     p {
@@ -65,7 +64,9 @@ li {
     overflow: hidden;
     &:hover {
         @include active();
-        border-right: none;
+    }
+    &:active {
+        @include active();
     }
 }
 
@@ -311,13 +312,8 @@ button {
 }
 
 .tooltip>span>h4:hover {
-<<<<<<< HEAD
-    color: #459ce3
-}
-=======
     color: #459ce3;
     // background-color: #459ce3;
     // height: 17px;
     // width: 70px;
 }
->>>>>>> 1f70a87753120f37e4dc6562a437301862cc0b38
