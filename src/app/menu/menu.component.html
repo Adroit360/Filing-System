@@ -56,7 +56,7 @@
     <img src="../../assets/konvy.jpeg" alt="" srcset="">
 </div>
 <div class="admin-tools">
-    <h2>sections</h2>
+    <h2>Teams</h2>
     <ul *ngIf="generalSection">
         <li>
             <a (click)="onSelectedGeneral(generalSection.id,generalSection.name)" [routerLink]="['content', generalSection.id, generalSection.name,generalSection.id,generalSection.name]" routerLinkActive="active">
@@ -74,29 +74,37 @@
                 <li style="overflow: hidden;">
 
                     <div *ngIf="!item.default ">
-                        <a (click)="onSelected(item.id,item.name)" [routerLink]="['content', item.id, item.name,item.id,item.name]" routerLinkActive="active" *ngIf="hooks[i];else renameData">
-                            <span class="material-icons">
-                             folder_open
-                        </span>
-                            <p>{{item.name| tilteCase| truncate:12}}</p>
+
+                        <a>
+
+                            <div class="section" (click)="onSelected(item.id,item.name)" [routerLink]="['content', item.id, item.name,item.id,item.name]" routerLinkActive="active" *ngIf="hooks[i];else renameData">
+                                <span class="material-icons">
+                                  folder_open
+                                </span>
+
+                            </div>
+
+                            <div>
+                                <p>{{item.name| tilteCase| truncate:12}}</p>
+                            </div>
 
                             <div class="toggler clicktoshow" smart-tooltip-container>
                                 <span class="more-icons material-icons">
-                                more_vert
+                                  more_vert
                                 </span>
 
                                 <div class="tooltip">
                                     <span class="smart-tooltip overlay stick stay-right">
-                            <h4 (click)="onRenameSection(item, i)" >Rename</h4>
+                                        <h4 (click)="onRenameSection(item, i)" >Rename</h4>
 
-                            <h4 (click)="onDeleteSection(item.id)">Delete</h4>
-                          </span>
-
+                                        <h4 (click)="onDeleteSection(item.id)">Delete</h4>
+                                    </span>
                                 </div>
 
                             </div>
 
                         </a>
+
 
 
                         <ng-template #renameData>
@@ -109,7 +117,7 @@
         </div>
         <li *ngIf="user.isAdmin"><a (click)="toggle()" *ngIf="visible;else Data"><span class="material-icons">
                 control_point
-                </span> <p style="color: #459ce3;">New Section</p>
+                </span> <p style="color: #459ce3;">Create Team</p>
             </a>
 
             <ng-template #Data>
