@@ -67,9 +67,6 @@ li {
         @include active();
         border-right: none;
     }
-    .active {
-        @include active();
-    }
 }
 
 li span {
