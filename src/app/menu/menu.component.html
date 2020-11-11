@@ -71,7 +71,7 @@
                     folder_open
                     </span> {{item.name}}</a></li> -->
             <div *ngFor="let item of sections; let i= index">
-                <li style="overflow: hidden;">
+                <li>
 
                     <div *ngIf="!item.default ">
                         <a (click)="onSelected(item.id,item.name)" [routerLink]="['content', item.id, item.name,item.id,item.name]" routerLinkActive="active" *ngIf="hooks[i];else renameData">
@@ -109,7 +109,7 @@
         </div>
         <li *ngIf="user.isAdmin"><a (click)="toggle()" *ngIf="visible;else Data"><span class="material-icons">
                 control_point
-                </span> <p style="color: #459ce3;">New Section</p>
+                </span> <p >New Section</p>
             </a>
 
             <ng-template #Data>
