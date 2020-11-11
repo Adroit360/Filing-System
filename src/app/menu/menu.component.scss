@@ -276,6 +276,14 @@ button {
     margin-left: 160px;
 }
 
+.section {
+    display: flex;
+}
+
+.section {
+    display: flex;
+}
+
 .position {
     display: block;
     margin-top: 20px;
@@ -294,15 +302,22 @@ button {
     background-color: white;
     height: 35px;
     width: 70px;
-}
-
-.tooltip>span>h4 {
-    color: black;
-    padding-bottom: 7px;
-    font-size: 15px;
-    text-align: left;
+    h4 {
+        color: black;
+        padding-bottom: 7px;
+        font-size: 15px;
+        text-align: left;
+    }
 }
 
 .tooltip>span>h4:hover {
+<<<<<<< HEAD
     color: #459ce3
 }
+=======
+    color: #459ce3;
+    // background-color: #459ce3;
+    // height: 17px;
+    // width: 70px;
+}
+>>>>>>> 1f70a87753120f37e4dc6562a437301862cc0b38
