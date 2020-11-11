@@ -3,12 +3,12 @@
     -webkit-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
     box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
-    // border-right: 10px solid #ED1E23;
-    border-radius: 10px;
-    span,
-    p {
-        color: #459ce3;
-    }
+    border-right: 10px solid #ED1E23;
+    //border-radius: 10px;
+    // span,
+    // p {
+    //     color: #459ce3;
+    // }
 }
 
 ng-sidebar-container {
@@ -66,6 +66,9 @@ li {
     &:hover {
         @include active();
         border-right: none;
+    }
+    .active {
+        @include active();
     }
 }
 

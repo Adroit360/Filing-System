@@ -34,7 +34,7 @@
 }
 
 .content-table tbody {
-    max-height: 72vh;
+    max-height: 68vh;
     overflow: auto;
     overflow-x: hidden;
     display: block;
@@ -136,6 +136,10 @@ h2 {
     font-weight: 900;
     font-style: normal;
     font-size: 30px;
+}
+
+.sps span {
+    cursor: pointer;
 }
 
 .right-side {
