@@ -3,7 +3,13 @@
     -webkit-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
     box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
-    border-right: 10px solid #ED1E23;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    span,
+    p {
+        color: #459ce3;
+    }
 }
 
 ng-sidebar-container {
@@ -29,7 +35,7 @@ h2 {
     line-height: 18px;
     letter-spacing: 0em;
     text-align: left;
-    padding-left: 1.25rem;
+    padding-left: 11%;
     color: #808080;
 }
 
@@ -39,12 +45,13 @@ h2 {
 }
 
 ul {
-    padding: 1.25rem;
+    padding: 5% 2% 5% 8%;
     list-style: none;
 }
 
 p {
     margin-top: 0.8rem;
+    font-size: 1.6rem;
 }
 
 li {
@@ -56,9 +63,12 @@ li {
     line-height: 1.44rem;
     letter-spacing: 0em;
     text-align: left;
+    overflow: hidden;
     &:hover {
         @include active();
-        border-right: none;
+    }
+    &:active {
+        @include active();
     }
 }
 
@@ -74,8 +84,11 @@ li a {
 }
 
 .admin-tools li a {
+    position: relative;
     display: grid;
-    grid-template-columns: 1fr 4.5fr;
+    grid-template-columns: 1fr 3fr;
+    width: 90%;
+    overflow: none;
 }
 
 .admin-tools-inbox li {
@@ -97,9 +110,9 @@ li a {
     color: #808080;
 }
 
-.admin-tools .custom-seciton {
+.admin-tools .custom-section {
     height: 33vh;
-    overflow: auto;
+    overflow-y: auto;
     margin-top: 0.94rem;
     margin-bottom: 1rem;
 }
@@ -115,8 +128,13 @@ span>h4 {
 }
 
 .active2 {
-    @include active();
-    border-right: none;
+    background-color: #FFFFFF;
+    -webkit-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    // border-right: 10px solid #ED1E23;
+    border-radius: 10px;
+    color: #459ce3;
 }
 
 
@@ -262,16 +280,53 @@ button {
     margin-left: 160px;
 }
 
+.section {
+    position: relative;
+    display: flex;
+}
+
 .position {
     display: block;
     margin-top: 20px;
 }
 
-.tooltip>span {
-    height: 35px;
-    width: 70px;
+.toggler {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    .more-icons {
+        // position: absolute;
+        cursor: pointer;
+        opacity: 1;
+        padding: .2rem;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0px;
+        top: -12px;
+    }
 }
 
-.tooltip>span>h4 {
-    color: white;
+// .admin-tools li a:hover+.toggler>.more-icons {
+//     opacity: 1;
+// }
+.tooltip>span {
+    background-color: white;
+    height: 35px;
+    width: 70px;
+    h4 {
+        color: black;
+        padding-bottom: 7px;
+        font-size: 15px;
+        text-align: left;
+    }
+}
+
+.tooltip>span>h4:hover {
+    color: #459ce3;
+    // background-color: #459ce3;
+    // height: 17px;
+    // width: 70px;
 }

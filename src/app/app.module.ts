@@ -48,6 +48,7 @@ import { RequestApprovalsComponent } from './approvals/request-approvals/request
 import { ReplyApprovalsComponent } from './approvals/reply-approvals/reply-approvals.component';
 import { UserSettingsComponent } from './content/user-settings/user-settings.component';
 import { SearchComponent } from './content/search/search.component';
+import { TilteCasePipe } from './tilte-case.pipe';
 
 
 
@@ -82,7 +83,8 @@ import { SearchComponent } from './content/search/search.component';
     RequestApprovalsComponent,
     ReplyApprovalsComponent,
     UserSettingsComponent,
-    SearchComponent
+    SearchComponent,
+    TilteCasePipe
   ],
 
   imports: [

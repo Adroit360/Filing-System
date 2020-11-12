@@ -56,34 +56,51 @@
     <img src="../../assets/konvy.jpeg" alt="" srcset="">
 </div>
 <div class="admin-tools">
-    <h2>sections</h2>
+    <h2>Teams</h2>
     <ul *ngIf="generalSection">
-        <li><a (click)="onSelectedGeneral(generalSection.id,generalSection.name)" [routerLink]="['content', generalSection.id, generalSection.name,generalSection.id,generalSection.name]" routerLinkActive="active"><span class="material-icons" >
-                home
-                </span> <p>General</p> </a></li>
+        <li>
+            <a (click)="onSelectedGeneral(generalSection.id,generalSection.name)" [routerLink]="['content', generalSection.id, generalSection.name,generalSection.id,generalSection.name]" routerLinkActive="active">
+                <span class="material-icons">
+            home
+            </span>
+                <p>General</p>
+            </a>
+        </li>
         <div class="custom-section">
             <!-- <li *ngFor="let item of sections|async; let i= index"><a (click)="onSelected(item.id,item.name)" [routerLink]="['content', item.id, item.name,item.id,item.name]" routerLinkActive="active2"><span class="material-icons">
                     folder_open
                     </span> {{item.name}}</a></li> -->
             <div *ngFor="let item of sections; let i= index">
-                <li style="overflow: auto;">
+                <li>
 
-                    <div *ngIf="!item.default " smart-tooltip-container>
-                        <a (click)="onSelected(item.id,item.name)" [routerLink]="['content', item.id, item.name,item.id,item.name]" *ngIf="hooks[i];else renameData">
-                            <span class="material-icons">
-                             folder_open
-                        </span>
-                            <p>{{item.name}}</p>
-                        </a>
+                    <div *ngIf="!item.default ">
+                        <div class="section">
+                            <a (click)="onSelected(item.id,item.name, $event)" [routerLink]="['content', item.id, item.name,item.id,item.name]" routerLinkActive="active" *ngIf="hooks[i];else renameData">
+                                <span class="material-icons">
+                                      folder_open
+                                    </span>
+                                <p>{{item.name| tilteCase| truncate:12}}</p>
+                            </a>
 
-                        <div class="tooltip">
-                            <span class="smart-tooltip overlay stick-200">
-                      <h4 (click)="onRenameSection(item, i)" >rename</h4>
-                      <hr/>
-                      <h4 (click)="onDeleteSection(item.id)">delete</h4>
-                    </span>
+                            <div class="toggler clicktoshow" smart-tooltip-container>
+                                <span class="more-icons material-icons">
+                                      more_vert
+                                    </span>
+
+                                <div class="tooltip">
+                                    <span class="smart-tooltip overlay stick stay-right">
+                                            <h4 (click)="onRenameSection(item, i)" >Rename</h4>
+
+                                            <h4 (click)="onDeleteSection(item.id)">Delete</h4>
+                                        </span>
+                                </div>
+                            </div>
 
                         </div>
+
+
+
+
                         <ng-template #renameData>
                             <input (keydown.enter)="onUpdate(i)" value="{{nameSections[i]}}" type="text" #rename>
                         </ng-template>
@@ -94,7 +111,7 @@
         </div>
         <li *ngIf="user.isAdmin"><a (click)="toggle()" *ngIf="visible;else Data"><span class="material-icons">
                 control_point
-                </span> <p>Create New Section</p>
+                </span> <p >Create Team</p>
             </a>
 
             <ng-template #Data>
@@ -102,14 +119,14 @@
             </ng-template>
         </li>
     </ul>
-    <div class="border-up"></div>
+    <!-- <div class="border-up"></div> -->
 </div>
 <div class="admin-tools-inbox">
     <h2>Others</h2>
     <ul>
-        <li *ngIf="user.isAdmin"><a routerLink="content/manageUsers" routerLinkActive="active"> Manage Users </a></li>
-        <li><a routerLink="content/SharedResources" routerLinkActive="active"> Shared Resources </a></li>
-        <li><a (click)="reset()" routerLinkActive="active"> Reset password</a></li>
+        <li *ngIf="user.isAdmin"><a routerLink="content/manageUsers" routerLinkActive="active2"> Manage Users </a></li>
+        <li><a routerLink="content/SharedResources" routerLinkActive="active2"> Shared Resources </a></li>
+        <li><a (click)="reset()" routerLinkActive="active2"> Reset password</a></li>
     </ul>
 </div>
 

@@ -1,13 +1,11 @@
 <div class="container">
-    <div class="head" >
-        <span (click)="Back()" style="padding: 10px;
-        margin: 0px 0px;
-        font-weight: bold;" class="material-icons">
+    <div class="head">
+        <span (click)="Back()" class="material-icons back">
         arrow_back
         </span>
         <h3 style="margin-left: 12px;
       font-size: 30px;
-      font-weight: bold;">{{ currentDirectoryName | uppercase }}</h3>
+      font-weight: bold;">{{ currentDirectoryName | titlecase }}</h3>
 
         <div class="ssp">
             <div class="add-folder">
@@ -28,7 +26,7 @@
 <div class="folders">
 <a class="folder-container" *ngFor="let item of dirContent|async;let i = index">
   <div (click)="onFolderClicked(item)" class="component">
-    <img *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' " src="../../../assets/image.png" style="height: 50px; width: 50px;"/>
+    <img *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' " src="../../../assets/preview.png" style="height: 50px; width: 50px;"/>
     <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="../../../assets/pdf.png" style="height: 50px; width: 50px;"/>
     <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12' || item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint'" src="../../../assets/pp.png"  style="height: 50px; width: 50px;"/>
     <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||item.itemType=='file' && item.contentType=='application/msword'"src="../../../assets/word.png" style="height: 50px; width: 50px;"/>

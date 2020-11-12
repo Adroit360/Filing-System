@@ -35,8 +35,8 @@ export class MenuComponent implements OnInit {
   nameSections = [];
 
   constructor(private authManager:AuthServiceService,private directory:DirectoryService, private sectionService:SectionService, private router: Router, private route: ActivatedRoute,private msg:MessengerService, private data:DataService) {
-    
-   
+
+
   }
 
    ngOnInit(): void {
@@ -46,7 +46,7 @@ export class MenuComponent implements OnInit {
     console.log("from menu comp",this.data.getAccessList());
     this.accessList = this.data.getAccessList();
     // this.sections=this.msg.getSectionByAccess(this.userInfo.getAccessList());//.then(result=>{this.sections=result; console.log(this.sections);});
-   
+
     if (this.user.isAdmin){
       console.log("this is admin");
       this.sectionService.getSections().subscribe(_sections=>{
@@ -71,11 +71,18 @@ export class MenuComponent implements OnInit {
     this.visible = !this.visible;
   }
 
-  async onSelected(sectionId,sectionName){
+
+  async onSelected(sectionId,sectionName, event){
+
+    if(event.target.localName=="span"){
+      console.log(event.target.localName);
+      event.stopPropagation();
+    }
 
     this.data.setCurrentSection(sectionId,sectionName);
     this.data.setCurrentDirectory(sectionId,sectionName);
     console.log(sectionName);
+
     // await this.directory.setActiveSectionItems(id,id,this.accessList);
 
   }
@@ -148,6 +155,11 @@ export class MenuComponent implements OnInit {
     this.authManager.ResetPassword(this.user.email);
     this.ResetModal=!this.ResetModal;
   }
+
+  tooltip(event){
+    event.stopPropagation();
+  }
+
   }
 
 
