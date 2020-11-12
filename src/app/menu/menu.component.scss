@@ -3,7 +3,6 @@
     -webkit-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
     box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
-    // border-right: 10px solid #ED1E23;
     border-radius: 10px;
     border: none;
     outline: none;
@@ -36,7 +35,7 @@ h2 {
     line-height: 18px;
     letter-spacing: 0em;
     text-align: left;
-    padding-left: 13%;
+    padding-left: 11%;
     color: #808080;
 }
 
@@ -46,7 +45,7 @@ h2 {
 }
 
 ul {
-    padding: 5% 0 5% 10%;
+    padding: 5% 2% 5% 8%;
     list-style: none;
 }
 
@@ -67,7 +66,9 @@ li {
     overflow: hidden;
     &:hover {
         @include active();
-        border-right: none;
+    }
+    &:active {
+        @include active();
     }
 }
 
@@ -109,9 +110,9 @@ li a {
     color: #808080;
 }
 
-.admin-tools .custom-seciton {
+.admin-tools .custom-section {
     height: 33vh;
-    overflow: auto;
+    overflow-y: auto;
     margin-top: 0.94rem;
     margin-bottom: 1rem;
 }
