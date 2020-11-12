@@ -5,6 +5,8 @@
     box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
     // border-right: 10px solid #ED1E23;
     border-radius: 10px;
+    border: none;
+    outline: none;
     span,
     p {
         color: #459ce3;
@@ -83,7 +85,8 @@ li a {
 .admin-tools li a {
     position: relative;
     display: grid;
-    grid-template-columns: 1fr 2.9fr 1fr;
+    grid-template-columns: 1fr 3fr;
+    width: 90%;
     overflow: none;
 }
 
@@ -277,10 +280,7 @@ button {
 }
 
 .section {
-    display: flex;
-}
-
-.section {
+    position: relative;
     display: flex;
 }
 
@@ -289,15 +289,28 @@ button {
     margin-top: 20px;
 }
 
-.more-icons {
-    // position: absolute;
-    opacity: 0;
+.toggler {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    .more-icons {
+        // position: absolute;
+        cursor: pointer;
+        opacity: 1;
+        padding: .2rem;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0px;
+        top: -12px;
+    }
 }
 
-.admin-tools li a:hover .more-icons {
-    opacity: 1;
-}
-
+// .admin-tools li a:hover+.toggler>.more-icons {
+//     opacity: 1;
+// }
 .tooltip>span {
     background-color: white;
     height: 35px;

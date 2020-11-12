@@ -74,36 +74,30 @@
                 <li style="overflow: hidden;">
 
                     <div *ngIf="!item.default ">
-
-                        <a>
-
-                            <div class="section" (click)="onSelected(item.id,item.name)" [routerLink]="['content', item.id, item.name,item.id,item.name]" routerLinkActive="active" *ngIf="hooks[i];else renameData">
+                        <div class="section">
+                            <a (click)="onSelected(item.id,item.name, $event)" [routerLink]="['content', item.id, item.name,item.id,item.name]" routerLinkActive="active" *ngIf="hooks[i];else renameData">
                                 <span class="material-icons">
-                                  folder_open
-                                </span>
-
-                            </div>
-
-                            <div>
+                                      folder_open
+                                    </span>
                                 <p>{{item.name| tilteCase| truncate:12}}</p>
-                            </div>
+                            </a>
 
                             <div class="toggler clicktoshow" smart-tooltip-container>
                                 <span class="more-icons material-icons">
-                                  more_vert
-                                </span>
+                                      more_vert
+                                    </span>
 
                                 <div class="tooltip">
                                     <span class="smart-tooltip overlay stick stay-right">
-                                        <h4 (click)="onRenameSection(item, i)" >Rename</h4>
+                                            <h4 (click)="onRenameSection(item, i)" >Rename</h4>
 
-                                        <h4 (click)="onDeleteSection(item.id)">Delete</h4>
-                                    </span>
+                                            <h4 (click)="onDeleteSection(item.id)">Delete</h4>
+                                        </span>
                                 </div>
-
                             </div>
 
-                        </a>
+                        </div>
+
 
 
 

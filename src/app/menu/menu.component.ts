@@ -71,11 +71,18 @@ export class MenuComponent implements OnInit {
     this.visible = !this.visible;
   }
 
-  async onSelected(sectionId,sectionName){
+
+  async onSelected(sectionId,sectionName, event){
+
+    if(event.target.localName=="span"){
+      console.log(event.target.localName);
+      event.stopPropagation();
+    }
 
     this.data.setCurrentSection(sectionId,sectionName);
     this.data.setCurrentDirectory(sectionId,sectionName);
     console.log(sectionName);
+
     // await this.directory.setActiveSectionItems(id,id,this.accessList);
 
   }
