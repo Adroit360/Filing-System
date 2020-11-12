@@ -26,7 +26,7 @@ export class NewResourceComponent implements OnInit {
       newresource: new FormControl(null, Validators.required)
     });
   }
- 
+
 
   async onCreate(){
     // this.resource.addResource({
@@ -34,6 +34,10 @@ export class NewResourceComponent implements OnInit {
     //   date: this.cValue,
     // });
     await this.resourceManager.createResource(this.newResource.value.newresource,this.volatileData.getActiveUser().email);
+    this.route.navigate(['home/content/SharedResources']);
+  }
+
+  onCancel(){
     this.route.navigate(['home/content/SharedResources']);
   }
 

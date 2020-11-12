@@ -1,10 +1,10 @@
 // ############################################################################
-//  This file contains volatile data during execution. Volatile data consists of runtime information about 
+//  This file contains volatile data during execution. Volatile data consists of runtime information about
 //   user, sections, and other software objects of the system.
 //  ###########################################################################
 
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { User } from '../models/model';
 import { DirectoryService } from './directory.service';
 
@@ -12,7 +12,7 @@ import { DirectoryService } from './directory.service';
   providedIn: 'root'
 })
 export class DataService {
-
+  searchItem= new Subject<any>();
   user:User={
     firstName:"",
     lastName:"",
@@ -32,15 +32,19 @@ export class DataService {
 
   constructor(private directoryManager: DirectoryService) { }
 
+  search(searchParam:string){
+    this.searchItem.next(searchParam);
+  }
+
   // setting current user info
   async setActiveUser(passedData:User){
     this.user = await passedData;
     this.directoryManager.getAccessibleArchives(this.user.accessList).subscribe(result=>{
       this.accessibleDocs = result;
-    })
+    });
   }
 
-  // returns all info about current user 
+  // returns all info about current user
   getActiveUser(){
     return this.user;
   }
@@ -50,7 +54,7 @@ export class DataService {
     return this.user.accessList;
   }
 
-  // Set the current section the user is navigating 
+  // Set the current section the user is navigating
   setCurrentSection(sectionId,sectionName){
     this.currentSection = sectionId;
    this.currentDirectory = "";
@@ -64,10 +68,10 @@ export class DataService {
 
   // set the current directory of the user
   setCurrentDirectory(directoryId,directoryName){
-    
+
     this.currentDirectory = directoryId;
     this.currentDirectoryName= directoryName;
-    
+
     console.log(this.currentDirectoryName,"directory name set");
   }
 
