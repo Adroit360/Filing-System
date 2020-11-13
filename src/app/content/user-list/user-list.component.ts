@@ -21,6 +21,7 @@ export class UserListComponent implements OnInit {
   ResourceId:string;
   ResourceName:string;
   ResourceOwner:string;
+  ResourceObjects:any;
   resource:any;
   subjects:any=[];
   subs:[];
@@ -31,6 +32,7 @@ export class UserListComponent implements OnInit {
       this.ResourceId = item.details.id;
       this.ResourceName = item.details.name;
       this.ResourceOwner = item.details.owner;
+      this.ResourceObjects= item.details.objects;
       // this.subjects = item.details.subjects;
       // console.log("subjects",this.subjects);
     });
@@ -54,7 +56,7 @@ export class UserListComponent implements OnInit {
 
   async add(userEmail){
     
-       await  this.resourceManager.AddSubjectToResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner);
+       await  this.resourceManager.AddSubjectToResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects);
       this.updateSubjects();
     
 
@@ -64,7 +66,7 @@ export class UserListComponent implements OnInit {
     // for (let i = 0; i < this.hooks.length; i++) {
     //   if(i==index){
     //     // this.hooks[i]=true;
-        await this.resourceManager.RemoveSubjectFromResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner);
+        await this.resourceManager.RemoveSubjectFromResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects);
         this.updateSubjects();
     //   }
 

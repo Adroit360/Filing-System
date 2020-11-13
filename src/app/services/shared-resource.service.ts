@@ -87,10 +87,12 @@ export class SharedResourceService {
     await this.resourceCollection.doc(resourceId).update({objects:this.arrayRemove(fileId)});
   }
 
-  async RemoveResource(resourceId){
+  async RemoveResource(resource){
    
-    // await firebase.firestore().collection("SharedResources").where("parentResource","==",resourceId).get().then(a=>{a.docs.forEach(doc=>{this.resourceCollection.doc(doc.data().id).delete()})});
-    this.resourceCollection.doc(resourceId).delete()
+    await firebase.firestore().collection("Users").where("sharedResources","array-contains",resource).get().then(a=>{a.docs.forEach(doc=>{
+      this.userCollection.doc(doc.data().id).update({sharedResources:this.arrayRemove(resource)});
+    })});
+    this.resourceCollection.doc(resource.id).delete();
     // this.getMyResources(user);
   }
 
@@ -101,17 +103,19 @@ export class SharedResourceService {
   }
 
   // add a user to a shared resource
-  async AddSubjectToResource(subjectId,resourceId,resourceName,owner){
+  async AddSubjectToResource(subjectId,resourceId,resourceName,owner,objects){
   
       await this.resourceCollection.doc(resourceId).update({subjects:this.arrayUnion(subjectId)});
-      await this.userCollection.doc(subjectId).update({sharedResources:this.arrayUnion({id:resourceId,name:resourceName,owner:owner})});
+      await this.userCollection.doc(subjectId).update({sharedResources:this.arrayUnion({id:resourceId,name:resourceName,owner:owner,objects:objects})});
     
   }
 
   // remove a user
-  async RemoveSubjectFromResource(subjectId,resourceId,resourceName,owner){
+  async RemoveSubjectFromResource(subjectId,resourceId,resourceName,owner,objects){
+    // remove resource from resource collection
     await this.resourceCollection.doc(resourceId).update({subjects:this.arrayRemove(subjectId)});
-    await this.userCollection.doc(subjectId).update({sharedResources:this.arrayRemove({id:resourceId,name:resourceName,owner:owner})});
+    // remove resource from subject's external share resources
+    await this.userCollection.doc(subjectId).update({sharedResources:this.arrayRemove({id:resourceId,name:resourceName,owner:owner,objects:objects})});
   }
 
    GetResource(resource){

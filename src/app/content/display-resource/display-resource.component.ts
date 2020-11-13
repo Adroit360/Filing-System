@@ -25,6 +25,7 @@ export class DisplayResourceComponent implements OnInit {
   {
     this.adminresource.EditResource.
     subscribe((item: {details:any})=>{
+      console.log("external item", item.details.objects);
       this.ResourceName=item.details.name
       this.ResourceId = item.details.id;
       this.filesItemIds = item.details.objects;
