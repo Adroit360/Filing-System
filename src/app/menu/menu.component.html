@@ -59,10 +59,17 @@
     <h2>Teams</h2>
     <ul *ngIf="generalSection">
         <li>
-            <a (click)="onSelectedGeneral(generalSection.id,generalSection.name)" [routerLink]="['content', generalSection.id, generalSection.name,generalSection.id,generalSection.name]" routerLinkActive="active">
+            <!-- <a (click)="onSelectedGeneral(generalSection.id,generalSection.name)" [routerLink]="['content', generalSection.id, generalSection.name,generalSection.id,generalSection.name]" routerLinkActive="active">
                 <span class="material-icons">
             home
             </span>
+                <p>General</p>
+            </a> -->
+
+            <a (click)="onGeneral()" [routerLink]="['home/content/dashboard']" routerLinkActive="active">
+                <span class="material-icons">
+                home
+                </span>
                 <p>General</p>
             </a>
         </li>

@@ -160,6 +160,10 @@ export class MenuComponent implements OnInit {
     event.stopPropagation();
   }
 
+  onGeneral(){
+    this.router.navigate(['home/content/dashboard'])
+  }
+
   }
 
 

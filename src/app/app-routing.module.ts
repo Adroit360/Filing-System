@@ -17,7 +17,8 @@ import { NewResourceComponent} from './content/new-resource/new-resource.compone
 import { EditResourceComponent} from './content/edit-resource/edit-resource.component';
 import { UserListComponent } from './content/user-list/user-list.component';
 import { UserSettingsComponent } from './content/user-settings/user-settings.component';
-import { SearchComponent} from './content/search/search.component'
+import { SearchComponent} from './content/search/search.component';
+import { DashboardComponent } from './content/dashboard/dashboard.component'
 //import { SectionComponent } from './content/section/section.component';
 
 
@@ -27,6 +28,7 @@ const routes: Routes = [
     // {path: '/:id/:name', component: SectionComponent},
     {path: 'content', component: ContentComponent, children: [
       {path: ':sectionId/:sectionName/:directoryId/:directory', component: EmptyComponent},
+      {path: 'dashboard', component: DashboardComponent},
       {path: 'manageUsers', component: ManageUserComponent},
       {path: 'user-settings', component: UserSettingsComponent},
       {path: 'SharedResources', component: SharedResourcesComponent},
