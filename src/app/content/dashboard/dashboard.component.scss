@@ -1,8 +1,15 @@
 .content {
     position: relative;
     margin: 40px 10px 0px 70px;
+    // display: flex;
+    // flex-direction: column;
+    height: 88vh;
+    overflow: auto;
 }
 
+// .content>div {
+//     flex: 1;
+// }
 .header {
     h5 {
         margin-left: 20px;
@@ -29,8 +36,10 @@
     background: #FFFFFF;
     border-radius: 20px;
     margin-top: 30px;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     align-items: flex-start;
+    /* overflow: auto; */
+    overflow-y: hidden;
 }
 
 .toggler {
@@ -124,9 +133,10 @@
 }
 
 .news-section {
-    display: flex;
+    // display: flex;
     // flex-wrap: wrap;
-    align-items: flex-start;
+    // align-items: flex-start;
+    padding: 10px;
     img {
         height: 123px;
         width: 132px;
@@ -137,7 +147,7 @@
 
 .newstext {
     margin-top: 10px;
-    width: 80%;
+    // width: 80%;
     display: block;
 }
 
@@ -272,7 +282,7 @@ form {
     position: absolute;
     // background-color: rgba(0, 0, 0, 0.795);
     // top: -14px;
-    left: 65%;
+    left: 60%;
     width: 350px;
     border-radius: 30px;
     float: right;
