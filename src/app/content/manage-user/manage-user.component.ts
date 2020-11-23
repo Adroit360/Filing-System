@@ -4,6 +4,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { User } from '../../models/model';
 import {MessengerService} from '../../services/messenger.service';
 import {DataService} from '../../services/data.service';
+import { EntitiesService } from '../../services/entities.service';
 
 @Component({
   selector: 'app-manage-user',
@@ -17,27 +18,25 @@ export class ManageUserComponent implements OnInit {
  user: User;
  modalState: boolean;
  users:any;
-  constructor( private data:DataService, private route: Router, private msg:MessengerService) { 
-    this.users = this.msg.getUsers();
+  constructor( private data:DataService, private route: Router, private entityManager:EntitiesService) { 
+    this.users = entityManager.getEntityUsers(this.data.getEntity());
   }
 
   ngOnInit(): void {
-    // this.userDetails = this.userdetails.getuserDetails();
-    
+    // this.userDetails = this.userdetails.getuserDetails();  
   }
 
   Ondelected(item:any){
     this.message = 'Are you sure you want to delete user?';
     this.modalState = true;
-    this.user = item;
-      
+    this.user = item;   
   }
 
   onModalResult(result:boolean){
     if(result){
        // this.userdetails.onDeleteUser(this.user);
       // this.userDetails = this.userdetails.getuserDetails();
-      this.msg.removeUser(this.user.email);
+      this.entityManager.removeEntityUser(this.user.email,this.data.getEntity());
       this.modalState=false;
     }
     else{
@@ -46,7 +45,8 @@ export class ManageUserComponent implements OnInit {
   }
 
   onEdit(user){
-    this.data.setActiveUser(user);
+    // this.data.setActiveUser(user);
+    this.data.setEditUSerInfo(user);
     this.route.navigate(['/home/content/editUserDetails']);
   }
 

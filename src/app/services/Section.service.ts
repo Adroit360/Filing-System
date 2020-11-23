@@ -26,43 +26,46 @@ export class SectionService {
       this.sections = this.sectionCollection.valueChanges();
   }
 
-  async getGeneralSection(){
-    let general:any;
-    await firebase.firestore().collection("Sections").where("name","==","general").get().then(a=>{general = a.docs[0].data();console.log("from service general", general.name)});
+  async getGeneralSection(entityId){
+    let general:any={};
+    await firebase.firestore().collection("Entities").doc(entityId).collection("Sections").where("name","==","general").get().then(a=>{general = a.docs[0].data();console.log("from service general", general.name)});
     
     return general;
   }
+
     //create section
-   async newSection(sectionName){
+   async newSection(sectionName,entity){
       let id = this.afs.createId();
-      await this.sectionCollection.doc(id).set({id:id,name:sectionName,dateCreated:new Date().toLocaleDateString(),default:false});
+      await this.afs.collection("Entities").doc(entity).collection("Sections").doc(id).set({id:id,name:sectionName,dateCreated:new Date().toLocaleDateString(),default:false});
     }
 
     //remove section
-    async removeSection(sectionId){
+    async removeSection(sectionId,entity){
       // delete section content
-      await firebase.firestore().collection("Sections").where("parentId","==",sectionId).get().then(a=>{a.docs.forEach(doc=>{
-          this.sectionCollection.doc(doc.data().id).delete();
+      await firebase.firestore().collection("Entities").doc(entity).collection("Archives").where("sectionId","==",sectionId).get().then(a=>{a.docs.forEach(doc=>{
+          this.afs.collection("Entities").doc(entity).collection("Archives").doc(doc.data().id).delete();
       })});
 
       // delete section
-      await this.sectionCollection.doc(sectionId).delete().catch(err=>{console.log(err)});
+      await this.afs.collection("Entities").doc(entity).collection("Sections").doc(sectionId).delete().catch(err=>{console.log(err)});
       
     }
 
     //update section
-   async updateSection(sectionId,newName){
-      await this.sectionCollection.doc(sectionId).update({
+    updateSection(sectionId,newName,entity){
+     console.log("section id",sectionId);
+     console.log("entity id ", entity);
+       this.afs.collection("Entities").doc(entity).collection('Sections').doc(sectionId).update({
         name:newName
       });
     }
 
     //read sections
-    getSections(){
-      return this.sections;
+    getSections(entity){
+      return this.afs.collection("Entities").doc(entity).collection<Section>('Sections').valueChanges();
     }
 
-    getSectionByAccess(accessList){
+    getSectionByAccess(accessList,entity){
     //   let access_sections=[];
     //   // let accessList = await this.getUserAccessList(userId);
     //    firebase.firestore().collection('Sections').get().then(a=>{a.docs.forEach(doc=>{
@@ -75,7 +78,7 @@ export class SectionService {
     // });
       
     //   return access_sections;
-        this.subSectionCollection = this.afs.collection<Section>('Sections',ref=> ref.where("id","in",accessList));
+        this.subSectionCollection = this.afs.collection("Entities").doc(entity).collection<Section>('Sections',ref=> ref.where("id","in",accessList));
         this.subSections = this.subSectionCollection.valueChanges();
         return this.subSections;
     }

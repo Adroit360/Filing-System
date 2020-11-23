@@ -36,7 +36,7 @@ export class UserListComponent implements OnInit {
       // this.subjects = item.details.subjects;
       // console.log("subjects",this.subjects);
     });
-     this.resourceManager.GetResource(this.ResourceId).subscribe(result=>{
+     this.resourceManager.GetResource(this.ResourceId,this.data.getEntity).subscribe(result=>{
       this.subjects = result.data().subjects;
       this.subs =  result.data().subjects;
       console.log(this.subjects, "this is subject array")
@@ -56,7 +56,7 @@ export class UserListComponent implements OnInit {
 
   async add(userEmail){
     
-       await  this.resourceManager.AddSubjectToResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects);
+       await  this.resourceManager.AddSubjectToResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects,this.data.getEntity);
       this.updateSubjects();
     
 
@@ -66,7 +66,7 @@ export class UserListComponent implements OnInit {
     // for (let i = 0; i < this.hooks.length; i++) {
     //   if(i==index){
     //     // this.hooks[i]=true;
-        await this.resourceManager.RemoveSubjectFromResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects);
+        await this.resourceManager.RemoveSubjectFromResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects,this.data.getEntity);
         this.updateSubjects();
     //   }
 
@@ -78,7 +78,7 @@ export class UserListComponent implements OnInit {
   }
 
  async updateSubjects(){
-    await this.resourceManager.GetResource(this.ResourceId).subscribe(result=>{
+    await this.resourceManager.GetResource(this.ResourceId,this.data.getEntity).subscribe(result=>{
       this.subjects = result.data().subjects;
       console.log(this.subjects, "this is subject array");
     });

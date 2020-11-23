@@ -9,6 +9,13 @@ export interface User{
     isAdmin:Boolean
   }
 
+  export interface SystemUser{
+    name: string,
+    email:string,
+    entity:string,
+    entityAccount:boolean
+  }
+
   export interface Section{
     id: string,
     name: string,

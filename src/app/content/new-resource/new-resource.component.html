@@ -1,13 +1,12 @@
 <div class="pad">
     <div>
-        <h1>Create a New Resource</h1>
+        <h1>New Group</h1>
     </div>
     <form [formGroup]="newResource" (ngSubmit)="onCreate()">
-        <input type="text" placeholder="create a new resource" formControlName="newresource" />
+        <input type="text" placeholder="create a new group" formControlName="newresource" />
         <div class="psp">
             <button type="submit" style="background-color: red;color: white;">Done</button>
             <button type="submit" style="background-color:white;color: black;" (click)="onCancel()">Cancel</button>
         </div>
-
     </form>
 </div>

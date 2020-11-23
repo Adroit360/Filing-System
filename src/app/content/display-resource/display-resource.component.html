@@ -15,7 +15,6 @@
         </div>
     </div>
 
-
     <div class="folders">
         <a class="folder-container" *ngFor="let item of files">
             <div class="component">
@@ -27,7 +26,6 @@
                 <img *ngIf="item.itemType=='file' && item.contentType=='text/plain'" src="../../../assets/text.png" style="height: 50px; width: 50px;"/>
                 <p>{{ item.name | truncate: 12 }}</p>
             </div>
-
             <!-- tooltip -->
             <div class="toggler">
                 <span class="more-icon material-icons">arrow_drop_down</span>

@@ -33,7 +33,7 @@ export class NewResourceComponent implements OnInit {
     //   Name: this.newResource.value.newresource,
     //   date: this.cValue,
     // });
-    await this.resourceManager.createResource(this.newResource.value.newresource,this.volatileData.getActiveUser().email);
+    await this.resourceManager.createResource(this.newResource.value.newresource,this.volatileData.getActiveUser().email,this.volatileData.getEntity());
     this.route.navigate(['home/content/SharedResources']);
   }
 

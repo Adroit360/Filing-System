@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: 'home', component: HompageComponent, children: [
     // {path: '/:id/:name', component: SectionComponent},
     {path: 'content', component: ContentComponent, children: [
-      {path: ':sectionId/:sectionName/:directoryId/:directory', component: EmptyComponent},
+      {path: ':entityId/:sectionId/:sectionName/:directoryId/:directory', component: EmptyComponent},
       {path: 'manageUsers', component: ManageUserComponent},
       {path: 'user-settings', component: UserSettingsComponent},
       {path: 'SharedResources', component: SharedResourcesComponent},
