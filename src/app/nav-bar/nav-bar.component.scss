@@ -42,7 +42,7 @@
         text-align: center;
     }
     h3 {
-        margin: 0px 74px 2px 75px;
+        margin: 0px 74px 20px 75px;
         cursor: pointer;
         font-size: 90px;
     }
@@ -74,6 +74,10 @@
         font-size: 25px;
         cursor: pointer;
     }
+}
+
+#file-upload {
+    display: none;
 }
 
 .ta :hover {
