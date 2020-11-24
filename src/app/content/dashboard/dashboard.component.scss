@@ -289,6 +289,17 @@ form {
     z-index: 1;
 }
 
+.N-Modal {
+    display: none;
+    position: absolute;
+    left: 47%;
+    width: 350px;
+    top: 30%;
+    border-radius: 30px;
+    float: right;
+    z-index: 1;
+}
+
 input {
     width: 80%;
     border: none;

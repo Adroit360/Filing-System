@@ -32,5 +32,9 @@ export class NavBarComponent implements OnInit {
     console.log(searchTextValue);
   }
 
+  // Profile(){
+  //   document.getElementById('prfl').style.display="block";
+  // }
+
 
 }
