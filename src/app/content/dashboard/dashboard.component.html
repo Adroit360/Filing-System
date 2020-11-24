@@ -1,0 +1,177 @@
+<div class="content">
+
+    <div class="header">
+        <div class="caption">
+            <h2>Recently Open</h2>
+        </div>
+        <h5>General>salesforce</h5>
+    </div>
+
+    <!-- files -->
+    <div class="files">
+        <a *ngFor="let item of user.recentFolders">
+            <div class="c-contianer">
+                <div (click)="onFolderClicked(item)" class="component">
+                    <i class="fa fa-folder" style='font-size: 50px; color:  #459CE3;'></i>
+                    <p>{{item.alias}}</p>
+
+                    <div class="toggler">
+                        <span id="more-icon" class="material-icons">arrow_drop_down</span>
+                        <!-- <i id="more-icon" style="font-size: 16px;" class="fa fa-angle-down"></i> -->
+
+                        <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
+                <span class="smart-tooltip stick stay-down overlay" id="tooltip">
+                  <h4 (click)="onEdit()">Edit</h4>
+                  <hr/>
+                  <h4 (click)="onDelete()" >Delete</h4>
+                </span>
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </a>
+
+    </div>
+
+    <!-- News -->
+    <div class="news">
+
+        <div class="news-head">
+            <div class="header-2">
+                <div class="caption-2">
+                    <h2>Announcement</h2>
+                </div>
+                <h5>{{date}}</h5>
+            </div>
+            <div class="btns">
+                <div class="toggler">
+                    <i style="font-size: 30px; color: rgba(0, 0, 0, 0.479); cursor: pointer;" class="fa fa-ellipsis-h"></i>
+                    <!-- <i id="more-icon" style="font-size: 16px;" class="fa fa-angle-down"></i> -->
+
+                    <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
+        <span class="smart-tooltip stick stay-down overlay" id="tooltip">
+          <h4 (click)="onMute()">mute</h4>
+          <hr/>
+          <h4 (click)="onDelete()">Delete</h4>
+        </span>
+
+                    </span>
+                </div>
+
+            </div>
+        </div>
+
+        <div *ngFor="let announce of announcements" class="news-content">
+            <div class="news-section">
+                <!-- <img src="https://www.graphic.com.gh/images/2020/nov/12/rawlings.png" alt="jj"> -->
+                <div class="newstext">
+                    <div class="date-right">
+                        <h5>{{announce.date}}</h5>
+                    </div>
+
+                    <div class="text">
+                        <h3>{{announce.title}}</h3>
+                        <h4>{{announce.content}}</h4>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="task">
+
+        <div class="task-head">
+            <div class="header-3">
+                <div class="caption-3">
+                    <h2>Tasks</h2>
+                </div>
+            </div>
+            <div class="add">
+                <div class="toggler" id="smth">
+                    <i style="font-size: 30px; color: rgba(0, 0, 0, 0.479); cursor: pointer;" class="fa fa-ellipsis-h"></i>
+                    <!-- <i id="more-icon" style="font-size: 16px;" class="fa fa-angle-down"></i> -->
+
+                    <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
+    <span class="smart-tooltip stick stay-down overlay" id="tooltip">
+      <h4 (click)="onTask()">Add Task</h4>
+    </span>
+
+                    </span>
+                </div>
+                <div class="T-Modal" id="Modal-task">
+                    <form [formGroup]='TaskForm' (ngSubmit)="onSubmit()">
+                        <div class="S-top">
+                            <h3 style="color:black;"> Add New Task</h3>
+                            <span class="close" (click)="taskClose()">x</span>
+                        </div>
+                        <input type="text" placeholder="new task" formControlName="newTask">
+                        <label style="color: black;"> Set Date</label>
+                        <input type="Date" formControlName="Date">
+                        <button type="submit"> ok</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="table">
+            <ul>
+                <li *ngFor="let item of tasks.tasks;let i = index">
+                    <div class="part-1">
+
+
+                        <div class="togglers">
+                            <!-- <i style="font-size: 30px; color: rgba(0, 0, 0, 0.479); cursor: pointer;" class="fa fa-ellipsis-h"></i> -->
+                            <!-- <i id="more-icon" style="font-size: 16px;" class="fa fa-angle-down"></i> -->
+                            <span id="more-icons" style="cursor: pointer;" class="material-icons">
+                      more_vert
+                               </span>
+
+                            <span id="hiddenTexts" class="clicktoshow" smart-tooltip-container>
+                        <span class="smart-tooltip stick stay-down overlay" id="tooltip">
+                          <h4 *ngIf="!item.done" (click)="Done(item)">done</h4>
+                          <hr/>
+                          <h4 *ngIf="item.done" (click)="unDone(item)">undone</h4>
+                          <hr/>
+                          <h4 (click)="DeleteTask(item)">Delete</h4>
+                        </span>
+
+                            </span>
+                        </div>
+
+                        <!-- <div class="part-1">
+                            <h3 style="margin-right: 10px;">0{{i}}</h3>
+                        </div> -->
+
+                        <div>
+                            <span *ngIf="item.done" class="material-icons" style="color: green;">
+                    check_circle
+                        </span>
+
+                            <span *ngIf="!item.done" class="material-icons">
+                          check_circle
+                              </span>
+                        </div>
+
+                    </div>
+
+                    <div class="part-1">
+                        <h3>{{item.task}}</h3>
+                        <h3>{{item.dueDate}}</h3>
+                    </div>
+
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+
+
+</div>

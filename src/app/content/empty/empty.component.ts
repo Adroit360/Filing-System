@@ -85,7 +85,7 @@ export class EmptyComponent implements OnInit {
     if(directory.itemType=='folder'){
       this.dirContent = this.directory.getSubDirectoryContent(this.currentSectionId, directory.id,this.data.getEntity());
       this.data.setCurrentDirectory(directory.id,directory.name);
-      
+      this.directory.recentFolders(this.data.getActiveUser().email,directory,this.data.getEntity());
       console.log("directory is set");
       this.router.navigate(["home", "content",this.data.getEntity(),this.currentSectionId,this.currentSectionName, directory.id, directory.name])
     }else{

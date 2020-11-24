@@ -40,47 +40,47 @@ export class MessengerService {
 
 
   // create user
-  async NewUser(firstName,lastName,email,role,entityId){
-    let user:User={
-      email: email,
-      lastName:lastName,
-      firstName:firstName,
-      role:role,
-      accessList:[],
-      creationdeletionPrivilege:false,
-      sharedResources:[],
-      isAdmin:false
-    };
+  // async NewUser(firstName,lastName,email,role,entityId){
+  //   let user:User={
+  //     email: email,
+  //     lastName:lastName,
+  //     firstName:firstName,
+  //     role:role,
+  //     accessList:[],
+  //     creationdeletionPrivilege:false,
+  //     sharedResources:[],
+  //     isAdmin:false
+  //   };
 
-    this.systemUser.email = email;
-    this.systemUser.name = firstName+" "+lastName;
-    this.systemUser.entity = entityId;
-    this.systemUser.entityAccount=false;
-    // create user in firestore database
-    return await this.authService.signUp(user.email,"@password").then(async res=>{
+  //   this.systemUser.email = email;
+  //   this.systemUser.name = firstName+" "+lastName;
+  //   this.systemUser.entity = entityId;
+  //   this.systemUser.entityAccount=false;
+  //   // create user in firestore database
+  //   return await this.authService.signUp(user.email,"@password").then(async res=>{
 
-      // save user information to the database
-      console.log(res);
-      if(res=="auth/email-already-in-use" || res=="auth/invalid-email"){
-        return res;
-      }
-      await this.systemUsersCollection.doc(this.systemUser.email).set(this.systemUser).catch(e=>{console.log(e);return e;});
+  //     // save user information to the database
+  //     console.log(res);
+  //     if(res=="auth/email-already-in-use" || res=="auth/invalid-email"){
+  //       return res;
+  //     }
+  //     await this.systemUsersCollection.doc(this.systemUser.email).set(this.systemUser).catch(e=>{console.log(e);return e;});
      
-      // send password reset link
-      this.authService.ResetPassword(email).catch(err=>{console.log("error from reset password",err);return err});
+  //     // send password reset link
+  //     this.authService.ResetPassword(email).catch(err=>{console.log("error from reset password",err);return err});
       
      
-    });
-  }
+  //   });
+  // }
 
-  // edit user
-  async updateUser(user){
-    await this.usersCollection.doc(user.email).update({
-      firstName: user.firstName,
-      lastName: user.lastName, 
-      role: user.role
-    }).catch((err)=>{console.log(err);return err;});
-  }
+  // // edit user
+  // async updateUser(user){
+  //   await this.usersCollection.doc(user.email).update({
+  //     firstName: user.firstName,
+  //     lastName: user.lastName, 
+  //     role: user.role
+  //   }).catch((err)=>{console.log(err);return err;});
+  // }
 
 
   // remove user

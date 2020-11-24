@@ -6,6 +6,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable, of } from 'rxjs';
 import {finalize} from 'rxjs/operators';
 import * as firebase from 'firebase/app';
+import { DbCollections } from '../services/entities.service';
 
 export interface Archives{
   id:string,
@@ -226,5 +227,22 @@ export class DirectoryService {
     return this.afs.collection("Entities").doc(entity).collection<Archives>('Archives',ref=> ref.where('sectionId','in',accessList)).valueChanges();
   }
 
+  //  set recently accessed folders
+  private arrayUnion = firebase.firestore.FieldValue.arrayUnion;
+  private arrayRemove = firebase.firestore.FieldValue.arrayRemove;
+  recentFolders(user,directory,entity){
+    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).update({recentFolders: this.arrayUnion(directory)})
+  }
+
+  // get recent folders
+  getRecentFolders(user,entity){
+    return  this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).valueChanges();
+  }
+
+  getDirectoryName(id,entity){
+    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Archives).doc(id).get().subscribe(result=>{
+      return result.data().alias;
+    })
+  }
 
 }

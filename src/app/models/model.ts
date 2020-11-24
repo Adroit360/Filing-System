@@ -6,7 +6,9 @@ export interface User{
     accessList:[],
     creationdeletionPrivilege:Boolean,
     sharedResources:[],
-    isAdmin:Boolean
+    isAdmin:Boolean,
+    tasks:[],
+    recentFolders:[]
   }
 
   export interface SystemUser{

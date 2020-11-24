@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase/app';
+import { DbCollections } from '../services/entities.service';
 
 export interface Section{
   id: string,
@@ -81,6 +82,13 @@ export class SectionService {
         this.subSectionCollection = this.afs.collection("Entities").doc(entity).collection<Section>('Sections',ref=> ref.where("id","in",accessList));
         this.subSections = this.subSectionCollection.valueChanges();
         return this.subSections;
+    }
+
+    async getSectionName(id,entity){
+      
+     let section = await firebase.firestore().collection(DbCollections.Entities).doc(entity).collection(DbCollections.Sections).doc(id).get();
+      
+     return section.data().name;
     }
 
 }

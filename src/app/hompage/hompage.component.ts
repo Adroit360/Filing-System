@@ -15,7 +15,8 @@ export class HompageComponent implements OnInit {
   constructor(private route: Router,) { }
 
   ngOnInit(): void {
-    //this.route.navigate(['content', 'general']);
+    this.route.navigate(['content', 'general']);
+
   }
 
 }

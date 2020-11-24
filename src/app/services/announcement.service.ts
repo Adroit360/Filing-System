@@ -7,7 +7,7 @@ interface Announcement{
   id:string,
   title:string;
   content:string;
-  dateCreated:string;
+  date:string;
   duration:number;
 }
 
@@ -23,7 +23,7 @@ export class AnnouncementService {
   newAnnouncement(title,content,duration,entity){
     let id = this.afs.createId();
     let announcement: Announcement={
-      id: id, title : title, content: content, duration:duration, dateCreated: new Date().toLocaleDateString()
+      id: id, title : title, content: content, duration:duration, date: new Date().toDateString()
     }
     this.afs.collection(DbCollections.Entities).doc(entity).collection<Announcement>(DbCollections.Announcements).doc(id).set(announcement);
   }
@@ -38,7 +38,7 @@ export class AnnouncementService {
     this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Announcements).doc(id).update({title:title,content:content,duration:duration});
   }
 
-  getValidAnnouncements(entity,currentDate){
+  getValidAnnouncements(entity){
 
     return  this.afs.collection(DbCollections.Entities).doc(entity).collection<Announcement>(DbCollections.Announcements).valueChanges();
     // let cdate = new Date(currentDate);

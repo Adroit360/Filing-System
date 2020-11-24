@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵisDefaultChangeDetectionStrategy } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 import { DbCollections } from '../services/entities.service';
+import { User } from '../models/model';
 
 interface Task{
   id:string,
@@ -16,24 +17,43 @@ interface Task{
 })
 export class TaskService {
 
+  arrayUnion = firebase.firestore.FieldValue.arrayUnion;
+  arrayRemove = firebase.firestore.FieldValue.arrayRemove;
   constructor(private afs: AngularFirestore) { }
 
   // add task
-  newTask(taskObj,entity){
-    taskObj.id = this.afs.createId();
-    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.TaskLists).doc(taskObj.id).set(taskObj);
+  newTask(user,taskObj,entity){
+    let id = this.afs.createId();
+    let _task: Task={
+      id : id,
+      task: taskObj.task,
+      dateCreated: new Date().toLocaleTimeString(),
+      dueDate: taskObj.dueDate,
+      done: taskObj.status
+    };
+    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).update({tasks: this.arrayUnion(_task)});
   }
 
 
   // remove task
-  removeTask(task, entity){
-    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.TaskLists).doc(task).delete();
+  removeTask(user,_task, entity){
+    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).update({tasks: this.arrayRemove(_task)});
   } 
   
 
   // task completed
-  taskCompletion(task:string,state:boolean, entity:string){
-    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.TaskLists).doc(task).update({done:state});
+  updateTask(user,_task, entity){
+    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).get().subscribe(result=>{
+      result.data().tasks.forEach(task => {
+        if (task.id == _task.id){
+          task.done = _task.done;
+        }
+      });
+    });
+  } 
+
+  getTasks (user,entity){
+    return  this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).valueChanges();
   }
   
 }

@@ -51,10 +51,10 @@ export class LoginComponent implements OnInit {
       this.userInfo.setCurrentSection(this.generalSection.id,"general");
       this.userInfo.setCurrentDirectory(this.generalSection.id,"general");
       //  navigate to homepage if login is valid
-      this.route.navigate(["home/content/"+userobj.entity+"/"+this.generalSection.id+"/"+this.generalSection.name+"/"+this.generalSection.id+"/"+this.generalSection.name]);
-      
+      // this.route.navigate(["home/content/"+userobj.entity+"/"+this.generalSection.id+"/"+this.generalSection.name+"/"+this.generalSection.id+"/"+this.generalSection.name]);
+      this.route.navigate(["home/content/dashboard"]);
     }).catch(err=>{
-      this.errorMessage = err.message; 
+      this.errorMessage = err.message;
       console.log("this is the error from login page",err);
       this.isValid = true;
     });

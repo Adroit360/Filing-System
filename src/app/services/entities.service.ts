@@ -23,7 +23,8 @@ export enum DbCollections{
   SharedResources="SharedResources",
   Announcements="Announcements",
   TaskLists = "TaskLists",
-  Chats = "Chats"
+  Chats = "Chats",
+  Sections="Sections"
 }
 
 @Injectable({
@@ -91,7 +92,9 @@ export class EntitiesService {
       accessList:[],
       creationdeletionPrivilege:false,
       sharedResources:[],
-      isAdmin:false
+      isAdmin:false,
+      tasks:[],
+      recentFolders:[]
     };
 
     let systemUser:SystemUser={
@@ -168,4 +171,6 @@ export class EntitiesService {
      accessList:firebase.firestore.FieldValue.arrayRemove(resourceId)
    });
  }
+
+
 }
