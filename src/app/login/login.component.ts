@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   // async getGeneralSection(){
-   
+
   //   console.log("general section info",this.generalSection.id);
   // }
 
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     let email = this.LogInForm.value.email;
     await this.authService.SignIn(this.LogInForm.value.email,this.LogInForm.value.password).then(async ()=>{
        let userobj =  await this.msg.getSystemUser(email);
-       
+
        console.log("lgoing",userobj.entity);
       //  set user info as volatile data in the data service (to make user details accessible at runtime)
        await this.userInfo.setActiveUser(userobj);
@@ -63,7 +63,9 @@ export class LoginComponent implements OnInit {
   onToggle(){
     this.forgot = !this.forgot;
   }
-
+  onSignUP(){
+    this.route.navigate(['SignUp']);
+  }
   onModalResult (result: boolean){
     console.log(result);
     this.forgot= result;

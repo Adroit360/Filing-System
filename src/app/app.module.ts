@@ -22,6 +22,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {EditUserDetailsComponent} from './content/edit-user-details/edit-user-details.component'
 import { SidebarModule } from 'ng-sidebar';
 import { EmptyComponent } from './content/empty/empty.component';
+import { SignUpComponent} from './SignUp/SignUp.component';
 
 import { SectionComponent } from './content/section/section.component';
 import { UserService } from './services/User.service';
@@ -64,6 +65,7 @@ import { DashboardComponent } from './content/dashboard/dashboard.component';
     ChatComponent,
     ContentComponent,
     ManageUserComponent,
+    SignUpComponent,
     EditUserComponent,
     AddNewUserComponent,
     EditUserDetailsComponent,
