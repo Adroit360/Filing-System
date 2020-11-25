@@ -50,6 +50,7 @@ const routes: Routes = [
 
   ]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'welcome', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'SignUp', component: SignUpComponent }
 

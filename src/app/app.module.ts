@@ -1,3 +1,4 @@
+import { LandingComponent } from './landing/landing.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -55,6 +56,7 @@ import { DashboardComponent } from './content/dashboard/dashboard.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,7 +92,8 @@ import { DashboardComponent } from './content/dashboard/dashboard.component';
     UserSettingsComponent,
     SearchComponent,
     TilteCasePipe,
-    DashboardComponent
+    DashboardComponent,
+    LandingComponent
   ],
 
   imports: [
