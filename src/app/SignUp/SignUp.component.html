@@ -1,0 +1,41 @@
+<div class="login-container">
+    <div class="login-box">
+        <div class="logo">
+            <img src="../../assets/konvy.jpeg" alt="" srcset="">
+        </div>
+        <form [formGroup]="SignUpForm" (ngSubmit)="onSubmit()">
+            <div class="container">
+                <h1>SignUp</h1>
+                <!-- <span class="email-checker" *ngIf="errorMessage"> Email or Password is invalid. Please try again</span> -->
+                <input type="text" placeholder="company Name" formControlName="companyName">
+
+                <input type="email" placeholder="company Email" formControlName="email">
+
+                <input type="phone" placeholder="(+233)......" formControlName="contact">
+
+                <input type="text" placeholder="Country" formControlName="country">
+
+                <input type="text" placeholder="Description" formControlName="description">
+
+                <!-- <div class="forgot-password">
+                    <span><input type="radio" name="rememberMe" id="" formControlName="rememberMe"> Remember me</span>
+                    <div>
+                        <span class="psw" (click)="onToggle()"><a  >Forgot password?</a></span>
+                    </div>
+                </div> -->
+
+                <div class="change">
+                    <button type="submit"> Sign Up</button>
+                    <a (click)="onLogin()"> Already have an account? <strong> Login</strong></a>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+    <div class="right-side"></div>
+</div>
+
+<!-- <div *ngIf="forgot">
+    <app-password (onResult)='onModalResult($event)'></app-password>
+</div> -->

@@ -18,7 +18,8 @@ import { EditResourceComponent} from './content/edit-resource/edit-resource.comp
 import { UserListComponent } from './content/user-list/user-list.component';
 import { UserSettingsComponent } from './content/user-settings/user-settings.component';
 import { SearchComponent} from './content/search/search.component';
-import { DashboardComponent } from './content/dashboard/dashboard.component'
+import { DashboardComponent } from './content/dashboard/dashboard.component';
+import { SignUpComponent } from './SignUp/SignUp.component';
 //import { SectionComponent } from './content/section/section.component';
 
 
@@ -46,10 +47,11 @@ const routes: Routes = [
       ]},
       // {path: 'general', component: EmptyComponent},
     ]},
-    
+
   ]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
+  {path: 'SignUp', component: SignUpComponent }
 
 ]
 
