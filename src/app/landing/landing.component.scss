@@ -1,3 +1,6 @@
+// .landing-page {
+//     width: 99.7vw;
+// }
 .navButton {
     background-color: transparent;
     color: rgba(0, 0, 0, 0.466);
@@ -93,8 +96,11 @@ section {
 }
 
 .show-cards {
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    // justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3rem;
     // padding: 0px 50px;
 }
 
@@ -102,7 +108,7 @@ section {
     border-radius: 10px;
     box-shadow: 10px 10px 36px -3px rgba(46, 0, 173, 0.29);
     padding: 20px;
-    max-width: 300px;
+    // max-width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -163,5 +169,93 @@ section {
             padding-bottom: 10px;
             width: 85%;
         }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card {
+        width: 90%;
+        margin: auto;
+    }
+    .navbar {
+        padding: 0.5rem;
+    }
+    .section {
+        margin: 0;
+    }
+    .content {
+        display: block;
+        margin: 6rem 0 0 0;
+        .image {
+            display: none;
+        }
+        .header {
+            font-size: 2rem;
+            width: 90%;
+        }
+        .body {
+            font-size: 1.6rem;
+            width: 90%;
+        }
+    }
+    .nav-bar-links {
+        position: absolute;
+        top: 8rem;
+        left: 0;
+        display: flex;
+    }
+    .try {
+        padding: 12px 7px;
+        font-weight: lighter;
+        font-size: 14px;
+    }
+    .show-cards {
+        display: flex;
+        flex-direction: column;
+    }
+    .aboutUs {
+        padding: 2rem;
+        font-size: 2rem;
+        text-align: center;
+    }
+    .feature {
+        display: block;
+        img {
+            width: 100%;
+        }
+        .text {
+            width: 100%;
+            justify-content: center;
+            align-self: center;
+            padding: 3rem;
+            h1,
+            h6,
+            h4 {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .content {
+        display: block;
+        .image {
+            display: none;
+        }
+        .hero-text {
+            // grid-column: 1/-1;
+        }
+        .header {
+            // font-size: 2rem;
+            width: 90%;
+        }
+        .body {
+            //   font-size: 1.6rem;
+            width: 90%;
+        }
+    }
+    .show-cards {
+        margin: 5rem;
     }
 }

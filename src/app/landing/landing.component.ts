@@ -13,7 +13,7 @@ export class LandingComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onLogin(){
-    this.router.navigate(['login'])
-  }
+  // onLogin(){
+  //   this.router.navigate(['login'])
+  // }
 }
