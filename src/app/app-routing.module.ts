@@ -23,31 +23,31 @@ import { SearchComponent} from './content/search/search.component'
 
 
 const routes: Routes = [
-  {path: 'home', component: HompageComponent, children: [
-    // {path: '/:id/:name', component: SectionComponent},
-    {path: 'content', component: ContentComponent, children: [
-      {path: ':sectionId/:sectionName/:directoryId/:directory', component: EmptyComponent},
-      {path: 'manageUsers', component: ManageUserComponent},
-      {path: 'user-settings', component: UserSettingsComponent},
-      {path: 'SharedResources', component: SharedResourcesComponent},
-      {path: 'SharedResources/:Name/:id', component: DisplayResourceComponent},
-      {path: 'userlists', component:UserListComponent},
-      {path: 'AddUser', component: AddNewUserComponent},
-      {path: 'search', component: SearchComponent},
-      {path: 'editUserDetails', component: EditUserDetailsComponent},
-      {path: 'CreateResource', component:NewResourceComponent},
-      {path: 'EditResource', component: EditResourceComponent},
-      {path: 'approvals', component: PermissionsComponent, children: [
-        {path: 'sent', component: SentComponent},
-        {path: 'received', component: ReceivedComponent},
-      ]},
-      // {path: 'general', component: EmptyComponent},
-    ]},
+  // {path: 'home', component: HompageComponent, children: [
+  //   // {path: '/:id/:name', component: SectionComponent},
+  //   {path: 'content', component: ContentComponent, children: [
+  //     {path: ':sectionId/:sectionName/:directoryId/:directory', component: EmptyComponent},
+  //     {path: 'manageUsers', component: ManageUserComponent},
+  //     {path: 'user-settings', component: UserSettingsComponent},
+  //     {path: 'SharedResources', component: SharedResourcesComponent},
+  //     {path: 'SharedResources/:Name/:id', component: DisplayResourceComponent},
+  //     {path: 'userlists', component:UserListComponent},
+  //     {path: 'AddUser', component: AddNewUserComponent},
+  //     {path: 'search', component: SearchComponent},
+  //     {path: 'editUserDetails', component: EditUserDetailsComponent},
+  //     {path: 'CreateResource', component:NewResourceComponent},
+  //     {path: 'EditResource', component: EditResourceComponent},
+  //     {path: 'approvals', component: PermissionsComponent, children: [
+  //       {path: 'sent', component: SentComponent},
+  //       {path: 'received', component: ReceivedComponent},
+  //     ]},
+  //     // {path: 'general', component: EmptyComponent},
+  //   ]},
 
 
-  ]},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'login', component: LoginComponent},
+  // ]},
+  // {path: '', redirectTo: '/home', pathMatch: 'full'},
+  // {path: 'login', component: LoginComponent},
 
 ]
 
