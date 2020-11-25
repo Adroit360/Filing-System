@@ -20,6 +20,7 @@ import { UserSettingsComponent } from './content/user-settings/user-settings.com
 import { SearchComponent} from './content/search/search.component';
 import { DashboardComponent } from './content/dashboard/dashboard.component';
 import { SignUpComponent } from './SignUp/SignUp.component';
+import { LandingComponent } from './landing/landing.component';
 //import { SectionComponent } from './content/section/section.component';
 
 
@@ -50,7 +51,7 @@ const routes: Routes = [
 
   ]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'welcome', component: LoginComponent},
+  {path: 'welcome', component: LandingComponent},
   {path: 'login', component: LoginComponent},
   {path: 'SignUp', component: SignUpComponent }
 
