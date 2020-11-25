@@ -1,3 +1,4 @@
+import { LandingComponent } from './landing/landing.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -50,11 +51,8 @@ import { ReplyApprovalsComponent } from './approvals/reply-approvals/reply-appro
 import { UserSettingsComponent } from './content/user-settings/user-settings.component';
 import { SearchComponent } from './content/search/search.component';
 import { TilteCasePipe } from './tilte-case.pipe';
-<<<<<<< HEAD
-import { LandingComponent } from './landing/landing.component';
-=======
 import { DashboardComponent } from './content/dashboard/dashboard.component';
->>>>>>> 253b9e43d16e87dff5609d9ee3f94981ec9e0c24
+
 
 
 
@@ -92,11 +90,8 @@ import { DashboardComponent } from './content/dashboard/dashboard.component';
     UserSettingsComponent,
     SearchComponent,
     TilteCasePipe,
-<<<<<<< HEAD
+    DashboardComponent,
     LandingComponent
-=======
-    DashboardComponent
->>>>>>> 253b9e43d16e87dff5609d9ee3f94981ec9e0c24
   ],
 
   imports: [
