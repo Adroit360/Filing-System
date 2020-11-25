@@ -115,7 +115,8 @@ button {
     height: 6.5rem;
     width: 18rem;
     border-radius: 20px;
-    background: #ED1E23;
+    background: #459ce3;
+    ;
     border: transparent;
     font-family: "Poppins";
     font-size: 21px;
@@ -164,7 +165,7 @@ button {
 
 /*****MEDIA QUERIES************/
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
     .right-side {
         background: #534e4e;
         display: none;

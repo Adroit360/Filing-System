@@ -10,10 +10,9 @@ h1 {
     font-weight: 800;
 }
 
-.right-side {
-    background: #ED1E23;
-}
-
+// .right-side {
+//     // background: #e9eeF4;
+// }
 .change {
     display: contents;
     a {
@@ -125,7 +124,7 @@ button {
     height: 6.5rem;
     width: 18rem;
     border-radius: 20px;
-    background: #ED1E23;
+    background: #459ce3;
     border: transparent;
     font-family: "Poppins";
     font-size: 21px;
@@ -172,24 +171,6 @@ button {
         // grid-auto-flow: column;
         // grid-template-columns: 1fr 1fr;
         // height: 100vh;
-    }
-    #second {
-        display: block;
-        font-family: "Poppins";
-        font-size: 21px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 60px;
-        background: #ED1E23;
-        height: 6.5rem;
-        width: 18rem;
-        border-radius: 20px;
-        -webkit-box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
-        box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
-    }
-    button {
-        display: none;
     }
 }
 
