@@ -30,13 +30,14 @@ export class MenuComponent implements OnInit {
   modalState: boolean;
   section: Section;
   generalSection:any;
+  entity:string;
 
   hooks = [];
   nameSections = [];
 
   constructor(private authManager:AuthServiceService,private directory:DirectoryService, private sectionService:SectionService, private router: Router, private route: ActivatedRoute,private msg:MessengerService, private data:DataService) {
 
-
+    this.entity = data.getEntity();
   }
 
    ngOnInit(): void {
@@ -49,13 +50,15 @@ export class MenuComponent implements OnInit {
 
     if (this.user.isAdmin){
       console.log("this is admin");
-      this.sectionService.getSections().subscribe(_sections=>{
-        this.sections = _sections
+      // console.log("this is the entity",this.data.getEntity())
+      this.sectionService.getSections(this.data.getEntity()).subscribe(_sections=>{
+        this.sections = _sections;
         this.hooks = _sections.map(i=>true);
+        console.log("these are the sections ",this.sections);
       });
     }else{
       console.log("this is not admin");
-      this.sectionService.getSectionByAccess(this.accessList).subscribe(_sections=>{
+      this.sectionService.getSectionByAccess(this.accessList,this.data.getEntity()).subscribe(_sections=>{
         this.sections = _sections
         this.hooks = _sections.map(i=>true);
       });
@@ -63,15 +66,17 @@ export class MenuComponent implements OnInit {
     console.log("sections",this.sections);
   }
 
+  // get the general tab
   async getGeneralSection(){
-    this.generalSection = await this.sectionService.getGeneralSection();
+    this.generalSection = await this.sectionService.getGeneralSection(this.data.getEntity());
     console.log("general section info",this.generalSection.id);
   }
+
   toggle(){
     this.visible = !this.visible;
   }
 
-
+// when a section is clicked
   async onSelected(sectionId,sectionName, event){
 
     if(event.target.localName=="span"){
@@ -87,15 +92,18 @@ export class MenuComponent implements OnInit {
 
   }
 
+  // when general tab is clicked
   async onSelectedGeneral(sectionId,sectionName){
+    // update current section to general
     this.data.setCurrentSection(sectionId,sectionName);
+    // update current directory
     this.data.setCurrentDirectory(sectionId,sectionName);
-    console.log(sectionName);
+ 
     // await this.directory.setActiveSectionItems(id,id,this.accessList);
   }
 
   onAddedItem(){
-    this.sectionService.newSection(this.nameInputRef.nativeElement.value);
+    this.sectionService.newSection(this.nameInputRef.nativeElement.value,this.data.getEntity());
     this.visible = !this.visible;
 
   }
@@ -113,7 +121,7 @@ export class MenuComponent implements OnInit {
       // this.sectionService.onDeleteSection(this.section)
       // this.sections = this.sectionService.getSection();
       console.log("section to be deleted",this.currentSection);
-      this.sectionService.removeSection(this.currentSection);
+      this.sectionService.removeSection(this.currentSection,this.data.getEntity());
       this.modalState=false;
     }
     else{
@@ -136,7 +144,7 @@ export class MenuComponent implements OnInit {
   }
 
   onUpdate(index){
-    this.sectionService.updateSection(this.currentSection,this.Rename.nativeElement.value);
+    this.sectionService.updateSection(this.currentSection,this.Rename.nativeElement.value,this.data.getEntity() );
     this.hooks[index]=true;
     console.log(this.Rename.nativeElement.value, index);
   }

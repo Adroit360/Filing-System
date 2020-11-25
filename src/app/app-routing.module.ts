@@ -27,7 +27,8 @@ const routes: Routes = [
   {path: 'home', component: HompageComponent, children: [
     // {path: '/:id/:name', component: SectionComponent},
     {path: 'content', component: ContentComponent, children: [
-      {path: ':sectionId/:sectionName/:directoryId/:directory', component: EmptyComponent},
+      {path: ':entityId/:sectionId/:sectionName/:directoryId/:directory', component: EmptyComponent},
+      // {path: ':sectionId/:sectionName/:directoryId/:directory', component: EmptyComponent},
       {path: 'dashboard', component: DashboardComponent},
       {path: 'manageUsers', component: ManageUserComponent},
       {path: 'user-settings', component: UserSettingsComponent},
@@ -45,8 +46,7 @@ const routes: Routes = [
       ]},
       // {path: 'general', component: EmptyComponent},
     ]},
-
-
+    
   ]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},

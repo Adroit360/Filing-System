@@ -30,6 +30,7 @@ import {ModalComponent} from './modal/modal.component';
 import { PasswordComponent} from './forgotPassword/password.component';
 import { NewFolderComponent } from './new-folder/new-folder.component'
 import { AdminResourceService } from './services/AdminResource.service';
+import{ChatComponent} from './content/chat box/chat.component'
 
 import { SmartTooltipAngularModule } from 'smart-tooltip-angular';
 import { SharedResourcesComponent } from './content/shared-resources/shared-resources.component';
@@ -58,6 +59,7 @@ import { DashboardComponent } from './content/dashboard/dashboard.component';
     AppComponent,
     NavBarComponent,
     MenuComponent,
+    ChatComponent,
     ContentComponent,
     ManageUserComponent,
     EditUserComponent,

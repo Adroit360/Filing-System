@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Resource } from 'src/app/models/resources.model';
 import { AdminResourceService } from 'src/app/services/AdminResource.service';
 import { SharedResourceService } from '../../services/shared-resource.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-edit-resource',
@@ -22,7 +23,7 @@ export class EditResourceComponent implements OnInit {
  date: string;
 
 
-  constructor( private adminresource: AdminResourceService, private route: Router,private resourceManager:SharedResourceService) { }
+  constructor(private dataManager:DataService, private adminresource: AdminResourceService, private route: Router,private resourceManager:SharedResourceService) { }
 
   ngOnInit(): void {
       this.adminresource.EditResource
@@ -45,7 +46,7 @@ export class EditResourceComponent implements OnInit {
   onEdit(){
     // this.adminresource.UpdateResource(this.EditResource.value,this.index);
     console.log("id to be edited",this.id);
-    this.resourceManager.EditResource(this.EditResource.value.Name,this.id);
+    this.resourceManager.EditResource(this.EditResource.value.Name,this.id,this.dataManager.getEntity());
     this.route.navigate(['home/content/SharedResources'])
   }
 }

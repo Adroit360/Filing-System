@@ -3,9 +3,10 @@ import {AngularFirestore,AngularFirestoreCollection} from '@angular/fire/firesto
 import {Observable} from 'rxjs';
 import {map,finalize} from 'rxjs/operators';
 import * as firebase from 'firebase/app';
-import {User,DocumentApprovalObject,Section,Directory,FileObject,ApprovalResponse,ApprovalRequest } from '../models/model';
+import {User,SystemUser,DocumentApprovalObject,Section,Directory,FileObject,ApprovalResponse,ApprovalRequest } from '../models/model';
 import { AngularFireStorage,AngularFireStorageReference,AngularFireUploadTask } from '@angular/fire/storage';
 import {AuthServiceService} from '../services/auth-service.service';
+import { EntitiesService } from '../services/entities.service';
 
 
 
@@ -16,6 +17,9 @@ import {AuthServiceService} from '../services/auth-service.service';
 export class MessengerService {
   private usersCollection: AngularFirestoreCollection<User>;
   private users:Observable<User[]>;
+
+  private systemUsersCollection: AngularFirestoreCollection<SystemUser>;
+  private systemUsers:Observable<SystemUser[]>;
   private sectionCollection: AngularFirestoreCollection<Section>;
   // private sections:Observable<Section[]>;
 
@@ -23,53 +27,60 @@ export class MessengerService {
   approvalDocs:any;
   // storageRef : AngularFireStorageReference;
   // storageTask: AngularFireUploadTask;
+  systemUser:SystemUser;
 
-  constructor(private database: AngularFirestore,private authService:AuthServiceService,private afStorage:AngularFireStorage) { 
+  constructor(private database: AngularFirestore,private authService:AuthServiceService,private afStorage:AngularFireStorage,private entityManager:EntitiesService) { 
+    
     this.usersCollection = database.collection<User>('Users', ref=>ref.orderBy('firstName'));
     this.users = this.usersCollection.valueChanges();
       this.sectionCollection = database.collection<Section>('Sections',ref=> ref.orderBy('dateCreated'));
       this.approvalDocs = database.collection('ApprovalDocuments');
+      this.systemUsersCollection = database.collection<SystemUser>('SystemUsers', ref=>ref.orderBy('name'));
   }
 
 
   // create user
-  async NewUser(firstName,lastName,email,role){
-    let user:User={
-      email: email,
-      lastName:lastName,
-      firstName:firstName,
-      role:role,
-      accessList:[],
-      creationdeletionPrivilege:false,
-      sharedResources:[],
-      isAdmin:false
-    }
-    
-    // create user in firestore database
-    return await this.authService.signUp(user.email,"@password").then(async res=>{
+  // async NewUser(firstName,lastName,email,role,entityId){
+  //   let user:User={
+  //     email: email,
+  //     lastName:lastName,
+  //     firstName:firstName,
+  //     role:role,
+  //     accessList:[],
+  //     creationdeletionPrivilege:false,
+  //     sharedResources:[],
+  //     isAdmin:false
+  //   };
 
-      // save user information to the database
-      console.log(res);
-      if(res=="auth/email-already-in-use" || res=="auth/invalid-email"){
-        return res;
-      }
-      await this.usersCollection.doc(user.email).set(user).catch(e=>{console.log(e); return e;});
- 
-        // send password reset link
-        this.authService.ResetPassword(email).catch(err=>{console.log("error from reset password",err);return err});
+  //   this.systemUser.email = email;
+  //   this.systemUser.name = firstName+" "+lastName;
+  //   this.systemUser.entity = entityId;
+  //   this.systemUser.entityAccount=false;
+  //   // create user in firestore database
+  //   return await this.authService.signUp(user.email,"@password").then(async res=>{
+
+  //     // save user information to the database
+  //     console.log(res);
+  //     if(res=="auth/email-already-in-use" || res=="auth/invalid-email"){
+  //       return res;
+  //     }
+  //     await this.systemUsersCollection.doc(this.systemUser.email).set(this.systemUser).catch(e=>{console.log(e);return e;});
+     
+  //     // send password reset link
+  //     this.authService.ResetPassword(email).catch(err=>{console.log("error from reset password",err);return err});
       
      
-    });
-  }
+  //   });
+  // }
 
-  // edit user
-  async updateUser(user){
-    await this.usersCollection.doc(user.email).update({
-      firstName: user.firstName,
-      lastName: user.lastName, 
-      role: user.role
-    }).catch((err)=>{console.log(err);return err;});
-  }
+  // // edit user
+  // async updateUser(user){
+  //   await this.usersCollection.doc(user.email).update({
+  //     firstName: user.firstName,
+  //     lastName: user.lastName, 
+  //     role: user.role
+  //   }).catch((err)=>{console.log(err);return err;});
+  // }
 
 
   // remove user
@@ -80,8 +91,15 @@ export class MessengerService {
 
 
   // read a user
-  async getUser(userEmail){  
-    let user = await firebase.firestore().collection('Users').doc(userEmail).get();
+  async getUser(userEmail,entity){  
+    let user = await firebase.firestore().collection("Entities").doc(entity).collection('Users').doc(userEmail).get();
+    console.log("user form msg",user.data());
+    return user.data();
+  }
+
+   // read a user
+   async getSystemUser(userEmail){  
+    let user = await firebase.firestore().collection('SystemUsers').doc(userEmail).get();
     console.log("user form msg",user.data());
     return user.data();
   }

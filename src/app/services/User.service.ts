@@ -45,8 +45,8 @@ export class  UserService{
   }
 
   //Edit user
-  onEditUSer(item:User, index:any){
-    this.EditUser.next({details: item, position: index});
+  onEditUSer(item:User){
+    this.EditUser.next({details: item});
   }
 
 }

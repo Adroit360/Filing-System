@@ -36,7 +36,7 @@ export class DisplayResourceComponent implements OnInit {
     });
 
     if (this.filesItemIds.length>0){
-      directoryManager.getFileList(this.filesItemIds).subscribe(result=>{
+      directoryManager.getFileList(this.filesItemIds,userVolatileData.getEntity()).subscribe(result=>{
         this.files = result;
 
       });

@@ -9,15 +9,15 @@
 
     <!-- files -->
     <div class="files">
-        <a *ngFor="let item of recentFolders">
+        <a *ngFor="let item of user.recentFolders">
             <div class="c-contianer">
-                <div class="component">
+                <div (click)="onFolderClicked(item)" class="component">
                     <i class="fa fa-folder" style='font-size: 50px; color:  #459CE3;'></i>
-                    <p>{{item}}</p>
+                    <p>{{item.alias }}</p>
 
-                    <div class="toggler">
+                    <!-- <div class="toggler">
                         <span id="more-icon" class="material-icons">arrow_drop_down</span>
-                        <!-- <i id="more-icon" style="font-size: 16px;" class="fa fa-angle-down"></i> -->
+
 
                         <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
                 <span class="smart-tooltip stick stay-down overlay" id="tooltip">
@@ -27,7 +27,7 @@
                 </span>
 
                         </span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -43,16 +43,16 @@
                 <div class="caption-2">
                     <h2>Announcement</h2>
                 </div>
-                <h5>18th November, 2020</h5>
+                <h5>{{date}}</h5>
             </div>
             <div class="btns">
-                <div class="toggler">
+                <div class="toggler" id="npm">
                     <i style="font-size: 30px; color: rgba(0, 0, 0, 0.479); cursor: pointer;" class="fa fa-ellipsis-h"></i>
                     <!-- <i id="more-icon" style="font-size: 16px;" class="fa fa-angle-down"></i> -->
 
                     <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
         <span class="smart-tooltip stick stay-down overlay" id="tooltip">
-          <h4 (click)="onMute()">mute</h4>
+          <h4 (click)="onAdd()">Add</h4>
           <hr/>
           <h4 (click)="onDelete()">Delete</h4>
         </span>
@@ -60,22 +60,34 @@
                     </span>
                 </div>
 
+
+
+            </div>
+            <div class="N-Modal" id="Modal-News">
+                <form [formGroup]='NewsForm' (ngSubmit)="onNews()">
+                    <div class="S-top">
+                        <h3 style="color:black;"> Add Announcement</h3>
+                        <span class="close" (click)="closeNews()">x</span>
+                    </div>
+                    <input type="text" placeholder="Heading" formControlName="Heading">
+                    <label style="color: black;"> Content</label>
+                    <input type="Text" placeholder="Write Content...." formControlName="Content">
+                    <button type="submit"> ok</button>
+                </form>
             </div>
         </div>
 
-        <div class="news-content">
+        <div *ngFor="let announce of announcements" class="news-content">
             <div class="news-section">
                 <!-- <img src="https://www.graphic.com.gh/images/2020/nov/12/rawlings.png" alt="jj"> -->
                 <div class="newstext">
                     <div class="date-right">
-                        <h5>Wed 23 Nov 2020</h5>
+                        <h5>{{announce.date}}</h5>
                     </div>
 
                     <div class="text">
-                        <h2>The Country Mourns.</h2>
-                        <h3>Former President Jerry John Rawlings Has Passed</h3>
-                        <h4>Staying calm, composed and maintaining strong selfin tofays environment, can be difficult</h4>
-                        <h5>Source: Opera News</h5>
+                        <h3>{{announce.title}}</h3>
+                        <h4>{{announce.content}}</h4>
                     </div>
 
                 </div>
@@ -124,7 +136,7 @@
 
         <div class="table">
             <ul>
-                <li *ngFor="let item of TaskArr;let i = index">
+                <li *ngFor="let item of tasks.tasks;let i = index">
                     <div class="part-1">
 
 
@@ -137,26 +149,26 @@
 
                             <span id="hiddenTexts" class="clicktoshow" smart-tooltip-container>
                         <span class="smart-tooltip stick stay-down overlay" id="tooltip">
-                          <h4 (click)="Done(i)">done</h4>
+                          <h4 *ngIf="!item.done" (click)="Done(item)">done</h4>
                           <hr/>
-                          <h4 (click)="unDone(i)">undone</h4>
+                          <h4 *ngIf="item.done" (click)="unDone(item)">undone</h4>
                           <hr/>
-                          <h4 (click)="DeleteTask()">Delete</h4>
+                          <h4 (click)="DeleteTask(item)">Delete</h4>
                         </span>
 
                             </span>
                         </div>
 
-                        <div class="part-1">
+                        <!-- <div class="part-1">
                             <h3 style="margin-right: 10px;">0{{i}}</h3>
-                        </div>
+                        </div> -->
 
                         <div>
-                            <span *ngIf="!hooks[i]" class="material-icons" style="color: green;">
+                            <span *ngIf="item.done" class="material-icons" style="color: green;">
                     check_circle
                         </span>
 
-                            <span *ngIf="hooks[i]" class="material-icons">
+                            <span *ngIf="!item.done" class="material-icons">
                           check_circle
                               </span>
                         </div>
@@ -164,8 +176,8 @@
                     </div>
 
                     <div class="part-1">
-                        <h3>{{item.newTask}}</h3>
-                        <h3>{{item.Date}}</h3>
+                        <h3>{{item.task}}</h3>
+                        <h3>{{item.dueDate}}</h3>
                     </div>
 
                 </li>

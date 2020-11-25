@@ -5,7 +5,7 @@ import {AuthServiceService} from '../services/auth-service.service';
 import {DataService } from '../services/data.service';
 import {MessengerService} from '../services/messenger.service';
 import { SectionService } from '../services/section.service';
-import {User } from '../models/model';
+// import {User } from '../models/model';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +18,13 @@ export class LoginComponent implements OnInit {
   isValid = false; // this property checks if the form is valid or if the name is in the database
   forgot=false;
   errorMessage:string ="";
-  user:User;
+  // user:User;
   generalSection:any;
 
   constructor(private route: Router,private authService:AuthServiceService,private userInfo:DataService,private msg:MessengerService,private sectionService:SectionService) { }
 
   ngOnInit(): void {
-    this.getGeneralSection();
+    // this.getGeneralSection();
     this.LogInForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, Validators.required),
@@ -32,22 +32,27 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  async getGeneralSection(){
-    this.generalSection = await this.sectionService.getGeneralSection();
-    console.log("general section info",this.generalSection.id);
-  }
+  // async getGeneralSection(){
+   
+  //   console.log("general section info",this.generalSection.id);
+  // }
 
-  onSubmit(){
+ async onSubmit(){
     let email = this.LogInForm.value.email;
-    this.authService.SignIn(this.LogInForm.value.email,this.LogInForm.value.password).then(async ()=>{
-       let userobj =  await this.msg.getUser(email);
-       this.user={firstName:userobj.firstName,lastName:userobj.lastName,email:userobj.email,role:userobj.role,creationdeletionPrivilege:userobj.creationdeletionPrivilege,sharedResources:userobj.sharedResources
-      , isAdmin:userobj.isAdmin,accessList:userobj.accessList};
-       console.log("lgoing",this.user, "email",this.LogInForm.value.email);
-       this.userInfo.setActiveUser(this.user);
-      // this.route.navigate(["home/content/"+this.generalSection.id+"/"+this.generalSection.name+"/"+this.generalSection.id+"/"+this.generalSection.name]);
+    await this.authService.SignIn(this.LogInForm.value.email,this.LogInForm.value.password).then(async ()=>{
+       let userobj =  await this.msg.getSystemUser(email);
+       
+       console.log("lgoing",userobj.entity);
+      //  set user info as volatile data in the data service (to make user details accessible at runtime)
+       await this.userInfo.setActiveUser(userobj);
+      //  get the id of the general tab
+       this.generalSection = await this.sectionService.getGeneralSection(userobj.entity);
+      //  set default section and directory
+      this.userInfo.setCurrentSection(this.generalSection.id,"general");
+      this.userInfo.setCurrentDirectory(this.generalSection.id,"general");
+      //  navigate to homepage if login is valid
+      // this.route.navigate(["home/content/"+userobj.entity+"/"+this.generalSection.id+"/"+this.generalSection.name+"/"+this.generalSection.id+"/"+this.generalSection.name]);
       this.route.navigate(["home/content/dashboard"]);
-      console.log(this.LogInForm);
     }).catch(err=>{
       this.errorMessage = err.message;
       console.log("this is the error from login page",err);
