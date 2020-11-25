@@ -93,8 +93,11 @@ section {
 }
 
 .show-cards {
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    // justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3rem;
     // padding: 0px 50px;
 }
 
@@ -102,7 +105,7 @@ section {
     border-radius: 10px;
     box-shadow: 10px 10px 36px -3px rgba(46, 0, 173, 0.29);
     padding: 20px;
-    max-width: 300px;
+    // max-width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

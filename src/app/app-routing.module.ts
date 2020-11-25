@@ -19,7 +19,8 @@ import { UserListComponent } from './content/user-list/user-list.component';
 import { UserSettingsComponent } from './content/user-settings/user-settings.component';
 import { SearchComponent} from './content/search/search.component';
 import { DashboardComponent } from './content/dashboard/dashboard.component'
-//import { SectionComponent } from './content/section/section.component';
+import { LandingComponent } from './landing/landing.component';
+
 
 
 
@@ -48,9 +49,10 @@ const routes: Routes = [
     ]},
     
   ]},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'welcome', component: LoginComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'welcome', component: LandingComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  
 
 ]
 
