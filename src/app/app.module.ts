@@ -30,6 +30,7 @@ import {ModalComponent} from './modal/modal.component';
 import { PasswordComponent} from './forgotPassword/password.component';
 import { NewFolderComponent } from './new-folder/new-folder.component'
 import { AdminResourceService } from './services/AdminResource.service';
+import{ChatComponent} from './content/chat box/chat.component'
 
 import { SmartTooltipAngularModule } from 'smart-tooltip-angular';
 import { SharedResourcesComponent } from './content/shared-resources/shared-resources.component';
@@ -49,7 +50,11 @@ import { ReplyApprovalsComponent } from './approvals/reply-approvals/reply-appro
 import { UserSettingsComponent } from './content/user-settings/user-settings.component';
 import { SearchComponent } from './content/search/search.component';
 import { TilteCasePipe } from './tilte-case.pipe';
+<<<<<<< HEAD
 import { LandingComponent } from './landing/landing.component';
+=======
+import { DashboardComponent } from './content/dashboard/dashboard.component';
+>>>>>>> 253b9e43d16e87dff5609d9ee3f94981ec9e0c24
 
 
 
@@ -58,6 +63,7 @@ import { LandingComponent } from './landing/landing.component';
     AppComponent,
     NavBarComponent,
     MenuComponent,
+    ChatComponent,
     ContentComponent,
     ManageUserComponent,
     EditUserComponent,
@@ -86,7 +92,11 @@ import { LandingComponent } from './landing/landing.component';
     UserSettingsComponent,
     SearchComponent,
     TilteCasePipe,
+<<<<<<< HEAD
     LandingComponent
+=======
+    DashboardComponent
+>>>>>>> 253b9e43d16e87dff5609d9ee3f94981ec9e0c24
   ],
 
   imports: [

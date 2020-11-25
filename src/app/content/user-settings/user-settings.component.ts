@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { SectionService } from '../../services/section.service';
 import { DataService } from '../../services/data.service';
 import { MessengerService } from '../../services/messenger.service';
+import { EntitiesService } from '../../services/entities.service';
 
 @Component({
   selector: 'app-user-settings',
@@ -18,13 +19,13 @@ export class UserSettingsComponent implements OnInit {
   user:any;
   accessList:any=[];
 
-  constructor(private sectionService:SectionService,private volatileData:DataService,private msg:MessengerService) { 
+  constructor(private entityManager: EntitiesService, private sectionService:SectionService,private volatileData:DataService,private msg:MessengerService) { 
     this.userEmail = this.volatileData.getUserToSetAccess();
    
     this.updateUserAccess(this.userEmail);
     // 
     // console.log(this.accessList, "this is the user we selected");
-    this.sectionService.getSections().subscribe(_sections=>{
+    this.sectionService.getSections(this.volatileData.getEntity()).subscribe(_sections=>{
       this.sections = _sections;
     });
 
@@ -37,13 +38,13 @@ export class UserSettingsComponent implements OnInit {
 
   // add access
   add(section){
-    this.msg.setAccessControl(this.userEmail,section);
+    this.entityManager.setAccessControl(this.userEmail,section,this.volatileData.getEntity());
     this.updateUserAccess(this.userEmail);
   }
 
   // revoke access
   unAdd(section){
-    this.msg.revokeAccess(this.userEmail,section);
+    this.entityManager.revokeAccess(this.userEmail,section,this.volatileData.getEntity());
     this.updateUserAccess(this.userEmail);
   }
 
@@ -53,8 +54,8 @@ export class UserSettingsComponent implements OnInit {
   }
 
   async updateUserAccess(userId){
-    await this.msg._getUser(userId).subscribe(result=>{
-      this.user = result.data();
+    await this.entityManager._getEntityUser(userId,this.volatileData.getEntity()).subscribe(result=>{
+      this.user = result;
       this.accessList = this.user.accessList;
     });
   }

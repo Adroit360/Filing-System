@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import {MessengerService} from '../../services/messenger.service';
+import {EntitiesService} from '../../services/entities.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-add-new-user',
@@ -11,8 +12,10 @@ import {MessengerService} from '../../services/messenger.service';
 export class AddNewUserComponent implements OnInit {
   addUserForm: FormGroup;
   errorMessage:string="";
-
-  constructor( private router: Router, private messenger:MessengerService ) { }
+  entity:any;
+  constructor( private router: Router, private entityManager:EntitiesService,private volatileData:DataService ) {
+    this.entity = this.volatileData.getEntity();
+   }
 
   ngOnInit(): void {
     this.addUserForm = new FormGroup({
@@ -26,8 +29,8 @@ export class AddNewUserComponent implements OnInit {
 
   onSubmit(){
     console.log(this.addUserForm.value);
-    this.messenger.NewUser(this.addUserForm.value.firstName,this.addUserForm.value.lastName,
-      this.addUserForm.value.email,this.addUserForm.value.role).then((res)=>{
+    this.entityManager.NewUser(this.addUserForm.value.firstName,this.addUserForm.value.lastName,
+      this.addUserForm.value.email,this.addUserForm.value.role,this.entity).then((res)=>{
 
         this.errorMessage=res;
         if(!res){

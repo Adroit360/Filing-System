@@ -30,7 +30,7 @@ export class PreviewComponent implements OnInit {
     }
 
     async onUpload(value: boolean){
-      let res = await this.directory.uploadFile(this.file,this.data.getActiveUser().email,this.data.getCurrentSection(),this.data.getCurrentDirectory());
+      let res = await this.directory.uploadFile(this.file,this.data.getActiveUser().email,this.data.getCurrentSection(),this.data.getCurrentDirectory(),this.data.getEntity());
       console.log(res,"response from upload");
       //this.onBack;
       this.onResult.emit(value);

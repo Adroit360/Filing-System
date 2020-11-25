@@ -19,6 +19,7 @@ export class EmptyComponent implements OnInit {
   heading: string;
   fontIcon = "fa fa-folder";
   department;
+  entityId:string;
   currentSectionId:string="";
   currentSectionName:string="";
   currentDirectoryId:string="";
@@ -37,8 +38,11 @@ export class EmptyComponent implements OnInit {
 
   constructor(private data: DataService,private adminResource:AdminResourceService,private resourceManager:SharedResourceService,
     private activatedRoute: ActivatedRoute, private router: Router, private directory: DirectoryService, private approve: ApprovalService) {
-    this.currentUser = data.getActiveUser().email;
-    this.resources = this.resourceManager.getMyResources(this.currentUser);
+    // get current user information
+      this.currentUser = data.getActiveUser().email;
+
+    // get user shared resources
+     this.resources = this.resourceManager.getMyResources(this.currentUser,data.getEntity());
     // console.log("resources form ",this.resources);
     this.activatedRoute.paramMap.subscribe(param => {
 
@@ -46,6 +50,7 @@ export class EmptyComponent implements OnInit {
       this.currentSectionName = param.get("sectionName");
       this.currentDirectoryId = param.get("directoryId");
       this.currentDirectoryName = param.get("directory");
+      this.entityId = param.get("entityId");
       console.log("current directory name",this.currentDirectoryName);
 
       this.computeRoute();
@@ -55,7 +60,7 @@ export class EmptyComponent implements OnInit {
 
   computeRoute() {
     let name = this.department;
-    this.dirContent = this.directory.getSubDirectoryContent(this.currentSectionId, this.currentDirectoryId);
+    this.dirContent = this.directory.getSubDirectoryContent(this.currentSectionId, this.currentDirectoryId,this.entityId);
 
     console.log("directory content", this.dirContent);
     this.currentName = name;
@@ -78,14 +83,14 @@ export class EmptyComponent implements OnInit {
   onFolderClicked(directory) {
     // this.data.setCurrentDirectory(item.id, item.name);
     if(directory.itemType=='folder'){
-      this.dirContent = this.directory.getSubDirectoryContent(this.currentSectionId, directory.id);
+      this.dirContent = this.directory.getSubDirectoryContent(this.currentSectionId, directory.id,this.data.getEntity());
       this.data.setCurrentDirectory(directory.id,directory.name);
-      
+      this.directory.recentFolders(this.data.getActiveUser().email,directory,this.data.getEntity());
       console.log("directory is set");
-      this.router.navigate(["home", "content",this.currentSectionId,this.currentSectionName, directory.id, directory.name])
+      this.router.navigate(["home", "content",this.data.getEntity(),this.currentSectionId,this.currentSectionName, directory.id, directory.name])
     }else{
       return;
-    }
+    }  
 
   }
 
@@ -130,8 +135,8 @@ export class EmptyComponent implements OnInit {
 
   onDelete(item){
     console.log("deleted");
-    if (item.itemType=="file"){this.directory.deleteFile(item.id);}
-    else if (item.itemType=="folder"){this.directory.deleteDirectory(item.id);}
+    if (item.itemType=="file"){this.directory.deleteFile(item.id,item.alias,this.data.getEntity());}
+    else if (item.itemType=="folder"){this.directory.deleteDirectory(item.id,this.data.getEntity());}
   }
 
   onSelected(list, event ,index, item){
@@ -156,7 +161,7 @@ export class EmptyComponent implements OnInit {
 
   sendFileToResource(item,resource){
     // console.log("resource clicked");
-    this.resourceManager.AddFileToResource(item,resource);
+    this.resourceManager.AddFileToResource(item,resource,this.data.getEntity());
     this.showTooltip= +!this.showTooltip;
   }
   onRequestModal(value){
@@ -173,13 +178,13 @@ export class EmptyComponent implements OnInit {
 
   async Back(){
     console.log("back clicked")
-    let parent = await this.directory.getParent(this.data.currentDirectory);
+    let parent = await this.directory.getParent(this.data.currentDirectory,this.data.getEntity());
     console.log("parent", parent);
     if(parent){
-      this.dirContent = await this.directory._getSubDirectoryContent(parent.id);
+      this.dirContent = await this.directory._getSubDirectoryContent(parent.id,this.data.getEntity());
       await this.data.setCurrentDirectory(parent.id,parent.name);
       console.log(this.hierrachy,"this is the hierrachy");
-      this.router.navigate(["home", "content",this.currentSectionId,this.currentSectionName, parent.id, parent.name])
+      this.router.navigate(["home", "content",this.data.getEntity(),this.currentSectionId,this.currentSectionName, parent.id, parent.name])
     }
   }
 }

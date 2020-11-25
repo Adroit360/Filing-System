@@ -4,9 +4,8 @@
         arrow_back
         </span>
         <h3 style="margin-left: 12px;
-      font-size: 30px;
-      font-weight: bold;">{{ currentDirectoryName | titlecase }}</h3>
-
+      font-size: 20px;
+      font-weight: bold;">{{ currentDirectoryName  }}</h3> 
         <div class="ssp">
             <div class="add-folder">
                 <a (click)="newfolder()"><span class="material-icons"> folder_open</span>
@@ -22,7 +21,6 @@
   </div>
 </div>
 </div>
-<h4>{{ currentDirectoryName }}</h4>
 <div class="folders">
 <a class="folder-container" *ngFor="let item of dirContent|async;let i = index">
   <div (click)="onFolderClicked(item)" class="component">
@@ -33,14 +31,12 @@
     <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'"src="../../../assets/excel.png" style="height: 50px; width: 50px;"/>
     <img *ngIf="item.itemType=='file' && item.contentType=='text/plain'" src="../../../assets/text.png" style="height: 50px; width: 50px;"/>
     <i *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" class="{{fontIcon}}" style='font-size: 50px;'></i>
-    <p *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" style="font-size: 14px;">{{item.alias| truncate: 12}}</p>
-    <p *ngIf="item.itemType=='file'" style="font-size: 14px;">{{item.alias| truncate: 12}}</p>
+    <p *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" style="font-size: 15px;">{{item.alias| truncate: 12}}</p>
+    <p *ngIf="item.itemType=='file'" style="font-size: 15px;">{{item.alias| truncate: 12}}</p>
   </div>
-
   <div class="toggler">
 
     <span class="more-icon material-icons" >arrow_drop_down</span>
-
       <span
       id="hiddenText"
       class="material-icons clicktoshow"
@@ -49,9 +45,7 @@
         <div *ngIf="item.itemType=='file'" class="text">
           <p >
             share
-            <span
-
-              style="background-color: rgba(100, 54, 54, 0.822)"
+            <span style="background-color: rgba(100, 54, 54, 0.822)"
               class="second-tooltip"
             >
               <ul *ngFor="let res of resources|async; let i = index">
@@ -65,11 +59,9 @@
             </span>
           </p>
         </div>
-
         <div *ngIf="item.itemType=='file'" class="text">
-          <p ><a [href]="item.url" style="color: white; text-decoration: none;">Download</a></p>
+          <p ><a href={{item.url}} download="item.name" style="color: white; text-decoration: none;">Download</a></p>
             </div>
-
             <div class="text" *ngIf="item.itemType=='file'">
                 <p (click)="onShowRequest(item ,i, $event)">Request Approval</p>
             </div>
@@ -78,11 +70,8 @@
             </div>
             </span>
             </span>
-
-        </div>
+        </div> 
         </a>
-
-
 
         <div *ngIf="createfolder">
             <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>

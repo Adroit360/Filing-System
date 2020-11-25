@@ -13,7 +13,7 @@
                     <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||item.itemType=='file' && item.contentType=='application/msword'"src="../../../assets/word.png" style="height: 50px; width: 50px;"/>
                     <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'"src="../../../assets/excel.png" style="height: 50px; width: 50px;"/>
                      <img *ngIf="item.itemType=='file' && item.contentType=='text/plain'" src="../../../assets/text.png" style="height: 50px; width: 50px;"/>
-                    <i *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' " class="{{fontIcon}}" style='font-size: 50px;color: rgba(134, 134, 219, 0.76)'></i>
+                    <i *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' " class="{{fontIcon}}" style='font-size: 50px;'></i>
                     <p *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' " style="font-size: 14px;">{{item.alias| truncate: 12}}</p>
                     <p *ngIf="item.itemType=='file'" style="font-size: 14px;">{{item.alias| truncate: 12}}</p>
                 </div>

@@ -21,29 +21,25 @@ export class SearchComponent implements OnInit {
     this.volatileInfo.searchItem.subscribe(searchParam=>{
       console.log(searchParam);
       if(searchParam){
-        this.directoryManager.getAccessibleArchives(this.volatileInfo.getActiveUser().accessList).subscribe(result=>{
+        this.directoryManager.getAccessibleArchives(this.volatileInfo.getActiveUser().accessList,this.volatileInfo.getEntity()).subscribe(result=>{
           this.archives=[];
+          console.log(result," THIS IS THE ACCESS LIST");
           result.forEach(doc=>{
             if (doc.alias.toLowerCase().includes(searchParam.toLowerCase())){
               this.archives.push(doc);
             }
           })
           // this.archives = result;
-            console.log("this is the searched archives",this.archives);
+          console.log("this is the searched archives",this.archives);
         });
-      }
-      
+      }  
     });
-    
-   
-
-    
   }
 
   onSelected(directory){
   //the search item
   if(directory.itemType=='folder'){
-    this.directoryManager._getSubDirectoryContent(directory.id).subscribe(result=>this.archives = result);
+    this.directoryManager._getSubDirectoryContent(directory.id,this.volatileInfo.getEntity()).subscribe(result=>this.archives = result);
     // this.volatileInfo.setCurrentDirectory(directory.id,directory.name);
     
     console.log("directory is set",this.archives);

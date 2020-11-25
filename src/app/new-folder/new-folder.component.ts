@@ -20,16 +20,17 @@ export class NewFolderComponent implements OnInit {
     });
   }
 
-  onSubmit(value:boolean){
+  async onSubmit(value:boolean){
     console.log(this.NewFolder.value, "folder name");
     console.log(this.NewFolder.value.security);
     let folderSecurityPublic = true;
     if(this.NewFolder.value.security=="private"){
         folderSecurityPublic = false;
     }
-    let currentDirectory="";
-    if(this.data.getCurrentDirectory()==""){currentDirectory =this.data.getCurrentSection(); }else{currentDirectory=this.data.getCurrentDirectory();}
-    this.directory.createDirectory(this.NewFolder.value.newfolder,this.data.getCurrentSection(),currentDirectory,this.data.getActiveUser().email,folderSecurityPublic);
+    let currentDirectory="1";
+    if(this.data.getCurrentDirectory()==""){currentDirectory =await this.data.getCurrentSection();console.log(currentDirectory, "this 1 is the current diretory") }else{currentDirectory=await this.data.getCurrentDirectory();console.log(currentDirectory, "this 2 is the current diretory")}
+    this.directory.createDirectory(this.NewFolder.value.newfolder,this.data.getCurrentSection(),currentDirectory,this.data.getActiveUser().email,folderSecurityPublic,this.data.getEntity());
+    
     this.onResult.emit(value);
   }
 

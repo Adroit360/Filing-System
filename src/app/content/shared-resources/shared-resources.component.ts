@@ -28,8 +28,8 @@ export class SharedResourcesComponent implements OnInit {
 
   ]
   constructor( private adminresource: AdminResourceService ,private route: Router,private resourceManager:SharedResourceService,private volatileData:DataService) {
-    this.resources = this.resourceManager.getMyResources(this.volatileData.getActiveUser().email);
-     this.resourceManager.getMyExternalResources(this.volatileData.getActiveUser().email).subscribe(result=>{
+    this.resources = this.resourceManager.getMyResources(this.volatileData.getActiveUser().email,this.volatileData.getEntity());
+     this.resourceManager.getMyExternalResources(this.volatileData.getActiveUser().email,this.volatileData.getEntity()).subscribe(result=>{
        this.externalResources = result[0].sharedResources;
        console.log("my external resource", this.externalResources);
      });
@@ -53,13 +53,10 @@ export class SharedResourcesComponent implements OnInit {
 
   onModalResult(result: boolean){
     if (result){
-      // this.adminresource.onDeleteuserGroups(this.resource);
-      // this.NewResource=this.adminresource.getAllResources();
       console.log('item to be removed',this.resource);
-      this.resourceManager.RemoveResource(this.resource);
+      this.resourceManager.RemoveResource(this.resource,this.volatileData.getEntity());
       this.modalState=false;
     }
-
     else{
       this.modalState=false;
     }
@@ -82,7 +79,7 @@ export class SharedResourcesComponent implements OnInit {
   }
 
   async getResource(id){
-    await this.resourceManager.GetResource(id).subscribe(result=>{
+    await this.resourceManager.GetResource(id,this.volatileData.getEntity()).subscribe(result=>{
       let resource = result.data();
       console.log("resource for external",resource);
       this.adminresource.onEditResource(resource);

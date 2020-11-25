@@ -1,11 +1,11 @@
 <div>
     <div class="header">
-        <h2>Shared Resources</h2>
+        <h2>Your Groups</h2>
         <div class="right-side" style="cursor: pointer;">
             <i class="material-icons" style="color: #ed1e23; font-weight: 500;
             font-style: normal;
             font-size: 26px;"> control_point </i>
-            <a class="active" (click)="onAdd()">Add a new resource</a>
+            <a class="active" (click)="onAdd()">New Group</a>
         </div>
     </div>
     <div class="container">
@@ -14,7 +14,7 @@
                 <a *ngFor="let resource of resources|async; let i = index">
                     <div (click)="onSelected(resource)" [routerLink]="[i, resource.name]" class="component">
                         <i class="{{fontIcon}}" style='font-size: 50px; color:  #459CE3;'></i>
-                        <p style="font-size: 14px;"> {{resource.name| truncate: 10}}</p>
+                        <p style="font-size: 15px;"> {{resource.name| truncate: 10}}</p>
                     </div>
                     <div class="toggler">
                         <p class=" more-icon material-icons">arrow_drop_down</p>
@@ -68,13 +68,13 @@
             <div class="border"></div>
             <!----External Shared Resources-->
             <div class="main-2">
-                <h2>External Shared Resources</h2>
+                <h2>External Groups</h2>
 
                 <div class="folder">
                     <a *ngFor="let resource of externalResources; let i = index">
                         <div (click)="onSelected(resource)" [routerLink]="[i, resource.name]">
                             <i class="{{fontIcon}}" style='font-size: 50px; color: #459CE3;'></i>
-                            <p style="font-size: 14px;"> {{resource.name}} </p>
+                            <p style="font-size: 15px;"> {{resource.name}} </p>
                         </div>
                     </a>
                 </div>

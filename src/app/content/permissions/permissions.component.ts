@@ -16,6 +16,7 @@ export class PermissionsComponent implements OnInit {
   unapprovedRequest=0;
 
 
+
   constructor(private approvalManager: ApprovalService,private userVolatileData:DataService) {
     this.currentUser = userVolatileData.getActiveUser().email;
     approvalManager.GetReceiveRequest(this.currentUser).subscribe(result=>{
@@ -40,5 +41,7 @@ export class PermissionsComponent implements OnInit {
     this.showSent= false;
     this.numvan=+!this.numvan
   }
+
+
 
 }

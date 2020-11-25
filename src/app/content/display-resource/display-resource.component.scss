@@ -50,6 +50,11 @@ a:hover {
     opacity: 1;
 }
 
+.left-side {
+    display: flex;
+    align-items: baseline;
+}
+
 .text>p {
     font-size: 12px;
     color: white;

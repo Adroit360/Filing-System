@@ -6,6 +6,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable, of } from 'rxjs';
 import {finalize} from 'rxjs/operators';
 import * as firebase from 'firebase/app';
+import { DbCollections } from '../services/entities.service';
 
 export interface Archives{
   id:string,
@@ -70,8 +71,8 @@ export class DirectoryService {
 
   // getCurrentDirectory(){return this.currentDirectory;}
 
-  getSubDirectoryContent(sectionId,directoryId){
-    this.subarchivesCollection = this.afs.collection<Archives>('Archives',ref=> ref.where('sectionId','==',sectionId).where('parentId','==',directoryId));
+  getSubDirectoryContent(sectionId,directoryId,entity){
+    this.subarchivesCollection = this.afs.collection("Entities").doc(entity).collection<Archives>('Archives',ref=> ref.where('sectionId','==',sectionId).where('parentId','==',directoryId));
     this.subarchives = this.subarchivesCollection.valueChanges();
     // firebase.firestore().collection("Archives").where('sectionId','==',sectionId).where('parentId','==',directoryId).orderBy('dat
     console.log('from dir service', this.subarchives);
@@ -79,24 +80,24 @@ export class DirectoryService {
   }
 
   
-  _getSubDirectoryContent(directoryId){
-    this.subarchivesCollection = this.afs.collection<Archives>('Archives',ref=> ref.where('parentId','==',directoryId));
+  _getSubDirectoryContent(directoryId,entity){
+    this.subarchivesCollection = this.afs.collection("Entities").doc(entity).collection<Archives>('Archives',ref=> ref.where('parentId','==',directoryId));
     this.subarchives = this.subarchivesCollection.valueChanges();
     // firebase.firestore().collection("Archives").where('sectionId','==',sectionId).where('parentId','==',directoryId).orderBy('dat
     // console.log('from dir service', this.subarchives);
     return this.subarchives;
   }
  
-  async getParent(id){
+  async getParent(id,entity){
     let parent="";
     let parentObj={id:"",name:""};
-    await firebase.firestore().collection("Archives").doc(id).get().then(result=>{parent = result.data().parentId;console.log("parent from service",parent)});
+    await firebase.firestore().collection("Entities").doc(entity).collection("Archives").doc(id).get().then(result=>{parent = result.data().parentId;console.log("parent from service",parent)});
     
    if (parent){
-       await firebase.firestore().collection("Archives").doc(parent).get()
+       await firebase.firestore().collection("Entities").doc(entity).collection("Archives").doc(parent).get()
        .then(result=>{parentObj.id=result.data().id; parentObj.name=result.data().name;console.log("parent from service",parentObj)})
        .catch(async err=>{
-        await firebase.firestore().collection("Sections").doc(parent).get()
+        await firebase.firestore().collection("Entities").doc(entity).collection("Sections").doc(parent).get()
         .then(result=>{parentObj.id=result.data().id; parentObj.name=result.data().name;console.log("parent from service",parentObj)})
        });
     }
@@ -105,9 +106,9 @@ export class DirectoryService {
     return parentObj;
   }
 
-  getFileList(listItems:[]){
+  getFileList(listItems:[],entity){
     // console.log("listitems in getfilelist ", listItems);
-    this.subarchivesCollection = this.afs.collection<Archives>('Archives',ref=> ref.where('id','in',listItems));
+    this.subarchivesCollection = this.afs.collection("Entities").doc(entity).collection<Archives>('Archives',ref=> ref.where('id','in',listItems));
     this.subarchives = this.subarchivesCollection.valueChanges();
     return this.subarchives;
   }
@@ -130,9 +131,9 @@ export class DirectoryService {
   }
 
 
-  createDirectory(directoryName,sectionId,parentId,user,directoryLevel:Boolean){
+  createDirectory(directoryName,sectionId,parentId,user,directoryLevel:Boolean,entity){
     let similars:any;
-    firebase.firestore().collection("Archives").where("parentId","==",parentId).where("name","==",directoryName).get().then(result=>{
+    firebase.firestore().collection("Entities").doc(entity).collection("Archives").where("parentId","==",parentId).where("name","==",directoryName).get().then(result=>{
       if (result.docs.length>0){
         this.newArchive.alias = directoryName+" "+result.docs.length;
       }else{
@@ -148,28 +149,28 @@ export class DirectoryService {
       this.newArchive.itemType = "folder";
       this.newArchive.public = directoryLevel;
 
-      this.archivesCollection.doc(this.newArchive.id).set(this.newArchive);
+      this.afs.collection("Entities").doc(entity).collection("Archives").doc(this.newArchive.id).set(this.newArchive);
     });
    
     
   }
 
   // upload file
-   private  basePath="uploads/archives"
-   async uploadFile(fileItem,userId,sectionId,directoryId)//: Observable<number> 
+   private  basePath="uploads/entities"
+   async uploadFile(fileItem,userId,sectionId,directoryId,entity)//: Observable<number> 
     {
     let file:Archives;
     let alias="";
-    firebase.firestore().collection("Archives").where("parentId","==",directoryId).where("name","==",fileItem.name).get().then(result=>{
+    firebase.firestore().collection("Entities").doc(entity).collection("Archives").where("parentId","==",directoryId).where("name","==",fileItem.name).get().then(result=>{
       if (result.docs.length>0){
         alias = fileItem.name+" "+result.docs.length;
       }else{
         alias = fileItem.name;
       }
 
-    this.archivesCollection.doc(directoryId).get().subscribe(result=>{
+    this.afs.collection("Entities").doc(entity).collection("Archives").doc(directoryId).get().subscribe(result=>{
       const id = this.afs.createId(); 
-      const filePath = `${this.basePath}/${alias}`;
+      const filePath = `${this.basePath}/${entity}/${alias}`;
       const storageRef = this.afStorage.ref(filePath);
       const uploadTask = this.afStorage.upload(filePath, fileItem);
    
@@ -192,7 +193,7 @@ export class DirectoryService {
               public:result.data().public,
               dateCreated:new Date().toLocaleDateString()
             }
-            this.archivesCollection.doc(id).set(file).catch(e=>{console.log(e); return e;});
+            this.afs.collection("Entities").doc(entity).collection<Archives>('Archives').doc(id).set(file).catch(e=>{console.log(e); return e;});
             
           });
         })
@@ -205,24 +206,43 @@ export class DirectoryService {
     
   }
 
-  async deleteFile(fileId){
-    const filePath = `${this.basePath}`;
-    const storageRef = this.afStorage.ref(filePath).child(fileId);
+  async deleteFile(fileId,alias,entity){
+    const filePath = `${this.basePath}/${entity}`;
+    const storageRef = this.afStorage.ref(filePath).child(alias);
     await storageRef.delete();
-    await this.archivesCollection.doc(fileId).delete();
+    await this.afs.collection("Entities").doc(entity).collection<Archives>('Archives').doc(fileId).delete();
   }
 
- deleteDirectory(directoryId){
-   firebase.firestore().collection("Archives").where('parentId','==',directoryId)
+ deleteDirectory(directoryId,entity){
+   firebase.firestore().collection("Entities").doc(entity).collection("Archives").where('parentId','==',directoryId)
     .get().then(a=>{a.docs.forEach(doc=>{
-        if(doc.data().itemType == "folder"){this.deleteDirectory(doc.data().id);}
-        else{ this.deleteFile(doc.data().id);}
+        if(doc.data().itemType == "folder"){this.deleteDirectory(doc.data().id,doc.data().entity);}
+        else{ this.deleteFile(doc.data().id,doc.data().alias,entity);}
     })});
     
-   this.archivesCollection.doc(directoryId).delete().catch(e=>{console.log(e)});
+    this.afs.collection("Entities").doc(entity).collection<Archives>('Archives').doc(directoryId).delete().catch(e=>{console.log(e)});
   }
 
-  getAccessibleArchives(accessList){
-    return this.afs.collection<Archives>('Archives',ref=> ref.where('sectionId','in',accessList)).valueChanges();
-  } 
+  getAccessibleArchives(accessList,entity){
+    return this.afs.collection("Entities").doc(entity).collection<Archives>('Archives',ref=> ref.where('sectionId','in',accessList)).valueChanges();
+  }
+
+  //  set recently accessed folders
+  private arrayUnion = firebase.firestore.FieldValue.arrayUnion;
+  private arrayRemove = firebase.firestore.FieldValue.arrayRemove;
+  recentFolders(user,directory,entity){
+    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).update({recentFolders: this.arrayUnion(directory)})
+  }
+
+  // get recent folders
+  getRecentFolders(user,entity){
+    return  this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).valueChanges();
+  }
+
+  getDirectoryName(id,entity){
+    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Archives).doc(id).get().subscribe(result=>{
+      return result.data().alias;
+    })
+  }
+
 }
