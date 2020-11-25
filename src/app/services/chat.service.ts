@@ -40,6 +40,7 @@ export class ChatService {
   // read messages
   getMessage(user,entity){
     return this.afs.collection(DbCollections.Entities).doc(entity).collection<User>(DbCollections.Chats,ref => ref.where("receiver","==",user).where("sender","==",user)).valueChanges();
+    // firebase.firestore.FieldValue.serverTimestamp();
   }
 
 }

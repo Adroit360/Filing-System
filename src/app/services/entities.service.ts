@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import * as firebase from 'firebase/app';
 import {User,SystemUser } from '../models/model';
 import {AuthServiceService} from '../services/auth-service.service';
+import { ChatService } from '../services/chat.service';
 
 export interface Entity{
   id:string,
@@ -132,7 +133,7 @@ export class EntitiesService {
   }
 
     // get a single user
-     _getEntityUser(userEmail,entityId){
+    _getEntityUser(userEmail,entityId){
       return this.afs.collection(DbCollections.Entities).doc(entityId).collection<User>(DbCollections.Users).doc(userEmail).valueChanges();
     }
 
@@ -172,5 +173,8 @@ export class EntitiesService {
    });
  }
 
+ sendMessage(msg,user,receiver,entity){
+
+ }
 
 }

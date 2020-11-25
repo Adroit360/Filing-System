@@ -84,11 +84,9 @@ export class SectionService {
         return this.subSections;
     }
 
-    async getSectionName(id,entity){
-      
-     let section = await firebase.firestore().collection(DbCollections.Entities).doc(entity).collection(DbCollections.Sections).doc(id).get();
-      
-     return section.data().name;
+    async getSectionName(id,entity){ 
+      let section = await firebase.firestore().collection(DbCollections.Entities).doc(entity).collection(DbCollections.Sections).doc(id).get();
+       return section.data().name;
     }
 
 }
