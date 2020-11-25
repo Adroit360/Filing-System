@@ -36,33 +36,43 @@ app-nav-bar {
 
 /******************MEDIA QUERIES**************************/
 
-
-/*
 @media screen and (max-width: 800px) {
     .container {
-        grid-template-columns: auto repeat(4, 1fr);
-        grid-template-rows: 6rem repeat(4, 1fr);
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
         grid-template-areas: "side head head head head" "main main main main main" "main main main main main" "main main main main main" "main main main main main";
     }
-    app-content {
-        border-top-left-radius: 0rem !important;
-        // background-color: red;
-        display: block;
-    }
-    // app-menu {
+    // app-content {
+    //     border-top-left-radius: 0rem !important;
+    //     // background-color: red;
     //     display: block;
-    //     position: fixed;
-    //     width: 50vw;
-    //     height: 90vh;
-    //     background-color: white;
-    //     // left: -200px;
-    //     transition: all 500ms linear;
-    //     cursor: pointer;
     // }
+    app-menu {
+        // display: block;
+        // position: fixed;
+        // width: 50vw;
+        // height: 90vh;
+        // background-color: white;
+        // // left: -200px;
+        // transition: all 500ms linear;
+        // cursor: pointer;
+        position: absolute;
+        position: absolute;
+        background-color: white;
+        left: -200px;
+    }
 }
-*/
+
+
+/****/
+
+// content{
+//         /* border-top-left-radius: 3.13rem; */
+//         background-color: #e5e5e5;
+//         display: grid;
+//         /* grid-auto-flow: column; */
+//         height: 219vh;
+// }
+
+/***********/
 
 
 /******************** Modal*************************/
