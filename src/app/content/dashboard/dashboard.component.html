@@ -13,11 +13,11 @@
             <div class="c-contianer">
                 <div (click)="onFolderClicked(item)" class="component">
                     <i class="fa fa-folder" style='font-size: 50px; color:  #459CE3;'></i>
-                    <p>{{item.alias}}</p>
+                    <p>{{item.alias }}</p>
 
-                    <div class="toggler">
+                    <!-- <div class="toggler">
                         <span id="more-icon" class="material-icons">arrow_drop_down</span>
-                        <!-- <i id="more-icon" style="font-size: 16px;" class="fa fa-angle-down"></i> -->
+
 
                         <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
                 <span class="smart-tooltip stick stay-down overlay" id="tooltip">
@@ -27,7 +27,7 @@
                 </span>
 
                         </span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -46,13 +46,13 @@
                 <h5>{{date}}</h5>
             </div>
             <div class="btns">
-                <div class="toggler">
+                <div class="toggler" id="npm">
                     <i style="font-size: 30px; color: rgba(0, 0, 0, 0.479); cursor: pointer;" class="fa fa-ellipsis-h"></i>
                     <!-- <i id="more-icon" style="font-size: 16px;" class="fa fa-angle-down"></i> -->
 
                     <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
         <span class="smart-tooltip stick stay-down overlay" id="tooltip">
-          <h4 (click)="onMute()">mute</h4>
+          <h4 (click)="onAdd()">Add</h4>
           <hr/>
           <h4 (click)="onDelete()">Delete</h4>
         </span>
@@ -60,6 +60,20 @@
                     </span>
                 </div>
 
+
+
+            </div>
+            <div class="N-Modal" id="Modal-News">
+                <form [formGroup]='NewsForm' (ngSubmit)="onNews()">
+                    <div class="S-top">
+                        <h3 style="color:black;"> Add Announcement</h3>
+                        <span class="close" (click)="closeNews()">x</span>
+                    </div>
+                    <input type="text" placeholder="Heading" formControlName="Heading">
+                    <label style="color: black;"> Content</label>
+                    <input type="Text" placeholder="Write Content...." formControlName="Content">
+                    <button type="submit"> ok</button>
+                </form>
             </div>
         </div>
 

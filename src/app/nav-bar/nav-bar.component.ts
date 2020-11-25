@@ -32,5 +32,17 @@ export class NavBarComponent implements OnInit {
     console.log(searchTextValue);
   }
 
+  // Profile(){
+  //   document.getElementById('prfl').style.display="block";
+  // }
+
+  changeProfile(e){
+      console.log(e)
+      // let input = <any>document.querySelector('#file-upload');
+      document.getElementById("file-upload").click();
+  }
+
+
+
 
 }

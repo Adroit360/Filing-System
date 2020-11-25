@@ -16,13 +16,18 @@ import { Router } from '@angular/router';
 
 export class DashboardComponent implements OnInit {
 
- 
+
  TaskForm: FormGroup= new FormGroup({
   newTask: new FormControl(null),
   Date: new FormControl(null)
  });
+ NewsForm: FormGroup =new FormGroup({
+   Heading: new FormControl(null),
+   Content: new FormControl(null),
+ })
+
  setTask=false;
- 
+
  tasks:any = [];
  announcements:any=[];
  user:any;
@@ -30,7 +35,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private directoryManager: DirectoryService, private taskManager:TaskService, private dataManager: DataService,
     private announceManager:AnnouncementService,private router:Router,private sectionManager:SectionService) {
-    
+
     // get user recently accessed folders
     directoryManager.getRecentFolders(dataManager.getActiveUser().email,dataManager.getEntity()).subscribe(result=>{
       this.user = result;
@@ -46,7 +51,7 @@ export class DashboardComponent implements OnInit {
     });
 
     this.date = new Date();
-   
+
    }
 
   ngOnInit(): void {
@@ -54,8 +59,10 @@ export class DashboardComponent implements OnInit {
   }
 
   // muting a news tag
-  onMute(){
-    console.log("muted");
+  onAdd(){
+    console.log("Add");
+    document.getElementById("Modal-News").style.display="grid";
+    document.getElementById("npm").style.display="none";
   }
 // deleting
   onDelete(){
@@ -86,7 +93,7 @@ export class DashboardComponent implements OnInit {
   }
   //done with task
   Done(_task){
-    
+
     _task.done = true;
     this.taskManager.updateTask(this.dataManager.getActiveUser().email,_task,this.dataManager.getEntity());
   }
@@ -108,7 +115,19 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(["home", "content",this.dataManager.getEntity(),directory.sectionId ,"Report Teams Depost", directory.id, directory.name])
     }else{
       return;
-    }  
+    }
+
+  }
+
+  onNews(){
+    console.log(this.NewsForm.value);
+    document.getElementById("Modal-News").style.display="none";
+    document.getElementById("npm").style.display="block";
+  }
+
+  closeNews(){
+    document.getElementById("npm").style.display="block";
+    document.getElementById("Modal-News").style.display="none";
 
   }
 }
