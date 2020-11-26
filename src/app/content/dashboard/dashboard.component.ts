@@ -21,11 +21,13 @@ export class DashboardComponent implements OnInit {
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
-    touchDrag: true,
+    touchDrag:true,
     pullDrag: true,
     dots: true,
     navSpeed: 700,
     navText: ['', ''],
+    autoplay: true,
+    autoplayTimeout:1000,
     responsive: {
       0: {
         items: 1
