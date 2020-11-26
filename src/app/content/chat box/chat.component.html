@@ -68,30 +68,21 @@
 
                     <div *ngIf="chat.sender==currentUser" class="message-right">
 
-<<<<<<< HEAD
                         <div class="bubble">
                             {{chat.message}}
                             <div class="corner"></div>
-                            <span>{{chat.time}}</span>
+                            <span style="font-size: 11px;">{{chat.time}}</span>
                         </div>
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg" />
-=======
-                    <div class="bubble">
-                        {{chat.message}}
-                        <div class="corner"></div>
-                        <span style="font-size: 11px;">{{chat.time}}</span>
->>>>>>> 8634324ade8137bbd1a9f6b35dae859a15f1122b
                     </div>
                 </div>
-            </div>
 
-            <div id="sendmessage">
-                <input [(ngModel)]="textMessage" type="text" placeholder="Send message..." (keydown.enter)="sendMessage(chatRecipient.email)" />
-                <button class="material-icons" id="send" (click)="sendMessage(chatRecipient.email)">
+                <div id="sendmessage">
+                    <input [(ngModel)]="textMessage" type="text" placeholder="Send message..." (keydown.enter)="sendMessage(chatRecipient.email)" />
+                    <button class="material-icons" id="send" (click)="sendMessage(chatRecipient.email)">
                   send
                 </button>
+                </div>
+
             </div>
 
         </div>
-
-    </div>
