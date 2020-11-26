@@ -24,10 +24,10 @@ export class DashboardComponent implements OnInit {
     touchDrag:true,
     pullDrag: true,
     dots: true,
-    navSpeed: 700,
+    navSpeed: 1000,
     navText: ['', ''],
     autoplay: true,
-    autoplayTimeout:1000,
+    autoplayTimeout:5000,
     responsive: {
       0: {
         items: 1
