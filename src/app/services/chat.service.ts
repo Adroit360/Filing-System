@@ -12,6 +12,7 @@ interface Chat {
   read:boolean;
   date:any;
   time:string;
+  commonChatString:string;
 }
 
 
@@ -25,6 +26,8 @@ export class ChatService {
   // send text message
   sendMessage(sender,receiver,message,entity){
     let id = this.afs.createId();
+    let commonString ="";
+
     let  chat:Chat={
       id : id,
       sender: sender,
@@ -32,7 +35,8 @@ export class ChatService {
       message: message,
       date: firebase.firestore.FieldValue.serverTimestamp(),
       time: new Date().toLocaleTimeString(),
-      read:false
+      read:false,
+      commonChatString: this.formCommonStringId(sender,receiver)
     }
     // store msg to sender
     this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(sender).collection(DbCollections.Chats).doc(id).set(chat);
@@ -42,8 +46,19 @@ export class ChatService {
 
   // read messages
   getChatMessage(user,targetUser,entity){
-    console.log('target ',targetUser);
-    return this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection<Chat>(DbCollections.Chats,ref=>ref.where("receiver","==",targetUser).orderBy('date')).valueChanges(); 
+    let commonStr = this.formCommonStringId(user,targetUser);
+    return this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection<Chat>(DbCollections.Chats,ref=>ref.where("commonChatString","==",commonStr).orderBy('date')).valueChanges(); 
+  }
+
+  private formCommonStringId(sender,receiver){
+    let commonStr="";
+    if (sender.length>receiver.length){
+      commonStr = sender+receiver;
+    }else {
+      commonStr = receiver+sender;
+    }
+
+    return commonStr
   }
 
 }
