@@ -119,6 +119,7 @@ export class DashboardComponent implements OnInit {
     this.taskManager.newTask(this.dataManager.getActiveUser().email,{task:this.TaskForm.value.newTask,dueDate:this.TaskForm.value.Date,status:false},this.dataManager.getEntity())
     document.getElementById("Modal-task").style.display="none";
     document.getElementById("smth").style.display="block";
+    document.getElementById("files-a").style.display="none";
 
   }
   //done with task
@@ -126,6 +127,7 @@ export class DashboardComponent implements OnInit {
 
     _task.done = true;
     this.taskManager.updateTask(this.dataManager.getActiveUser().email,_task,this.dataManager.getEntity());
+
   }
 
   unDone(_task){

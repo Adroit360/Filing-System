@@ -8,7 +8,7 @@ import { DataService }  from '../../services/data.service';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
-  
+
   date = new Date().toDateString();
   entityUsers:any=[];
   chatRecipient:any;
@@ -34,15 +34,15 @@ export class ChatComponent implements OnInit {
   }
 
   async OpenChat(recipient){
-    
+
     this.chatRecipient =  recipient;
-    
+
     if(recipient.email in this.chats==false){
       this.getMessage(recipient.email);
       console.log("array already not exist")
     }else{console.log("email in array")}
-    document.getElementById('chatview').style.display="block";
- 
+    document.getElementById('chatview').style.display="flex";
+
 
   }
 
@@ -57,7 +57,7 @@ export class ChatComponent implements OnInit {
     this.textMessage = "";
   }
 
-  
+
   getMessage(targetUser){
         this.entityManager.getChatMessages(this.dataManager.getActiveUser().email,targetUser,this.dataManager.getEntity()).subscribe(result=>{
         this.chats[targetUser] = result;
