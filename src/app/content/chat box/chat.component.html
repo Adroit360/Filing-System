@@ -16,12 +16,12 @@
             </div>
             <div style="height: 85%;
            overflow:auto">
-                <div id="friends" *ngFor="let item of chats; let i=index">
-                    <div class="friend" (click)="OpenChat(i)">
+                <div id="friends" *ngFor="let user of entityUsers; let i=index">
+                    <div class="friend" (click)="OpenChat(user)">
                         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" />
                         <div class="tttt">
-                            <h6><strong>{{item.name}}</strong></h6>
-                            <span>{{item.email}}</span>
+                            <h6 *ngIf="user.firstName"><strong>{{user.firstName}} {{ user.lastName}}</strong></h6>
+                            <span *ngIf="user.email">{{user.email}}</span>
                         </div>
                     </div>
                 </div>
@@ -32,13 +32,14 @@
             </div>
         </div>
 
-        <div id="chatview">
+        <div  id="chatview">
+            <div *ngIf="chatRecipient">
             <div id="profile">
 
-                <div class="lft">
+                <div  class="lft">
                     <i class="fa fa-arrow-left" (click)="back()"></i>
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" />
-                    <h4><strong>John</strong></h4>
+                    <h4><strong>{{chatRecipient.firstName}} </strong></h4>
 
                 </div>
                 <div class="rft">
@@ -50,36 +51,35 @@
                     </span>
                 </div>
 
-
-
             </div>
-            <div id="chat-messages">
-                <label>Thursday 02</label>
-                <div class="message">
+            <div id="chat-messages" *ngFor="let chat of chats[chatRecipient.email]">
+                <!-- <label>{{date}}</label> -->
+                <div *ngIf="chat.sender==chatRecipient.email" class="message">
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" />
                     <div class="bubble">
                         <h5>
-                            some banku some banku some banku some banku some banku
+                            {{chat.message}}
                         </h5>
                         <!-- <div class="corner"></div>
                       <span>3 min</span> -->
                     </div>
                 </div>
 
-                <div class="message-right">
+                <div *ngIf="chat.sender==currentUser" class="message-right">
 
                     <div class="bubble">
-                        Can you share a link for the tutorial?
+                        {{chat.message}}
                         <div class="corner"></div>
-                        <span>1 min</span>
+                        <span>{{chat.time}}</span>
                     </div>
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg" />
                 </div>
             </div>
+            </div>
 
             <div id="sendmessage">
-                <input type="text" placeholder="Send message..." />
-                <button id="send"></button>
+                <input [(ngModel)]="textMessage" type="text" placeholder="Send message..." />
+                <button id="send" (click)="sendMessage(chatRecipient.email)"></button>
             </div>
 
         </div>

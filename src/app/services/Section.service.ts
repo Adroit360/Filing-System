@@ -67,18 +67,6 @@ export class SectionService {
     }
 
     getSectionByAccess(accessList,entity){
-    //   let access_sections=[];
-    //   // let accessList = await this.getUserAccessList(userId);
-    //    firebase.firestore().collection('Sections').get().then(a=>{a.docs.forEach(doc=>{
-    //     if (accessList.includes(doc.id) ){
-    //       access_sections.push({id:doc.data().id,name:doc.data().name});
-    //     }
-       
-    //   });
-    //   console.log("accessed sections",access_sections);
-    // });
-      
-    //   return access_sections;
         this.subSectionCollection = this.afs.collection("Entities").doc(entity).collection<Section>('Sections',ref=> ref.where("id","in",accessList));
         this.subSections = this.subSectionCollection.valueChanges();
         return this.subSections;
