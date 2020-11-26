@@ -32,7 +32,8 @@ import {ModalComponent} from './modal/modal.component';
 import { PasswordComponent} from './forgotPassword/password.component';
 import { NewFolderComponent } from './new-folder/new-folder.component'
 import { AdminResourceService } from './services/AdminResource.service';
-import{ChatComponent} from './content/chat box/chat.component'
+import{ChatComponent} from './content/chat box/chat.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { SmartTooltipAngularModule } from 'smart-tooltip-angular';
 import { SharedResourcesComponent } from './content/shared-resources/shared-resources.component';
@@ -108,6 +109,7 @@ import { DashboardComponent } from './content/dashboard/dashboard.component';
     FormsModule,
     SidebarModule.forRoot(),
     SmartTooltipAngularModule,
+    CarouselModule ,
   ],
 
   providers: [UserService,AdminResourceService, SectionService],
