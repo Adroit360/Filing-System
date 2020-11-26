@@ -17,15 +17,12 @@
 
                     <!-- <div class="toggler">
                         <span id="more-icon" class="material-icons">arrow_drop_down</span>
-
-
                         <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
                 <span class="smart-tooltip stick stay-down overlay" id="tooltip">
                   <h4 (click)="onEdit()">Edit</h4>
                   <hr/>
                   <h4 (click)="onDelete()" >Delete</h4>
                 </span>
-
                         </span>
                     </div> -->
                 </div>
@@ -64,7 +61,7 @@
 
             </div>
             <div class="N-Modal" id="Modal-News">
-                <form [formGroup]='NewsForm' (ngSubmit)="onNews()">
+                <form [formGroup]='NewsForm' (ngSubmit)="onAddAnnouncement()">
                     <div class="S-top">
                         <h3 style="color:black;"> Add Announcement</h3>
                         <span class="close" (click)="closeNews()">x</span>

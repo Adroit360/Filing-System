@@ -51,27 +51,26 @@ export class EmptyComponent implements OnInit {
       this.currentDirectoryId = param.get("directoryId");
       this.currentDirectoryName = param.get("directory");
       this.entityId = param.get("entityId");
-      console.log("current directory name",this.currentDirectoryName);
-
+     
       this.computeRoute();
     });
 
   }
 
   computeRoute() {
-    let name = this.department;
+   
     this.dirContent = this.directory.getSubDirectoryContent(this.currentSectionId, this.currentDirectoryId,this.entityId);
 
-    console.log("directory content", this.dirContent);
-    this.currentName = name;
-    if(this.hierrachy.includes(name)){
-      this.hierrachy = this.hierrachy.splice(0,this.hierrachy.indexOf(name)+1);
-    }else{
-      this.hierrachy.push(name);
-    }
+    // console.log("directory content", this.dirContent);
+    // this.currentName = name;
+    // if(this.hierrachy.includes(name)){
+    //   this.hierrachy = this.hierrachy.splice(0,this.hierrachy.indexOf(name)+1);
+    // }else{
+    //   this.hierrachy.push(name);
+    // }
 
-    this.currentBreadCrump = ` > ${name}`;
-    this.routeChanged(name);
+    // this.currentBreadCrump = ` > ${name}`;
+    // this.routeChanged(name);
   }
 
 
@@ -179,11 +178,10 @@ export class EmptyComponent implements OnInit {
   async Back(){
     console.log("back clicked")
     let parent = await this.directory.getParent(this.data.currentDirectory,this.data.getEntity());
-    console.log("parent", parent);
+    
     if(parent){
-      this.dirContent = await this.directory._getSubDirectoryContent(parent.id,this.data.getEntity());
+      // this.dirContent = await this.directory._getSubDirectoryContent(parent.id,this.data.getEntity());
       await this.data.setCurrentDirectory(parent.id,parent.name);
-      console.log(this.hierrachy,"this is the hierrachy");
       this.router.navigate(["home", "content",this.data.getEntity(),this.currentSectionId,this.currentSectionName, parent.id, parent.name])
     }
   }
