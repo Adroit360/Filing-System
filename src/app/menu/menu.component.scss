@@ -1,8 +1,8 @@
 @mixin active() {
-    background-color: #FFFFFF;
-    -webkit-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
-    box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    // background-color: #FFFFFF;
+    // -webkit-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    // -moz-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
+    // box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
     border-radius: 10px;
     border: none;
     outline: none;
@@ -20,8 +20,9 @@ ng-sidebar-container {
 .logo {
     height: 0;
     img {
-        width: 202px;
-        height: 74px;
+        width: 200px;
+        height: 55px;
+        margin: 10px 0 0 25px;
         // margin-left: 4.3rem;
         // margin-top: 1.63rem;
     }
@@ -97,6 +98,7 @@ li a {
 
 .active {
     @include active();
+    background-color: #e5e5e5;
 }
 
 .admin-tools-inbox {

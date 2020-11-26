@@ -6,6 +6,7 @@ import { AnnouncementService } from '../../services/announcement.service';
 import { DirectoryService } from '../../services/directory.service';
 import { SectionService } from '../../services/section.service';
 import { Router } from '@angular/router';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 
 @Component({
@@ -15,6 +16,33 @@ import { Router } from '@angular/router';
 })
 
 export class DashboardComponent implements OnInit {
+
+  // carousel options
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: true,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 1
+      },
+      740: {
+        items: 1
+      },
+      940: {
+        items: 1
+      }
+    },
+    nav: true
+  }
+
 
 
  TaskForm: FormGroup= new FormGroup({

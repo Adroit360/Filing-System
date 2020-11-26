@@ -68,12 +68,37 @@
                     </div>
                     <input type="text" placeholder="Heading" formControlName="Heading">
                     <label style="color: black;"> Content</label>
-                    <input type="Text" placeholder="Write Content...." formControlName="Content">
+                    <!-- <input > -->
+                    <textarea style="height: 100px;" type="Text" placeholder="Write Content...." formControlName="Content"></textarea>
                     <button type="submit"> ok</button>
                 </form>
             </div>
         </div>
 
+        <!----Announcements -->
+
+        <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let announce of announcements" class="news-content">
+                <ng-template carouselSlide>
+                    <div class="news-section">
+                        <!-- <img src="https://www.graphic.com.gh/images/2020/nov/12/rawlings.png" alt="jj"> -->
+                        <div class="newstext">
+                            <div class="date-right">
+                                <h5>{{announce.date}}</h5>
+                            </div>
+
+                            <div class="text">
+                                <h3>{{announce.title}}</h3>
+                                <h4>{{announce.content}}</h4>
+                            </div>
+
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+        </owl-carousel-o>
+
+        <!---------------------->
         <div *ngFor="let announce of announcements" class="news-content">
             <div class="news-section">
                 <!-- <img src="https://www.graphic.com.gh/images/2020/nov/12/rawlings.png" alt="jj"> -->
@@ -180,6 +205,11 @@
                 </li>
 
             </ul>
+
+
+            <div class="files">
+                <h4 class="nothing">Nothing to show... click to create task</h4>
+            </div>
         </div>
 
     </div>

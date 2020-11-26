@@ -1,10 +1,10 @@
 <div class="login-container">
     <div class="login-box">
         <div class="logo">
-            <img src="../../assets/konvy.jpeg" alt="" srcset="">
+            <img src="../../assets/konvy.png" alt="" srcset="">
         </div>
         <form [formGroup]="LogInForm" (ngSubmit)="onSubmit()">
-            <div class="container" [ngStyle]="{'grid-template-rows': isValid? '1fr 1.2fr 1fr 1fr 2fr 1.3fr':'2fr 1.4fr 1.4fr 3fr' }">
+            <div class="container" [ngStyle]="{'grid-template-rows': isValid? '1fr 1.2fr 1fr 1fr 2fr 1.3fr':'2fr 1.4fr 1.4fr 1.4fr' }">
                 <h1>Login into your account</h1>
                 <span class="email-checker" *ngIf="errorMessage"> Email or Password is invalid. Please try again</span>
 
@@ -19,14 +19,21 @@
                     </div>
                 </div>
 
+                <div class="change">
 
-                <button type="submit">Login into your account</button>
+                    <button type="submit">Login </button>
+                    <!-- <button type="submit" id="second">Login</button> -->
+                    <a (click)="onSignUP()">Dont have an account? <strong> Sign Up Here</strong>  </a>
+                </div>
+
 
 
             </div>
         </form>
     </div>
-    <div class="right-side"></div>
+    <div style="background-image: url(../../assets/land.jpg);background-size: cover;background-repeat: no-repeat;background-position: center; background-color: #eaebfd;" class="right-side">
+
+    </div>
 </div>
 
 <div *ngIf="forgot">

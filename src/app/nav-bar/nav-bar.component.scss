@@ -33,7 +33,7 @@
 #hiddenText {
     color: black;
     padding: 10px;
-    background-color: #E5E5E5;
+    background-color: #ffffff;
     -webkit-box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
     box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
@@ -45,6 +45,7 @@
         margin: 0px 74px 20px 75px;
         cursor: pointer;
         font-size: 90px;
+        color: #459cE3;
     }
     h5 {
         font-size: 25px;
@@ -65,12 +66,13 @@
 
 .profile {
     padding: 10px;
+    border-radius: 15px;
     i {
         position: absolute;
         left: 150px;
         top: 65px;
         padding: 15px;
-        color: white;
+        color: #459cE3;
         font-size: 25px;
         cursor: pointer;
     }

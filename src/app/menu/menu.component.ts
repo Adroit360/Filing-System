@@ -98,7 +98,7 @@ export class MenuComponent implements OnInit {
     this.data.setCurrentSection(sectionId,sectionName);
     // update current directory
     this.data.setCurrentDirectory(sectionId,sectionName);
- 
+
     // await this.directory.setActiveSectionItems(id,id,this.accessList);
   }
 
@@ -170,6 +170,10 @@ export class MenuComponent implements OnInit {
 
   onGeneral(){
     this.router.navigate(['home/content/dashboard'])
+  }
+
+  MeetingRoom(){
+    console.log("we are meeting")
   }
 
   }

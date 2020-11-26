@@ -1,0 +1,261 @@
+// .landing-page {
+//     width: 99.7vw;
+// }
+.navButton {
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.466);
+    border: none;
+    margin: auto 30px;
+}
+
+.signup {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    border: none;
+    margin: 10px;
+}
+
+.login {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+    color: blue;
+    font-weight: bold;
+    border: none;
+    margin: 10px;
+}
+
+.navbar {
+    display: flex;
+    flex-flow: row wrap;
+    // background-color: blue;
+    justify-content: space-between;
+    vertical-align: middle;
+    padding: 10px;
+    align-items: center;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.logo {
+    width: 15%;
+}
+
+.try {
+    padding: 15px 20px;
+    font-weight: lighter;
+    font-size: 16px;
+}
+
+// .header{
+//     background: rgb(2,0,36);
+//     background: linear-gradient(190deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+// }
+.content {
+    // display: flex;
+    // width: 80%;
+    margin: auto 3rem;
+    margin-top: 10%;
+    // background: chartreuse;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    .image {
+        grid-column: 4/-1;
+    }
+    .hero-text {
+        grid-column: 1/4;
+    }
+    .header {
+        color: blue;
+        font-size: 40px;
+        font-weight: 1000;
+        width: 80%;
+        margin-bottom: 10px;
+    }
+    .body {
+        color: rgba(0, 0, 0, 0.553);
+        font-size: 20px;
+        width: 50%;
+        line-height: 1.1;
+    }
+}
+
+.hero-image {
+    // background-color: black;
+}
+
+section {
+    margin: 0px 20px 100px 20px;
+}
+
+.show-cards {
+    // display: flex;
+    // justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3rem;
+    // padding: 0px 50px;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 10px 10px 36px -3px rgba(46, 0, 173, 0.29);
+    padding: 20px;
+    // max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 20vh;
+    i {
+        color: blue;
+        font-size: 3rem;
+    }
+    // color: blue;
+    .title {
+        font-weight: bold;
+        color: blue;
+        font-size: 2.4rem;
+    }
+}
+
+.contents {
+    width: 80%;
+}
+
+.aboutUs {
+    background-color: #cccccc;
+    background-image: url("../../assets/wallpaper.jpg");
+    // background-image: url("https://image.freepik.com/free-vector/business-workplace-background_87720-336.jpgs");
+    padding: 100px;
+    color: white;
+    font-weight: bolder;
+    font-size: 50px;
+    background-size: cover;
+}
+
+.feature {
+    display: flex;
+    // margin-top:5rem;
+    justify-content: space-between;
+    flex-direction: row;
+    .image {
+        background-color: blue;
+        height: 100px;
+        width: 40%;
+    }
+    .text {
+        width: 40%;
+        justify-content: center;
+        align-self: center;
+        padding: 1rem;
+        h1 {
+            color: blue;
+            font-weight: bolder;
+            font-size: 25px;
+            padding-bottom: 10px;
+        }
+        h4,
+        h6 {
+            color: rgba(0, 0, 0, 1);
+            // font-weight: bold;
+            font-size: larger;
+            padding-bottom: 10px;
+            width: 85%;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card {
+        width: 90%;
+        margin: auto;
+    }
+    .navbar {
+        padding: 0.5rem;
+    }
+    .section {
+        margin: 0;
+    }
+    .content {
+        display: block;
+        margin: 6rem 0 0 0;
+        .image {
+            display: none;
+        }
+        .header {
+            font-size: 2rem;
+            width: 90%;
+        }
+        .body {
+            font-size: 1.6rem;
+            width: 90%;
+        }
+    }
+    .nav-bar-links {
+        position: absolute;
+        top: 8rem;
+        left: 0;
+        display: flex;
+    }
+    .try {
+        padding: 12px 7px;
+        font-weight: lighter;
+        font-size: 14px;
+    }
+    .show-cards {
+        display: flex;
+        flex-direction: column;
+    }
+    .aboutUs {
+        padding: 2rem;
+        font-size: 2rem;
+        text-align: center;
+    }
+    .feature {
+        display: block;
+        img {
+            width: 100%;
+        }
+        .text {
+            width: 100%;
+            justify-content: center;
+            align-self: center;
+            padding: 3rem;
+            h1,
+            h6,
+            h4 {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .content {
+        display: block;
+        .image {
+            display: none;
+        }
+        // .hero-text {
+        //     // grid-column: 1/-1;
+        // }
+        .header {
+            // font-size: 2rem;
+            width: 90%;
+        }
+        .body {
+            //   font-size: 1.6rem;
+            width: 90%;
+        }
+    }
+    .show-cards {
+        margin: 5rem;
+    }
+}

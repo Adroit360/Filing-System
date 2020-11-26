@@ -1,3 +1,4 @@
+import { LandingComponent } from './landing/landing.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -21,6 +22,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {EditUserDetailsComponent} from './content/edit-user-details/edit-user-details.component'
 import { SidebarModule } from 'ng-sidebar';
 import { EmptyComponent } from './content/empty/empty.component';
+import { SignUpComponent} from './SignUp/SignUp.component';
 
 import { SectionComponent } from './content/section/section.component';
 import { UserService } from './services/User.service';
@@ -30,7 +32,8 @@ import {ModalComponent} from './modal/modal.component';
 import { PasswordComponent} from './forgotPassword/password.component';
 import { NewFolderComponent } from './new-folder/new-folder.component'
 import { AdminResourceService } from './services/AdminResource.service';
-import{ChatComponent} from './content/chat box/chat.component'
+import{ChatComponent} from './content/chat box/chat.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { SmartTooltipAngularModule } from 'smart-tooltip-angular';
 import { SharedResourcesComponent } from './content/shared-resources/shared-resources.component';
@@ -54,6 +57,7 @@ import { DashboardComponent } from './content/dashboard/dashboard.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +66,7 @@ import { DashboardComponent } from './content/dashboard/dashboard.component';
     ChatComponent,
     ContentComponent,
     ManageUserComponent,
+    SignUpComponent,
     EditUserComponent,
     AddNewUserComponent,
     EditUserDetailsComponent,
@@ -88,7 +93,8 @@ import { DashboardComponent } from './content/dashboard/dashboard.component';
     UserSettingsComponent,
     SearchComponent,
     TilteCasePipe,
-    DashboardComponent
+    DashboardComponent,
+    LandingComponent
   ],
 
   imports: [
@@ -103,6 +109,7 @@ import { DashboardComponent } from './content/dashboard/dashboard.component';
     FormsModule,
     SidebarModule.forRoot(),
     SmartTooltipAngularModule,
+    CarouselModule ,
   ],
 
   providers: [UserService,AdminResourceService, SectionService],
