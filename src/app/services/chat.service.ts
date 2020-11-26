@@ -10,8 +10,9 @@ interface Chat {
   receiver:string;
   message:string;
   read:boolean;
-  date:string;
+  date:any;
   time:string;
+  commonChatString:string;
 }
 
 
@@ -25,21 +26,40 @@ export class ChatService {
   // send text message
   sendMessage(sender,receiver,message,entity){
     let id = this.afs.createId();
+    let commonString ="";
+
     let  chat:Chat={
       id : id,
       sender: sender,
       receiver: receiver,
       message: message,
-      date: new Date().toLocaleDateString(),
+      date: firebase.firestore.FieldValue.serverTimestamp(),
       time: new Date().toLocaleTimeString(),
-      read:false
+      read:false,
+      commonChatString: this.formCommonStringId(sender,receiver)
     }
-    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Chats).doc(id).set(chat);
+    // store msg to sender
+    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(sender).collection(DbCollections.Chats).doc(id).set(chat);
+     // send msg to receiver
+     this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(receiver).collection(DbCollections.Chats).doc(id).set(chat);
   }
 
   // read messages
-  getMessage(user,entity){
-    return this.afs.collection(DbCollections.Entities).doc(entity).collection<User>(DbCollections.Chats,ref => ref.where("receiver","==",user).where("sender","==",user)).valueChanges();
+  getChatMessage(user,targetUser,entity){
+    let commonStr = this.formCommonStringId(user,targetUser);
+    return this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection<Chat>(DbCollections.Chats,ref=>ref.where("commonChatString","==",commonStr).orderBy('date')).valueChanges(); 
+  }
+
+  private formCommonStringId(sender,receiver){
+    let commonStr="";
+    if (sender>receiver){
+      commonStr = sender+receiver;
+    }else  {
+      commonStr = receiver+sender;
+    }
+    
+
+    return commonStr
   }
 
 }

@@ -80,7 +80,7 @@ export class DashboardComponent implements OnInit {
       console.log(this.tasks, "these are the task");
     });
 
-    this.date = new Date();
+    this.date = new Date().toDateString();
 
    }
 
@@ -149,10 +149,11 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  onNews(){
+  onAddAnnouncement(){
     console.log(this.NewsForm.value);
     document.getElementById("Modal-News").style.display="none";
     document.getElementById("npm").style.display="block";
+    this.announceManager.newAnnouncement(this.NewsForm.value.Heading,this.NewsForm.value.Content,this.dataManager.getEntity());
   }
 
   closeNews(){
