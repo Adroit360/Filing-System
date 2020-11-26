@@ -44,6 +44,14 @@ export class ChatComponent implements OnInit {
     document.getElementById('chatview').style.display="flex";
 
 
+    //  setTimeout(()=>{
+    // let element =  document.getElementById("sendMess");
+    //   let scrollHeight = element.scrollHeight + 100;
+    //   console.log("scrollHeight",scrollHeight);
+    //   element.scrollTo(0,-scrollHeight);
+    //  },200)
+
+
   }
 
   back(){
@@ -55,6 +63,13 @@ export class ChatComponent implements OnInit {
   sendMessage(recipient){
     this.entityManager.sendMessage(this.textMessage,this.dataManager.getActiveUser().email,recipient,this.dataManager.getEntity());
     this.textMessage = "";
+    setTimeout(()=>{
+      let element =  document.getElementById("sendMess");
+      let scrollHeight = element.scrollHeight + 100;
+      console.log("scrollHeight",scrollHeight);
+      element.scrollTo(0,scrollHeight);
+    },200)
+
   }
 
 
