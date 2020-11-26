@@ -171,7 +171,8 @@
 #chat-messages {
     opacity: 1;
     // border: 1px solid;
-    height: 80%;
+    // height: 80%;
+    display: grid;
     label {
         color: #232525;
         font-weight: 600;
@@ -207,8 +208,8 @@
 .message-right {
     display: flex;
     align-items: center;
-    float: right;
-    margin-top: 10px;
+    /* float: right; */
+    justify-content: flex-end;
     img {
         width: 40px;
         border-radius: 50%;
