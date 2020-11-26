@@ -1,3 +1,25 @@
+@keyframes viewlist {
+    from {
+        // top: -100px;
+        opacity: 0;
+    }
+    to {
+        right: 0px;
+        opacity: 1;
+    }
+}
+
+@keyframes closelist {
+    from {
+        // top: -100px;
+        opacity: 0;
+    }
+    to {
+        height: 4%;
+        opacity: 1;
+    }
+}
+
 .downbox {
     right: 0px;
     background: #459CE3;
@@ -11,6 +33,8 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    animation-name: closelist;
+    animation-duration: 1s;
     h1 {
         font-size: 20px;
         font-weight: 600;
@@ -35,6 +59,8 @@
     box-shadow: -4px -2px 14px 3px rgba(0, 0, 0, 0.32);
     -webkit-box-shadow: -4px -2px 14px 3px rgba(0, 0, 0, 0.32);
     -moz-box-shadow: -4px -2px 14px 3px rgba(0, 0, 0, 0.32);
+    animation-name: viewlist;
+    animation-duration: 1s;
 }
 
 .friend {
@@ -128,10 +154,17 @@
     width: 19%;
     height: 77%;
     display: none;
+    animation-name: viewlist;
+    animation-duration: 1s;
+}
+
+#chatview>#sendMess {
+    flex-grow: 1;
 }
 
 #profile {
     text-align: center;
+    height: 70px;
     /* background: #776363; */
     display: flex;
     border-bottom: 1px solid;
