@@ -193,11 +193,12 @@
         height: 40px;
     }
     .bubble {
-        background-color: rgba(248, 248, 248, 0.637);
+        background-color: rgba(177, 177, 177, 0.288);
         padding: 10px;
         // width: 200px;
         border-radius: 20px;
         h5 {
+            color: black;
             font-size: 16px;
         }
     }
@@ -215,12 +216,14 @@
         height: 40px;
     }
     .bubble {
-        background-color: rgb(255, 255, 255);
+        background-color: #459CE3;
         // width: 200px;
         padding: 10px;
         border-radius: 20px;
         h5 {
             font-size: 16px;
+            // color: blue;
+            color: #459ce32f;
         }
     }
 }
@@ -251,7 +254,7 @@
 }
 
 #sendmessage button {
-    background: #fff url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/send.png") 0 -41px no-repeat;
+    // background: #fff url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/send.png") 0 -41px no-repeat;
     width: 30px;
     height: 30px;
     position: absolute;
