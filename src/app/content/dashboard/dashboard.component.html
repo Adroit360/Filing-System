@@ -80,12 +80,12 @@
 
         <!----Announcements -->
 
-        <owl-carousel-o [options]="customOptions">
+        <!-- <owl-carousel-o [options]="customOptions">
             <ng-container *ngFor="let announce of announcements" class="news-content">
                 <ng-template carouselSlide>
                     <div class="news-section">
                         <!-- <img src="https://www.graphic.com.gh/images/2020/nov/12/rawlings.png" alt="jj"> -->
-                        <div class="newstext">
+        <!-- <div class="newstext">
                             <div class="date-right">
                                 <h5>{{announce.date}}</h5>
                             </div>
@@ -99,13 +99,13 @@
                     </div>
                 </ng-template>
             </ng-container>
-        </owl-carousel-o>
+        </owl-carousel-o> -->
 
         <!---------------------->
-        <div *ngFor="let announce of announcements" class="news-content">
+        <!-- <div *ngFor="let announce of announcements" class="news-content">
             <div class="news-section">
-                <!-- <img src="https://www.graphic.com.gh/images/2020/nov/12/rawlings.png" alt="jj"> -->
-                <div class="newstext">
+                 <img src="https://www.graphic.com.gh/images/2020/nov/12/rawlings.png" alt="jj"> -->
+        <!-- <div class="newstext">
                     <div class="date-right">
                         <h5>{{announce.date}}</h5>
                     </div>
@@ -116,9 +116,9 @@
                     </div>
 
                 </div>
-            </div>
+            </div> -->
 
-        </div>
+        <!-- </div> -->
     </div>
 
     <div class="task">
@@ -210,8 +210,14 @@
             </ul>
 
 
-            <div class="files">
+            <div id="files-a">
                 <h4 class="nothing">Nothing to show... click to create task</h4>
+                <img style="height: 10%;
+                position: absolute;
+                left: 80%;
+                top: 46%;
+                transform: scaleX(-1);
+                width: 9%;" src="../../../assets/arrow.gif">
             </div>
         </div>
 

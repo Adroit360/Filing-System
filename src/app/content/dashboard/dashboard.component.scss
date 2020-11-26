@@ -274,6 +274,7 @@ form {
     border-radius: 30px;
     float: right;
     width: 290px;
+    right: 28%;
     /* Sit on top */
 }
 
@@ -346,4 +347,17 @@ button {
     margin: 50px;
     font-weight: 600;
     font-size: 16px;
+}
+
+#files-a {
+    display: flex;
+    width: 95%;
+    height: 114px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    margin-top: 30px;
+    /* flex-wrap: wrap; */
+    align-items: flex-start;
+    /* overflow: auto; */
+    overflow-y: hidden;
 }
