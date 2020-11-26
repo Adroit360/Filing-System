@@ -92,102 +92,93 @@
                                     <h4>{{announce.content}}</h4>
                                 </div>
 
-<<<<<<< HEAD
-=======
-        <!-- <owl-carousel-o [options]="customOptions">
+                                <!-- <owl-carousel-o [options]="customOptions">
             <ng-container *ngFor="let announce of announcements" class="news-content">
                 <ng-template carouselSlide>
                     <div class="news-section">
                          <img src="https://www.graphic.com.gh/images/2020/nov/12/rawlings.png" alt="jj"> -->
-        <!-- <div class="newstext">
+                                <!-- <div class="newstext">
                             <div class="date-right">
                                 <h5>{{announce.date}}</h5>
->>>>>>> f934b3aba5180ed92e40ce8789e3d86de7365cd0
                             </div>
                         </div>
-<<<<<<< HEAD
-                    </ng-template>
-                </ng-container>
-            </owl-carousel-o>
-=======
                     </div>
                 </ng-template>
             </ng-container>
         </owl-carousel-o>  -->
 
-        <!---------------------->
-        <div class="news-content">
-            <div class="news-section" *ngFor="let announce of announcements">
-                <!-- <img src="https://www.graphic.com.gh/images/2020/nov/12/rawlings.png" alt="jj">  -->
-                <div class="newstext">
-                    <div class="date-right">
-                        <h5>{{announce.date}}</h5>
-                    </div>
+                                <!---------------------->
+                                <div class="news-content">
+                                    <div class="news-section" *ngFor="let announce of announcements">
+                                        <!-- <img src="https://www.graphic.com.gh/images/2020/nov/12/rawlings.png" alt="jj">  -->
+                                        <div class="newstext">
+                                            <div class="date-right">
+                                                <h5>{{announce.date}}</h5>
+                                            </div>
 
-                    <div class="text">
-                        <h3>{{announce.title}}</h3>
-                        <h4>{{announce.content}}</h4>
-                    </div>
+                                            <div class="text">
+                                                <h3>{{announce.title}}</h3>
+                                                <h4>{{announce.content}}</h4>
+                                            </div>
 
-                </div>
-            </div>
->>>>>>> f934b3aba5180ed92e40ce8789e3d86de7365cd0
+                                        </div>
+                                    </div>
 
-        </div>
-    </div>
+                                </div>
+                            </div>
 
-    <div class="task">
+                            <div class="task">
 
-        <div class="task-head">
-            <div class="header-3">
-                <div class="caption-3">
-                    <h2>Tasks</h2>
-                </div>
-            </div>
-            <div class="add">
-                <div class="toggler" id="smth">
-                    <i style="font-size: 30px; color: rgba(0, 0, 0, 0.479); cursor: pointer;" class="fa fa-ellipsis-h"></i>
-                    <!-- <i id="more-icon" style="font-size: 16px;" class="fa fa-angle-down"></i> -->
+                                <div class="task-head">
+                                    <div class="header-3">
+                                        <div class="caption-3">
+                                            <h2>Tasks</h2>
+                                        </div>
+                                    </div>
+                                    <div class="add">
+                                        <div class="toggler" id="smth">
+                                            <i style="font-size: 30px; color: rgba(0, 0, 0, 0.479); cursor: pointer;" class="fa fa-ellipsis-h"></i>
+                                            <!-- <i id="more-icon" style="font-size: 16px;" class="fa fa-angle-down"></i> -->
 
-                    <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
+                                            <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
     <span class="smart-tooltip stick stay-down overlay" id="tooltip">
       <h4 (click)="onTask()">Add Task</h4>
     </span>
 
-                    </span>
-                </div>
-                <div class="T-Modal" id="Modal-task">
-                    <form [formGroup]='TaskForm' (ngSubmit)="onSubmit()">
-                        <div class="S-top">
-                            <h3 style="color:black;"> Add New Task</h3>
-                            <span class="close" (click)="taskClose()">x</span>
-                        </div>
-                        <input type="text" placeholder="new task" formControlName="newTask">
-                        <label style="color: black;"> Set Date</label>
-                        <input type="Date" formControlName="Date">
-                        <button type="submit"> ok</button>
-                    </form>
-                </div>
+                                            </span>
+                                        </div>
+                                        <div class="T-Modal" id="Modal-task">
+                                            <form [formGroup]='TaskForm' (ngSubmit)="onSubmit()">
+                                                <div class="S-top">
+                                                    <h3 style="color:black;"> Add New Task</h3>
+                                                    <span class="close" (click)="taskClose()">x</span>
+                                                </div>
+                                                <input type="text" placeholder="new task" formControlName="newTask">
+                                                <label style="color: black;"> Set Date</label>
+                                                <input type="Date" formControlName="Date">
+                                                <button type="submit"> ok</button>
+                                            </form>
+                                        </div>
 
-            </div>
+                                    </div>
 
-        </div>
-
-
-        <div class="table">
-            <ul>
-                <li *ngFor="let item of tasks.tasks;let i = index">
-                    <div class="part-1">
+                                </div>
 
 
-                        <div class="togglers">
-                            <!-- <i style="font-size: 30px; color: rgba(0, 0, 0, 0.479); cursor: pointer;" class="fa fa-ellipsis-h"></i> -->
-                            <!-- <i id="more-icon" style="font-size: 16px;" class="fa fa-angle-down"></i> -->
-                            <span id="more-icons" style="cursor: pointer;" class="material-icons">
+                                <div class="table">
+                                    <ul>
+                                        <li *ngFor="let item of tasks.tasks;let i = index">
+                                            <div class="part-1">
+
+
+                                                <div class="togglers">
+                                                    <!-- <i style="font-size: 30px; color: rgba(0, 0, 0, 0.479); cursor: pointer;" class="fa fa-ellipsis-h"></i> -->
+                                                    <!-- <i id="more-icon" style="font-size: 16px;" class="fa fa-angle-down"></i> -->
+                                                    <span id="more-icons" style="cursor: pointer;" class="material-icons">
                       more_vert
                                </span>
 
-                            <span id="hiddenTexts" class="clicktoshow" smart-tooltip-container>
+                                                    <span id="hiddenTexts" class="clicktoshow" smart-tooltip-container>
                         <span class="smart-tooltip stick stay-down overlay" id="tooltip">
                           <h4 *ngIf="!item.done" (click)="Done(item)">done</h4>
                           <hr/>
@@ -196,47 +187,47 @@
                           <h4 (click)="DeleteTask(item)">Delete</h4>
                         </span>
 
-                            </span>
-                        </div>
+                                                    </span>
+                                                </div>
 
-                        <!-- <div class="part-1">
+                                                <!-- <div class="part-1">
                             <h3 style="margin-right: 10px;">0{{i}}</h3>
                         </div> -->
 
-                        <div>
-                            <span *ngIf="item.done" class="material-icons" style="color: green;">
+                                                <div>
+                                                    <span *ngIf="item.done" class="material-icons" style="color: green;">
                     check_circle
                         </span>
 
-                            <span *ngIf="!item.done" class="material-icons">
+                                                    <span *ngIf="!item.done" class="material-icons">
                           check_circle
                               </span>
-                        </div>
+                                                </div>
 
-                    </div>
+                                            </div>
 
-                    <div class="part-1">
-                        <h3>{{item.task}}</h3>
-                        <h3>{{item.dueDate}}</h3>
-                    </div>
+                                            <div class="part-1">
+                                                <h3>{{item.task}}</h3>
+                                                <h3>{{item.dueDate}}</h3>
+                                            </div>
 
-                </li>
+                                        </li>
 
-            </ul>
+                                    </ul>
 
 
-            <div id="files-a">
-                <h4 class="nothing">Nothing to show... click to create task</h4>
-                <!-- <img style="height: 15%;
+                                    <div id="files-a">
+                                        <h4 class="nothing">Nothing to show... click to create task</h4>
+                                        <!-- <img style="height: 15%;
                 position: absolute;
                 left: 82%;
                 top: 46%;
                 transform: scaleX(-1);
                 width: 9%;" src="../../../assets/arrow.gif"> -->
-            </div>
-        </div>
+                                    </div>
+                                </div>
 
-    </div>
+                            </div>
 
 
-</div>
+                        </div>
