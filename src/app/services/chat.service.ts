@@ -52,11 +52,12 @@ export class ChatService {
 
   private formCommonStringId(sender,receiver){
     let commonStr="";
-    if (sender.length>receiver.length){
+    if (sender>receiver){
       commonStr = sender+receiver;
-    }else {
+    }else  {
       commonStr = receiver+sender;
     }
+    
 
     return commonStr
   }
