@@ -1,7 +1,7 @@
     /*.folders {
     // border: 1px solid red;
 }*/
-
+    
     .container {
         //grid-area: main;
         border-top-left-radius: 3.13rem;
@@ -9,6 +9,8 @@
         display: grid;
         grid-auto-flow: column;
         grid-template-columns: 3fr 1fr;
+        // display: flex;
+        // flex-direction: row;
         //     @media screen and (max-width: 800px) {
         //         grid-template-columns: auto;
         //     }
@@ -23,23 +25,25 @@
             width: 139vh;
             */
     }
-
+    
     .folders {
         height: calc(100vh - 6.8rem);
+        // width: 60vw;
     }
-
+    
     .user-permissions {
         background: #ffffff;
         margin-top: 1.88rem;
         border-top-left-radius: 0.63rem;
         border-top-right-radius: 0.63rem;
+        // width: 100%;
         // -webkit-box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
         // -moz-box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
         // box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
     }
-
+    
     @media screen and (max-width: 800px) {
-        .user-permissions {
-            display: none;
-        }
+        // .user-permissions {
+        //     display: none;
+        // }
     }
