@@ -1,7 +1,7 @@
     /*.folders {
     // border: 1px solid red;
 }*/
-    
+
     .container {
         //grid-area: main;
         border-top-left-radius: 3.13rem;
@@ -25,12 +25,12 @@
             width: 139vh;
             */
     }
-    
+
     .folders {
         height: calc(100vh - 6.8rem);
         // width: 60vw;
     }
-    
+
     .user-permissions {
         background: #ffffff;
         margin-top: 1.88rem;
@@ -41,20 +41,13 @@
         // -moz-box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
         // box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
     }
-    
+
     @media screen and (max-width: 800px) {
-<<<<<<< HEAD
-        // .user-permissions {
-        //     display: none;
-        // }
-    }
-=======
         .user-permissions {
-            display: none;
+            // display: none;
         }
         .container {
             display: block;
             margin: 0px 0 0 162px;
         }
     }
->>>>>>> c8e867b5d9ed550bb49514025ba5102e7b13c05f

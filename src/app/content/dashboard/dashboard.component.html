@@ -45,7 +45,7 @@
             <div class="btns">
                 <div class="toggler" id="npm">
                     <i style="font-size: 30px; color: rgba(0, 0, 0, 0.479); cursor: pointer;" class="fa fa-ellipsis-h"></i>
-                    <!-- <i id="more-icon" style="font-size: 16px;" class="fa fa-angle-down"></i> -->
+
 
                     <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
         <span class="smart-tooltip stick stay-down overlay" id="tooltip">
@@ -68,7 +68,7 @@
                     </div>
                     <input type="text" placeholder="Heading" formControlName="Heading">
                     <label style="color: black;"> Content</label>
-                    <!-- <input > -->
+
                     <textarea style="height: 100px;" type="Text" placeholder="Write Content...." formControlName="Content"></textarea>
                     <button type="submit"> ok</button>
                 </form>
@@ -91,17 +91,15 @@
                 </div>
             </div>
 
-            <!-- Next and previous buttons -->
+            <!-- Next and previous buttons-->
             <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
             <a class="next" (click)="plusSlides(1)">&#10095;</a>
         </div>
-        <br>
-
-        <!-- The dots/circles -->
+        <!-- <br> The dots/circles -->
         <div style="text-align:center">
             <span class="dot" *ngFor="let announce of announcements; let i=index" (click)="currentSlide(i+1)"></span>
-            <!-- <span class="dot" (click)="currentSlide(2)"></span>
-                <span class="dot" (click)="currentSlide(3)"></span> -->
+            <span class="dot" (click)="currentSlide(2)"></span>
+            <span class="dot" (click)="currentSlide(3)"></span>
         </div>
     </div>
 
