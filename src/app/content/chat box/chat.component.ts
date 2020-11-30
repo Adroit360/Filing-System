@@ -15,10 +15,12 @@ export class ChatComponent implements OnInit {
   textMessage:string="";
   chats:any={};
   currentUser:string;
+  currentUserPhoto:any;
 
   constructor(private entityManager:EntitiesService,private dataManager:DataService) {
     entityManager.getEntityUsers(dataManager.getEntity()).subscribe(result=>this.entityUsers = result);
     this.currentUser = this.dataManager.getActiveUser().email;
+    this.currentUserPhoto = this.dataManager.getActiveUser().photo;
   }
 
   ngOnInit(): void {

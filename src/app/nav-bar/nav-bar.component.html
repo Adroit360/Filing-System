@@ -11,21 +11,30 @@
 
     <div class="notifications">
         <div smart-tooltip-container class="toggler clicktoshow">
+<<<<<<< HEAD
             <span *ngIf="!change" class="material-icons"> account_circle </span>
             <img *ngIf="change" src="https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_1280.jpg" alt="picture">
+=======
+
+            <span *ngIf="!user.photo" class="material-icons"> account_circle </span>
+            <img *ngIf="user.photo" style="height: 50px;width: 50px;border-radius: 50%;" src={{user.photo}}>
+>>>>>>> b34cdc637461dfd8ce82937edecf40b77f26e37a
 
             <h4 style="top: 50px;" class="smart-tooltip stay-left " id="hiddenText">
 
                 <div class="profile">
+<<<<<<< HEAD
                     <img *ngIf="change" style="height: 70px; width: 70px;" src="https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_1280.jpg" alt="picture">
 
                     <h3 *ngIf="!change" class="material-icons"> account_circle </h3>
+=======
+                    <h3  *ngIf="!user.photo" class="material-icons"> account_circle </h3>
+                    <img *ngIf="user.photo" style="height: 50px;width: 50px;border-radius: 50%;" src={{user.photo}}>
+>>>>>>> b34cdc637461dfd8ce82937edecf40b77f26e37a
                     <i class="fa fa-camera" (click)="changeProfile($event)"></i>
-                    <input id="file-upload" type="file" accept="image/*" />
-
+                    <input id="file-upload" type="file" accept="image/*" (change)="onChange($event)"/>
                     <h5>{{user.firstName}} {{user.lastName}}</h5>
                     <h6>{{user.email}}</h6>
-
                 </div>
                 <hr/>
                 <p class="ta" (click)="onLogOut()">logout</p>

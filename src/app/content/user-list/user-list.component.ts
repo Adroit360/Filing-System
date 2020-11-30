@@ -4,6 +4,7 @@ import { DataService } from 'src/app/services/data.service';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { SharedResourceService } from 'src/app/services/shared-resource.service';
 import { AdminResourceService } from 'src/app/services/AdminResource.service';
+import { EntitiesService } from '../../services/entities.service';
 
 @Component({
   selector: 'app-user-list',
@@ -26,7 +27,8 @@ export class UserListComponent implements OnInit {
   subjects:any=[];
   subs:[];
 
-  constructor(private adminresource: AdminResourceService,private data: DataService, private msg: MessengerService,private resourceManager:SharedResourceService ) {
+  constructor(private adminresource: AdminResourceService,private data: DataService, private msg: MessengerService,
+    private resourceManager:SharedResourceService,private entityManager:EntitiesService ) {
     this.adminresource.EditResource.
     subscribe((item: {details:any})=>{
       this.ResourceId = item.details.id;
@@ -47,7 +49,7 @@ export class UserListComponent implements OnInit {
 
 
   ngOnInit(): void {
-     this.msg.getUsers().subscribe(users=>{
+     this.entityManager.getEntityUsers(this.data.getEntity()).subscribe(users=>{
       this.users = users;
       console.log(this.users);
     // this.hooks=this.users.map(i=>true);
@@ -55,20 +57,37 @@ export class UserListComponent implements OnInit {
 
   }
 
+<<<<<<< HEAD
   async add(userEmail){
 
        await  this.resourceManager.AddSubjectToResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects,this.data.getEntity());
       this.updateSubjects();
 
+=======
+ add(userEmail){
+    
+      this.resourceManager.AddSubjectToResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects,this.data.getEntity()).then(()=>{
+        this.updateSubjects();
+      });
+      
+    
+>>>>>>> b34cdc637461dfd8ce82937edecf40b77f26e37a
 
   }
 
-  async unAdd(userEmail){
+  unAdd(userEmail){
     // for (let i = 0; i < this.hooks.length; i++) {
     //   if(i==index){
     //     // this.hooks[i]=true;
+<<<<<<< HEAD
         await this.resourceManager.RemoveSubjectFromResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects,this.data.getEntity());
         this.updateSubjects();
+=======
+         this.resourceManager.RemoveSubjectFromResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects,this.data.getEntity()).then(()=>{
+          this.updateSubjects();
+         });
+        
+>>>>>>> b34cdc637461dfd8ce82937edecf40b77f26e37a
     //   }
 
     // }
