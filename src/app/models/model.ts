@@ -8,7 +8,8 @@ export interface User{
     sharedResources:[],
     isAdmin:Boolean,
     tasks:[],
-    recentFolders:[]
+    recentFolders:[],
+    photo:string
   }
 
   export interface SystemUser{
