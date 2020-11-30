@@ -17,6 +17,7 @@ export class EmptyComponent implements OnInit {
 
   title = "";
   heading: string;
+  Receivedata;
   fontIcon = "fa fa-folder";
   department;
   entityId:string;
@@ -135,15 +136,38 @@ export class EmptyComponent implements OnInit {
   }
 
   onDelete(item){
-    console.log("deleted");
+    this.Receivedata=item;
+    // console.log("deleted");
+
     if (item.itemType=="file"){
-      this.message='Are you sure you want to delete file?'
-      this.directory.deleteFile(item.id,item.alias,this.data.getEntity());
+      this.delfolder=!this.delfolder;
+      this.message='Are you sure you want to delete file?';
+      // this.directory.deleteFile(item.id,item.alias,this.data.getEntity());
     }
     else if (item.itemType=="folder"){
-      this.message='Are you sure you want to delete Folder?'
-      this.directory.deleteDirectory(item.id,this.data.getEntity());
+      this.delfolder=!this.delfolder;
+      this.message='Are you sure you want to delete Folder?';
+      // this.directory.deleteDirectory(item.id,this.data.getEntity());
     }
+  }
+
+  onModalDelete(result:boolean){
+    if(result){
+       if(this.Receivedata.itemType="file"){
+         console.log(result)
+       this.directory.deleteFile(this.Receivedata.id,this.Receivedata.alias,this.data.getEntity());
+       this.delfolder=false;
+       }
+       else if(this.Receivedata.itemType="folder"){
+        this.directory.deleteDirectory(this.Receivedata.id,this.data.getEntity());
+        this.delfolder=false;
+       }
+    }
+
+    else{
+      this.delfolder=false;
+    }
+
   }
 
   onSelected(list, event ,index, item){
