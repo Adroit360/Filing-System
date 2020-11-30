@@ -26,8 +26,6 @@ export class ChatService {
   // send text message
   sendMessage(sender,receiver,message,entity){
     let id = this.afs.createId();
-    let commonString ="";
-
     let  chat:Chat={
       id : id,
       sender: sender,
@@ -57,8 +55,6 @@ export class ChatService {
     }else  {
       commonStr = receiver+sender;
     }
-    
-
     return commonStr
   }
 

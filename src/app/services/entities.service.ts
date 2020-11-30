@@ -4,6 +4,8 @@ import * as firebase from 'firebase/app';
 import {User,SystemUser } from '../models/model';
 import {AuthServiceService} from '../services/auth-service.service';
 import { ChatService } from '../services/chat.service';
+import { AngularFireStorage } from '@angular/fire/storage';
+import {finalize} from 'rxjs/operators';
 
 export interface Entity{
   id:string,
@@ -36,7 +38,8 @@ export class EntitiesService {
   private entityCollection: AngularFirestoreCollection<Entity>;
   entity:Entity;
  
-  constructor(private afs:AngularFirestore,private authService:AuthServiceService,private chatManager:ChatService) {
+  constructor(private afs:AngularFirestore,private authService:AuthServiceService,private chatManager:ChatService,
+    private afStorage: AngularFireStorage) {
     this.entityCollection = afs.collection<Entity>(DbCollections.Entities,ref=> ref.orderBy('dateCreated'));
   }
 
@@ -95,7 +98,8 @@ export class EntitiesService {
       sharedResources:[],
       isAdmin:false,
       tasks:[],
-      recentFolders:[]
+      recentFolders:[],
+      photo:""
     };
 
     let systemUser:SystemUser={
@@ -181,5 +185,31 @@ sendMessage(msg,user,receiver,entity){
 getChatMessages(user,targetUser,entity){
     return this.chatManager.getChatMessage(user,targetUser,entity);
   }
+
+  UserProfilePhoto(user,file,entity){
+    this.uploadFile(file,user,entity);
+  }
+
+  // upload file
+  private  basePath="uploads/profiles"
+  async uploadFile(fileItem,user,entity)//: Observable<number> 
+   {
+     const filePath = `${this.basePath}/${entity}/${user}`;
+     const storageRef = this.afStorage.ref(filePath);
+     const uploadTask = this.afStorage.upload(filePath, fileItem);
+  
+     uploadTask.snapshotChanges().pipe(
+       finalize(() => {
+         storageRef.getDownloadURL().subscribe(downloadURL => {
+           console.log('File available at', downloadURL);
+           
+           this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).update({"photo":downloadURL});
+           
+         });
+       })
+     ).subscribe();
+  
+ }
+
 
 }
