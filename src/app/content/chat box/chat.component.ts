@@ -43,6 +43,12 @@ export class ChatComponent implements OnInit {
     }else{console.log("email in array")}
     document.getElementById('chatview').style.display="flex";
 
+    var objDiv = document.getElementById("sendMess");
+    setTimeout(
+            ()=>{
+              objDiv.scrollTop = objDiv.scrollHeight;
+              // console.log(objDiv.scrollHeight);
+            },200)
 
     //  setTimeout(()=>{
     // let element =  document.getElementById("sendMess");
