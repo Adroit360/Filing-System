@@ -31,7 +31,7 @@ export class DisplayResourceComponent implements OnInit {
       this.filesItemIds = item.details.objects;
       this.ResourceOwner = item.details.owner;
       console.log("this resource name ",this.ResourceName);
-      // this.resources = this.resourceManager.getResourceObjects(this.ResourceId);
+      //  this.resources = this.resourceManager.getResourceObjects(this.ResourceId);
       // console.log("this are the content of " ,this.resources);
     });
 

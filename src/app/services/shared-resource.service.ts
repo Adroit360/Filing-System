@@ -108,7 +108,7 @@ export class SharedResourceService {
   // add a user to a shared resource
   async AddSubjectToResource(subjectId,resourceId,resourceName,owner,objects,entity){
       await this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.SharedResources).doc(resourceId).update({subjects:this.arrayUnion(subjectId)});
-      await this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(subjectId).update({sharedResources:this.arrayUnion({id:resourceId,name:resourceName,owner:owner,objects:objects})});   
+       this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(subjectId).update({sharedResources:this.arrayUnion({id:resourceId,name:resourceName,owner:owner,objects:objects})});   
   }
 
   // remove a user
@@ -116,7 +116,7 @@ export class SharedResourceService {
     // remove resource from resource collection
     await this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.SharedResources).doc(resourceId).update({subjects:this.arrayRemove(subjectId)});
     // remove resource from subject's external share resources
-    await this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(subjectId).update({sharedResources:this.arrayRemove({id:resourceId,name:resourceName,owner:owner,objects:objects})});
+     this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(subjectId).update({sharedResources:this.arrayRemove({id:resourceId,name:resourceName,owner:owner,objects:objects})});
   }
 
   GetResource(resource,entity)
