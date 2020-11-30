@@ -20,8 +20,9 @@
            overflow:auto">
                 <div id="friends" *ngFor="let user of entityUsers; let i=index">
                     <div class="friend" (click)="OpenChat(user)">
-                        <span *ngIf="!user.photo" class="material-icons"> account_circle </span>
-                        <img  *ngIf="user.photo"src={{user.photo}} />
+                        <!-- <span  class="material-icons" style="font-size: 55px;"> account_circle </span> -->
+                        <i *ngIf="!user.photo" class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        <img *ngIf="user.photo" src={{user.photo}} />
                         <div class="tttt">
                             <h6 *ngIf="user.firstName"><strong>{{user.firstName}} {{ user.lastName}}</strong></h6>
                             <span *ngIf="user.email">{{user.email}}</span>
@@ -42,7 +43,7 @@
 
                 <div class="lft">
                     <i class="fa fa-arrow-left" (click)="back()"></i>
-                    <span *ngIf="!chatRecipient.photo" class="material-icons"> account_circle </span>
+                    <i *ngIf="!chatRecipient.photo" style="font-size:40px" class="fa fa-user-circle-o" aria-hidden="true"></i>
                     <img *ngIf="chatRecipient.photo" src={{chatRecipient.photo}} />
                     <h4><strong>{{chatRecipient.firstName}} </strong></h4>
 
@@ -64,7 +65,8 @@
                 <div id="chat-messages" *ngFor="let chat of chats[chatRecipient.email]">
 
                     <div *ngIf="chat.sender==chatRecipient.email" class="message">
-                        <span *ngIf="!chatRecipient.photo" class="material-icons"> account_circle </span>
+
+                        <i *ngIf="!chatRecipient.photo" class="fa fa-user-circle-o" aria-hidden="true"></i>
                         <img *ngIf="chatRecipient.photo" src={{chatRecipient.photo}} />
                         <div class="bubble">
                             <h5>
@@ -81,8 +83,8 @@
                             <div class="corner"></div>
                             <span style="font-size: 11px;">{{chat.time}}</span>
                         </div>
-                        <span *ngIf="!currentUserPhoto" class="material-icons"> account_circle </span>
-                        <img src={{currentUserPhoto}} />
+                        <i *ngIf="!currentUserPhoto" class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        <img *ngIf="currentUserPhoto" src={{currentUserPhoto}} />
                     </div>
                 </div>
                 <!-- <label>{{date}}</label> -->

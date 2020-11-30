@@ -57,21 +57,13 @@ export class UserListComponent implements OnInit {
 
   }
 
-<<<<<<< HEAD
-  async add(userEmail){
-
-       await  this.resourceManager.AddSubjectToResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects,this.data.getEntity());
-      this.updateSubjects();
-
-=======
  add(userEmail){
-    
+
       this.resourceManager.AddSubjectToResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects,this.data.getEntity()).then(()=>{
         this.updateSubjects();
       });
-      
-    
->>>>>>> b34cdc637461dfd8ce82937edecf40b77f26e37a
+
+
 
   }
 
@@ -79,15 +71,10 @@ export class UserListComponent implements OnInit {
     // for (let i = 0; i < this.hooks.length; i++) {
     //   if(i==index){
     //     // this.hooks[i]=true;
-<<<<<<< HEAD
-        await this.resourceManager.RemoveSubjectFromResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects,this.data.getEntity());
-        this.updateSubjects();
-=======
          this.resourceManager.RemoveSubjectFromResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects,this.data.getEntity()).then(()=>{
           this.updateSubjects();
          });
-        
->>>>>>> b34cdc637461dfd8ce82937edecf40b77f26e37a
+
     //   }
 
     // }

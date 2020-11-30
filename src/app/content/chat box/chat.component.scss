@@ -70,11 +70,14 @@
     // position: relative;
     display: grid;
     grid-template-columns: 1fr 5fr;
-    img {
-        width: 40px;
+    img,
+    i {
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
-        margin: 15px;
-        // float: left;
+        font-size: 50px;
+        margin-top: 3px;
+        padding: 4px;
     }
     .tttt {
         padding: 15px 0 0 10px;
@@ -221,11 +224,13 @@
 .message {
     display: flex;
     align-items: center;
-    img {
+    img,
+    i {
         width: 40px;
         border-radius: 50%;
         margin: 15px;
         height: 40px;
+        font-size: 40px;
     }
     .bubble {
         background-color: rgba(177, 177, 177, 0.288);
@@ -244,11 +249,13 @@
     align-items: center;
     /* float: right; */
     justify-content: flex-end;
-    img {
+    img,
+    i {
         width: 40px;
         border-radius: 50%;
         margin: 15px;
         height: 40px;
+        font-size: 40px;
     }
     .bubble {
         background-color: #459CE3;
