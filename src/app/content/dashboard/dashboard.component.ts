@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
 import { DataService } from '../../services/data.service';
@@ -15,7 +15,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./dashboard.component.scss']
 })
 
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit,AfterViewInit {
 
   // carousel options
   customOptions: OwlOptions = {
@@ -62,9 +62,13 @@ export class DashboardComponent implements OnInit {
  announcements:any=[];
  user:any;
  date;
+ slideIndex: number = 1;
+ slideIndexAutomate = 0;
 
+ 
   constructor(private directoryManager: DirectoryService, private taskManager:TaskService, private dataManager: DataService,
     private announceManager:AnnouncementService,private router:Router,private sectionManager:SectionService) {
+
 
     // get user recently accessed folders
     directoryManager.getRecentFolders(dataManager.getActiveUser().email,dataManager.getEntity()).subscribe(result=>{
@@ -82,10 +86,20 @@ export class DashboardComponent implements OnInit {
 
     this.date = new Date().toDateString();
 
+
+  
    }
+  
 
   ngOnInit(): void {
+    //this.showSlidesAutomate();
+    // this.showSlides(this.slideIndex);
+  }
 
+  ngAfterViewInit(){
+   
+    this.showSlidesAutomate();
+    
   }
 
   // muting a news tag
@@ -163,4 +177,54 @@ export class DashboardComponent implements OnInit {
     document.getElementById("Modal-News").style.display="none";
 
   }
+
+
+
+plusSlides(n) {
+  this.showSlides(this.slideIndex += n);
+}
+
+currentSlide(n) {
+  this.showSlides(this.slideIndex = n);
+}
+
+showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {this.slideIndex = 1}    
+  if (n < 1) {this.slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      if(slides[i])
+        slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  if(slides[this.slideIndexAutomate-1])
+  slides[this.slideIndex-1].style.display = "block";  
+  dots[this.slideIndex-1].className += " active";
+ 
+}
+
+ showSlidesAutomate() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    if(slides[i])
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+}
+  this.slideIndexAutomate++;
+  if (this.slideIndexAutomate > slides.length) {this.slideIndexAutomate = 1}
+  if(slides[this.slideIndexAutomate-1])
+  slides[this.slideIndexAutomate-1].style.display = "block";
+
+  setTimeout( (this.showSlidesAutomate).bind(this), 2000); // Change image every 2 seconds
+  dots[this.slideIndexAutomate-1].className += " active";
+ 
+}
 }

@@ -75,29 +75,33 @@
             </div>
         </div>
 
-        <!----Announcements -->
-        <div>
-            <owl-carousel-o style="width: 800px;" [options]="customOptions">
-                <ng-container *ngFor="let announce of announcements" class="news-content">
-                    <ng-template carouselSlide>
-                        <div class="news-section">
-
-                            <div class="newstext">
-                                <div class="date-right">
-                                    <h5>{{announce.date}}</h5>
-                                </div>
-
-                                <div class="text">
-                                    <h3>{{announce.title}}</h3>
-                                    <h4>{{announce.content}}</h4>
-                                </div>
-
-                            </div>
+        <div class="slideshow-container">
+            <div class="mySlides fade" *ngFor="let announce of announcements; let i=index">
+                <div class="news-section">
+                    <div class="newstext">
+                        <div class="date-right">
+                            <h5>{{announce.date}}</h5>
                         </div>
-                    </ng-template>
-                </ng-container>
-            </owl-carousel-o>
+                        <div class="text">
+                            <h3>{{announce.title}}</h3>
+                            <h4>{{announce.content}}</h4>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next and previous buttons -->
+            <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+            <a class="next" (click)="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <!-- The dots/circles -->
+        <div style="text-align:center">
+            <span class="dot" *ngFor="let announce of announcements; let i=index" (click)="currentSlide(i+1)"></span>
+            <!-- <span class="dot" (click)="currentSlide(2)"></span>
+                <span class="dot" (click)="currentSlide(3)"></span> -->
         </div>
     </div>
 
