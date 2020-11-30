@@ -190,8 +190,8 @@ currentSlide(n) {
 
 showSlides(n) {
   var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
+  var slides:any = document.getElementsByClassName("mySlides");
+  var dots:any = document.getElementsByClassName("dot");
   if (n > slides.length) {this.slideIndex = 1}    
   if (n < 1) {this.slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
@@ -209,8 +209,8 @@ showSlides(n) {
 
  showSlidesAutomate() {
   var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
+  var slides:any = document.getElementsByClassName("mySlides");
+  var dots:any = document.getElementsByClassName("dot");
   for (i = 0; i < slides.length; i++) {
     if(slides[i])
       slides[i].style.display = "none";
