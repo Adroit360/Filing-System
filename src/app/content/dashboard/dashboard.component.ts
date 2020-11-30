@@ -224,6 +224,7 @@ showSlides(n) {
   slides[this.slideIndexAutomate-1].style.display = "block";
 
   setTimeout( (this.showSlidesAutomate).bind(this), 2000); // Change image every 2 seconds
+  if(dots[this.slideIndexAutomate-1])
   dots[this.slideIndexAutomate-1].className += " active";
  
 }
