@@ -43,7 +43,18 @@
     }
     
     @media screen and (max-width: 800px) {
+<<<<<<< HEAD
         // .user-permissions {
         //     display: none;
         // }
     }
+=======
+        .user-permissions {
+            display: none;
+        }
+        .container {
+            display: block;
+            margin: 0px 0 0 162px;
+        }
+    }
+>>>>>>> c8e867b5d9ed550bb49514025ba5102e7b13c05f

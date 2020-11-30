@@ -69,8 +69,7 @@
             <a (click)="onGeneral()" [routerLink]="['home/content/dashboard']" routerLinkActive="active">
                 <span class="material-icons">
                 home
-                </span>
-                <p>Dashboard</p>
+                </span> Dashboard
             </a>
         </li>
         <div class="custom-section">
@@ -128,10 +127,10 @@
 <div class="admin-tools-inbox">
     <h2>Others</h2>
     <ul>
-        <li *ngIf="user.isAdmin"><a routerLink="content/manageUsers" routerLinkActive="active2"> Manage Users </a></li>
-        <li><a routerLink="content/SharedResources" routerLinkActive="active2"> User Groups </a></li>
-        <li><a (click)="MeetingRoom()" routerLinkActive="active2"> Meeting Room </a></li>
-        <li><a (click)="reset()" routerLinkActive="active2"> Reset password</a></li>
+        <li *ngIf="user.isAdmin"><a routerLink="content/manageUsers" routerLinkActive="active"> Manage Users </a></li>
+        <li><a routerLink="content/SharedResources" routerLinkActive="active"> User Groups </a></li>
+        <li><a (click)="MeetingRoom()" routerLinkActive="active"> Meeting Room </a></li>
+        <li><a (click)="reset()" routerLinkActive="active"> Reset password</a></li>
     </ul>
 </div>
 

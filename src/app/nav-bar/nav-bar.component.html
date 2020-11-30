@@ -13,15 +13,15 @@
         <div smart-tooltip-container class="toggler clicktoshow">
             <span class="material-icons"> account_circle </span>
 
-            <h4 style="top: 50px;" class="smart-tooltip stick overlay" id="hiddenText">
+            <h4 style="top: 50px;" class="smart-tooltip stay-left " id="hiddenText">
 
                 <div class="profile">
                     <h3 class="material-icons"> account_circle </h3>
                     <i class="fa fa-camera" (click)="changeProfile($event)"></i>
                     <input id="file-upload" type="file" accept="image/*" />
 
-                    <h5>Emmanuel Ofori</h5>
-                    <h6>casadeway@gmail.com</h6>
+                    <h5>{{user.firstName}} {{user.lastName}}</h5>
+                    <h6>{{user.email}}</h6>
 
                 </div>
                 <hr/>
