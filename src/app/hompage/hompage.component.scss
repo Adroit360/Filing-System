@@ -5,7 +5,7 @@
     grid-template-rows: auto repeat(4, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    grid-template-areas: "side head head head head" "side main main main main" "side main main main main" "side main main main main" "side main main main main";
+    grid-template-areas: "head head head head head" "side main main main main" "side main main main main" "side main main main main" "side main main main main";
 }
 
 app-login {
@@ -17,7 +17,7 @@ app-menu {
     grid-area: side;
     display: grid;
     grid-auto-flow: row;
-    grid-template-rows: 1fr 6.5fr 1.2fr;
+    // grid-template-rows: 1fr 6.5fr 1.2fr;
 }
 
 app-nav-bar {
@@ -38,26 +38,21 @@ app-nav-bar {
 
 @media screen and (max-width: 800px) {
     .container {
-        grid-template-areas: "side head head head head" "main main main main main" "main main main main main" "main main main main main" "main main main main main";
+        background-color: white;
+        grid-template-areas: "head head head head head" "main main main main main" "main main main main main" "main main main main main" "main main main main main";
     }
-    // app-content {
-    //     border-top-left-radius: 0rem !important;
-    //     // background-color: red;
-    //     display: block;
-    // }
     app-menu {
-        // display: block;
-        // position: fixed;
-        // width: 50vw;
-        // height: 90vh;
-        // background-color: white;
-        // // left: -200px;
-        // transition: all 500ms linear;
-        // cursor: pointer;
-        position: absolute;
+        display: none;
         position: absolute;
         background-color: white;
-        left: -64px;
+        // left: -30rem;
+        z-index: 100;
+        margin-top: 8rem;
+        width: 30rem;
+        transition: all 500ms linear;
+    }
+    app-nav-bar {
+        height: 4rem;
     }
 }
 
