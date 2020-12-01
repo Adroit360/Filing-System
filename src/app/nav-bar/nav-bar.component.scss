@@ -133,6 +133,7 @@
 
 @media screen and (max-width: 800px) {
     .nav-bar {
+        height: 6rem;
         margin-top: 0px;
         box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
         -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
@@ -164,6 +165,12 @@
         margin-left: 5rem;
         span {
             top: 17%;
+        }
+    }
+    .logo {
+        img {
+            width: 100px;
+            height: 30px;
         }
     }
 }
