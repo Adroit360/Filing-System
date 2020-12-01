@@ -30,7 +30,7 @@ export class UserListComponent implements OnInit {
   constructor(private adminresource: AdminResourceService,private data: DataService, private msg: MessengerService,
     private resourceManager:SharedResourceService,private entityManager:EntitiesService ) {
     this.adminresource.EditResource.
-    subscribe((item: {details:any})=>{     
+    subscribe((item: {details:any})=>{
       this.ResourceId = item.details.id;
       this.ResourceName = item.details.name;
       this.ResourceOwner = item.details.owner;
@@ -43,9 +43,10 @@ export class UserListComponent implements OnInit {
       this.subs =  result.data().subjects;
       console.log(this.subjects, "this is subject array")
     })
-  
-   
+
+
   }
+
 
   ngOnInit(): void {
      this.entityManager.getEntityUsers(this.data.getEntity()).subscribe(users=>{
@@ -57,12 +58,12 @@ export class UserListComponent implements OnInit {
   }
 
  add(userEmail){
-    
+
       this.resourceManager.AddSubjectToResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects,this.data.getEntity()).then(()=>{
         this.updateSubjects();
       });
-      
-    
+
+
 
   }
 
@@ -73,7 +74,7 @@ export class UserListComponent implements OnInit {
          this.resourceManager.RemoveSubjectFromResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects,this.data.getEntity()).then(()=>{
           this.updateSubjects();
          });
-        
+
     //   }
 
     // }

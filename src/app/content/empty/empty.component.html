@@ -5,7 +5,7 @@
         </span>
         <h3 style="margin-left: 12px;
       font-size: 20px;
-      font-weight: bold;">{{ currentDirectoryName  }}</h3> 
+      font-weight: bold;">{{ currentDirectoryName }}</h3>
         <div class="ssp">
             <div class="add-folder">
                 <a (click)="newfolder()"><span class="material-icons"> folder_open</span>
@@ -70,7 +70,7 @@
             </div>
             </span>
             </span>
-        </div> 
+        </div>
         </a>
 
         <div *ngIf="createfolder">
@@ -80,5 +80,21 @@
         <div *ngIf="addfile">
             <app-preview (onResult)="onPreviewResult($event)"></app-preview>
         </div>
+
+
     </div>
     <app-request-approvals *ngIf="requestModal" (onResult)="onRequestModal($event)"></app-request-approvals>
+    <div *ngIf="delfolder">
+        <div id="myModal" class="modal">
+
+            <div (click)="onModalDelete(false)" style=" position: absolute;left:0;top:0;width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4);z-index: -1; "></div>
+            <!-- Modal content -->
+            <div class="modal-content ">
+                <h4>{{message}}</h4>
+                <div class="submit ">
+                    <button style="background-color: rgb(250, 250, 250); border-color: rgb(192, 247, 111); " (click)="onModalDelete(true) ">Yes</button>
+                    <button id="btn" (click)="onModalDelete(false) ">No</button>
+                </div>
+            </div>
+        </div>
+    </div>

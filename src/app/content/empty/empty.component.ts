@@ -17,6 +17,7 @@ export class EmptyComponent implements OnInit {
 
   title = "";
   heading: string;
+  Receivedata;
   fontIcon = "fa fa-folder";
   department;
   entityId:string;
@@ -28,6 +29,7 @@ export class EmptyComponent implements OnInit {
   dirContent: any;
   createfolder = false;
   addfile = false;
+  delfolder= false;
   hierrachy:any=[];
   currentBreadCrump;
   NewResource:any;
@@ -35,6 +37,7 @@ export class EmptyComponent implements OnInit {
   resources:any;
   requestModal = false; // turns on the request approval component
   showTooltip: any= 1;
+  message:string;
 
   constructor(private data: DataService,private adminResource:AdminResourceService,private resourceManager:SharedResourceService,
     private activatedRoute: ActivatedRoute, private router: Router, private directory: DirectoryService, private approve: ApprovalService) {
@@ -51,14 +54,14 @@ export class EmptyComponent implements OnInit {
       this.currentDirectoryId = param.get("directoryId");
       this.currentDirectoryName = param.get("directory");
       this.entityId = param.get("entityId");
-     
+
       this.computeRoute();
     });
 
   }
 
   computeRoute() {
-   
+
     this.dirContent = this.directory.getSubDirectoryContent(this.currentSectionId, this.currentDirectoryId,this.entityId);
 
     // console.log("directory content", this.dirContent);
@@ -89,7 +92,7 @@ export class EmptyComponent implements OnInit {
       this.router.navigate(["home", "content",this.data.getEntity(),this.currentSectionId,this.currentSectionName, directory.id, directory.name])
     }else{
       return;
-    }  
+    }
 
   }
 
@@ -133,9 +136,38 @@ export class EmptyComponent implements OnInit {
   }
 
   onDelete(item){
-    console.log("deleted");
-    if (item.itemType=="file"){this.directory.deleteFile(item.id,item.alias,this.data.getEntity());}
-    else if (item.itemType=="folder"){this.directory.deleteDirectory(item.id,this.data.getEntity());}
+    this.Receivedata=item;
+    // console.log("deleted");
+
+    if (item.itemType=="file"){
+      this.delfolder=!this.delfolder;
+      this.message='Are you sure you want to delete file?';
+      // this.directory.deleteFile(item.id,item.alias,this.data.getEntity());
+    }
+    else if (item.itemType=="folder"){
+      this.delfolder=!this.delfolder;
+      this.message='Are you sure you want to delete Folder?';
+      // this.directory.deleteDirectory(item.id,this.data.getEntity());
+    }
+  }
+
+  onModalDelete(result:boolean){
+    if(result){
+       if(this.Receivedata.itemType="file"){
+         console.log(result)
+       this.directory.deleteFile(this.Receivedata.id,this.Receivedata.alias,this.data.getEntity());
+       this.delfolder=false;
+       }
+       else if(this.Receivedata.itemType="folder"){
+        this.directory.deleteDirectory(this.Receivedata.id,this.data.getEntity());
+        this.delfolder=false;
+       }
+    }
+
+    else{
+      this.delfolder=false;
+    }
+
   }
 
   onSelected(list, event ,index, item){
@@ -178,7 +210,7 @@ export class EmptyComponent implements OnInit {
   async Back(){
     console.log("back clicked")
     let parent = await this.directory.getParent(this.data.currentDirectory,this.data.getEntity());
-    
+
     if(parent){
       // this.dirContent = await this.directory._getSubDirectoryContent(parent.id,this.data.getEntity());
       await this.data.setCurrentDirectory(parent.id,parent.name);

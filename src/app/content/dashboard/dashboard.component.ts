@@ -65,7 +65,7 @@ export class DashboardComponent implements OnInit,AfterViewInit {
  slideIndex: number = 1;
  slideIndexAutomate = 0;
 
- 
+
   constructor(private directoryManager: DirectoryService, private taskManager:TaskService, private dataManager: DataService,
     private announceManager:AnnouncementService,private router:Router,private sectionManager:SectionService) {
 
@@ -87,9 +87,9 @@ export class DashboardComponent implements OnInit,AfterViewInit {
     this.date = new Date().toDateString();
 
 
-  
+
    }
-  
+
 
   ngOnInit(): void {
     //this.showSlidesAutomate();
@@ -97,9 +97,9 @@ export class DashboardComponent implements OnInit,AfterViewInit {
   }
 
   ngAfterViewInit(){
-   
+
     this.showSlidesAutomate();
-    
+
   }
 
   // muting a news tag
@@ -192,19 +192,19 @@ showSlides(n) {
   var i;
   var slides:any = document.getElementsByClassName("mySlides");
   var dots:any = document.getElementsByClassName("dot");
-  if (n > slides.length) {this.slideIndex = 1}    
+  if (n > slides.length) {this.slideIndex = 1}
   if (n < 1) {this.slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
       if(slides[i])
-        slides[i].style.display = "none";  
+        slides[i].style.display = "none";
   }
   for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
   }
   if(slides[this.slideIndexAutomate-1])
-  slides[this.slideIndex-1].style.display = "block";  
+  slides[this.slideIndex-1].style.display = "block";
   dots[this.slideIndex-1].className += " active";
- 
+
 }
 
  showSlidesAutomate() {
@@ -226,6 +226,5 @@ showSlides(n) {
   setTimeout( (this.showSlidesAutomate).bind(this), 2000); // Change image every 2 seconds
   if(dots[this.slideIndexAutomate-1])
   dots[this.slideIndexAutomate-1].className += " active";
- 
 }
 }

@@ -13,7 +13,7 @@ import { EntitiesService } from '../services/entities.service';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-
+ change=true;
   user:any;
   photo:any;
   constructor( private authManager:AuthServiceService,private userservice: UserService, private router: Router,
