@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import {finalize} from 'rxjs/operators';
 import * as firebase from 'firebase/app';
 import {DocumentApprovalObject } from '../models/model';
+import { DbCollections } from '../services/entities.service';
 
 
 @Injectable({
@@ -29,8 +30,8 @@ export class ApprovalService {
 
 
   constructor(private afs:AngularFirestore,private afStorage:AngularFireStorage ) {
-    this.approvalCollection = afs.collection<DocumentApprovalObject>('Approvals');
-    this.approvals = this.approvalCollection.valueChanges();
+    // this.approvalCollection = afs.collection<DocumentApprovalObject>('Approvals');
+    // this.approvals = this.approvalCollection.valueChanges();
 
   }
 
@@ -44,7 +45,7 @@ export class ApprovalService {
   }
 
 
-   createApprovalRequest(request:any){
+   createApprovalRequest(request:any,entity){
 
     let reqDoc:DocumentApprovalObject={
       id:this.afs.createId(),
@@ -65,23 +66,23 @@ export class ApprovalService {
        approvedMessage:""
     }
 
-    this.approvalCollection.doc(reqDoc.id).set(reqDoc).catch(e=>{console.log(e);return false;});
+    this.afs.collection(DbCollections.Entities).doc(entity).collection<DocumentApprovalObject>('Approvals').doc(reqDoc.id).set(reqDoc).catch(e=>{console.log(e);return false;});
   }
 
 
   // approval confirmation of document
   // upload file
   private basePath="uploads/archives"
-async RespondToRequest(approvedDoc:any){
+async RespondToRequest(approvedDoc:any,entity){
     let returnedDocUrl="";
     let returnedDocId="";
     // check if response comes with a file
     if(approvedDoc.file){
       // save document to database
-       await this.uploadFile(approvedDoc.file,approvedDoc);
+       await this.uploadFile(approvedDoc.file,approvedDoc,entity);
        return;
     }
-    await this.approvalCollection.doc(approvedDoc.id).update({
+    await this.afs.collection(DbCollections.Entities).doc(entity).collection<DocumentApprovalObject>('Approvals').doc(approvedDoc.id).update({
       approvalStatus:true,
       dateApproved:new Date().toLocaleString(),
       returnedDocumentId :returnedDocId,
@@ -90,27 +91,27 @@ async RespondToRequest(approvedDoc:any){
     });
   }
 
-  GetSentRequest(user){
-    this.sentReqCollection = this.afs.collection<DocumentApprovalObject>('Approvals',ref=>ref.where("senderId","==",user).orderBy("dateCreated","desc").limit(6));
+  GetSentRequest(user,entity){
+    this.sentReqCollection = this.afs.collection(DbCollections.Entities).doc(entity).collection<DocumentApprovalObject>('Approvals',ref=>ref.where("senderId","==",user).orderBy("dateCreated","desc").limit(6));
     this.sentRequests = this.sentReqCollection.valueChanges();
     return this.sentRequests;
   }
 
-  GetReceiveRequest(user){
-    this.receiveReqCollection = this.afs.collection<DocumentApprovalObject>('Approvals',ref=>ref.where("approverId","==",user).orderBy("dateCreated","desc").limit(6));
+  GetReceiveRequest(user,entity){
+    this.receiveReqCollection = this.afs.collection(DbCollections.Entities).doc(entity).collection<DocumentApprovalObject>('Approvals',ref=>ref.where("approverId","==",user).orderBy("dateCreated","desc").limit(6));
     this.receiveRequests = this.receiveReqCollection.valueChanges();
     return this.receiveRequests;
   }
 
-  RemoveRequest(reqId){
-    this.approvalCollection.doc(reqId).delete();
+  RemoveRequest(reqId,entity){
+    this.afs.collection(DbCollections.Entities).doc(entity).collection<DocumentApprovalObject>('Approvals').doc(reqId).delete();
   }
 
   
   // upload new response document
   responseDocId:string;
 
-  async uploadFile(fileItem,docObj) {
+  async uploadFile(fileItem,docObj,entity) {
     let responseDocUrl:string="";
     const id = await this.afs.createId(); 
     const filePath = `${this.basePath}/${id}`;
@@ -124,7 +125,7 @@ async RespondToRequest(approvedDoc:any){
           this.responseDocId = id;
           
           responseDocUrl= downloadURL;
-          this.approvalCollection.doc(docObj.id).update({
+          this.afs.collection(DbCollections.Entities).doc(entity).collection<DocumentApprovalObject>('Approvals').doc(docObj.id).update({
             approvalStatus:true,
             dateApproved:new Date().toLocaleString(),
             returnedDocumentId :id,

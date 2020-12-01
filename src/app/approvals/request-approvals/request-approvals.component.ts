@@ -39,7 +39,7 @@ export class RequestApprovalsComponent implements OnInit {
                   senderId:this.currentUser,dateCreated:new Date().toLocaleDateString(),latestApprovalDate:this.RequestApproval.value.Deadline,
                   approverId:this.RequestApproval.value.email}
         console.log(request, "request ");
-      this.approvalManager.createApprovalRequest(request);
+      this.approvalManager.createApprovalRequest(request,this.userVolatileData.getEntity());
     });
 
     this.OnResult.emit(value);

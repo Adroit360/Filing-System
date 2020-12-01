@@ -9,20 +9,6 @@ import { DataService } from '../../../services/data.service';
 })
 export class SentComponent implements OnInit {
 
-  permissionDetails =[{email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-  {email: 'nadum@adroit360.com', date: '18/09/2020'},
-
-]
-
 sentRequests:any;
 receiveRequests:any;
 currentUser:string;
@@ -40,7 +26,7 @@ currentUser:string;
   }
 
   async getRequests(){
-    this.sentRequests = await this.approvalManager.GetSentRequest(this.currentUser);
+    this.sentRequests = await this.approvalManager.GetSentRequest(this.currentUser,this.userVolatileData.getEntity());
   }
 
 

@@ -27,7 +27,7 @@ receivedRequests:any;
 currentUser:string;
   constructor(private approvalManager: ApprovalService,private userVolatileData:DataService) {
     this.currentUser = userVolatileData.getActiveUser().email;
-    this.receivedRequests = approvalManager.GetReceiveRequest(this.currentUser);
+    this.receivedRequests = approvalManager.GetReceiveRequest(this.currentUser,userVolatileData.getEntity());
   }
 
   ngOnInit(): void {
