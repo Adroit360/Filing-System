@@ -50,6 +50,9 @@ app-nav-bar {
         width: 30rem;
         // transition: all 500ms linear;
         height: 100vh;
+        box-shadow: 200px 0px 400px 200px rgba(0, 0, 0, 0.21);
+        -webkit-box-shadow: 200px 0px 400px 200px rgba(0, 0, 0, 0.21);
+        -moz-box-shadow: 200px 0px 400px 200px rgba(0, 0, 0, 0.21);
     }
     app-nav-bar {
         height: 4rem;
