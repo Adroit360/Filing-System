@@ -146,15 +146,15 @@
         .bar2,
         .bar3 {
             display: block;
-            height: 5px;
+            height: 3px;
             background-color: black;
-            width: 40px;
+            width: 30px;
             margin: 6px 0px;
             border-radius: 20px;
             transition: 0.4s;
         }
         .bar2 {
-            width: 30px !important;
+            width: 20px !important;
         }
     }
     #search {
