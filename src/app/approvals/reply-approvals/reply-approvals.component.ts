@@ -38,7 +38,7 @@ export class ReplyApprovalsComponent implements OnInit {
   {
     console.log("id of docu",this.approvDoc.id);
     let obj={id:this.approvDoc.id,message:this.message,file:this.file,}
-    this.approvalManager.RespondToRequest(obj); 
+    this.approvalManager.RespondToRequest(obj,this.userVolatileData.getEntity()); 
     this.OnResult.emit(value);
   }
 

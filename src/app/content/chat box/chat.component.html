@@ -20,7 +20,9 @@
            overflow:auto">
                 <div id="friends" *ngFor="let user of entityUsers; let i=index">
                     <div class="friend" (click)="OpenChat(user)">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" />
+                        <!-- <span  class="material-icons" style="font-size: 55px;"> account_circle </span> -->
+                        <i *ngIf="!user.photo" class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        <img *ngIf="user.photo" src={{user.photo}} />
                         <div class="tttt">
                             <h6 *ngIf="user.firstName"><strong>{{user.firstName}} {{ user.lastName}}</strong></h6>
                             <span *ngIf="user.email">{{user.email}}</span>
@@ -41,7 +43,8 @@
 
                 <div class="lft">
                     <i class="fa fa-arrow-left" (click)="back()"></i>
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" />
+                    <i *ngIf="!chatRecipient.photo" style="font-size:40px" class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <img *ngIf="chatRecipient.photo" src={{chatRecipient.photo}} />
                     <h4><strong>{{chatRecipient.firstName}} </strong></h4>
 
                 </div>
@@ -62,7 +65,9 @@
                 <div id="chat-messages" *ngFor="let chat of chats[chatRecipient.email]">
 
                     <div *ngIf="chat.sender==chatRecipient.email" class="message">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" />
+
+                        <i *ngIf="!chatRecipient.photo" class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        <img *ngIf="chatRecipient.photo" src={{chatRecipient.photo}} />
                         <div class="bubble">
                             <h5>
                                 {{chat.message}}
@@ -78,7 +83,8 @@
                             <div class="corner"></div>
                             <span style="font-size: 11px;">{{chat.time}}</span>
                         </div>
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" />
+                        <i *ngIf="!currentUserPhoto" class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        <img *ngIf="currentUserPhoto" src={{currentUserPhoto}} />
                     </div>
                 </div>
                 <!-- <label>{{date}}</label> -->

@@ -4,6 +4,7 @@ import { DataService } from 'src/app/services/data.service';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { SharedResourceService } from 'src/app/services/shared-resource.service';
 import { AdminResourceService } from 'src/app/services/AdminResource.service';
+import { EntitiesService } from '../../services/entities.service';
 
 @Component({
   selector: 'app-user-list',
@@ -26,9 +27,10 @@ export class UserListComponent implements OnInit {
   subjects:any=[];
   subs:[];
 
-  constructor(private adminresource: AdminResourceService,private data: DataService, private msg: MessengerService,private resourceManager:SharedResourceService ) {
+  constructor(private adminresource: AdminResourceService,private data: DataService, private msg: MessengerService,
+    private resourceManager:SharedResourceService,private entityManager:EntitiesService ) {
     this.adminresource.EditResource.
-    subscribe((item: {details:any})=>{     
+    subscribe((item: {details:any})=>{
       this.ResourceId = item.details.id;
       this.ResourceName = item.details.name;
       this.ResourceOwner = item.details.owner;
@@ -36,17 +38,18 @@ export class UserListComponent implements OnInit {
       // this.subjects = item.details.subjects;
       // console.log("subjects",this.subjects);
     });
-     this.resourceManager.GetResource(this.ResourceId,this.data.getEntity).subscribe(result=>{
+     this.resourceManager.GetResource(this.ResourceId,this.data.getEntity()).subscribe(result=>{
       this.subjects = result.data().subjects;
       this.subs =  result.data().subjects;
       console.log(this.subjects, "this is subject array")
     })
-  
-   
+
+
   }
 
+
   ngOnInit(): void {
-     this.msg.getUsers().subscribe(users=>{
+     this.entityManager.getEntityUsers(this.data.getEntity()).subscribe(users=>{
       this.users = users;
       console.log(this.users);
     // this.hooks=this.users.map(i=>true);
@@ -54,20 +57,24 @@ export class UserListComponent implements OnInit {
 
   }
 
-  async add(userEmail){
-    
-       await  this.resourceManager.AddSubjectToResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects,this.data.getEntity);
-      this.updateSubjects();
-    
+ add(userEmail){
+
+      this.resourceManager.AddSubjectToResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects,this.data.getEntity()).then(()=>{
+        this.updateSubjects();
+      });
+
+
 
   }
 
-  async unAdd(userEmail){
+  unAdd(userEmail){
     // for (let i = 0; i < this.hooks.length; i++) {
     //   if(i==index){
     //     // this.hooks[i]=true;
-        await this.resourceManager.RemoveSubjectFromResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects,this.data.getEntity);
-        this.updateSubjects();
+         this.resourceManager.RemoveSubjectFromResource(userEmail,this.ResourceId,this.ResourceName,this.ResourceOwner,this.ResourceObjects,this.data.getEntity()).then(()=>{
+          this.updateSubjects();
+         });
+
     //   }
 
     // }
@@ -78,7 +85,7 @@ export class UserListComponent implements OnInit {
   }
 
  async updateSubjects(){
-    await this.resourceManager.GetResource(this.ResourceId,this.data.getEntity).subscribe(result=>{
+    await this.resourceManager.GetResource(this.ResourceId,this.data.getEntity()).subscribe(result=>{
       this.subjects = result.data().subjects;
       console.log(this.subjects, "this is subject array");
     });

@@ -19,7 +19,7 @@ export class PermissionsComponent implements OnInit {
 
   constructor(private approvalManager: ApprovalService,private userVolatileData:DataService) {
     this.currentUser = userVolatileData.getActiveUser().email;
-    approvalManager.GetReceiveRequest(this.currentUser).subscribe(result=>{
+    approvalManager.GetReceiveRequest(this.currentUser,userVolatileData.getEntity()).subscribe(result=>{
       this.unapprovedRequest =0;
       if(result){
         result.forEach(req=>{if (!req.approvalStatus){this.unapprovedRequest++;}})

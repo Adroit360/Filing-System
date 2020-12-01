@@ -13,11 +13,15 @@ import { EntitiesService } from '../services/entities.service';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-
+ change=true;
   user:any;
+  photo:any;
   constructor( private authManager:AuthServiceService,private userservice: UserService, private router: Router,
     private entityManager:EntitiesService, private dataManager: DataService) {
-      this.user = dataManager.getActiveUser();
+      this.entityManager._getEntityUser(this.dataManager.getActiveUser().email,this.dataManager.getEntity()).subscribe(result=>{
+        this.user = result;
+      })
+      
      }
 
   ngOnInit(): void {
@@ -46,8 +50,15 @@ export class NavBarComponent implements OnInit {
       console.log(e)
       // let input = <any>document.querySelector('#file-upload');
       document.getElementById("file-upload").click();
+      
   }
 
+  onChange(event){
+    let file = (event.target as HTMLInputElement).files[0];
+    if(file){
+      this.entityManager.UserProfilePhoto(this.dataManager.getActiveUser().email,file,this.dataManager.getEntity());
+    }
+  }
 
 
 

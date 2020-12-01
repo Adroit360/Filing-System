@@ -1,7 +1,7 @@
     /*.folders {
     // border: 1px solid red;
 }*/
-    
+
     .container {
         //grid-area: main;
         border-top-left-radius: 3.13rem;
@@ -25,12 +25,12 @@
             width: 139vh;
             */
     }
-    
+
     .folders {
         height: calc(100vh - 6.8rem);
         // width: 60vw;
     }
-    
+
     .user-permissions {
         background: #ffffff;
         margin-top: 1.88rem;
@@ -41,11 +41,8 @@
         // -moz-box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
         // box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
     }
-    
+
     @media screen and (max-width: 800px) {
-        .user-permissions {
-            // display: none;
-        }
         .container {
             display: block;
             margin: 4rem 1rem;
