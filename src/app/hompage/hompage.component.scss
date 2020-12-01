@@ -47,9 +47,9 @@ app-nav-bar {
         background-color: white;
         // left: -30rem;
         z-index: 100;
-        margin-top: 6rem;
         width: 30rem;
-        transition: all 500ms linear;
+        // transition: all 500ms linear;
+        height: 100vh;
     }
     app-nav-bar {
         height: 4rem;

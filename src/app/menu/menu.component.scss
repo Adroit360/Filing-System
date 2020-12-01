@@ -322,3 +322,9 @@ button {
     // height: 17px;
     // width: 70px;
 }
+
+@media screen and (max-width: 800px) {
+    .admin-tools h2 {
+        margin-top: 2rem;
+    }
+}
