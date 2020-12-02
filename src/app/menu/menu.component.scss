@@ -17,17 +17,6 @@ ng-sidebar-container {
     height: 100vh;
 }
 
-.logo {
-    height: 0;
-    img {
-        width: 200px;
-        height: 55px;
-        margin: 10px 0 0 25px;
-        // margin-left: 4.3rem;
-        // margin-top: 1.63rem;
-    }
-}
-
 h2 {
     font-family: Poppins;
     font-size: 16px;
@@ -90,6 +79,7 @@ li a {
     grid-template-columns: 1fr 3fr;
     width: 90%;
     overflow: none;
+    align-items: center;
 }
 
 .admin-tools-inbox li {
@@ -328,7 +318,10 @@ button {
 
 .tooltip>span>h4:hover {
     color: #459ce3;
-    // background-color: #459ce3;
-    // height: 17px;
-    // width: 70px;
+}
+
+@media screen and (max-width: 800px) {
+    .admin-tools h2 {
+        margin-top: 7rem;
+    }
 }
