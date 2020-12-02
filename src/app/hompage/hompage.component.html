@@ -1,6 +1,6 @@
 <div class="container">
     <app-nav-bar></app-nav-bar>
-    <div class="menu" *ngIf="showMenu" (click)="onToggleMenu()">
+    <div class="menu" (click)="onToggleMenu()">
         <app-menu></app-menu>
     </div>
     <div class="app-content">
@@ -10,4 +10,5 @@
 </div>
 <!-- <div class="modal" *ngIf="modalState">
     <app-modal></app-modal>
+     [ngStyle]="{'display': (screen && showMenu)? 'block': 'none'}"
 </div> -->

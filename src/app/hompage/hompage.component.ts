@@ -18,20 +18,49 @@ export class HompageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.navigate(['content', 'general']);
-    this.sectionService.toggleMenu.subscribe(data=>{
-      if(this.showMenu==false){
-        this.showMenu = true;
-      }
-      else{
-        this.showMenu = data;
-      }
-      
-    })
+    if (screen.width>800){
+      let menu: any =  document.querySelector('.menu');
+      menu.style.display = 'block';
+    }
+    else{
+      this.sectionService.toggleMenu.subscribe(data=>{
+        let menu: any =  document.querySelector('.menu');
+        if(this.showMenu==false){
+          this.showMenu = true;
+          if(this.showMenu){
+            menu.style.display = 'block';
+          }
+          else{
+            menu.style.display = 'none';
+          }
+        }
+        else{
+          this.showMenu = data;
+          if(this.showMenu){
+            menu.style.display = 'block';
+          }
+          else{
+            menu.style.display = 'none';
+          }
+        }
+        
+        
+      })
+    }
+    
 
   }
 
   onToggleMenu(){
+  let menu: any =  document.querySelector('.menu');
+    // menu.style.display = 'block';
     this.showMenu = !this.showMenu;
+    if(this.showMenu){
+      menu.style.display = 'block';
+    }
+    else{
+      menu.style.display = 'none';
+    }
   }
 
 }
