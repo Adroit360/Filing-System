@@ -7,6 +7,7 @@ import { DataService } from '../../services/data.service';
   templateUrl: './reply-approvals.component.html',
   styleUrls: ['./reply-approvals.component.scss']
 })
+
 export class ReplyApprovalsComponent implements OnInit {
   @Output("onResult") OnResult:EventEmitter<boolean> = new EventEmitter();
   currentUser:string;
@@ -22,7 +23,6 @@ export class ReplyApprovalsComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    
     
   }
 
@@ -45,6 +45,5 @@ export class ReplyApprovalsComponent implements OnInit {
   onChange(event){
     this.file = (event.target as HTMLInputElement).files[0];
   }
-
 
 }

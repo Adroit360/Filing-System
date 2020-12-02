@@ -78,11 +78,12 @@ export class SharedResourcesComponent implements OnInit {
     //this.route.navigate(["/home/content/SharedResources", i, user.Name]);
   }
 
-  async getResource(id){
-    await this.resourceManager.GetResource(id,this.volatileData.getEntity()).subscribe(result=>{
+  async getResource(id,name){
+    await this.resourceManager.GetResource(id,this.volatileData.getEntity()).subscribe( async result=> {
       let resource = result.data();
       console.log("resource for external",resource);
-      this.adminresource.onEditResource(resource);
+      await this.adminresource.onEditResource(resource);
+      this.route.navigate(["/home/content/SharedResources", id, name]);
     });
   }
 }

@@ -72,7 +72,7 @@
 
                 <div class="folder">
                     <a *ngFor="let resource of externalResources; let i = index">
-                        <div (click)="onSelected(resource)" [routerLink]="[i, resource.name]">
+                        <div (click)="getResource(resource.id,resource.name)">
                             <i class="{{fontIcon}}" style='font-size: 50px; color: #459CE3;'></i>
                             <p style="font-size: 15px;"> {{resource.name}} </p>
                         </div>

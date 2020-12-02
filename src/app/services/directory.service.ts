@@ -91,13 +91,13 @@ export class DirectoryService {
   async getParent(id,entity){
     let parent="";
     let parentObj={id:"",name:""};
-    await firebase.firestore().collection("Entities").doc(entity).collection("Archives").doc(id).get().then(result=>{parent = result.data().parentId;console.log("parent from service",parent)});
+    await firebase.firestore().collection(DbCollections.Entities).doc(entity).collection(DbCollections.Archives).doc(id).get().then(result=>{parent = result.data().parentId;console.log("parent from service",parent)});
     
    if (parent){
-       await firebase.firestore().collection("Entities").doc(entity).collection("Archives").doc(parent).get()
+       await firebase.firestore().collection(DbCollections.Entities).doc(entity).collection(DbCollections.Archives).doc(parent).get()
        .then(result=>{parentObj.id=result.data().id; parentObj.name=result.data().name;console.log("parent from service",parentObj)})
        .catch(async err=>{
-        await firebase.firestore().collection("Entities").doc(entity).collection("Sections").doc(parent).get()
+        await firebase.firestore().collection(DbCollections.Entities).doc(entity).collection(DbCollections.Sections).doc(parent).get()
         .then(result=>{parentObj.id=result.data().id; parentObj.name=result.data().name;console.log("parent from service",parentObj)})
        });
     }
@@ -108,7 +108,7 @@ export class DirectoryService {
 
   getFileList(listItems:[],entity){
     // console.log("listitems in getfilelist ", listItems);
-    this.subarchivesCollection = this.afs.collection("Entities").doc(entity).collection<Archives>('Archives',ref=> ref.where('id','in',listItems));
+    this.subarchivesCollection = this.afs.collection(DbCollections.Entities).doc(entity).collection<Archives>(DbCollections.Archives,ref=> ref.where('id','in',listItems));
     this.subarchives = this.subarchivesCollection.valueChanges();
     return this.subarchives;
   }
@@ -133,7 +133,7 @@ export class DirectoryService {
 
   createDirectory(directoryName,sectionId,parentId,user,directoryLevel:Boolean,entity){
     let similars:any;
-    firebase.firestore().collection("Entities").doc(entity).collection("Archives").where("parentId","==",parentId).where("name","==",directoryName).get().then(result=>{
+    firebase.firestore().collection(DbCollections.Entities).doc(entity).collection(DbCollections.Archives).where("parentId","==",parentId).where("name","==",directoryName).get().then(result=>{
       if (result.docs.length>0){
         this.newArchive.alias = directoryName+" "+result.docs.length;
       }else{
@@ -149,7 +149,7 @@ export class DirectoryService {
       this.newArchive.itemType = "folder";
       this.newArchive.public = directoryLevel;
 
-      this.afs.collection("Entities").doc(entity).collection("Archives").doc(this.newArchive.id).set(this.newArchive);
+      this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Archives).doc(this.newArchive.id).set(this.newArchive);
     });
    
     
@@ -161,14 +161,14 @@ export class DirectoryService {
     {
     let file:Archives;
     let alias="";
-    firebase.firestore().collection("Entities").doc(entity).collection("Archives").where("parentId","==",directoryId).where("name","==",fileItem.name).get().then(result=>{
+    firebase.firestore().collection(DbCollections.Entities).doc(entity).collection(DbCollections.Archives).where("parentId","==",directoryId).where("name","==",fileItem.name).get().then(result=>{
       if (result.docs.length>0){
         alias = fileItem.name+" "+result.docs.length;
       }else{
         alias = fileItem.name;
       }
 
-    this.afs.collection("Entities").doc(entity).collection("Archives").doc(directoryId).get().subscribe(result=>{
+    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Archives).doc(directoryId).get().subscribe(result=>{
       const id = this.afs.createId(); 
       const filePath = `${this.basePath}/${entity}/${alias}`;
       const storageRef = this.afStorage.ref(filePath);
@@ -193,7 +193,7 @@ export class DirectoryService {
               public:result.data().public,
               dateCreated:new Date().toLocaleDateString()
             }
-            this.afs.collection("Entities").doc(entity).collection<Archives>('Archives').doc(id).set(file).catch(e=>{console.log(e); return e;});
+            this.afs.collection(DbCollections.Entities).doc(entity).collection<Archives>(DbCollections.Archives).doc(id).set(file).catch(e=>{console.log(e); return e;});
             
           });
         })
@@ -210,21 +210,22 @@ export class DirectoryService {
     const filePath = `${this.basePath}/${entity}`;
     const storageRef = this.afStorage.ref(filePath).child(alias);
     await storageRef.delete();
-    await this.afs.collection("Entities").doc(entity).collection<Archives>('Archives').doc(fileId).delete();
+    await this.afs.collection(DbCollections.Entities).doc(entity).collection<Archives>(DbCollections.Archives).doc(fileId).delete();
   }
 
  deleteDirectory(directoryId,entity){
-   firebase.firestore().collection("Entities").doc(entity).collection("Archives").where('parentId','==',directoryId)
+   firebase.firestore().collection(DbCollections.Entities).doc(entity).collection(DbCollections.Archives).where('parentId','==',directoryId)
     .get().then(a=>{a.docs.forEach(doc=>{
         if(doc.data().itemType == "folder"){this.deleteDirectory(doc.data().id,doc.data().entity);}
         else{ this.deleteFile(doc.data().id,doc.data().alias,entity);}
     })});
     
-    this.afs.collection("Entities").doc(entity).collection<Archives>('Archives').doc(directoryId).delete().catch(e=>{console.log(e)});
+    this.afs.collection(DbCollections.Entities).doc(entity).collection<Archives>(DbCollections.Archives).doc(directoryId).delete().catch(e=>{console.log(e)});
   }
 
+// search document based on user access list
   getAccessibleArchives(accessList,entity){
-    return this.afs.collection("Entities").doc(entity).collection<Archives>('Archives',ref=> ref.where('sectionId','in',accessList)).valueChanges();
+    return this.afs.collection(DbCollections.Entities).doc(entity).collection<Archives>(DbCollections.Archives,ref=> ref.where('sectionId','in',accessList)).valueChanges();
   }
 
   //  set recently accessed folders
