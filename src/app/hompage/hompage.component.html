@@ -1,6 +1,6 @@
 <div class="container">
     <app-nav-bar></app-nav-bar>
-    <div class="menu">
+    <div class="menu" *ngIf="showMenu" (click)="onToggleMenu()">
         <app-menu></app-menu>
     </div>
     <div class="app-content">

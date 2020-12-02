@@ -1,5 +1,5 @@
 <div class="nav-bar">
-    <div class="sidebar">
+    <div class="sidebar" [ngClass]="{'change': cross}" (click)="onToggleMenu()">
         <span class="bar1"></span>
         <span class="bar2"></span>
         <span class="bar3"></span>

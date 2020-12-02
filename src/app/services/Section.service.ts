@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import * as firebase from 'firebase/app';
 import { DbCollections } from '../services/entities.service';
 
@@ -21,6 +21,7 @@ export class SectionService {
   private subSectionCollection: AngularFirestoreCollection<Section>;
   private sections:Observable<Section[]>;
   private subSections:Observable<Section[]>;
+  toggleMenu = new Subject<boolean>();
 
   constructor(private afs:AngularFirestore) {
       this.sectionCollection = afs.collection<Section>('Sections',ref=> ref.orderBy('name'));
@@ -77,4 +78,9 @@ export class SectionService {
        return section.data().name;
     }
 
+
+    // toggle Menu button
+    onToggleMenu(state: boolean){
+      this.toggleMenu.next(state);
+    }
 }

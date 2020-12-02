@@ -1,3 +1,4 @@
+import { SectionService } from 'src/app/services/section.service';
 import { Router } from '@angular/router';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
@@ -16,8 +17,10 @@ export class NavBarComponent implements OnInit {
  change=true;
   user:any;
   photo:any;
+  showMenu: boolean = false;
+  cross: boolean = false;
   constructor( private authManager:AuthServiceService,private userservice: UserService, private router: Router,
-    private entityManager:EntitiesService, private dataManager: DataService) {
+    private entityManager:EntitiesService, private dataManager: DataService, private sectionService: SectionService) {
       this.entityManager._getEntityUser(this.dataManager.getActiveUser().email,this.dataManager.getEntity()).subscribe(result=>{
         this.user = result;
       })
@@ -60,6 +63,17 @@ export class NavBarComponent implements OnInit {
     }
   }
 
+  onToggleMenu(){
+    this.showMenu = !this.showMenu;
+    if(this.showMenu==true){
+      this.cross = true;
+    }
+    else{
+      this.cross = false
+    }
+    this.sectionService.onToggleMenu(this.showMenu);
+    
+  }
 
 
 }
