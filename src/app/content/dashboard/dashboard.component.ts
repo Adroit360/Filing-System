@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component,ElementRef,OnInit, ViewChild} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
 import { DataService } from '../../services/data.service';
@@ -45,6 +45,7 @@ export class DashboardComponent implements OnInit,AfterViewInit {
     nav: true
   }
 
+dummytasks=['bet boys for the money','Download slides','beach mood activated',"eye clear, money finish"];
 
 
  TaskForm: FormGroup= new FormGroup({
@@ -65,6 +66,7 @@ export class DashboardComponent implements OnInit,AfterViewInit {
  slideIndex: number = 1;
  slideIndexAutomate = 0;
 
+ @ViewChild ('createTab') nameInputRef: ElementRef;
 
   constructor(private directoryManager: DirectoryService, private taskManager:TaskService, private dataManager: DataService,
     private announceManager:AnnouncementService,private router:Router,private sectionManager:SectionService) {
@@ -116,42 +118,91 @@ export class DashboardComponent implements OnInit,AfterViewInit {
   onEdit(){
     console.log('edited');
   }
-  //OPening task
-  onTask(){
-    console.log('Added task');
-    document.getElementById("Modal-task").style.display="grid";
-    document.getElementById("smth").style.display="none"
-  }
-//close new task
-  taskClose(){
-    document.getElementById("Modal-task").style.display="none";
-    console.log('0clicked');
-    document.getElementById("smth").style.display="block";
-  }
+//openeing tab
+Tab(){
+document.getElementById("task-content").style.display="none";
+document.getElementById("qwert").style.display="block";
+document.getElementById("list-task").style.display="block";
+document.getElementById("qwert1").style.display="flex";
+}
+
+//back
+back(){
+  console.log("back")
+  document.getElementById("task-content").style.display="flex";
+  document.getElementById("list-task").style.display="none";
+  document.getElementById("qwert").style.display="none";
+  document.getElementById("qwert1").style.display="none";
+}
+
+//create Task
+createTask(){
+  document.getElementById('c-task').style.display="block";
+}
+
+//Submitting task
+SubmitTask(){
+console.log(this.TaskForm.value)
+document.getElementById('c-task').style.display="none";
+
+}
+
+//DELETEING ALL TASK modal
+allDeleteTask(){
+  document.getElementById("myModal").style.display='block';
+}
+
+//DELETEING ALL TASK
+onAllDelete(){
+  document.getElementById("myModal").style.display='none';
+}
+//NOT DELETING ALL TASK
+onCancelAll(){
+  document.getElementById("myModal").style.display='none';
+}
 //setting a new task
-  onSubmit(){
-    this.taskManager.newTask(this.dataManager.getActiveUser().email,{task:this.TaskForm.value.newTask,dueDate:this.TaskForm.value.Date,status:false},this.dataManager.getEntity())
-    document.getElementById("Modal-task").style.display="none";
-    document.getElementById("smth").style.display="block";
-    document.getElementById("files-a").style.display="none";
+  // onSubmit(){
+  //   this.taskManager.newTask(this.dataManager.getActiveUser().email,{task:this.TaskForm.value.newTask,dueDate:this.TaskForm.value.Date,status:false},this.dataManager.getEntity())
+  //   document.getElementById("Modal-task").style.display="none";
+  //   document.getElementById("smth").style.display="block";
+  //   document.getElementById("files-a").style.display="none";
 
-  }
+  // }
   //done with task
-  Done(_task){
+  // Done(_task){
 
-    _task.done = true;
-    this.taskManager.updateTask(this.dataManager.getActiveUser().email,_task,this.dataManager.getEntity());
+  //   _task.done = true;
+  //   this.taskManager.updateTask(this.dataManager.getActiveUser().email,_task,this.dataManager.getEntity());
 
+  // }
+
+  //DONE WITH TASK
+  OnDoneTask(){
+    console.log("done");
   }
+//DELETE A SINGLE TASK
+DeleteTask(){
+  console.log("delete");
+}
 
-  unDone(_task){
-    _task.done = false;
-    this.taskManager.updateTask(this.dataManager.getActiveUser().email,_task,this.dataManager.getEntity());
-  }
+//TAB CREATE
+onCreateTab(){
+  document.getElementById("createTab").style.display="flex";
+}
 
-  DeleteTask(_task){
-    this.taskManager.removeTask(this.dataManager.getActiveUser().email,_task,this.dataManager.getEntity());
-  }
+//cREATED TAB
+taskTab(){
+  console.log(this.nameInputRef.nativeElement.value);
+  document.getElementById("createTab").style.display="none";
+}
+  // unDone(_task){
+  //   _task.done = false;
+  //   this.taskManager.updateTask(this.dataManager.getActiveUser().email,_task,this.dataManager.getEntity());
+  // }
+
+  // DeleteTask(_task){
+  //   this.taskManager.removeTask(this.dataManager.getActiveUser().email,_task,this.dataManager.getEntity());
+  // }
 
   onFolderClicked(directory) {
     console.log(directory,"this is the directory");
@@ -223,7 +274,7 @@ showSlides(n) {
   if(slides[this.slideIndexAutomate-1])
   slides[this.slideIndexAutomate-1].style.display = "block";
 
-  setTimeout( (this.showSlidesAutomate).bind(this), 2000); // Change image every 2 seconds
+  setTimeout( (this.showSlidesAutomate).bind(this), 5000); // Change text every 5 seconds
   if(dots[this.slideIndexAutomate-1])
   dots[this.slideIndexAutomate-1].className += " active";
 }

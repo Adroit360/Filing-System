@@ -104,106 +104,101 @@
     </div>
 
     <div class="task">
-
-        <div class="task-head">
-            <div class="header-3">
-                <div class="caption-3">
-                    <h2>Tasks</h2>
-                </div>
+        <div class="task-caption">
+            <div style="display: flex;">
+                <h5 (click)="back()" id="qwert" class="material-icons">
+                    arrow_left
+                </h5>
+                <h3>Task</h3>
             </div>
-            <div class="add">
-                <div class="toggler" id="smth">
-                    <i style="font-size: 30px; color: rgba(0, 0, 0, 0.479); cursor: pointer;" class="fa fa-ellipsis-h"></i>
-                    <!-- <i id="more-icon" style="font-size: 16px;" class="fa fa-angle-down"></i> -->
-
-                    <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
-    <span class="smart-tooltip stick stay-down overlay" id="tooltip">
-      <h4 (click)="onTask()">Add Task</h4>
-    </span>
-
-                    </span>
-                </div>
-                <div class="T-Modal" id="Modal-task">
-                    <form [formGroup]='TaskForm' (ngSubmit)="onSubmit()">
-                        <div class="S-top">
-                            <h3 style="color:black;"> Add New Task</h3>
-                            <span class="close" (click)="taskClose()">x</span>
-                        </div>
-                        <input type="text" placeholder="new task" formControlName="newTask">
-                        <label style="color: black;"> Set Date</label>
-                        <input type="Date" formControlName="Date">
-                        <button type="submit"> ok</button>
-                    </form>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="table">
-            <ul>
-                <li *ngFor="let item of tasks.tasks;let i = index">
-                    <div class="part-1">
-
-
-                        <div class="togglers">
-                            <!-- <i style="font-size: 30px; color: rgba(0, 0, 0, 0.479); cursor: pointer;" class="fa fa-ellipsis-h"></i> -->
-                            <!-- <i id="more-icon" style="font-size: 16px;" class="fa fa-angle-down"></i> -->
-                            <span id="more-icons" style="cursor: pointer;" class="material-icons">
-                      more_vert
-                               </span>
-
-                            <span id="hiddenTexts" class="clicktoshow" smart-tooltip-container>
-                        <span class="smart-tooltip stick stay-down overlay" id="tooltip">
-                          <h4 *ngIf="!item.done" (click)="Done(item)">done</h4>
-                          <hr/>
-                          <h4 *ngIf="item.done" (click)="unDone(item)">undone</h4>
-                          <hr/>
-                          <h4 (click)="DeleteTask(item)">Delete</h4>
-                        </span>
-
-                            </span>
-                        </div>
-
-                        <!-- <div class="part-1">
-                            <h3 style="margin-right: 10px;">0{{i}}</h3>
-                        </div> -->
-
-                        <div>
-                            <span *ngIf="item.done" class="material-icons" style="color: green;">
-                    check_circle
-                        </span>
-
-                            <span *ngIf="!item.done" class="material-icons">
-                          check_circle
-                              </span>
-                        </div>
-
-                    </div>
-
-                    <div class="part-1">
-                        <h3>{{item.task}}</h3>
-                        <h3>{{item.dueDate}}</h3>
-                    </div>
-
-                </li>
-
-            </ul>
-
-
-            <div id="files-a">
-                <h4 class="nothing">Nothing to show... click to create task</h4>
-                <!-- <img style="height: 15%;
-                position: absolute;
-                left: 66%;
-                top: 64%;
-                transform: scaleX(-1);
-                width: 9%;" src="../../../assets/arrow.gif"> -->
+            <div id="qwert1" style="cursor: pointer;
+            display: none;
+            grid-gap: 10px;
+            margin-right: 75px;">
+                <span (click)="createTask()" class="material-icons">
+                add
+              </span>
+                <span (click)="allDeleteTask()" class="material-icons">
+                  delete_outline
+              </span>
             </div>
         </div>
 
+        <div id="task-content">
+
+            <div class="task-tab" (click)="Tab()">
+                <div class="vl"></div>
+                <div class="t-side">
+                    <h3>my task</h3>
+                    <h5>5 Tasks</h5>
+                </div>
+            </div>
+
+            <!-- CREATING A TASK TAB -->
+            <div class="task-tab" id="createTab" style="display: none;">
+                <div class="v2"></div>
+                <div class="t-side">
+                    <input type="text" placeholder="Name" (keydown.enter)="taskTab()" #createTab>
+                </div>
+            </div>
+
+            <span class="material-icons" (click)="onCreateTab()">
+              add
+            </span>
+
+        </div>
+
+        <div id="list-task">
+            <div>
+                <ul class="table-list">
+                    <div>
+                        <li id='c-task' style="display: none;">
+
+                            <form class="f-form" [formGroup]="TaskForm" (ngSubmit)="SubmitTask()">
+                                <div class="f-side">
+                                    <input type="text" placeholder="create task" formControlName="newTask" />
+                                    <input type="Date" placeholder="Date" formControlName="Date" />
+                                    <button>Add</button>
+                                </div>
+                            </form>
+                        </li>
+                    </div>
+
+                    <li *ngFor="let item of dummytasks">
+                        <div class="f-side">
+
+                            <h3>{{item}}</h3>
+                            <h5>pending</h5>
+                            <h3>date</h3>
+                        </div>
+                        <div class="s-side">
+
+                            <h6 smart-tooltip-container class="clicktoshow">
+                                <img src="../../../assets/dots.png" style="height: 35px; width: 35px;">
+                                <span class="smart-tooltip overlay">
+                                    <h4 style="color: white;" (click)="OnDoneTask()">Done</h4>
+                                    <hr/>
+                                    <h4 style="color: white;" (click)="DeleteTask()">Delete</h4>
+                                </span>
+                            </h6>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <!-- pop up for deleteing all the task Including the tab -->
+            <div id="myModal" style="display:none;" class="modal">
+
+                <div (click)=" onCancelAll()" style=" position: absolute;left:0;top:0;width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4);z-index: -1; "></div>
+                <!-- Modal content -->
+                <div class="modal-content ">
+                    <h4 style="color:black;">Are you Sure you want to delete all Tasks?</h4>
+                    <div class="submit ">
+                        <button id="btn" (click)="onAllDelete()">Yes</button>
+                        <button style="background-color: rgb(39, 144, 163); border-color: rgb(192, 247, 111); " (click)=" onCancelAll()">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-
 </div>
