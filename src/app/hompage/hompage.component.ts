@@ -55,7 +55,10 @@ export class HompageComponent implements OnInit {
   let menu: any =  document.querySelector('.menu');
     // menu.style.display = 'block';
     this.showMenu = !this.showMenu;
-    if(this.showMenu){
+    if (screen.width>800){
+      menu.style.display = 'block';
+    }
+    else if(this.showMenu){
       menu.style.display = 'block';
     }
     else{
