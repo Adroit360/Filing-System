@@ -16,7 +16,7 @@ currentUser:string;
     this.currentUser = userVolatileData.getActiveUser().email;
     this.getRequests();
   }
-
+change=false;
 
   ngOnInit(): void {
   }
@@ -31,18 +31,18 @@ currentUser:string;
 
 // calling the delete modal
   onDelete(){
-    console.log("deleted")
-    document.getElementById("myModal").style.display="fixed";
+    console.log("deleted");
+   this.change=!this.change
   }
 
 //Deleting the message
 DeleteMess(){
-  document.getElementById("myModal").style.display="none";
+  this.change=!this.change;
 }
 
 //NOT deleteing the message
 unDelete(){
   console.log("back");
-  document.getElementById("myModal").style.display="none";
+  this.change=!this.change;
 }
 }
