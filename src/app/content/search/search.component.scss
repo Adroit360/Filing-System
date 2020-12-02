@@ -8,12 +8,12 @@
 }
 
 .folder {
-    max-height: 70vh;
+    height: 70vh;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     // justify-content: center;
-    margin: 0px 60px;
+    // margin: 0px 60px;
     overflow-x: hidden;
     /* overflow: auto; */
     overflow-y: auto;
