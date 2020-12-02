@@ -10,14 +10,28 @@
     </div>
     <div class="icon">
 
-        <span class="" id="hidden" smart-tooltip-container>
-          <p class="material-icons">more_vert</p>
-          <span class="smart-tooltip stay-bottom overlay stick" id="tooltip" (click)="onDelete()">
-           <h3>Delete</h3>
-          </span>
-        </span>
+        <h6 smart-tooltip-container class="clicktoshow">
+            <img src="../../../../assets/dots.png" style="height: 35px; width: 35px; cursor: pointer;">
+            <span class="smart-tooltip overlay" style="height: auto; width:auto;">
+            <h4 style="color: white; cursor: pointer;"  (click)="onDelete()">Delete</h4>
+            </span>
+        </h6>
         <!-- <a id="del" class=del> Delete</a> -->
         <i *ngIf="item.approvalStatus" class="fa fa-check-circle"></i>
     </div>
 
+
+</div>
+<!-- Modal to Delete a message -->
+<div id="myModal" class="modal">
+
+    <div (click)="unDelete()" style=" position: absolute;left:0;top:0;width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4);z-index: -1; "></div>
+    <!-- Modal content -->
+    <div class="modal-content ">
+        <h4>Are you sure you want to Delete?</h4>
+        <div class="submit ">
+            <button style="background-color: rgb(250, 250, 250); border-color: rgb(192, 247, 111); " (click)="DeleteMess()">Yes</button>
+            <button id="btn" (click)="unDelete()">No</button>
+        </div>
+    </div>
 </div>
