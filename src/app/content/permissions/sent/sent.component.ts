@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵCodegenComponentFactoryResolver } from '@angular/core';
 import { ApprovalService } from '../../../services/approval.service';
 import { DataService } from '../../../services/data.service';
 
@@ -29,8 +29,20 @@ currentUser:string;
     this.sentRequests = await this.approvalManager.GetSentRequest(this.currentUser,this.userVolatileData.getEntity());
   }
 
-
+// calling the delete modal
   onDelete(){
-    console.log('deleted')
+    console.log("deleted")
+    document.getElementById("myModal").style.display="fixed";
   }
+
+//Deleting the message
+DeleteMess(){
+  document.getElementById("myModal").style.display="none";
+}
+
+//NOT deleteing the message
+unDelete(){
+  console.log("back");
+  document.getElementById("myModal").style.display="none";
+}
 }

@@ -192,12 +192,12 @@
 #task-content {
     margin-top: 20px;
     background-color: white;
-    height: 230px;
+    max-height: 230px;
     width: 95%;
     display: flex;
     // display: none;
     border-radius: 20px;
-    padding: 35px 31px 20px 35px;
+    padding: 25px 31px 25px 35px;
     flex-wrap: wrap;
     grid-gap: 25px 13px;
     overflow: auto;
@@ -559,11 +559,10 @@ button {
 
 /* On hover, add a black background color with a little bit see-through */
 
-.prev:hover,
-.next:hover {
-    // background-color: rgba(0, 0, 0, 0.8);
-}
-
+//.prev:hover,
+//.next:hover {
+// background-color: rgba(0, 0, 0, 0.8);
+//}
 // /* Caption text */
 // .text {
 //     color: #f2f2f2;
