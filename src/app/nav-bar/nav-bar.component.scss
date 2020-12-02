@@ -142,6 +142,7 @@
     .sidebar {
         display: block;
         margin: 0 3rem;
+        z-index: 200;
         .bar1,
         .bar2,
         .bar3 {

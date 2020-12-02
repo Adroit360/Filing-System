@@ -41,36 +41,22 @@ app-nav-bar {
         background-color: white;
         grid-template-areas: "head head head head head" "main main main main main" "main main main main main" "main main main main main" "main main main main main";
     }
+    .menu {
+        background: rgba(0, 0, 0, 0.21);
+        position: absolute;
+        width: 100vw;
+        height: 120vh;
+        z-index: 100;
+        transition: all 500ms linear;
+        // display: none;
+    }
     app-menu {
-        display: none;
         position: absolute;
         background-color: white;
-        // left: -30rem;
-        z-index: 100;
         width: 30rem;
-        // transition: all 500ms linear;
-        height: 100vh;
-        box-shadow: 200px 0px 400px 200px rgba(0, 0, 0, 0.21);
-        -webkit-box-shadow: 200px 0px 400px 200px rgba(0, 0, 0, 0.21);
-        -moz-box-shadow: 200px 0px 400px 200px rgba(0, 0, 0, 0.21);
+        height: 120vh;
     }
     app-nav-bar {
         height: 4rem;
     }
 }
-
-
-/****/
-
-// content{
-//         /* border-top-left-radius: 3.13rem; */
-//         background-color: #e5e5e5;
-//         display: grid;
-//         /* grid-auto-flow: column; */
-//         height: 219vh;
-// }
-
-/***********/
-
-
-/******************** Modal*************************/
