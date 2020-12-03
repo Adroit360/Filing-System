@@ -177,6 +177,7 @@
         font-weight: bold;
         margin-left: 25px;
         margin-top: 10px;
+        background: none;
     }
     span {
         // margin-right: 90px;
@@ -281,7 +282,7 @@
     grid-gap: 15px;
     border: 1px solid rgba(133, 132, 132, 0.445);
     border-radius: 10px;
-    height: 65px;
+    height: auto;
     width: 31.9%;
     display: flex;
     padding: 10px 4px 13px 10px;
@@ -628,5 +629,30 @@ button {
     }
     to {
         opacity: 1
+    }
+}
+
+// MEDIA QUERIES FOR TASK
+@media screen and (max-width: 580px) {
+    #task-content {
+        display: block;
+    }
+    .task-tab {
+        height: auto;
+        width: auto;
+        margin-bottom: 10px;
+    }
+    .task-caption {
+        display: contents;
+    }
+    #qwert1 {
+        margin-top: 20px;
+    }
+    .table-list li {
+        display: block;
+        height: auto;
+    }
+    .f-side {
+        display: block;
     }
 }
