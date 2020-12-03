@@ -46,9 +46,6 @@ export class DashboardComponent implements OnInit,AfterViewInit {
     nav: true
   }
 
-dummytasks=['bet boys for the money','Download slides','beach mood activated',"eye clear, money finish"];
-
-
  TaskForm: FormGroup= new FormGroup({
   newTask: new FormControl(null),
   Date: new FormControl(null)
