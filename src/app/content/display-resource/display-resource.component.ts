@@ -55,9 +55,6 @@ export class DisplayResourceComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-
-    //this.files = this.section.department_files.map(i=>true)
   }
 
 

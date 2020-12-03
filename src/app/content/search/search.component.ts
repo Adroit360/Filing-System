@@ -32,6 +32,8 @@ export class SearchComponent implements OnInit {
           // this.archives = result;
           console.log("this is the searched archives",this.archives);
         });
+      }else{
+        this.archives=[];
       }  
     });
   }

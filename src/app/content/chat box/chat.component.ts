@@ -80,7 +80,6 @@ export class ChatComponent implements OnInit {
 
   }
 
-
   getMessage(targetUser){
         this.entityManager.getChatMessages(this.dataManager.getActiveUser().email,targetUser,this.dataManager.getEntity()).subscribe(result=>{
         this.chats[targetUser] = result;

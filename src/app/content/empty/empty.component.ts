@@ -184,7 +184,7 @@ export class EmptyComponent implements OnInit {
     this.showTooltip= +!this.showTooltip;
     event.stopPropagation();
     this.requestModal = !this.requestModal;
-    this.approve.requestapprove(i,item);
+    // this.approve.requestapprove(i,item);
 
   }
 

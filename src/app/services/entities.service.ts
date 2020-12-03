@@ -6,6 +6,8 @@ import {AuthServiceService} from '../services/auth-service.service';
 import { ChatService } from '../services/chat.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import { TaskService } from '../services/task.service';
+import { NewTask } from '../interface/newTask.interface';
 
 export interface Entity{
   id:string,
@@ -25,9 +27,9 @@ export enum DbCollections{
   SystemUsers="SystemUsers",
   SharedResources="SharedResources",
   Announcements="Announcements",
-  TaskLists = "TaskLists",
+  Tasks = "Tasks",
   Chats = "Chats",
-  Sections="Sections"
+  Sections="Sections",
 }
 
 @Injectable({
@@ -37,10 +39,12 @@ export enum DbCollections{
 export class EntitiesService {
   private entityCollection: AngularFirestoreCollection<Entity>;
   entity:Entity;
+  taskManager : NewTask;
  
   constructor(private afs:AngularFirestore,private authService:AuthServiceService,private chatManager:ChatService,
-    private afStorage: AngularFireStorage) {
+    private afStorage: AngularFireStorage,_taskManager:TaskService) {
     this.entityCollection = afs.collection<Entity>(DbCollections.Entities,ref=> ref.orderBy('dateCreated'));
+       this.taskManager = _taskManager;
   }
 
   // create new entity account
@@ -119,13 +123,12 @@ export class EntitiesService {
       }
       this.afs.collection(DbCollections.SystemUsers).doc(systemUser.email).set(systemUser).catch(e=>{console.log(e);return e;}).then(()=>{
         this.afs.collection(DbCollections.Entities).doc(entity).collection<User>(DbCollections.Users).doc(user.email).set(user);
+        // create default task group
+        this.taskManager.newTaskGroup("My Tasks",true,user.email,entity);
       }).then(()=>{
            // send password reset link
-      this.authService.ResetPassword(email).catch(err=>{console.log("error from reset password",err);return err});
-      });
-      
-
-     
+          this.authService.ResetPassword(email).catch(err=>{console.log("error from reset password",err);return err});
+      }); 
     });
   }
 

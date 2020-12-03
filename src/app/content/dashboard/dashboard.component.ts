@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -80,15 +81,14 @@ dummytasks=['bet boys for the money','Download slides','beach mood activated',"e
     announceManager.getValidAnnouncements(dataManager.getEntity()).subscribe(result=>{
       this.announcements=result;
     });
+
     // get user tasks
-    taskManager.getTasks(dataManager.getActiveUser().email,dataManager.getEntity()).subscribe(result=>{
+    taskManager.getTaskGroups(dataManager.getActiveUser().email,dataManager.getEntity()).subscribe(result=>{
       this.tasks = result;
       console.log(this.tasks, "these are the task");
     });
 
     this.date = new Date().toDateString();
-
-
 
    }
 
@@ -118,12 +118,14 @@ dummytasks=['bet boys for the money','Download slides','beach mood activated',"e
   onEdit(){
     console.log('edited');
   }
-//openeing tab
-Tab(){
-document.getElementById("task-content").style.display="none";
-document.getElementById("qwert").style.display="block";
-document.getElementById("list-task").style.display="block";
-document.getElementById("qwert1").style.display="flex";
+//openeing a task group
+activeTaskGrp:any;
+Tab(taskGrp){
+  document.getElementById("task-content").style.display="none";
+  document.getElementById("qwert").style.display="block";
+  document.getElementById("list-task").style.display="block";
+  document.getElementById("qwert1").style.display="flex";
+  this.activeTaskGrp = taskGrp;
 }
 
 //back
@@ -133,6 +135,7 @@ back(){
   document.getElementById("list-task").style.display="none";
   document.getElementById("qwert").style.display="none";
   document.getElementById("qwert1").style.display="none";
+  this.activeTaskGrp=null;
 }
 
 //create Task
@@ -148,8 +151,9 @@ document.getElementById('c-task').style.display="none";
 }
 
 //DELETEING ALL TASK modal
-allDeleteTask(){
+allDeleteTask(taskgrpId){
   document.getElementById("myModal").style.display='block';
+  this.taskManager.removeTaskGroup(taskgrpId,this.dataManager.getActiveUser().email,this.dataManager.getEntity());
 }
 
 //DELETEING ALL TASK
@@ -194,6 +198,7 @@ onCreateTab(){
 taskTab(){
   console.log(this.nameInputRef.nativeElement.value);
   document.getElementById("createTab").style.display="none";
+  this.taskManager.newTaskGroup(this.nameInputRef.nativeElement.value,false,this.dataManager.getActiveUser().email,this.dataManager.getEntity());
 }
   // unDone(_task){
   //   _task.done = false;
