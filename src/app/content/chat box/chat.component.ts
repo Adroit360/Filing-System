@@ -85,7 +85,12 @@ export class ChatComponent implements OnInit {
         this.chats[targetUser] = result;
         console.log("array of chat ",this.chats[targetUser]);
         console.log("main result ",result);
-
+        setTimeout(()=>{
+          let element =  document.getElementById("sendMess");
+          let scrollHeight = element.scrollHeight + 100;
+          console.log("scrollHeight",scrollHeight);
+          element.scrollTo(0,scrollHeight);
+        },200)
         });
   }
 

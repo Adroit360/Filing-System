@@ -28,6 +28,9 @@ export class NavBarComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    this.sectionService.toggleMenu.subscribe(data=>{
+      this.cross= data;
+    });
 
 
   }
@@ -64,15 +67,7 @@ export class NavBarComponent implements OnInit {
   }
 
   onToggleMenu(){
-    this.showMenu = !this.showMenu;
-    if(this.showMenu==true){
-      this.cross = true;
-    }
-    else{
-      this.cross = false
-    }
-    this.sectionService.onToggleMenu(this.showMenu);
-    
+      this.cross = !this.cross;
   }
 
 

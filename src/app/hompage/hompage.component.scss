@@ -20,12 +20,21 @@ app-menu {
     // grid-template-rows: 1fr 6.5fr 1.2fr;
 }
 
-app-nav-bar {
+.app-nav-bar {
     grid-area: head;
 }
 
 .app-content {
     grid-area: main;
+}
+
+.menu {
+    display: block;
+}
+
+input {
+    position: absolute;
+    display: none;
 }
 
 
@@ -51,7 +60,10 @@ app-nav-bar {
         width: 30rem;
         height: 120vh;
     }
-    app-nav-bar {
+    .app-nav-bar {
         height: 4rem;
+    }
+    #check:checked~.menu {
+        display: block;
     }
 }

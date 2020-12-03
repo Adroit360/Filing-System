@@ -109,7 +109,7 @@
                 <h5 (click)="back()" id="qwert" class="material-icons">
                     arrow_left
                 </h5>
-                <h3>Task</h3>
+                <h3><span *ngIf="!activeTaskGrp">Tasks</span><span *ngIf="activeTaskGrp">{{activeTaskGrp.name}}</span></h3>
             </div>
             <div id="qwert1" style="cursor: pointer;
             display: none;
@@ -118,7 +118,7 @@
                 <span (click)="createTask()" class="material-icons">
                 add
               </span>
-                <span (click)="allDeleteTask()" class="material-icons">
+                <span *ngIf="activeTaskGrp" (click)="allDeleteTask(activeTaskGrp.id)" class="material-icons">
                   delete_outline
               </span>
             </div>
@@ -126,11 +126,12 @@
 
         <div id="task-content">
 
-            <div class="task-tab" (click)="Tab()">
+            <div *ngFor="let taskgrp of tasks" class="task-tab" (click)="Tab(taskgrp)">
                 <div class="vl"></div>
                 <div class="t-side">
-                    <h3>my task</h3>
-                    <h5>5 Tasks</h5>
+                    <h3>{{taskgrp.name}}</h3>
+                    <h5>{{taskgrp.count}} out of 
+                        {{taskgrp.tasks.length}} Tasks complete</h5>
                 </div>
             </div>
 
