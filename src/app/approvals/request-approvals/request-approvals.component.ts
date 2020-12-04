@@ -36,7 +36,7 @@ export class RequestApprovalsComponent implements OnInit {
     //this.OnResult.emit(false);
     this.approvalManager.requestBehavior.subscribe((result)=>{ console.log(result, "requsest doc");
       let request = {documentId:result.item.id,documentName:result.item.name,documentUrl:result.item.url,requestMessage:this.RequestApproval.value.Message, title:this.RequestApproval.value.Title,
-                  senderId:this.currentUser,dateCreated:new Date().toLocaleDateString(),latestApprovalDate:this.RequestApproval.value.Deadline,
+                  senderId:this.currentUser,dateCreated:new Date().toDateString(),latestApprovalDate:new Date(this.RequestApproval.value.Deadline).toDateString(),
                   approverId:this.RequestApproval.value.email}
         console.log(request, "request ");
       this.approvalManager.createApprovalRequest(request,this.userVolatileData.getEntity());

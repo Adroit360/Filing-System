@@ -36,6 +36,12 @@ export class ChatComponent implements OnInit {
   }
 
   async OpenChat(recipient){
+    var objDiv = document.getElementById("sendMess");
+    setTimeout(
+            ()=>{
+              objDiv.scrollTop = objDiv.scrollHeight;
+              // console.log(objDiv.scrollHeight);
+            },200)
 
     this.chatRecipient =  recipient;
 
@@ -45,19 +51,14 @@ export class ChatComponent implements OnInit {
     }else{console.log("email in array")}
     document.getElementById('chatview').style.display="flex";
 
-    var objDiv = document.getElementById("sendMess");
-    setTimeout(
-            ()=>{
-              objDiv.scrollTop = objDiv.scrollHeight;
-              // console.log(objDiv.scrollHeight);
-            },200)
+    // var objDiv = document.getElementById("sendMess");
+    // setTimeout(
+    //         ()=>{
+    //           objDiv.scrollTop = objDiv.scrollHeight;
+    //           // console.log(objDiv.scrollHeight);
+    //         },200)
 
-    //  setTimeout(()=>{
-    // let element =  document.getElementById("sendMess");
-    //   let scrollHeight = element.scrollHeight + 100;
-    //   console.log("scrollHeight",scrollHeight);
-    //   element.scrollTo(0,-scrollHeight);
-    //  },200)
+
 
 
   }
@@ -79,7 +80,6 @@ export class ChatComponent implements OnInit {
     },200)
 
   }
-
 
   getMessage(targetUser){
         this.entityManager.getChatMessages(this.dataManager.getActiveUser().email,targetUser,this.dataManager.getEntity()).subscribe(result=>{
