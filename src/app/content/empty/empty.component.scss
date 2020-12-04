@@ -111,19 +111,26 @@ h4 {
 
 .folders {
     //height: 68vh;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    // justify-content: center;
-    // margin: 0px 60px;
+    // display: flex;
+    // flex-wrap: wrap;
+    // align-items: flex-start;
+    // // justify-content: center;
+    // // margin: 0px 60px;
     overflow-x: hidden;
     /* overflow: auto; */
     overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(120px, 100%), 1fr));
+    grid-auto-rows: auto;
+    gap: 0.5rem;
+    margin-top: 3rem;
+    // border: 1px solid red;
+    height: 68vh;
 }
 
 a {
     padding: 13px;
-    padding-bottom: 20px;
+    // padding-bottom: 20px;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
@@ -258,4 +265,39 @@ p {
     //     // display: inline;
     //     visibility: hidden;
     // }
+}
+
+.modal {
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content */
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 200px auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 374px;
+    height: 149px;
+    border-radius: 10px;
 }
