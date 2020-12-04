@@ -110,19 +110,26 @@ h4 {
 
 .folders {
     //height: 68vh;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    // justify-content: center;
-    // margin: 0px 60px;
+    // display: flex;
+    // flex-wrap: wrap;
+    // align-items: flex-start;
+    // // justify-content: center;
+    // // margin: 0px 60px;
     overflow-x: hidden;
     /* overflow: auto; */
     overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(120px, 100%), 1fr));
+    grid-auto-rows: auto;
+    gap: 0.5rem;
+    margin-top: 3rem;
+    // border: 1px solid red;
+    height: 68vh;
 }
 
 a {
     padding: 13px;
-    padding-bottom: 20px;
+    // padding-bottom: 20px;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
