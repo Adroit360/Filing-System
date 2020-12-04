@@ -287,7 +287,8 @@
     display: flex;
     padding: 10px 4px 13px 10px;
     .vl {
-        border-left: 10px solid green;
+        border-left: 10px solid;
+        color: green;
         height: 45px;
         border-radius: 10px;
     }

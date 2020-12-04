@@ -48,6 +48,9 @@ export class DashboardComponent implements OnInit,AfterViewInit {
 
 dummytasks=['bet boys for the money','Download slides','beach mood activated',"eye clear, money finish"];
 
+colors= [];
+localColors=["red",'green','pink',"yellow"];
+Random;
 
  TaskForm: FormGroup= new FormGroup({
   newTask: new FormControl(null),
@@ -85,6 +88,8 @@ dummytasks=['bet boys for the money','Download slides','beach mood activated',"e
     // get user tasks
     taskManager.getTaskGroups(dataManager.getActiveUser().email,dataManager.getEntity()).subscribe(result=>{
       this.tasks = result;
+      this.generateColors();
+      console.log(this.colors);
       console.log(this.tasks, "these are the task");
     });
 
@@ -96,12 +101,24 @@ dummytasks=['bet boys for the money','Download slides','beach mood activated',"e
   ngOnInit(): void {
     //this.showSlidesAutomate();
     // this.showSlides(this.slideIndex);
+
   }
 
   ngAfterViewInit(){
 
     this.showSlidesAutomate();
 
+  }
+
+  generateColors(){
+    this.colors = [];
+    for (let i =0;i< this.tasks.length;i++) {
+      this.colors[i] = this.localColors[this.getColorIndex()];
+    }
+  }
+
+  getColorIndex(){
+    return Math.floor(Math.random() * this.localColors.length)
   }
 
   // muting a news tag
