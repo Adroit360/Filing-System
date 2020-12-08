@@ -254,9 +254,21 @@ p {
 
 @media only screen and (max-width: 845px) {
     .head {
-        display: block;
+        // display: block;
         margin: 0px;
         padding: 0px;
+    }
+    .back {
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        padding: 5px;
+        font-weight: bold;
+        border-radius: 50%;
+        box-sizing: border-box;
+        background: white;
+        margin-top: 15px;
+        margin-bottom: 10px;
     }
     // .ssp {
     //     display: none;
