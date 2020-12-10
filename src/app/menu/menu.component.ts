@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Output, ViewChild,Inject } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router'
 import { Section } from '../models/model';
 import { SectionService } from '../services/section.service';
@@ -7,6 +7,13 @@ import {MessengerService} from '../services/messenger.service';
 import { DirectoryService } from '../services/directory.service';
 import { Observable } from 'rxjs';
 import {AuthServiceService} from '../services/auth-service.service';
+import { HttpClient } from '@angular/common/http';
+import { DOCUMENT } from '@angular/common';
+
+import { ZoomMtg } from '@zoomus/websdk';
+ZoomMtg.preLoadWasm();
+ZoomMtg.prepareJssdk();
+
 
 @Component({
   selector: 'app-menu',
@@ -35,7 +42,7 @@ export class MenuComponent implements OnInit {
   hooks = [];
   nameSections = [];
 
-  constructor(private authManager:AuthServiceService,private directory:DirectoryService, private sectionService:SectionService, private router: Router, private route: ActivatedRoute,private msg:MessengerService, private data:DataService) {
+  constructor(public httpClient: HttpClient, @Inject(DOCUMENT) document,private authManager:AuthServiceService,private directory:DirectoryService, private sectionService:SectionService, private router: Router, private route: ActivatedRoute,private msg:MessengerService, private data:DataService) {
 
     this.entity = data.getEntity();
   }
@@ -174,7 +181,56 @@ export class MenuComponent implements OnInit {
 
   MeetingRoom(){
     console.log("we are meeting")
+
   }
+
+  getSignature() {
+    // this.httpClient.post(this.signatureEndpoint, {
+	  //   meetingNumber: this.meetingNumber,
+	  //   role: this.role
+    // }).toPromise().then((data: any) => {
+    //   if(data.signature) {
+    //     console.log("signature there is",data.signature)
+    //     this.startMeeting(data.signature)
+    //   } else {
+    //     console.log("no sign", data,"sign",data.signature)
+    //   }
+    // }).catch((error) => {
+    //   console.log("error",error)
+    // })
+  }
+
+  startMeeting(signature) {
+
+    document.getElementById('zmmtg-root').style.display = 'block'
+
+  //   ZoomMtg.init({
+  //     leaveUrl: this.leaveUrl,
+  //     isSupportAV: true,
+  //     success: (success) => {
+  //       console.log(success)
+  //       console.log('signature used in join',signature)
+  //       ZoomMtg.join({
+  //         signature: signature,
+  //         meetingNumber: this.meetingNumber,
+  //         userName: this.userName,
+  //         apiKey: this.apiKey,
+  //         userEmail: this.userEmail,
+  //         passWord: this.passWord,
+  //         success: (success) => {
+  //           console.log(success)
+  //         },
+  //         error: (error) => {
+  //           console.log("error here1",error)
+  //         }
+  //       })
+
+  //     },
+  //     error: (error) => {
+  //       console.log("error here2",error)
+  //     }
+  //   })
+   }
 
   }
 
