@@ -174,96 +174,56 @@ button:hover {
         background: #534e4e;
         display: none;
     }
-    // .heading {
-    //     margin-left: 3.19rem;
-    // }
     .login-container {
         display: contents;
-        // grid-auto-flow: column;
-        // grid-template-columns: 1fr 1fr;
-        // height: 100vh;
     }
 }
 
-
-/*
-@media screen and (max-width: 600px) {
-    form {
-        width: 100vw;
-        margin-left: 0px;
-    }
-    app-why-us {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 375px) {
-    .container {
-        padding: 1.5rem 0rem 0rem 0rem;
-    }
-    .login-box {
-        margin-left: 2rem;
-    }
-    form {
-        width: 100%;
-        margin-left: 0.4rem;
-    }
-    .heading {
-        margin-left: 2.4rem;
-    }
+@media screen and (max-width: 500px) {
     button {
-        margin-bottom: 0.50rem;
+        height: 40px;
+        width: 110px;
+        font-size: 17px;
+        margin-top: 11px;
     }
-    app-why-us {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 360px) {
-    .container {
-        padding: 0rem;
-        h3 {
-            font-size: 15px;
-        }
-    }
-    .email-checker {
-        margin-top: 0.31rem;
-        margin-right: 32px;
-        padding: 0px;
-        font-size: 11px;
+    h1 {
+        font-size: 25px;
     }
     input[type=email],
     input[type=password] {
-        padding: 0px 2px;
-        width: 100%;
+        height: 40px;
     }
     .psw {
-        font-size: 13px;
-    }
-    .signup {
-        font-size: 11px;
-    }
-    .login-box {
-        margin-left: 2rem;
-        margin-top: 1rem;
-    }
-    form {
-        width: 100%;
-        margin-left: 0.4rem;
-    }
-    .heading {
-        h3 {
-            font-size: 15px;
-        }
-        h1 {
-            font-size: 20px;
+        a {
+            color: #009CAA;
+            font-size: 12px;
         }
     }
-    button {
-        margin: 1.5rem auto;
-        height: 3rem;
-        width: 13rem;
-        font-size: 15px;
+    .change {
+        a {
+            font-size: 14px;
+        }
     }
+    .forgot-password {
+        display: block;
+        input {
+            height: 11px;
+            width: 11px;
+            margin-bottom: 10px;
+        }
+    }
+}
 
-}*/
+@media screen and (max-width: 400px) {
+    h1 {
+        font-size: 18px;
+    }
+    .change {
+        a {
+            font-size: 12px;
+        }
+    }
+    .forgot-password {
+        display: block;
+    }
+}
