@@ -42,13 +42,73 @@
         // box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
     }
     
+    .user-permissions__icons,
+    input {
+        display: none;
+    }
+    
     @media screen and (max-width: 800px) {
         .container {
             display: block;
             margin: 3rem 1rem;
             border-top-left-radius: 0rem;
         }
+        app-permissions {
+            display: none;
+        }
+        .user-permissions__icons,
+        label {
+            display: block;
+            z-index: 100;
+        }
         .user-permissions {
+            position: absolute;
+            top: 0px;
+            right: 2.6rem;
+            background: transparent;
+            span {
+                font-size: 3rem;
+                color: white;
+                padding: 10px;
+                border-radius: 50%;
+                box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.36);
+                -webkit-box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.36);
+                -moz-box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.36);
+            }
+        }
+        .user-perimissions__icons {
+            display: flex;
+            flex-direction: column;
             // display: none;
+            position: absolute;
+            right: 0.3rem;
+            top: 33rem;
+            transition: all .2s;
+            transform: scaleY(0);
+            opacity: 0;
+            transform-origin: bottom;
+            span {
+                margin: 1rem 0rem;
+            }
+        }
+        .add__task {
+            background: #459CE3;
+            transition: all 0.6s;
+        }
+        .email {
+            background: #81BE36;
+            transition: all 0.5s;
+        }
+        .more__horiz {
+            background: #000000;
+            margin-top: 1rem;
+            right: 0.3rem;
+            position: absolute;
+            top: 47rem;
+        }
+        #open-chat:checked~.user-perimissions__icons {
+            display: block;
+            transform: scaleY(1);
+            opacity: 1;
         }
     }

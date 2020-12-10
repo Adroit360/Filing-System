@@ -46,6 +46,11 @@ export class DashboardComponent implements OnInit,AfterViewInit {
     nav: true
   }
 
+
+colors= [];
+localColors=["red",'green','pink',"yellow"];
+Random;
+
  TaskForm: FormGroup= new FormGroup({
   newTask: new FormControl(null),
   Date: new FormControl(null)
@@ -83,6 +88,8 @@ export class DashboardComponent implements OnInit,AfterViewInit {
     // get user tasks
     taskManager.getTaskGroups(dataManager.getActiveUser().email,dataManager.getEntity()).subscribe(result=>{
       this.tasks = result;
+      this.generateColors();
+      console.log(this.colors);
       console.log(this.tasks, "these are the task");
     });
 
@@ -94,12 +101,24 @@ export class DashboardComponent implements OnInit,AfterViewInit {
   ngOnInit(): void {
     //this.showSlidesAutomate();
     // this.showSlides(this.slideIndex);
+
   }
 
   ngAfterViewInit(){
 
     this.showSlidesAutomate();
 
+  }
+
+  generateColors(){
+    this.colors = [];
+    for (let i =0;i< this.tasks.length;i++) {
+      this.colors[i] = this.localColors[this.getColorIndex()];
+    }
+  }
+
+  getColorIndex(){
+    return Math.floor(Math.random() * this.localColors.length)
   }
 
   // muting a news tag
@@ -160,31 +179,23 @@ document.getElementById('c-task').style.display="none";
 allDeleteTask(taskgrpId){
   document.getElementById("myModal").style.display='block';
   this.taskManager.removeTaskGroup(taskgrpId,this.dataManager.getActiveUser().email,this.dataManager.getEntity());
+
+
 }
 
 //DELETEING ALL TASK
 onAllDelete(){
   document.getElementById("myModal").style.display='none';
+  document.getElementById("task-content").style.display="flex";
+  document.getElementById("list-task").style.display="none";
+  document.getElementById("qwert").style.display="none";
+  document.getElementById("qwert1").style.display="none";
 }
 //NOT DELETING ALL TASK
 onCancelAll(){
   document.getElementById("myModal").style.display='none';
 }
-//setting a new task
-  // onSubmit(){
-  //   this.taskManager.newTask(this.dataManager.getActiveUser().email,{task:this.TaskForm.value.newTask,dueDate:this.TaskForm.value.Date,status:false},this.dataManager.getEntity())
-  //   document.getElementById("Modal-task").style.display="none";
-  //   document.getElementById("smth").style.display="block";
-  //   document.getElementById("files-a").style.display="none";
 
-  // }
-  //done with task
-  // Done(_task){
-
-  //   _task.done = true;
-  //   this.taskManager.updateTask(this.dataManager.getActiveUser().email,_task,this.dataManager.getEntity());
-
-  // }
 
   //DONE WITH TASK
   OnDoneTask(tk,status){
@@ -213,6 +224,7 @@ taskTab(){
   console.log(this.nameInputRef.nativeElement.value);
   document.getElementById("createTab").style.display="none";
   this.taskManager.newTaskGroup(this.nameInputRef.nativeElement.value,false,this.dataManager.getActiveUser().email,this.dataManager.getEntity());
+  this.nameInputRef.nativeElement.value="";
 }
   // unDone(_task){
   //   _task.done = false;

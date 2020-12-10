@@ -43,6 +43,13 @@
     span {
         color: white;
     }
+    h4 {
+        background-color: greenyellow;
+        padding: 6px;
+        border-radius: 20px;
+        font-size: 16px;
+        font-weight: 700;
+    }
 }
 
 #friends-list {
@@ -69,7 +76,7 @@
     border-bottom: 1px solid #fffffff6;
     // position: relative;
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 5fr auto;
     img,
     i {
         width: 50px;
@@ -93,6 +100,15 @@
             font-weight: lighter;
             color: rgba(0, 0, 0, 0.281);
         }
+    }
+    .notice {
+        background-color: green;
+        border-radius: 50px;
+        border: 1px solid;
+        height: 5px;
+        width: 5px;
+        margin-top: 20px;
+        margin-right: 5px;
     }
 }
 

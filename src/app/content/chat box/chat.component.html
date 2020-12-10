@@ -1,6 +1,12 @@
 <div>
     <div id="d-box" class="downbox" (click)="openChat()">
-        <h1>Chats</h1>
+        <div style="    display: flex;
+        align-items: baseline;
+        grid-gap: 5px;">
+            <h1>Chats</h1>
+            <h4>{{Num}}</h4>
+        </div>
+
         <span class="material-icons">
           keyboard_arrow_up
           </span>
@@ -24,8 +30,12 @@
                         <i *ngIf="!user.photo" class="fa fa-user-circle-o" aria-hidden="true"></i>
                         <img *ngIf="user.photo" src={{user.photo}} />
                         <div class="tttt">
+
                             <h6 *ngIf="user.firstName"><strong>{{user.firstName}} {{ user.lastName}}</strong></h6>
                             <span *ngIf="user.email">{{user.email}}</span>
+                        </div>
+                        <div class="notice">
+
                         </div>
                     </div>
                     <hr/>
@@ -60,7 +70,7 @@
             </div>
 
             <div id="sendMess" style="overflow: auto;
-                height: 590px;
+                height: 81.8%;
             ">
                 <div id="chat-messages" *ngFor="let chat of chats[chatRecipient.email]">
 

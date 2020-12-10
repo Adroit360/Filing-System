@@ -16,7 +16,8 @@ export class ChatComponent implements OnInit {
   chats:any={};
   currentUser:string;
   currentUserPhoto:any;
-
+  Num="6";
+  mySound;
   constructor(private entityManager:EntitiesService,private dataManager:DataService) {
     entityManager.getEntityUsers(dataManager.getEntity()).subscribe(result=>this.entityUsers = result);
     this.currentUser = this.dataManager.getActiveUser().email;
@@ -25,9 +26,17 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  //SOUND FOR CHAT
+  onSound(){
+    let audio = new Audio();
+    audio.src = "../../../assets/notification.mp3";
+    audio.load();
+    audio.play();
+  }
+//OPeningthe chat list
   openChat(){
     document.getElementById('friends-list').style.display="block";
+    this.onSound ();
   }
 
   closeChat(){
@@ -36,6 +45,12 @@ export class ChatComponent implements OnInit {
   }
 
   async OpenChat(recipient){
+    var objDiv = document.getElementById("sendMess");
+    setTimeout(
+            ()=>{
+              objDiv.scrollTop = objDiv.scrollHeight;
+              // console.log(objDiv.scrollHeight);
+            },200)
 
     this.chatRecipient =  recipient;
 
@@ -44,20 +59,6 @@ export class ChatComponent implements OnInit {
       console.log("array already not exist")
     }else{console.log("email in array")}
     document.getElementById('chatview').style.display="flex";
-
-    var objDiv = document.getElementById("sendMess");
-    setTimeout(
-            ()=>{
-              objDiv.scrollTop = objDiv.scrollHeight;
-              // console.log(objDiv.scrollHeight);
-            },200)
-
-    //  setTimeout(()=>{
-    // let element =  document.getElementById("sendMess");
-    //   let scrollHeight = element.scrollHeight + 100;
-    //   console.log("scrollHeight",scrollHeight);
-    //   element.scrollTo(0,-scrollHeight);
-    //  },200)
 
 
   }
