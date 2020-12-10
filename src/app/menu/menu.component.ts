@@ -42,6 +42,16 @@ export class MenuComponent implements OnInit {
   hooks = [];
   nameSections = [];
 
+  // video chat configuration
+  signatureEndpoint = 'https://konvy.herokuapp.com/'
+  apiKey = 'vhRU1GZxTAGEKoC6YhM18g'
+  meetingNumber = '85959080319'
+  role = 0
+  leaveUrl = 'http://localhost:4200'
+  userName = 'Angular'
+  userEmail = 'info.adroit360@gmail.com'
+  passWord = 'wM2fhB'
+
   constructor(public httpClient: HttpClient, @Inject(DOCUMENT) document,private authManager:AuthServiceService,private directory:DirectoryService, private sectionService:SectionService, private router: Router, private route: ActivatedRoute,private msg:MessengerService, private data:DataService) {
 
     this.entity = data.getEntity();
@@ -181,55 +191,55 @@ export class MenuComponent implements OnInit {
 
   MeetingRoom(){
     console.log("we are meeting")
-
+    this.getSignature();
   }
 
   getSignature() {
-    // this.httpClient.post(this.signatureEndpoint, {
-	  //   meetingNumber: this.meetingNumber,
-	  //   role: this.role
-    // }).toPromise().then((data: any) => {
-    //   if(data.signature) {
-    //     console.log("signature there is",data.signature)
-    //     this.startMeeting(data.signature)
-    //   } else {
-    //     console.log("no sign", data,"sign",data.signature)
-    //   }
-    // }).catch((error) => {
-    //   console.log("error",error)
-    // })
+    this.httpClient.post(this.signatureEndpoint, {
+	    meetingNumber: this.meetingNumber,
+	    role: this.role
+    }).toPromise().then((data: any) => {
+      if(data.signature) {
+        console.log("signature there is",data.signature)
+        this.startMeeting(data.signature)
+      } else {
+        console.log("no sign", data,"sign",data.signature)
+      }
+    }).catch((error) => {
+      console.log("error",error)
+    })
   }
 
   startMeeting(signature) {
 
     document.getElementById('zmmtg-root').style.display = 'block'
 
-  //   ZoomMtg.init({
-  //     leaveUrl: this.leaveUrl,
-  //     isSupportAV: true,
-  //     success: (success) => {
-  //       console.log(success)
-  //       console.log('signature used in join',signature)
-  //       ZoomMtg.join({
-  //         signature: signature,
-  //         meetingNumber: this.meetingNumber,
-  //         userName: this.userName,
-  //         apiKey: this.apiKey,
-  //         userEmail: this.userEmail,
-  //         passWord: this.passWord,
-  //         success: (success) => {
-  //           console.log(success)
-  //         },
-  //         error: (error) => {
-  //           console.log("error here1",error)
-  //         }
-  //       })
+    ZoomMtg.init({
+      leaveUrl: this.leaveUrl,
+      isSupportAV: true,
+      success: (success) => {
+        console.log(success)
+        console.log('signature used in join',signature)
+        ZoomMtg.join({
+          signature: signature,
+          meetingNumber: this.meetingNumber,
+          userName: this.userName,
+          apiKey: this.apiKey,
+          userEmail: this.userEmail,
+          passWord: this.passWord,
+          success: (success) => {
+            console.log(success)
+          },
+          error: (error) => {
+            console.log("error here1",error)
+          }
+        })
 
-  //     },
-  //     error: (error) => {
-  //       console.log("error here2",error)
-  //     }
-  //   })
+      },
+      error: (error) => {
+        console.log("error here2",error)
+      }
+    })
    }
 
   }
