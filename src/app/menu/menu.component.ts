@@ -223,9 +223,9 @@ export class MenuComponent implements OnInit {
         ZoomMtg.join({
           signature: signature,
           meetingNumber: this.meetingNumber,
-          userName: this.userName,
+          userName: this.data.getActiveUser().firstName,
           apiKey: this.apiKey,
-          userEmail: this.userEmail,
+          userEmail: this.data.getActiveUser().email,
           passWord: this.passWord,
           success: (success) => {
             console.log(success)
