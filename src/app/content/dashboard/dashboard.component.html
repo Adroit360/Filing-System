@@ -126,9 +126,9 @@
 
         <div id="task-content">
 
-            <div *ngFor="let taskgrp of tasks;let i = index" class="task-tab" (click)="Tab(taskgrp)">
+            <div *ngFor="let taskgrp of tasks;let i = index" class="task-tab" >
                 <div class="vl" [ngStyle]="{'color': colors[i]}"></div>
-                <div class="t-side">
+                <div class="t-side" (click)="Tab(taskgrp)">
                     <h3>{{taskgrp.name}}</h3>
                     <h5>{{taskgrp.count}} out of {{taskgrp.tasks.length}} Tasks complete</h5>
                 </div>
@@ -148,13 +148,15 @@
 
         </div>
 
-        <div id="list-task">
+        
+        <div id="list-task" >
+            <div *ngIf="activeTaskGrp">
             <div>
                 <ul class="table-list">
                     <div>
                         <li id='c-task' style="display: none;">
 
-                            <form class="f-form" [formGroup]="TaskForm" (ngSubmit)="SubmitTask()">
+                            <form class="f-form" [formGroup]="TaskForm" (ngSubmit)="newTask()">
                                 <div class="f-side">
                                     <input type="text" placeholder="create task" formControlName="newTask" />
                                     <input type="Date" placeholder="Date" formControlName="Date" />
@@ -164,25 +166,26 @@
                         </li>
                     </div>
 
-                    <li *ngFor="let item of dummytasks">
-                        <div class="f-side">
+                    <li *ngFor="let tk of activeTaskGrp.tasks">
+                        <div class="f-side" style="font-size: 14px;">
 
-                            <h3>{{item}}</h3>
-                            <h5>pending</h5>
-                            <h3>date</h3>
+                            <h3>{{tk.task}}</h3>
+                            <h5 *ngIf="!tk.done" style="color:red">Pending...</h5>
+                            <h5 *ngIf="tk.done"  style="color:green">Done</h5>
+                            <h6>{{tk.dueDate}}</h6>
                         </div>
                         <div class="s-side">
 
                             <h6 smart-tooltip-container class="clicktoshow">
                                 <img src="../../../assets/dots.png" style="height: 35px; width: 35px;">
                                 <span class="smart-tooltip overlay">
-                                    <h4 style="color: white;" (click)="OnDoneTask()">Done</h4>
+                                    <h5 *ngIf="!tk.done" style="color: white;font-size: 14px;" (click)="OnDoneTask(tk,1)">Done</h5>
+                                    <h5 *ngIf="tk.done" style="color: white;font-size: 14px;" (click)="OnDoneTask(tk,2)">Undone</h5>
                                     <hr/>
-                                    <h4 style="color: white;" (click)="DeleteTask()">Delete</h4>
+                                    <h5 style="color: white;font-size: 14px;" (click)="DeleteTask(tk)">Delete</h5>
                                 </span>
                             </h6>
                         </div>
-
                     </li>
                 </ul>
             </div>
@@ -198,6 +201,7 @@
                         <button style="background-color: rgb(39, 144, 163); border-color: rgb(192, 247, 111); " (click)=" onCancelAll()">No</button>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>

@@ -25,14 +25,21 @@
                         "aot": true,
                         "assets": [
                             "src/favicon.ico",
-                            "src/assets"
+                            "src/assets",
+                            {
+                                "glob": "**/*",
+                                "input": "./node_modules/@zoomus/websdk/dist/lib/",
+                                "output": "./node_modules/@zoomus/websdk/dist/lib/"
+                              }
                         ],
                         "styles": [
                             "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
                             "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
-                            "src/styles.scss"
+                            "src/styles.scss",
+                            "node_modules/@zoomus/websdk/dist/css/bootstrap.css",
+                            "node_modules/@zoomus/websdk/dist/css/react-select.css"
                         ],
-                        "scripts": []
+                        "scripts": [ "node_modules/jquery/dist/jquery.min.js"]
                     },
                     "configurations": {
                         "production": {

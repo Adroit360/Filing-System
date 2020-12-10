@@ -46,7 +46,6 @@ export class DashboardComponent implements OnInit,AfterViewInit {
     nav: true
   }
 
-dummytasks=['bet boys for the money','Download slides','beach mood activated',"eye clear, money finish"];
 
 colors= [];
 localColors=["red",'green','pink',"yellow"];
@@ -69,6 +68,7 @@ Random;
  date;
  slideIndex: number = 1;
  slideIndexAutomate = 0;
+ taskGroups:any=[];
 
  @ViewChild ('createTab') nameInputRef: ElementRef;
 
@@ -138,11 +138,13 @@ Random;
 //openeing a task group
 activeTaskGrp:any;
 Tab(taskGrp){
+  document.getElementById("list-task").style.display="block";
+  this.activeTaskGrp = taskGrp;
   document.getElementById("task-content").style.display="none";
   document.getElementById("qwert").style.display="block";
-  document.getElementById("list-task").style.display="block";
+  // document.getElementById("list-task").style.display="block";
   document.getElementById("qwert1").style.display="flex";
-  this.activeTaskGrp = taskGrp;
+  
 }
 
 //back
@@ -158,11 +160,17 @@ back(){
 //create Task
 createTask(){
   document.getElementById('c-task').style.display="block";
+  document.getElementById("list-task").style.display="block";
 }
 
 //Submitting task
-SubmitTask(){
+newTask(){
 console.log(this.TaskForm.value)
+let taskObj={task:this.TaskForm.value.newTask,dueDate:new Date(this.TaskForm.value.Date).toDateString(),status:false};
+console.log(taskObj);
+this.taskManager.newTask(this.dataManager.getActiveUser().email,taskObj,this.activeTaskGrp.id,this.dataManager.getEntity());
+// get user tasks
+this.Tab(this.activeTaskGrp);
 document.getElementById('c-task').style.display="none";
 
 }
@@ -190,12 +198,20 @@ onCancelAll(){
 
 
   //DONE WITH TASK
-  OnDoneTask(){
-    console.log("done");
+  OnDoneTask(tk,status){
+    if(status=="1"){
+      tk.done=true;
+    }else if(status=="2"){
+      tk.done=false;
+    }
+    
+    this.taskManager.updateTask(this.dataManager.getActiveUser().email,tk,this.activeTaskGrp.id,this.dataManager.getEntity());
   }
+
 //DELETE A SINGLE TASK
-DeleteTask(){
+DeleteTask(tk){
   console.log("delete");
+  this.taskManager.removeTask(this.dataManager.getActiveUser().email,tk,this.activeTaskGrp.id,this.dataManager.getEntity());
 }
 
 //TAB CREATE
