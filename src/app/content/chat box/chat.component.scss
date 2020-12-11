@@ -330,3 +330,26 @@
 #sendmessage button:focus {
     outline: 0;
 }
+
+@media screen and (max-width: 800px) {
+    .downbox {
+        display: block;
+    }
+    .chatbox {
+        display: block;
+    }
+    #chatview,
+    #friends-list {
+        right: 14rem;
+        width: 60%;
+        top: 10rem;
+    }
+    #search {
+        position: fixed;
+        bottom: 6.5rem;
+        input {
+            width: 44rem;
+            height: 3rem;
+        }
+    }
+}

@@ -1,29 +1,36 @@
-<div class="Mycontainer">
-    <h1>Approvals </h1>
-    <div class="options">
-        <div class="sent-recieve">
-            <a [ngClass]="{'active': showSent}" (click)="onSentClicked()">Sent</a>
-            <div class="msgs" (click)="onReceivedClicked()">
-                <a [ngClass]="{'active': showReceived}">Received </a>
-                <p *ngIf="unapprovedRequest>0" [ngStyle]="{'opacity': numvan}">{{unapprovedRequest}}</p>
-            </div>
+<input type="checkbox" id="open-permissions" [checked]="togglePermissions">
+<div class="container">
+    <div class="close" (click)="onCloseApproval()">
+        <span class="material-icons">
+        clear
+        </span>
+    </div>
+    <div class="approvals-container">
+        <h1>Approvals </h1>
+        <div class="options">
+            <div class="sent-recieve">
+                <a [ngClass]="{'active': showSent}" (click)="onSentClicked()">Sent</a>
+                <div class="msgs" (click)="onReceivedClicked()">
+                    <a [ngClass]="{'active': showReceived}">Received </a>
+                    <p *ngIf="unapprovedRequest>0" [ngStyle]="{'opacity': numvan}">{{unapprovedRequest}}</p>
+                </div>
 
+            </div>
+        </div>
+        <div class="d-container">
+            <!-- <div class="details" *ngFor="let item of permissionDetails">
+                <div class="user-details">
+                    <h2>{{item.email | truncate: 20}}</h2>
+                    <p>{{item.date}}</p>
+                    <p>Please grant me approval</p>
+                </div>
+                <i class="fa fa-check-circle"></i>
+            </div> -->
+            <app-sent *ngIf="showSent"></app-sent>
+            <app-received *ngIf="showReceived"></app-received>
         </div>
     </div>
-    <div class="d-container">
-        <!-- <div class="details" *ngFor="let item of permissionDetails">
-            <div class="user-details">
-                <h2>{{item.email | truncate: 20}}</h2>
-                <p>{{item.date}}</p>
-                <p>Please grant me approval</p>
-            </div>
-            <i class="fa fa-check-circle"></i>
-        </div> -->
-        <app-sent *ngIf="showSent"></app-sent>
-        <app-received *ngIf="showReceived"></app-received>
-    </div>
-
-    <app-chat></app-chat>
-
 
 </div>
+<input type="checkbox" id="open-chatbox" [checked]="toggleChat">
+<app-chat></app-chat>

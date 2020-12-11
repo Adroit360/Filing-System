@@ -23,3 +23,10 @@ i {
     color: #71B71B;
     cursor: pointer;
 }
+
+.actions {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+}

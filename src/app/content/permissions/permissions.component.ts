@@ -1,3 +1,4 @@
+import { SectionService } from 'src/app/services/section.service';
 import { Component, OnInit } from '@angular/core';
 import { ApprovalService } from '../../services/approval.service';
 import { DataService } from '../../services/data.service';
@@ -14,10 +15,12 @@ export class PermissionsComponent implements OnInit {
   currentUser:string;
   receivedRequests:any;
   unapprovedRequest=0;
+  togglePermissions: boolean;
+  toggleChat: boolean;
 
 
 
-  constructor(private approvalManager: ApprovalService,private userVolatileData:DataService) {
+  constructor(private approvalManager: ApprovalService,private userVolatileData:DataService, private sectionService: SectionService) {
     this.currentUser = userVolatileData.getActiveUser().email;
     approvalManager.GetReceiveRequest(this.currentUser,userVolatileData.getEntity()).subscribe(result=>{
       this.unapprovedRequest =0;
@@ -29,6 +32,15 @@ export class PermissionsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.sectionService.toggleChatAndAprovals.subscribe(data=>{
+      this.togglePermissions = data;
+      console.log(this.togglePermissions);
+    });
+
+    this.sectionService.toggleChat.subscribe(data => {
+      this.toggleChat = data;
+      console.log(this.toggleChat);
+    });
   }
 
   onSentClicked(){
@@ -41,7 +53,10 @@ export class PermissionsComponent implements OnInit {
     this.showSent= false;
     this.numvan=+!this.numvan
   }
-
+  onCloseApproval(){
+    this.togglePermissions = false;
+    console.log(this.togglePermissions);
+  }
 
 
 }

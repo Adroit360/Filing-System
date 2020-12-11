@@ -643,13 +643,13 @@ button {
         margin-bottom: 10px;
     }
     .task-caption {
-        display: contents;
+        display: flex;
     }
     #qwert1 {
         margin-top: 20px;
     }
     .table-list li {
-        display: block;
+        // display: block;
         height: auto;
     }
     .f-side {
