@@ -252,7 +252,7 @@ p {
     }
 }
 
-@media only screen and (max-width: 845px) {
+@media only screen and (max-width: 800px) {
     .head {
         // display: block;
         margin: 0px;
@@ -270,13 +270,29 @@ p {
         margin-top: 15px;
         margin-bottom: 10px;
     }
-    // .ssp {
-    //     display: none;
-    // }
-    // .add {
-    //     // display: inline;
-    //     visibility: hidden;
-    // }
+    .toggler {
+        position: absolute;
+        top: 2rem;
+        right: 2.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        .more-icon {
+            opacity: 1;
+            padding: .2rem;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 7px;
+            top: -6px;
+        }
+        #hiddenText {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
 }
 
 .modal {
