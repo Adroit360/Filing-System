@@ -53,8 +53,14 @@
             margin: 3rem 1rem;
             border-top-left-radius: 0rem;
         }
+        // .user-permissions {
+        //     width: 100%;
+        //     // z-index: 200;
+        // }
         app-permissions {
-            display: none;
+            //display: none;
+            // width: 50%;
+            // z-index: 200;
         }
         .user-permissions__icons,
         label {
@@ -64,7 +70,7 @@
         .user-permissions {
             position: absolute;
             top: 0px;
-            right: 2.6rem;
+            right: 0.1rem;
             background: transparent;
             span {
                 font-size: 3rem;
@@ -82,7 +88,11 @@
             // display: none;
             position: absolute;
             right: 0.3rem;
+<<<<<<< HEAD
             top: 41rem;
+=======
+            top: 45rem;
+>>>>>>> bba8ddf950c847d169948edcbcf70a6beaeaab2e
             transition: all .2s;
             transform: scaleY(0);
             opacity: 0;
@@ -104,11 +114,24 @@
             margin-top: 1rem;
             right: 0.3rem;
             position: absolute;
+<<<<<<< HEAD
             top: 55rem;
+=======
+            top: 60rem;
+>>>>>>> bba8ddf950c847d169948edcbcf70a6beaeaab2e
         }
         #open-chat:checked~.user-perimissions__icons {
             display: block;
             transform: scaleY(1);
             opacity: 1;
+        }
+        .app {
+            // display: block;
+            position: absolute;
+            right: 30rem;
+            margin: 20rem auto;
+            background: rgba(0, 0, 0, 0.21);
+            // width: 100%;
+            // right: 18rem;
         }
     }
