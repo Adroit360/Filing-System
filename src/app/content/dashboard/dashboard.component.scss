@@ -31,7 +31,7 @@
 
 .files {
     display: flex;
-    width: 95%;
+    width: 600px;
     height: 114px;
     background: #FFFFFF;
     border-radius: 20px;
@@ -224,7 +224,7 @@
 }
 
 .table-list {
-    height: 230px;
+    height: 185px;
     overflow: auto;
 }
 
@@ -233,7 +233,7 @@
     grid-template-columns: 1fr auto;
     grid-template: c;
     background: white;
-    height: 63px;
+    height: auto;
     border-radius: 15px;
     margin-top: 10px;
     padding: 10px 20px 10px 20px;
@@ -245,7 +245,7 @@
 .f-form {
     display: contents;
     input {
-        width: 40%;
+        width: 97%;
     }
 }
 
@@ -282,13 +282,13 @@
     border: 1px solid rgba(133, 132, 132, 0.445);
     border-radius: 10px;
     height: auto;
-    width: 31.9%;
+    width: 30%;
     display: flex;
     padding: 10px 4px 13px 10px;
     .vl {
         border-left: 10px solid;
         color: green;
-        height: 45px;
+        height: 100%;
         border-radius: 10px;
     }
     .v2 {
@@ -643,7 +643,7 @@ button {
         margin-bottom: 10px;
     }
     .task-caption {
-        display: contents;
+        display: flex;
     }
     #qwert1 {
         margin-top: 20px;
