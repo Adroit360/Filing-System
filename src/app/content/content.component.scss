@@ -1,8 +1,8 @@
     /*.folders {
     // border: 1px solid red;
 }*/
-    
-    .container {
+
+    .Mycontainer {
         //grid-area: main;
         border-top-left-radius: 3.13rem;
         background-color: #e5e5e5;
@@ -25,12 +25,12 @@
             width: 139vh;
             */
     }
-    
+
     .folders {
         height: calc(100vh - 6.8rem);
         // width: 60vw;
     }
-    
+
     .user-permissions {
         background: #ffffff;
         margin-top: 1.88rem;
@@ -41,14 +41,14 @@
         // -moz-box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
         // box-shadow: -1px -1px 5px -2px rgba(0, 0, 0, 0.75);
     }
-    
+
     .user-permissions__icons,
     input {
         display: none;
     }
-    
+
     @media screen and (max-width: 800px) {
-        .container {
+        .Mycontainer {
             display: block;
             margin: 3rem 1rem;
             border-top-left-radius: 0rem;

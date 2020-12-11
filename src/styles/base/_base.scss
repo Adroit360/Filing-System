@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -90,6 +90,27 @@ video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+}
+
+hr {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    border: 0 !important;
+    border-top: 1px solid rgb(17, 16, 16) !important;
+}
+
+* {
+    box-sizing: content-box !important;
 }
 
 

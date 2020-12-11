@@ -11,6 +11,8 @@
           keyboard_arrow_up
           </span>
     </div>
+
+    <!-- LISTS OF CHATS -->
     <div class="chatbox">
         <div id="friends-list">
 
@@ -47,6 +49,8 @@
             </div>
         </div>
     </div>
+
+    <!-- VIEWING A CHAT -->
     <div id="chatview">
         <div *ngIf="chatRecipient" style="width: 100%;">
             <div id="profile">
@@ -70,7 +74,7 @@
             </div>
 
             <div id="sendMess" style="overflow: auto;
-                height: 81.8%;
+                height: 80%;
             ">
                 <div id="chat-messages" *ngFor="let chat of chats[chatRecipient.email]">
 

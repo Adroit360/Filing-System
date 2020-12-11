@@ -4,7 +4,7 @@
             <img src="../../assets/konvy.png" alt="" srcset="">
         </div>
         <form [formGroup]="LogInForm" (ngSubmit)="onSubmit()">
-            <div class="container" [ngStyle]="{'grid-template-rows': isValid? '1fr 1fr 1fr 1fr 1fr 1fr':'2fr 1.4fr 1.4fr 1.4fr' }">
+            <div class="Mycontainer" [ngStyle]="{'grid-template-rows': isValid? '1fr 1fr 1fr 1fr 1fr 1fr':'2fr 1.4fr 1.4fr 1.4fr' }">
                 <h1>Login into your account</h1>
                 <span class="email-checker" *ngIf="errorMessage"> Email or Password is invalid. Please try again</span>
 

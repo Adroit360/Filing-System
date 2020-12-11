@@ -7,7 +7,7 @@
     padding: 10px 36px;
 }
 
-.container {
+.Mycontainer {
     display: flex;
     flex-direction: column;
 }
@@ -37,15 +37,15 @@
         font-size: 20px;
         padding-top: 10px;
         padding-bottom: 20px;
-        padding-left:30px;
+        padding-left: 30px;
     }
 }
 
 .header {
-    h2{
+    h2 {
         font-size: 20px;
         font-weight: bold;
-        padding-left:30px;
+        padding-left: 30px;
     }
 }
 
@@ -54,7 +54,6 @@
     border-radius: 15px;
     margin-bottom: 1rem;
 }
-
 
 // .right-side {
 //     cursor: pointer;
