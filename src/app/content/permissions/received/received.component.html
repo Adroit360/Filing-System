@@ -7,7 +7,9 @@
         <p>{{item.dateCreated}}</p>
 
     </div>
-    <a [href]="item.documentUrl"><i class="fa fa-download" style="color: black;" ></i></a>
-    <i *ngIf="!item.approvalStatus" class="fa fa-thumbs-up" (click)="onThumbClicked( item)"></i>
+    <div class="actions">
+        <a [href]="item.documentUrl"><i class="fa fa-download" style="color: black;" ></i></a>
+        <i *ngIf="!item.approvalStatus" class="fa fa-thumbs-up" (click)="onThumbClicked( item)"></i>
+    </div>
 </div>
 <app-reply-approvals *ngIf="thumbClicked" (onResult)="onModalResult($event)"></app-reply-approvals>
