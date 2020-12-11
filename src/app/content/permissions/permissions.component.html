@@ -1,5 +1,10 @@
 <input type="checkbox" id="open-permissions" [checked]="togglePermissions">
 <div class="container">
+    <div class="close" (click)="onCloseApproval()">
+        <span class="material-icons">
+        clear
+        </span>
+    </div>
     <div class="approvals-container">
         <h1>Approvals </h1>
         <div class="options">
@@ -28,4 +33,4 @@
 
 </div>
 <input type="checkbox" id="open-chatbox" [checked]="toggleChat">
-<app-chat style="display: none;"></app-chat>
+<app-chat></app-chat>

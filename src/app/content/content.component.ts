@@ -54,12 +54,10 @@ export class ContentComponent implements OnInit {
     // this.sectionservice.displaysection;
   }
   onOpenChat(){
-    // this.openApprovals = !this.openApprovals;
-    // this.sectionService.onToggleMenu(this.openApprovals);
+   this.sectionService.onToggleChats(true);
  
   }
   onOpenApprovals(){
-    this.openApprovals = !this.openApprovals;
-    this.sectionService.onToggleApprovals(this.openApprovals);
+    this.sectionService.onToggleApprovals(true);
   }
 }
