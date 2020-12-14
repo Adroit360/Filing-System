@@ -79,7 +79,9 @@ Random;
     // get user recently accessed folders
     directoryManager.getRecentFolders(dataManager.getActiveUser().email,dataManager.getEntity()).subscribe(result=>{
       this.user = result;
-    })
+      this.dataManager.setCurrentRecentFolderLength(this.user.recentFolders.length);
+      this.dataManager.setFirstRecentFolder(this.user.recentFolders[0]);
+    });
     // get annoucements
     announceManager.getValidAnnouncements(dataManager.getEntity()).subscribe(result=>{
       this.announcements=result;
@@ -137,8 +139,11 @@ Random;
   }
 //openeing a task group
 activeTaskGrp:any;
+activeTaskArray:any=[];
 Tab(taskGrp){
   document.getElementById("list-task").style.display="block";
+  
+  this.activeTaskArray = taskGrp.tasks;
   this.activeTaskGrp = taskGrp;
   document.getElementById("task-content").style.display="none";
   document.getElementById("qwert").style.display="block";
@@ -172,11 +177,14 @@ newTask(){
 console.log(this.TaskForm.value)
 let taskObj={task:this.TaskForm.value.newTask,dueDate:new Date(this.TaskForm.value.Date).toDateString(),status:false};
 console.log(taskObj);
-this.taskManager.newTask(this.dataManager.getActiveUser().email,taskObj,this.activeTaskGrp.id,this.dataManager.getEntity());
+this.taskManager.newTask(this.dataManager.getActiveUser().email,taskObj,this.activeTaskGrp.id,this.dataManager.getEntity()).subscribe(result=>{
+  result.forEach(task=>{if (task.id==this.activeTaskGrp.id){this.activeTaskArray=task.tasks;} });
+});
 // get user tasks
 this.Tab(this.activeTaskGrp);
 document.getElementById('c-task').style.display="none";
-
+// reset task name field to null
+// this.TaskForm.value.newTask=null;
 }
 
 //DELETEING ALL TASK modal

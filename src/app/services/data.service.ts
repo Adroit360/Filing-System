@@ -131,4 +131,24 @@ export class DataService {
     setEditUSerInfo(item:User){
       this.EditUser.next({details: item});
     }
+
+    numberOfRecentFolders:number=0;
+    firstRecentFolder:any;
+    setCurrentRecentFolderLength(value:number){
+      this.numberOfRecentFolders=value;
+      console.log("number of recent fold",this.numberOfRecentFolders);
+    }
+
+    getCurrentRecentFolderLength(){
+      return this.numberOfRecentFolders;
+    }
+
+    setFirstRecentFolder(folder:any){
+      this.firstRecentFolder = folder;
+      console.log("first folder",this.firstRecentFolder);
+    }
+
+    getFirstRecentFolder(){
+      return this.firstRecentFolder;
+    }
 }
