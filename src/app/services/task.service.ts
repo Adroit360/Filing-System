@@ -49,7 +49,13 @@ export class TaskService implements NewTask {
 
   // remove task
   removeTask(user,_task,taskGrp, entity){
+    // decrease task completed by one
+    if(_task.done){
+      this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection(DbCollections.Tasks).doc(taskGrp).update({count:firebase.firestore.FieldValue.increment(-1) });
+    }
+    // remove task from task group
     this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection(DbCollections.Tasks).doc(taskGrp).update({tasks: this.arrayRemove(_task)});
+   
     return this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection(DbCollections.Tasks).valueChanges();
   } 
   
@@ -59,7 +65,13 @@ export class TaskService implements NewTask {
     this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection(DbCollections.Tasks).doc(taskGrp).get().subscribe(result=>{
       result.data().tasks.forEach(task => {
         if (task.id == _task.id){
-          task.done = _task.done;
+          this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection(DbCollections.Tasks).doc(taskGrp).update({tasks: this.arrayRemove(task)});
+          this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection(DbCollections.Tasks).doc(taskGrp).update({tasks: this.arrayUnion(_task)});
+          if(_task.done){
+            this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection(DbCollections.Tasks).doc(taskGrp).update({count:firebase.firestore.FieldValue.increment(1) });
+          }else{
+            this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection(DbCollections.Tasks).doc(taskGrp).update({count:firebase.firestore.FieldValue.increment(-1) });
+          }
         }
       });
     });

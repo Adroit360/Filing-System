@@ -183,7 +183,8 @@ this.taskManager.newTask(this.dataManager.getActiveUser().email,taskObj,this.act
 // get user tasks
 this.Tab(this.activeTaskGrp);
 document.getElementById('c-task').style.display="none";
-
+// reset task name field to null
+// this.TaskForm.value.newTask=null;
 }
 
 //DELETEING ALL TASK modal
