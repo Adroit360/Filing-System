@@ -20,17 +20,24 @@ export class LoginComponent implements OnInit {
   errorMessage:string ="";
   // user:User;
   generalSection:any;
+  user;
 
-  constructor(private route: Router,private authService:AuthServiceService,private userInfo:DataService,private msg:MessengerService,private sectionService:SectionService) { }
+  constructor(private route: Router,private authService:AuthServiceService,private userInfo:DataService,private msg:MessengerService,private sectionService:SectionService) {
+
+  }
 
   ngOnInit(): void {
+
     // this.getGeneralSection();
     this.LogInForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, Validators.required),
       rememberMe: new FormControl(null),
     });
+
+
   }
+
 
   // async getGeneralSection(){
 
@@ -42,6 +49,7 @@ export class LoginComponent implements OnInit {
     await this.authService.SignIn(this.LogInForm.value.email,this.LogInForm.value.password).then(async ()=>{
        let userobj =  await this.msg.getSystemUser(email);
 
+       this.user=userobj;
        console.log("lgoing",userobj.entity);
       //  set user info as volatile data in the data service (to make user details accessible at runtime)
        await this.userInfo.setActiveUser(userobj);
@@ -50,8 +58,10 @@ export class LoginComponent implements OnInit {
       //  set default section and directory
       this.userInfo.setCurrentSection(this.generalSection.id,"general");
       this.userInfo.setCurrentDirectory(this.generalSection.id,"general");
-      //  navigate to homepage if login is valid
-      // this.route.navigate(["home/content/"+userobj.entity+"/"+this.generalSection.id+"/"+this.generalSection.name+"/"+this.generalSection.id+"/"+this.generalSection.name]);
+
+      //Local storage
+      localStorage.setItem("user", JSON.stringify(this.user));
+     // route to the dashboard
       this.route.navigate(["home/content/dashboard"]);
     }).catch(err=>{
       this.errorMessage = err.message;

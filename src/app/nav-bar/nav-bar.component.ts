@@ -24,7 +24,7 @@ export class NavBarComponent implements OnInit {
       this.entityManager._getEntityUser(this.dataManager.getActiveUser().email,this.dataManager.getEntity()).subscribe(result=>{
         this.user = result;
       })
-      
+
      }
 
   ngOnInit(): void {
@@ -38,6 +38,7 @@ export class NavBarComponent implements OnInit {
   // routes to the log in page
   onLogOut(){
     this.authManager.SignOut();
+    localStorage.clear();
     this.router.navigate(["login"]);
   }
 
@@ -56,7 +57,7 @@ export class NavBarComponent implements OnInit {
       console.log(e)
       // let input = <any>document.querySelector('#file-upload');
       document.getElementById("file-upload").click();
-      
+
   }
 
   onChange(event){
