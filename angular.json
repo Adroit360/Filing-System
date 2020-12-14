@@ -30,7 +30,7 @@
                                 "glob": "**/*",
                                 "input": "./node_modules/@zoomus/websdk/dist/lib/",
                                 "output": "./node_modules/@zoomus/websdk/dist/lib/"
-                              }
+                            }
                         ],
                         "styles": [
                             "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
@@ -39,7 +39,7 @@
                             "node_modules/@zoomus/websdk/dist/css/bootstrap.css",
                             "node_modules/@zoomus/websdk/dist/css/react-select.css"
                         ],
-                        "scripts": [ "node_modules/jquery/dist/jquery.min.js"]
+                        "scripts": ["node_modules/jquery/dist/jquery.min.js"]
                     },
                     "configurations": {
                         "production": {
@@ -93,7 +93,7 @@
                         "tsConfig": "tsconfig.spec.json",
                         "karmaConfig": "karma.conf.js",
                         "assets": [
-                            "src/favicon.ico",
+                            "src/Konvy.png",
                             "src/assets"
                         ],
                         "styles": [
