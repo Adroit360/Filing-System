@@ -58,5 +58,8 @@ export class PermissionsComponent implements OnInit {
     console.log(this.togglePermissions);
   }
 
+  closeAppChat(){
+    this.toggleChat = false;
+  }
 
 }

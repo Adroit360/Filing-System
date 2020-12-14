@@ -9,21 +9,6 @@
         display: grid;
         grid-auto-flow: column;
         grid-template-columns: 3fr 1fr;
-        // display: flex;
-        // flex-direction: row;
-        //     @media screen and (max-width: 800px) {
-        //         grid-template-columns: auto;
-        //     }
-        /*
-            border-top-left-radius: 3.13rem;
-            background-color: #E5E5E5;
-            position: fixed;
-            display: grid;
-            grid-auto-flow: column;
-            grid-template-columns: 3fr 1fr;
-            width: 80%;
-            width: 139vh;
-            */
     }
     
     .folders {
@@ -125,5 +110,14 @@
             background: rgba(0, 0, 0, 0.21);
             // width: 100%;
             // right: 18rem;
+        }
+    }
+    
+    @media screen and (max-width: 350px) {
+        .user-perimissions__icons {
+            top: 33rem;
+        }
+        .more__horiz {
+            top: 47rem;
         }
     }

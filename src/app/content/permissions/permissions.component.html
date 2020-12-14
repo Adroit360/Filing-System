@@ -33,4 +33,11 @@
 
 </div>
 <input type="checkbox" id="open-chatbox" [checked]="toggleChat">
-<app-chat></app-chat>
+<div class="app-chat">
+    <div class="close" (click)="closeAppChat()">
+        <span class="material-icons">
+        clear
+        </span>
+    </div>
+    <app-chat></app-chat>
+</div>

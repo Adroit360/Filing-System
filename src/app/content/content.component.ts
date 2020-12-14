@@ -14,30 +14,11 @@ export class ContentComponent implements OnInit {
   displaySection:string
   openApprovals: boolean=false;
   isMobile = false;
-  // Declare height and width variables
-  scrHeight:any;
-  scrWidth:any;
+  
 
-  @HostListener('window:resize', ['$event'])
-  getScreenSize(event?) {
-        this.scrHeight = window.innerHeight;
-        this.scrWidth = window.innerWidth;
-        console.log(this.scrHeight, this.scrWidth);
-        return this.scrWidth;
-        
-  }
 
   constructor(private userInfo:DataService, private sectionService:  SectionService) {
       userInfo.getAccessList();
-      let width:any = this.getScreenSize();
-      if (width<=800){
-        this.isMobile = true;
-        console.log(this.isMobile);
-      }
-      else{
-        this.isMobile = false;
-        console.log(this.isMobile);
-      }
       
    }
 
@@ -55,9 +36,11 @@ export class ContentComponent implements OnInit {
   }
   onOpenChat(){
    this.sectionService.onToggleChats(true);
+   
  
   }
   onOpenApprovals(){
     this.sectionService.onToggleApprovals(true);
+    
   }
 }
