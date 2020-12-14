@@ -231,8 +231,12 @@ export class DirectoryService {
   //  set recently accessed folders
   private arrayUnion = firebase.firestore.FieldValue.arrayUnion;
   private arrayRemove = firebase.firestore.FieldValue.arrayRemove;
-  recentFolders(user,directory,entity){
-    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).update({recentFolders: this.arrayUnion(directory)})
+  recentFolders(user,directory,entity,firstFolder,numberOfFolders){
+    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).update({recentFolders: this.arrayUnion(directory)});
+    if(numberOfFolders>8){
+      this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).update({recentFolders: this.arrayRemove(firstFolder)});
+      console.log("deteleed")
+    }
   }
 
   // get recent folders

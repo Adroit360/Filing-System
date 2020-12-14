@@ -8,23 +8,12 @@
     </div>
 
     <!-- files -->
-    <div class="files">
+    <div class="files" *ngIf="user.recentFolders">
         <a *ngFor="let item of user.recentFolders">
             <div class="c-contianer">
                 <div (click)="onFolderClicked(item)" class="component">
                     <i class="fa fa-folder" style='font-size: 50px; color:  #459CE3;'></i>
                     <p>{{item.alias }}</p>
-
-                    <!-- <div class="toggler">
-                        <span id="more-icon" class="material-icons">arrow_drop_down</span>
-                        <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
-                <span class="smart-tooltip stick stay-down overlay" id="tooltip">
-                  <h4 (click)="onEdit()">Edit</h4>
-                  <hr/>
-                  <h4 (click)="onDelete()" >Delete</h4>
-                </span>
-                        </span>
-                    </div> -->
                 </div>
             </div>
 
@@ -166,7 +155,7 @@
                             </li>
                         </div>
 
-                        <li *ngFor="let tk of activeTaskGrp.tasks">
+                        <li *ngFor="let tk of activeTaskArray">
                             <div class="f-side" style="font-size: 14px;">
 
                                 <h3>{{tk.task}}</h3>

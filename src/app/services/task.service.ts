@@ -42,6 +42,7 @@ export class TaskService implements NewTask {
       done: taskObj.status
     };
     this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection(DbCollections.Tasks).doc(taskGrp).update({tasks: this.arrayUnion(_task)});
+    return this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection(DbCollections.Tasks).valueChanges();
   }
 
 
@@ -49,6 +50,7 @@ export class TaskService implements NewTask {
   // remove task
   removeTask(user,_task,taskGrp, entity){
     this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection(DbCollections.Tasks).doc(taskGrp).update({tasks: this.arrayRemove(_task)});
+    return this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection(DbCollections.Tasks).valueChanges();
   } 
   
 
