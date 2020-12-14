@@ -142,7 +142,7 @@ activeTaskGrp:any;
 activeTaskArray:any=[];
 Tab(taskGrp){
   document.getElementById("list-task").style.display="block";
-  
+
   this.activeTaskArray = taskGrp.tasks;
   this.activeTaskGrp = taskGrp;
   document.getElementById("task-content").style.display="none";
@@ -174,7 +174,7 @@ createTask(){
 
 //Submitting task
 newTask(){
-console.log(this.TaskForm.value)
+
 let taskObj={task:this.TaskForm.value.newTask,dueDate:new Date(this.TaskForm.value.Date).toDateString(),status:false};
 console.log(taskObj);
 this.taskManager.newTask(this.dataManager.getActiveUser().email,taskObj,this.activeTaskGrp.id,this.dataManager.getEntity()).subscribe(result=>{
@@ -182,6 +182,8 @@ this.taskManager.newTask(this.dataManager.getActiveUser().email,taskObj,this.act
 });
 // get user tasks
 this.Tab(this.activeTaskGrp);
+//reset from
+this.TaskForm.reset();
 document.getElementById('c-task').style.display="none";
 // reset task name field to null
 // this.TaskForm.value.newTask=null;
@@ -258,7 +260,15 @@ taskTab(){
     }
 
   }
+  // Closing a Task-tab
+  closeTab(){
+    document.getElementById("createTab").style.display="none";
+  }
 
+  // Canceling a new task
+  closeTask(){
+    document.getElementById("c-task").style.display="none";
+  }
   onAddAnnouncement(){
     console.log(this.NewsForm.value);
     document.getElementById("Modal-News").style.display="none";

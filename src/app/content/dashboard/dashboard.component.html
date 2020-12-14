@@ -125,10 +125,12 @@
 
             <!-- CREATING A TASK TAB -->
             <div class="task-tab" id="createTab" style="display: none;">
+                <h5 class="close-x" style="font-size: 22px;" (click)="closeTab()">x</h5>
                 <div class="v2"></div>
                 <div class="t-side">
                     <input type="text" placeholder="Name" (keydown.enter)="taskTab()" #createTab>
                 </div>
+
             </div>
 
             <span class="material-icons" (click)="onCreateTab()">
@@ -143,9 +145,10 @@
                 <div>
                     <ul class="table-list" id="TheTop">
                         <div>
-                            <li id='c-task' style="display: none;">
+                            <li id='c-task' style="display: none; position: relative;">
 
                                 <form class="f-form" [formGroup]="TaskForm" (ngSubmit)="newTask()">
+                                    <h5 class="close-x" style="font-size: 22px;" (click)="closeTask()">x</h5>
                                     <div class="f-side">
                                         <input type="text" placeholder="create task" formControlName="newTask" />
                                         <input type="Date" placeholder="Date" formControlName="Date" />

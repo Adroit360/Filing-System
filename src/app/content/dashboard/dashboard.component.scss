@@ -189,6 +189,17 @@
 
 /****Task Content********/
 
+.close-x {
+    position: absolute;
+    right: 8px;
+    top: 0px;
+}
+
+.close-x:hover {
+    cursor: pointer;
+    color: rgb(118, 118, 219);
+}
+
 #task-content {
     margin-top: 20px;
     background-color: white;
@@ -278,6 +289,7 @@
 }
 
 .task-tab {
+    position: relative;
     grid-gap: 15px;
     border: 1px solid rgba(133, 132, 132, 0.445);
     border-radius: 10px;
