@@ -144,7 +144,7 @@ Tab(taskGrp){
   document.getElementById("qwert").style.display="block";
   // document.getElementById("list-task").style.display="block";
   document.getElementById("qwert1").style.display="flex";
-  
+
 }
 
 //back
@@ -159,6 +159,10 @@ back(){
 
 //create Task
 createTask(){
+  let element =  document.getElementById("TheTop");
+  let scrollHeight = element.scrollHeight + 100;
+  console.log("scrollHeight",scrollHeight);
+  element.scrollTo(scrollHeight,0);
   document.getElementById('c-task').style.display="block";
   document.getElementById("list-task").style.display="block";
 }
@@ -204,7 +208,7 @@ onCancelAll(){
     }else if(status=="2"){
       tk.done=false;
     }
-    
+
     this.taskManager.updateTask(this.dataManager.getActiveUser().email,tk,this.activeTaskGrp.id,this.dataManager.getEntity());
   }
 

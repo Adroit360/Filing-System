@@ -83,7 +83,7 @@ input {
 }
 
 @media screen and (max-width: 800px) {
-    .container {
+    .Mycontainer {
         display: none;
     }
     .approvals-container {
@@ -127,7 +127,7 @@ input {
             padding: 0.4rem;
         }
     }
-    #open-permissions:checked~.container {
+    #open-permissions:checked~.Mycontainer {
         display: block;
         position: absolute;
         /* top: -219px; */
