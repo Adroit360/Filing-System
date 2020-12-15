@@ -36,7 +36,7 @@ export class ChatComponent implements OnInit {
 //OPeningthe chat list
   openChat(){
     document.getElementById('friends-list').style.display="block";
-    this.onSound ();
+   // this.onSound ();
   }
 
   closeChat(){

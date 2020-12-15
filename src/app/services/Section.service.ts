@@ -24,6 +24,8 @@ export class SectionService {
   toggleMenu = new Subject<boolean>();
   toggleChatAndAprovals = new Subject<boolean>();
   toggleChat = new Subject<boolean>();
+  toggleMenuBar = new Subject<boolean>();
+  ToggleCloseMenu= new Subject<boolean>();
   constructor(private afs:AngularFirestore) {
       this.sectionCollection = afs.collection<Section>('Sections',ref=> ref.orderBy('name'));
       this.sections = this.sectionCollection.valueChanges();
@@ -85,10 +87,16 @@ export class SectionService {
       this.toggleMenu.next(state);
     }
 
+    onToggleMenuBar(state: boolean){
+      this.toggleMenuBar.next(state);
+    }
     onToggleApprovals(state: boolean){
       this.toggleChatAndAprovals.next(state);
     }
     onToggleChats(state: boolean){
       this.toggleChat.next(state);
+    }
+    onToggleCloseMenu(state: boolean){
+      this.ToggleCloseMenu.next(state);
     }
 }

@@ -8,7 +8,8 @@
         <img src="../../assets/konvy.png" alt="" srcset="">
     </div>
     <div class="search-box">
-        <span class="material-icons"> search </span>
+        <input type="checkbox" name="searchbox" id="searchbox">
+        <label for="searchbox"><span class="material-icons"> search </span></label>
         <input type="search" name="search-box" id="search" placeholder="Search for a specific document" (keyup)="updateSearch($event.target.value)" />
     </div>
 

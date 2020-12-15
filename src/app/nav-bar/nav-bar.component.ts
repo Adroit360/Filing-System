@@ -31,7 +31,9 @@ export class NavBarComponent implements OnInit {
     this.sectionService.toggleMenu.subscribe(data=>{
       this.cross= data;
     });
-
+    this.sectionService.ToggleCloseMenu.subscribe(data=>{
+      this.showMenu= data;
+    });
 
   }
 
@@ -69,6 +71,8 @@ export class NavBarComponent implements OnInit {
 
   onToggleMenu(){
       this.cross = !this.cross;
+      this.showMenu = !this.showMenu;
+      this.sectionService.onToggleMenuBar(this.showMenu);
   }
 
 

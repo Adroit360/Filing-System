@@ -138,10 +138,17 @@ input {
         height: 120vh;
         z-index: 200;
     }
-    app-chat {
+    .app-chat {
         display: none;
     }
-    #open-chatbox:checked~app-chat {
+    #open-chatbox:checked~.app-chat {
         display: block;
+        background: rgba(0, 0, 0, 0.21);
+        position: absolute;
+        width: 100vw;
+        right: -30.1rem;
+        height: 120vh;
+        top: -22rem;
+        z-index: 210;
     }
 }
