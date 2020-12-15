@@ -177,7 +177,8 @@
         transform: rotate(45deg) translate(-8px, -8px);
     }
     #search {
-        width: 275px;
+        // width: 275px;
+        width: 89%;
         font-size: 11px;
     }
     .search-box {
@@ -194,6 +195,31 @@
     }
 }
 
+@media screen and (max-width: 650px) {
+    #search {
+        width: 247px;
+        font-size: 11px;
+        padding-left: 3.5rem;
+    }
+    .sidebar {
+        margin: 0 1rem;
+    }
+    .logo {
+        img {
+            margin: 10px 0 0 15px
+        }
+    }
+    .search-box {
+        margin-left: 2rem;
+    }
+    .notifications {
+        span,
+        img {
+            margin-right: 1rem;
+        }
+    }
+}
+
 @media screen and (max-width: 500px) {
     .sidebar {
         margin: 0 1rem;
@@ -202,7 +228,7 @@
         position: relative;
         span,
         img {
-            margin-right: 1rem;
+            margin-right: 2rem;
         }
     }
     .search-box {
@@ -211,8 +237,8 @@
         // top: 6rem;
         span {
             top: 17%;
-            margin-top: -18px;
-            margin-left: 19px;
+            // margin-top: -18px;
+            margin: -18px 40px;
             padding: 3px;
             text-align: center;
             border-radius: 50%;
@@ -222,7 +248,8 @@
         #search {
             display: none;
             position: absolute;
-            right: -8rem;
+            // right: -8rem;
+            right: -6rem;
             top: 3rem;
             width: 100vw;
             border-radius: 0px;
@@ -241,18 +268,26 @@
     }
 }
 
-@media screen and (max-width:350px) {
+@media screen and (max-width:400px) {
     .logo {
         .img {
             margin: 10px 0 0 15px;
         }
     }
     .search-box {
-        // position: absolute;
-        // right: 0rem;
-        // top: 6rem;
+        // span {
+        //     margin-left: -2.3rem;
+        // }
+        #search {
+            right: -6rem;
+        }
+    }
+}
+
+@media screen and (max-width:350px) {
+    .search-box {
         span {
-            margin-left: -2.3rem;
+            margin: -18px 0px;
         }
         #search {
             right: -6rem;

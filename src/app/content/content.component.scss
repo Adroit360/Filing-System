@@ -70,10 +70,10 @@
         .user-perimissions__icons {
             display: flex;
             flex-direction: column;
-            // display: none;
             position: absolute;
             right: 0.3rem;
-            top: 45rem;
+            // top: 45rem;
+            top: 67vh;
             transition: all .2s;
             transform: scaleY(0);
             opacity: 0;
@@ -95,7 +95,8 @@
             margin-top: 1rem;
             right: 0.3rem;
             position: absolute;
-            top: 60rem;
+            // top: 60rem;
+            top: 85vh;
         }
         #open-chat:checked~.user-perimissions__icons {
             display: block;
@@ -113,11 +114,13 @@
         }
     }
     
-    @media screen and (max-width: 350px) {
+    @media screen and (max-width: 400px) {
         .user-perimissions__icons {
-            top: 33rem;
+            top: 41rem;
+            top: 63vh;
         }
         .more__horiz {
-            top: 47rem;
+            // top: 55rem;
+            top: 80vh;
         }
     }

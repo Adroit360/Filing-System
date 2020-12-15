@@ -35,11 +35,15 @@ export class ContentComponent implements OnInit {
     // this.sectionservice.displaysection;
   }
   onOpenChat(){
+    let blackBox: any = document.querySelector('#open-chat');
+    blackBox.checked = false;
    this.sectionService.onToggleChats(true);
    
  
   }
   onOpenApprovals(){
+    let blackBox: any = document.querySelector('#open-chat');
+    blackBox.checked = false;
     this.sectionService.onToggleApprovals(true);
     
   }
