@@ -9,21 +9,6 @@
         display: grid;
         grid-auto-flow: column;
         grid-template-columns: 3fr 1fr;
-        // display: flex;
-        // flex-direction: row;
-        //     @media screen and (max-width: 800px) {
-        //         grid-template-columns: auto;
-        //     }
-        /*
-            border-top-left-radius: 3.13rem;
-            background-color: #E5E5E5;
-            position: fixed;
-            display: grid;
-            grid-auto-flow: column;
-            grid-template-columns: 3fr 1fr;
-            width: 80%;
-            width: 139vh;
-            */
     }
 
     .folders {
@@ -80,10 +65,10 @@
         .user-perimissions__icons {
             display: flex;
             flex-direction: column;
-            // display: none;
             position: absolute;
             right: 0.3rem;
-            top: 45rem;
+            // top: 45rem;
+            top: 67vh;
             transition: all .2s;
             transform: scaleY(0);
             opacity: 0;
@@ -105,7 +90,8 @@
             margin-top: 1rem;
             right: 0.3rem;
             position: absolute;
-            top: 60rem;
+            // top: 60rem;
+            top: 85vh;
         }
         #open-chat:checked~.user-perimissions__icons {
             display: block;
@@ -122,3 +108,17 @@
             // right: 18rem;
         }
     }
+<<<<<<< HEAD
+=======
+    
+    @media screen and (max-width: 400px) {
+        .user-perimissions__icons {
+            top: 41rem;
+            top: 63vh;
+        }
+        .more__horiz {
+            // top: 55rem;
+            top: 80vh;
+        }
+    }
+>>>>>>> 352d7712cc9c17aef5cbad753ce58d67945e653b
