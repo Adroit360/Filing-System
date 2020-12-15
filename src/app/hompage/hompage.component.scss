@@ -1,4 +1,4 @@
-.container {
+.Mycontainer {
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -41,7 +41,7 @@ input {
 /******************MEDIA QUERIES**************************/
 
 @media screen and (max-width: 800px) {
-    .container {
+    .Mycontainer {
         background-color: white;
         grid-template-areas: "head head head head head" "main main main main main" "main main main main main" "main main main main main" "main main main main main";
     }
