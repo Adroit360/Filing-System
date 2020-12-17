@@ -159,7 +159,7 @@ button:hover {
 
 /*****MEDIA QUERIES************/
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 800px) {
     .right-side {
         background: #534e4e;
         display: none;
@@ -172,5 +172,54 @@ button:hover {
         // grid-auto-flow: column;
         // grid-template-columns: 1fr 1fr;
         // height: 100vh;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    button {
+        height: 40px;
+        width: 110px;
+        font-size: 17px;
+        margin-top: 11px;
+    }
+    h1 {
+        font-size: 25px;
+    }
+    input[type=email],
+    input[type=password] {
+        height: 40px;
+    }
+    .psw {
+        a {
+            color: #009CAA;
+            font-size: 12px;
+        }
+    }
+    .change {
+        a {
+            font-size: 14px;
+        }
+    }
+    .forgot-password {
+        display: block;
+        input {
+            height: 11px;
+            width: 11px;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    h1 {
+        font-size: 18px;
+    }
+    .change {
+        a {
+            font-size: 12px;
+        }
+    }
+    .forgot-password {
+        display: block;
     }
 }
