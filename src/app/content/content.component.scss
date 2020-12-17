@@ -116,11 +116,26 @@
     
     @media screen and (max-width: 400px) {
         .user-perimissions__icons {
-            top: 41rem;
-            top: 63vh;
+            // top: 41rem;
+            top: 67vh;
         }
         .more__horiz {
             // top: 55rem;
             top: 80vh;
         }
     }
+    
+    // @media screen and (max-height: 800px) {
+    //     .user-perimissions__icons {
+    //         // top: 41rem;
+    //         top: 63vh;
+    //         // top: 71vh;
+    //     }
+    // }
+    // @media screen and (max-height: 1100px) {
+    //     .user-perimissions__icons {
+    //         // top: 41rem;
+    //         //  top: 63vh;
+    //         top: 71vh;
+    //     }
+    // }
