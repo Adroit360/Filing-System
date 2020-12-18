@@ -38,9 +38,12 @@
 
                     <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
         <span class="smart-tooltip stick stay-down overlay" id="tooltip">
-          <h4 (click)="onAdd()">Add</h4>
+          <h4 (click)="onAdd()" style="color: white; font-size: 12px;">Add</h4>
           <hr/>
-          <h4 (click)="onDelete()">Delete</h4>
+          <h4 (click)="onViewAll()" style="color: white; font-size: 12px;">View All</h4>
+          <hr/>
+          <!-- <h4 (click)="onDelete()" style="color: white ; font-size: 12px;">Delete</h4> -->
+
         </span>
 
                     </span>
@@ -49,6 +52,7 @@
 
 
             </div>
+            <!-- MOdal to add a new Announcement -->
             <div class="N-Modal" id="Modal-News">
                 <form [formGroup]='NewsForm' (ngSubmit)="onAddAnnouncement()">
                     <div class="S-top">
@@ -61,6 +65,22 @@
                     <textarea style="height: 100px;" type="Text" placeholder="Write Content...." formControlName="Content"></textarea>
                     <button type="submit"> ok</button>
                 </form>
+            </div>
+
+            <!-- pop up MOdal to view all Announcenment -->
+            <div id="lets-hide">
+                <div class="viewContainer">
+                    <div class="VC-head">
+                        <h1> All Announcements</h1>
+                        <h4 (click)="closeAllAnnounce()">X</h4>
+                    </div>
+                    <hr/>
+                    <div class="allannounce" *ngFor="let announce of announcements; let i=index">
+
+                        <h3>{{announce.title}}</h3>
+                        <h4 (click)="delAnnounce(announce.id)">x</h4>
+                    </div>
+                </div>
             </div>
         </div>
 

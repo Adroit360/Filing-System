@@ -129,10 +129,7 @@ Random;
     document.getElementById("Modal-News").style.display="grid";
     document.getElementById("npm").style.display="none";
   }
-// deleting
-  onDelete(){
-    console.log('delete');
-  }
+
 //Edditing folder
   onEdit(){
     console.log('edited');
@@ -282,6 +279,21 @@ taskTab(){
 
   }
 
+  //VIEWING ALL
+  onViewAll(){
+    document.getElementById("lets-hide").style.display="block";
+    document.getElementById("npm").style.display="none";
+  }
+  // Deleting Announcement
+  delAnnounce(id){
+    this.announceManager.removeAnnouncement(id,this.dataManager.getEntity());
+  }
+
+  // CLOSING THE POP-UP CONTENT
+  closeAllAnnounce(){
+    document.getElementById("npm").style.display="block";
+    document.getElementById("lets-hide").style.display="none";
+  }
 
 
 plusSlides(n) {
