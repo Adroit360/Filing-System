@@ -41,7 +41,7 @@
       id="hiddenText"
       class="material-icons clicktoshow"
       smart-tooltip-container [ngStyle]="{'opacity': showTooltip}">
-      <span class="smart-tooltip stick stay-down overlay" id="tooltip">
+      <span class="smart-tooltip stick stay-down overlay" id="Tooltip">
         <div *ngIf="item.itemType=='file'" class="text">
           <p >
             share
@@ -60,7 +60,7 @@
           </p>
         </div>
         <div *ngIf="item.itemType=='file'" class="text">
-          <p ><a href={{item.url}} download="item.name" style="color: white; text-decoration: none;">Download</a></p>
+          <p ><a href={{item.url}} download="item.name" style="color:black; text-decoration: none;">Download</a></p>
             </div>
             <div class="text" *ngIf="item.itemType=='file'">
                 <p (click)="onShowRequest(item ,i, $event)">Request Approval</p>
@@ -85,7 +85,7 @@
     </div>
     <app-request-approvals *ngIf="requestModal" (onResult)="onRequestModal($event)"></app-request-approvals>
     <div *ngIf="delfolder">
-        <div id="myModal" class="modal">
+        <div id="myModal" class="Modal">
 
             <div (click)="onModalDelete(false)" style=" position: absolute;left:0;top:0;width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4);z-index: -1; "></div>
             <!-- Modal content -->
@@ -98,3 +98,4 @@
             </div>
         </div>
     </div>
+</div>
