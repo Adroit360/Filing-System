@@ -271,6 +271,7 @@ taskTab(){
     document.getElementById("Modal-News").style.display="none";
     document.getElementById("npm").style.display="block";
     this.announceManager.newAnnouncement(this.NewsForm.value.Heading,this.NewsForm.value.Content,this.dataManager.getEntity());
+    
   }
 
   closeNews(){

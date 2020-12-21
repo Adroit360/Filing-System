@@ -85,7 +85,7 @@
         </div>
 
         <div class="slideshow-container">
-            <div class="mySlides fade" *ngFor="let announce of announcements; let i=index">
+            <div class="mySlides fade" *ngFor="let announce  of announcements; let i=index">
                 <div class="news-section">
                     <div class="newstext">
                         <div class="date-right">
@@ -95,7 +95,6 @@
                             <h3>{{announce.title}}</h3>
                             <h4>{{announce.content}}</h4>
                         </div>
-
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@
         align-items: baseline;
         grid-gap: 5px;">
             <h1>Chats</h1>
-            <h4>{{Num}}</h4>
+            <h4 *ngIf="unReadMessages">{{unReadMessages.length+1}}</h4>
         </div>
 
         <span class="material-icons">
