@@ -33,7 +33,8 @@ export class AppComponent implements OnInit {
   CheckingUser() {
     let _user = localStorage.getItem("user");
     if (!_user) {
-      this.router.navigate(["login"]);
+      //this.router.navigate(["login"]);
+      this.router.navigate(["welcome"]);
       console.log("no user");
     } else {
       console.log("user");
