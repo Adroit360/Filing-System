@@ -339,8 +339,8 @@
     }
     #chatview,
     #friends-list {
-        right: 14rem;
-        width: 60%;
+        right: 12rem;
+        width: 65%;
         top: 10rem;
     }
     #search {
@@ -365,4 +365,46 @@
         animation-name: "";
     }
     .chat-container {}
+}
+
+@media screen and (max-width: 620px) {
+    #chatview,
+    #friends-list {
+        right: 6rem;
+        width: 76%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #chatview,
+    #friends-list {
+        right: 4rem;
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #chatview,
+    #friends-list {
+        right: 1rem;
+        width: 90%;
+    }
+    #search input {
+        width: 86vw
+    }
+}
+
+// @media screen and (max-width: 450px) {
+//     #chatview,
+//     #friends-list {
+//         right: 1rem;
+//         width: 90%;
+//     }
+// }
+@media screen and (max-width: 350px) {
+    #chatview,
+    #friends-list {
+        right: 0.6rem;
+        width: 90%;
+    }
 }
