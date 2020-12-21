@@ -40,6 +40,7 @@
                             "node_modules/@zoomus/websdk/dist/css/react-select.css"
                         ],
                         "scripts": ["node_modules/jquery/dist/jquery.min.js"]
+
                     },
                     "configurations": {
                         "production": {
