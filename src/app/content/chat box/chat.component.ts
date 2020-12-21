@@ -19,6 +19,7 @@ export class ChatComponent implements OnInit {
   Num="6";
   mySound;
   unReadMessages: any=[];
+  unReadMessagesEmail:any=[];
 
   constructor(private entityManager:EntitiesService,private dataManager:DataService) {
     entityManager.getEntityUsers(dataManager.getEntity()).subscribe(result=>this.entityUsers = result);
@@ -28,6 +29,10 @@ export class ChatComponent implements OnInit {
     // get unread messages
     this.entityManager.getUnreadChats(this.currentUser,this.dataManager.getEntity()).subscribe(result=>{
       this.unReadMessages = result;
+      this.unReadMessagesEmail=[];
+      result.forEach(element => {
+        this.unReadMessagesEmail.push(element.sender);
+      });
       console.log("these are unread messages",this.unReadMessages);
     })
   }
@@ -45,6 +50,7 @@ export class ChatComponent implements OnInit {
 //OPeningthe chat list
   openChat(){
     document.getElementById('friends-list').style.display="block";
+    
     this.dataManager.set_Chatbox_to_open();
    // this.onSound ();
   }
@@ -93,6 +99,8 @@ export class ChatComponent implements OnInit {
 
   }
 
+  // variable checks first time chatbox is opened or not
+  firstTimeChatOpen:boolean=true;
   getMessage(targetUser){
         this.entityManager.getChatMessages(this.dataManager.getActiveUser().email,targetUser,this.dataManager.getEntity()).subscribe(result=>{
         this.chats[targetUser] = result;
@@ -105,12 +113,23 @@ export class ChatComponent implements OnInit {
           element.scrollTo(0,scrollHeight);
         },200)
 
-        // set message as read if chat area is open
-        console.log("chat area is ", this.dataManager.is_chatArea,result[result.length-1].receiver);
-        if(this.dataManager.is_chatArea && result[result.length-1].receiver==this.dataManager.getActiveUser().email){
-          this.entityManager.set_chat_as_read(result[result.length-1].id,this.dataManager.getActiveUser().email,this.dataManager.getEntity());
-          console.log("set last message as read");
+        // set message as read property is true if chat area is open
+        // console.log("chat area is ", this.dataManager.is_chatArea,result[result.length-1].receiver);
+        if(this.firstTimeChatOpen){
+          for(let i=0;i<this.unReadMessages.length;i++){
+            // if unread message list contains messages of target chat parner, update messages as read
+            if(this.unReadMessages[i].sender==targetUser){
+              this.entityManager.set_chat_as_read(this.unReadMessages[i].id,this.dataManager.getActiveUser().email,this.dataManager.getEntity());
+            }
+            console.log("all messages set");
+          }
+        }else{
+          if(this.dataManager.is_chatArea && result[result.length-1].receiver==this.dataManager.getActiveUser().email){
+            this.entityManager.set_chat_as_read(result[result.length-1].id,this.dataManager.getActiveUser().email,this.dataManager.getEntity());
+            console.log("set last message as read");
+          }
         }
+       
         });     
   }
 
