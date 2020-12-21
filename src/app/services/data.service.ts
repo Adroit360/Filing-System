@@ -151,4 +151,30 @@ export class DataService {
     getFirstRecentFolder(){
       return this.firstRecentFolder;
     }
+
+
+    // chatbox listener
+    chatBox_is_open:boolean=false;
+    // set chatbox to open
+    set_Chatbox_to_open(){
+      this.chatBox_is_open=true;
+      console.log("chat box is open");
+    }
+
+    // set chatbox to close
+    set_Chatbox_to_close(){
+      this.chatBox_is_open=false;
+      console.log("chat box is closed");
+    }
+
+    is_chatArea:boolean = false;
+    set_is_chatArea_to_in(){
+      this.is_chatArea=true;
+      console.log("chat area is open");
+    }
+
+    set_is_chatArea_to_out(){
+      this.is_chatArea=false;
+      console.log("chat area is closed");
+    }
 }
