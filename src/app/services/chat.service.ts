@@ -58,4 +58,13 @@ export class ChatService {
     return commonStr
   }
 
+  setChat_as_read(id,user,entity){
+    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection<Chat>(DbCollections.Chats).doc(id).update({read:true}); 
+  }
+
+  getUnreadMessages(user,entity){
+    return this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).collection<Chat>(DbCollections.Chats,ref=>ref.where("receiver","==",user).where("read","==",false).orderBy('date')).valueChanges(); 
+  
+  }
+
 }

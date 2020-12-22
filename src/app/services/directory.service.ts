@@ -79,7 +79,7 @@ export class DirectoryService {
     return this.subarchives;
   }
 
-  
+
   _getSubDirectoryContent(directoryId,entity){
     this.subarchivesCollection = this.afs.collection("Entities").doc(entity).collection<Archives>('Archives',ref=> ref.where('parentId','==',directoryId));
     this.subarchives = this.subarchivesCollection.valueChanges();
@@ -87,12 +87,12 @@ export class DirectoryService {
     // console.log('from dir service', this.subarchives);
     return this.subarchives;
   }
- 
+
   async getParent(id,entity){
     let parent="";
     let parentObj={id:"",name:""};
     await firebase.firestore().collection(DbCollections.Entities).doc(entity).collection(DbCollections.Archives).doc(id).get().then(result=>{parent = result.data().parentId;console.log("parent from service",parent)});
-    
+
    if (parent){
        await firebase.firestore().collection(DbCollections.Entities).doc(entity).collection(DbCollections.Archives).doc(parent).get()
        .then(result=>{parentObj.id=result.data().id; parentObj.name=result.data().name;console.log("parent from service",parentObj)})
@@ -113,7 +113,7 @@ export class DirectoryService {
     return this.subarchives;
   }
 
-  
+
   newArchive:Archives={
     id:"",
     sectionId:"",
@@ -151,13 +151,13 @@ export class DirectoryService {
 
       this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Archives).doc(this.newArchive.id).set(this.newArchive);
     });
-   
-    
+
+
   }
 
   // upload file
    private  basePath="uploads/entities"
-   async uploadFile(fileItem,userId,sectionId,directoryId,entity)//: Observable<number> 
+   async uploadFile(fileItem,userId,sectionId,directoryId,entity)//: Observable<number>
     {
     let file:Archives;
     let alias="";
@@ -169,11 +169,11 @@ export class DirectoryService {
       }
 
     this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Archives).doc(directoryId).get().subscribe(result=>{
-      const id = this.afs.createId(); 
+      const id = this.afs.createId();
       const filePath = `${this.basePath}/${entity}/${alias}`;
       const storageRef = this.afStorage.ref(filePath);
       const uploadTask = this.afStorage.upload(filePath, fileItem);
-   
+
       uploadTask.snapshotChanges().pipe(
         finalize(() => {
           storageRef.getDownloadURL().subscribe(downloadURL => {
@@ -194,16 +194,16 @@ export class DirectoryService {
               dateCreated:new Date().toLocaleDateString()
             }
             this.afs.collection(DbCollections.Entities).doc(entity).collection<Archives>(DbCollections.Archives).doc(id).set(file).catch(e=>{console.log(e); return e;});
-            
+
           });
         })
       ).subscribe();
-   
+
       // return uploadTask.percentageChanges();
     });
   }
   );
-    
+
   }
 
   async deleteFile(fileId,alias,entity){
@@ -219,7 +219,7 @@ export class DirectoryService {
         if(doc.data().itemType == "folder"){this.deleteDirectory(doc.data().id,doc.data().entity);}
         else{ this.deleteFile(doc.data().id,doc.data().alias,entity);}
     })});
-    
+
     this.afs.collection(DbCollections.Entities).doc(entity).collection<Archives>(DbCollections.Archives).doc(directoryId).delete().catch(e=>{console.log(e)});
   }
 
@@ -231,8 +231,12 @@ export class DirectoryService {
   //  set recently accessed folders
   private arrayUnion = firebase.firestore.FieldValue.arrayUnion;
   private arrayRemove = firebase.firestore.FieldValue.arrayRemove;
-  recentFolders(user,directory,entity){
-    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).update({recentFolders: this.arrayUnion(directory)})
+  recentFolders(user,directory,entity,firstFolder,numberOfFolders){
+    this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).update({recentFolders: this.arrayUnion(directory)});
+    if(numberOfFolders>7){
+      this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Users).doc(user).update({recentFolders: this.arrayRemove(firstFolder)});
+      console.log("deteleed")
+    }
   }
 
   // get recent folders

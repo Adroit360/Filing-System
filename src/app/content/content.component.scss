@@ -1,8 +1,13 @@
     /*.folders {
     // border: 1px solid red;
 }*/
+<<<<<<< HEAD
     
     .container {
+=======
+
+    .Mycontainer {
+>>>>>>> 194a2d1f98ccc5e17337d797241cedccba46c626
         //grid-area: main;
         border-top-left-radius: 3.13rem;
         background-color: #e5e5e5;
@@ -33,7 +38,7 @@
     }
     
     @media screen and (max-width: 800px) {
-        .container {
+        .Mycontainer {
             display: block;
             margin: 3rem 1rem;
             border-top-left-radius: 0rem;
@@ -108,7 +113,11 @@
             // right: 18rem;
         }
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 194a2d1f98ccc5e17337d797241cedccba46c626
     @media screen and (max-width: 400px) {
         .user-perimissions__icons {
             // top: 41rem;
@@ -119,6 +128,7 @@
             top: 80vh;
         }
     }
+<<<<<<< HEAD
     
     // @media screen and (max-height: 800px) {
     //     .user-perimissions__icons {
@@ -134,3 +144,5 @@
     //         top: 71vh;
     //     }
     // }
+=======
+>>>>>>> 194a2d1f98ccc5e17337d797241cedccba46c626

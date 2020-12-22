@@ -54,6 +54,7 @@ import { UserSettingsComponent } from './content/user-settings/user-settings.com
 import { SearchComponent } from './content/search/search.component';
 import { TilteCasePipe } from './tilte-case.pipe';
 import { DashboardComponent } from './content/dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -110,6 +111,7 @@ import { DashboardComponent } from './content/dashboard/dashboard.component';
     SidebarModule.forRoot(),
     SmartTooltipAngularModule,
     CarouselModule ,
+    HttpClientModule,
   ],
 
   providers: [UserService,AdminResourceService, SectionService],

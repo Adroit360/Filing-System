@@ -46,7 +46,6 @@ export class DashboardComponent implements OnInit,AfterViewInit {
     nav: true
   }
 
-dummytasks=['bet boys for the money','Download slides','beach mood activated',"eye clear, money finish"];
 
 colors= [];
 localColors=["red",'green','pink',"yellow"];
@@ -69,6 +68,7 @@ Random;
  date;
  slideIndex: number = 1;
  slideIndexAutomate = 0;
+ taskGroups:any=[];
 
  @ViewChild ('createTab') nameInputRef: ElementRef;
 
@@ -79,7 +79,9 @@ Random;
     // get user recently accessed folders
     directoryManager.getRecentFolders(dataManager.getActiveUser().email,dataManager.getEntity()).subscribe(result=>{
       this.user = result;
-    })
+      this.dataManager.setCurrentRecentFolderLength(this.user.recentFolders.length);
+      this.dataManager.setFirstRecentFolder(this.user.recentFolders[0]);
+    });
     // get annoucements
     announceManager.getValidAnnouncements(dataManager.getEntity()).subscribe(result=>{
       this.announcements=result;
@@ -127,22 +129,24 @@ Random;
     document.getElementById("Modal-News").style.display="grid";
     document.getElementById("npm").style.display="none";
   }
-// deleting
-  onDelete(){
-    console.log('delete');
-  }
+
 //Edditing folder
   onEdit(){
     console.log('edited');
   }
 //openeing a task group
 activeTaskGrp:any;
+activeTaskArray:any=[];
 Tab(taskGrp){
+  document.getElementById("list-task").style.display="block";
+
+  this.activeTaskArray = taskGrp.tasks;
+  this.activeTaskGrp = taskGrp;
   document.getElementById("task-content").style.display="none";
   document.getElementById("qwert").style.display="block";
-  document.getElementById("list-task").style.display="block";
+  // document.getElementById("list-task").style.display="block";
   document.getElementById("qwert1").style.display="flex";
-  this.activeTaskGrp = taskGrp;
+
 }
 
 //back
@@ -157,14 +161,29 @@ back(){
 
 //create Task
 createTask(){
+  let element =  document.getElementById("TheTop");
+  let scrollHeight = element.scrollHeight + 100;
+  console.log("scrollHeight",scrollHeight);
+  element.scrollTo(scrollHeight,0);
   document.getElementById('c-task').style.display="block";
+  document.getElementById("list-task").style.display="block";
 }
 
 //Submitting task
-SubmitTask(){
-console.log(this.TaskForm.value)
-document.getElementById('c-task').style.display="none";
+newTask(){
 
+let taskObj={task:this.TaskForm.value.newTask,dueDate:new Date(this.TaskForm.value.Date).toDateString(),status:false};
+console.log(taskObj);
+this.taskManager.newTask(this.dataManager.getActiveUser().email,taskObj,this.activeTaskGrp.id,this.dataManager.getEntity()).subscribe(result=>{
+  result.forEach(task=>{if (task.id==this.activeTaskGrp.id){this.activeTaskArray=task.tasks;} });
+});
+// get user tasks
+this.Tab(this.activeTaskGrp);
+//reset from
+this.TaskForm.reset();
+document.getElementById('c-task').style.display="none";
+// reset task name field to null
+// this.TaskForm.value.newTask=null;
 }
 
 //DELETEING ALL TASK modal
@@ -190,12 +209,20 @@ onCancelAll(){
 
 
   //DONE WITH TASK
-  OnDoneTask(){
-    console.log("done");
+  OnDoneTask(tk,status){
+    if(status=="1"){
+      tk.done=true;
+    }else if(status=="2"){
+      tk.done=false;
+    }
+
+    this.taskManager.updateTask(this.dataManager.getActiveUser().email,tk,this.activeTaskGrp.id,this.dataManager.getEntity());
   }
+
 //DELETE A SINGLE TASK
-DeleteTask(){
+DeleteTask(tk){
   console.log("delete");
+  this.taskManager.removeTask(this.dataManager.getActiveUser().email,tk,this.activeTaskGrp.id,this.dataManager.getEntity());
 }
 
 //TAB CREATE
@@ -230,12 +257,21 @@ taskTab(){
     }
 
   }
+  // Closing a Task-tab
+  closeTab(){
+    document.getElementById("createTab").style.display="none";
+  }
 
+  // Canceling a new task
+  closeTask(){
+    document.getElementById("c-task").style.display="none";
+  }
   onAddAnnouncement(){
     console.log(this.NewsForm.value);
     document.getElementById("Modal-News").style.display="none";
     document.getElementById("npm").style.display="block";
     this.announceManager.newAnnouncement(this.NewsForm.value.Heading,this.NewsForm.value.Content,this.dataManager.getEntity());
+    
   }
 
   closeNews(){
@@ -244,6 +280,21 @@ taskTab(){
 
   }
 
+  //VIEWING ALL
+  onViewAll(){
+    document.getElementById("lets-hide").style.display="block";
+    document.getElementById("npm").style.display="none";
+  }
+  // Deleting Announcement
+  delAnnounce(id){
+    this.announceManager.removeAnnouncement(id,this.dataManager.getEntity());
+  }
+
+  // CLOSING THE POP-UP CONTENT
+  closeAllAnnounce(){
+    document.getElementById("npm").style.display="block";
+    document.getElementById("lets-hide").style.display="none";
+  }
 
 
 plusSlides(n) {

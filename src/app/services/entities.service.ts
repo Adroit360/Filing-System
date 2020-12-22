@@ -30,6 +30,7 @@ export enum DbCollections{
   Tasks = "Tasks",
   Chats = "Chats",
   Sections="Sections",
+  Meetings="Meetings"
 }
 
 @Injectable({
@@ -189,6 +190,15 @@ getChatMessages(user,targetUser,entity){
     return this.chatManager.getChatMessage(user,targetUser,entity);
   }
 
+  // set chat message as read
+  set_chat_as_read(id,user,entity){
+    this.chatManager.setChat_as_read(id,user,entity);
+  }
+
+  // get unread messages
+  getUnreadChats(user,entity){
+    return this.chatManager.getUnreadMessages(user,entity);
+  }
   UserProfilePhoto(user,file,entity){
     this.uploadFile(file,user,entity);
   }
@@ -213,6 +223,10 @@ getChatMessages(user,targetUser,entity){
      ).subscribe();
   
  }
+
+  getEntityMeetingDetails(entity){
+    return this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Meetings).valueChanges();
+  }
 
 
 }

@@ -87,7 +87,7 @@ export class EmptyComponent implements OnInit {
     if(directory.itemType=='folder'){
       this.dirContent = this.directory.getSubDirectoryContent(this.currentSectionId, directory.id,this.data.getEntity());
       this.data.setCurrentDirectory(directory.id,directory.name);
-      this.directory.recentFolders(this.data.getActiveUser().email,directory,this.data.getEntity());
+      this.directory.recentFolders(this.data.getActiveUser().email,directory,this.data.getEntity(),this.data.getFirstRecentFolder(),this.data.getCurrentRecentFolderLength());
       console.log("directory is set");
       this.router.navigate(["home", "content",this.data.getEntity(),this.currentSectionId,this.currentSectionName, directory.id, directory.name])
     }else{
@@ -182,6 +182,7 @@ export class EmptyComponent implements OnInit {
   // displays the modal
   onShowRequest(item , i, event){
     this.showTooltip= +!this.showTooltip;
+
     event.stopPropagation();
     this.requestModal = !this.requestModal;
     // this.approve.requestapprove(i,item);

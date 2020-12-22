@@ -4,13 +4,15 @@
         align-items: baseline;
         grid-gap: 5px;">
             <h1>Chats</h1>
-            <h4>{{Num}}</h4>
+            <h4 *ngIf="unReadMessages.length>0">{{unReadMessages.length}}</h4>
         </div>
 
         <span class="material-icons">
           keyboard_arrow_up
           </span>
     </div>
+
+    <!-- LISTS OF CHATS -->
     <div class="chatbox">
         <div id="friends-list">
 
@@ -23,7 +25,7 @@
                 </div>
             </div>
             <div style="height: 85%;
-           overflow:auto">
+               overflow:auto">
                 <div id="friends" *ngFor="let user of entityUsers; let i=index">
                     <div class="friend" (click)="OpenChat(user)">
                         <!-- <span  class="material-icons" style="font-size: 55px;"> account_circle </span> -->
@@ -34,7 +36,7 @@
                             <h6 *ngIf="user.firstName"><strong>{{user.firstName}} {{ user.lastName}}</strong></h6>
                             <span *ngIf="user.email">{{user.email}}</span>
                         </div>
-                        <div class="notice">
+                        <div *ngIf="unReadMessagesEmail.includes(user.email)" class="notice">
 
                         </div>
                     </div>
@@ -47,6 +49,8 @@
             </div>
         </div>
     </div>
+
+    <!-- VIEWING A CHAT -->
     <div id="chatview">
         <div *ngIf="chatRecipient" style="width: 100%;">
             <div id="profile">
@@ -70,7 +74,7 @@
             </div>
 
             <div id="sendMess" style="overflow: auto;
-                height: 81.8%;
+                height: 77%;
             ">
                 <div id="chat-messages" *ngFor="let chat of chats[chatRecipient.email]">
 

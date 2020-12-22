@@ -91,7 +91,7 @@
                                       more_vert
                                     </span>
 
-                                <div class="tooltip">
+                                <div class="Tooltip">
                                     <span class="smart-tooltip overlay stick stay-right">
                                             <h4 (click)="onRenameSection(item, i)" >Rename</h4>
 
@@ -132,12 +132,12 @@
     </ul>
 </div>
 
-<div class="modal" *ngIf="modalState">
+<div class="Modal" *ngIf="modalState">
     <app-modal [title]="message" (onResult)="onModalResult($event)"></app-modal>
 </div>
 
 <div *ngIf="ResetModal">
-    <div id="myModal" class="modal">
+    <div id="myModal" class="Modal">
         <div (click)="onReset(false)" style="position: absolute; left: 0; top: 0;width: 100%; height: 100%;background-color: rgba(0, 0, 0, 0.4); z-index: -1;">
         </div>
         <!-- Modal content -->

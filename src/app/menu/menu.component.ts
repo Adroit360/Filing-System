@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Output, ViewChild,Inject } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router'
 import { Section } from '../models/model';
 import { SectionService } from '../services/section.service';
@@ -7,6 +7,15 @@ import {MessengerService} from '../services/messenger.service';
 import { DirectoryService } from '../services/directory.service';
 import { Observable } from 'rxjs';
 import {AuthServiceService} from '../services/auth-service.service';
+import { HttpClient } from '@angular/common/http';
+import { DOCUMENT } from '@angular/common';
+
+import { ZoomMtg } from '@zoomus/websdk';
+import { MeetingsService } from '../services/meetings.service';
+import { EntitiesService } from '../services/entities.service';
+ZoomMtg.preLoadWasm();
+ZoomMtg.prepareJssdk();
+
 
 @Component({
   selector: 'app-menu',
@@ -31,13 +40,35 @@ export class MenuComponent implements OnInit {
   section: Section;
   generalSection:any;
   entity:string;
+  KonvyMeetingConfig:any={}
+  meeting:any;
 
   hooks = [];
   nameSections = [];
 
-  constructor(private authManager:AuthServiceService,private directory:DirectoryService, private sectionService:SectionService, private router: Router, private route: ActivatedRoute,private msg:MessengerService, private data:DataService) {
+  // video chat configuration
+  // signatureEndpoint = 'https://konvy.herokuapp.com/'
+  // apiKey = 'vhRU1GZxTAGEKoC6YhM18g'
+  // meetingNumber = '85959080319'
+  // role = 0
+  // leaveUrl = 'http://localhost:4200/home/content/dashboard'
+  // userName = 'Angular'
+  // userEmail = 'info.adroit360@gmail.com'
+  // passWord = 'wM2fhB'
 
+  constructor(private entityManager:EntitiesService, private meetConfig: MeetingsService, public httpClient: HttpClient, @Inject(DOCUMENT) document,private authManager:AuthServiceService,private directory:DirectoryService, private sectionService:SectionService, private router: Router, private route: ActivatedRoute,private msg:MessengerService, private data:DataService) {
     this.entity = data.getEntity();
+    // get konvy zoom meeting config
+    meetConfig.getKonvyMeetingConfig().subscribe(result=>{
+      this.KonvyMeetingConfig = result;
+      console.log(this.KonvyMeetingConfig, "konvy config")
+    });
+
+    // get meeting number and pwd
+    this.entityManager.getEntityMeetingDetails(this.entity).subscribe(result=>{
+      this.meeting=result[0];
+      console.log(this.meeting,"this")
+    })
   }
 
    ngOnInit(): void {
@@ -174,7 +205,56 @@ export class MenuComponent implements OnInit {
 
   MeetingRoom(){
     console.log("we are meeting")
+    this.getSignature();
   }
+
+  getSignature() {
+    this.httpClient.post(this.KonvyMeetingConfig.signatureEndpoint, {
+	    meetingNumber: this.meeting.meetingNumber,
+	    role: 0
+    }).toPromise().then((data: any) => {
+      if(data.signature) {
+        console.log("signature there is",data.signature)
+        this.startMeeting(data.signature)
+      } else {
+        console.log("no sign", data,"sign",data.signature)
+      }
+    }).catch((error) => {
+      console.log("error",error)
+    })
+  }
+
+  startMeeting(signature) {
+
+    document.getElementById('zmmtg-root').style.display = 'block'
+
+    ZoomMtg.init({
+      leaveUrl: this.KonvyMeetingConfig.leaveUrl,
+      isSupportAV: true,
+      success: (success) => {
+        console.log(success)
+        console.log('signature used in join',signature)
+        ZoomMtg.join({
+          signature: signature,
+          meetingNumber: this.meeting.meetingNumber,
+          userName: this.data.getActiveUser().firstName,
+          apiKey: this.KonvyMeetingConfig.apiKey,
+          userEmail: this.data.getActiveUser().email,
+          passWord: this.meeting.password,
+          success: (success) => {
+            console.log(success)
+          },
+          error: (error) => {
+            console.log("error here1",error)
+          }
+        })
+
+      },
+      error: (error) => {
+        console.log("error here2",error)
+      }
+    })
+   }
 
   }
 
