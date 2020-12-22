@@ -152,3 +152,31 @@ input {
         z-index: 210;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .approvals-container {
+        width: 90%;
+        margin: 7rem auto 0px auto;
+        .options,
+        .d-container {
+            padding: 0px 25px;
+        }
+    }
+    .close {
+        left: 0.6rem;
+    }
+    .msgs {
+        p {
+            left: 100px;
+        }
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .approvals-container {
+        .options,
+        .d-container {
+            padding: 0px 10px;
+        }
+    }
+}

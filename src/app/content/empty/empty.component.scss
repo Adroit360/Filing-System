@@ -346,3 +346,35 @@ p {
     height: 149px;
     border-radius: 10px;
 }
+
+@media screen and (max-width: 350px) {
+    .head {
+        display: flex;
+    }
+    .folders {
+        margin-top: 6rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .back {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .beneath a {
+        display: flex;
+        padding: 0px;
+        margin-left: 35px;
+    }
+    .ssp {
+        position: absolute;
+        margin: 56px 0px 0px 0px;
+        /* margin-top: 5.6rem; */
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        font-size: 13px;
+        left: 2.2rem;
+        span {
+            font-size: 18px;
+        }
+    }
+}
