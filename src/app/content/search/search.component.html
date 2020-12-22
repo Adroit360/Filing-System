@@ -16,20 +16,63 @@
                     <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'" src="../../../assets/excel.png" style="height: 50px; width: 50px;" />
                     <img *ngIf="item.itemType=='file' && item.contentType=='text/plain'" src="../../../assets/text.png" style="height: 50px; width: 50px;" />
                     <i *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' " class="{{fontIcon}}" style='font-size: 50px; color: #459ce3;'></i>
-                    <p *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' " style="font-size: 14px;">{{item.alias| truncate: 12}}</p>
-                    <p *ngIf="item.itemType=='file'" style="font-size: 14px;">{{item.alias| truncate: 12}}</p>
+                    <p *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' " style="font-size: 14px; color: black;">{{item.alias| truncate: 12}}</p>
+                    <p *ngIf="item.itemType=='file'" style="font-size: 14px; color: black;">{{item.alias| truncate: 12}}</p>
                 </div>
 
                 <div class="toggler">
                     <span class="more-icon material-icons">arrow_drop_down</span>
-                    <span id="hiddenText" class="material-icons clicktoshow" smart-tooltip-container>
-                  <span class="smart-tooltip stick stay-down"> hello</span>
-                    </span>
+                    <span id="hiddenText" class="clicktoshow" smart-tooltip-container [ngStyle]="{'opacity': showTooltip}">
+                  <span class="smart-tooltip stick stay-down" id="Tooltip">
+                    <div *ngIf="item.itemType=='file'" class="text">
+                      <p >
+                        share
+                        <span style="background-color: rgba(100, 54, 54, 0.822)"
+                          class="second-tooltip"
+                        >
+                          <ul *ngFor="let res of resources|async; let i = index">
+                            <li>
+                              <div >
+                                <h2  (click)="sendFileToResource(item.id,res.id)" class="listtext">{{ res.name }}</h2>
+                                <hr />
+                              </div>
+                            </li>
+                          </ul>
+                        </span>
+                    </p>
                 </div>
-            </a>
+                <div *ngIf="item.itemType=='file'" class="text">
+                    <p><a href={{item.url}} download="item.name" style="color:black; text-decoration: none;">Download</a></p>
+                </div>
+                <div class="text" *ngIf="item.itemType=='file'">
+                    <p (click)="onShowRequest(item ,i, $event)">Request Approval</p>
+                </div>
+                <div class="text">
+                    <p (click)="onDelete(item)">Delete</p>
+                </div>
+                </span>
+                </span>
         </div>
-    </ul>
-    <div *ngIf="archives.length==0" style="padding-top:50px; margin:auto;">
-        <p>No matched item found</p>
+        </a>
+</div>
+</ul>
+<div *ngIf="archives.length==0" style="padding-top:50px; margin:auto;">
+    <p>No matched item found</p>
+</div>
+
+<app-request-approvals *ngIf="requestModal" (onResult)="onRequestModal($event)"></app-request-approvals>
+<div *ngIf="delfolder">
+    <div id="myModal" class="Modal">
+
+        <div (click)="onModalDelete(false)" style=" position: absolute;left:0;top:0;width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4);z-index: -1; "></div>
+        <!-- Modal content -->
+        <div class="modal-content ">
+            <h4>{{message}}</h4>
+            <div class="submit ">
+                <button style="background-color: rgb(250, 250, 250); border-color: rgb(192, 247, 111); " (click)="onModalDelete(true) ">Yes</button>
+                <button id="btn" (click)="onModalDelete(false) ">No</button>
+            </div>
+        </div>
     </div>
+</div>
 </div>
