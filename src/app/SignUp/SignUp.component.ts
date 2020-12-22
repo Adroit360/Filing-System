@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {FormControl, FormGroup, Validators, } from '@angular/forms';
 import { SectionService } from '../services/section.service';
 import { EntitiesService } from '../services/entities.service';
@@ -12,25 +12,43 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./signUp.component.scss']
 })
 
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit,AfterViewInit {
   SignUpForm: FormGroup;
   isValid = false; // this property checks if the form is valid or if the name is in the database
   forgot=false;
   errorMessage:string ="";
   // user:User;
   generalSection:any;
-  countryApi:string ="https://api.first.org/data/v1/countries";
+  countryApi:string ="https://restcountries.eu/rest/v2/";
   countries:any=[];
+
+  @ViewChild("dropDown",{static:true}) dropDown:ElementRef;
 
   constructor(private http:HttpClient,private route: Router,private entityManager:EntitiesService,private sectionService:SectionService) {
       http.get(this.countryApi).subscribe(result=>{
         this.countries=result;
-        console.log("countries" , this.countries.data);
-      })
+        console.log("countries" , this.countries);
+      });
+      // var dropDown:any = document.querySelector(".drop-down");
+      // document.querySelector(".show").innerHTML="put selectedIndex = '85'";
+
+
    }
+
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    setTimeout(()=>{
+      console.dir(this.dropDown.nativeElement);
+      this.dropDown.nativeElement.selectedIndex = 85;
+    },500);
+
+
+  }
 
   ngOnInit(): void {
     // this.getGeneralSection();
+
     this.SignUpForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       companyName: new FormControl(null, Validators.required),
