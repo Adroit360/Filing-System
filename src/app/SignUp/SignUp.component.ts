@@ -1,9 +1,10 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators, } from '@angular/forms';
-import {MessengerService} from '../services/messenger.service';
 import { SectionService } from '../services/section.service';
+import { EntitiesService } from '../services/entities.service';
 // import {User } from '../models/model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-SignUp',
@@ -18,8 +19,15 @@ export class SignUpComponent implements OnInit {
   errorMessage:string ="";
   // user:User;
   generalSection:any;
+  countryApi:string ="https://api.first.org/data/v1/countries";
+  countries:any=[];
 
-  constructor(private route: Router,private msg:MessengerService,private sectionService:SectionService) { }
+  constructor(private http:HttpClient,private route: Router,private entityManager:EntitiesService,private sectionService:SectionService) {
+      http.get(this.countryApi).subscribe(result=>{
+        this.countries=result;
+        console.log("countries" , this.countries.data);
+      })
+   }
 
   ngOnInit(): void {
     // this.getGeneralSection();
@@ -40,6 +48,10 @@ export class SignUpComponent implements OnInit {
 
   onSubmit(){
     console.log(this.SignUpForm.value);
+    // register new entity
+    this.entityManager.NewEntity(this.SignUpForm.value.companyName,this.SignUpForm.value.email,this.SignUpForm.value.contact,
+     this.SignUpForm.value.country,new Date().toLocaleString(), this.SignUpForm.value.description);
+      this.route.navigate(['login'])
   }
 
   onToggle(){

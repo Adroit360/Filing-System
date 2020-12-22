@@ -49,17 +49,63 @@ export class EntitiesService {
   }
 
   // create new entity account
-  NewEntity(name,email,contact,country,dateCreated,entityOperations){
-    this.entity.id = this.afs.createId(),
-    this.entity.companyName = name;
-    this.entity.contact = contact;
-    this.entity.country = country;
-    this.entity.email = email;
-    this.entity.dateCreated = dateCreated;
-    this.entity.active = true;
-    this.entity.operation = entityOperations;
+  NewEntity(name,email,contact,country,dateCreated,entityOperationsDescription){
+    
+    // create entity object
+    let entity:Entity={
+      id : this.afs.createId(),
+      companyName : name,
+      contact : contact,
+      country : country,
+      email : email,
+      dateCreated : dateCreated,
+      active : true,
+      operation : entityOperationsDescription
+    }
+    
 
-    this.entityCollection.doc(this.entity.id).set(this.entity);
+    // create account for entity first user --admin
+    let user:User={
+      email: entity.email,
+      lastName:"",
+      firstName:entity.companyName,
+      role:"Admin",
+      accessList:[],
+      creationdeletionPrivilege:false,
+      sharedResources:[],
+      isAdmin:true,
+      tasks:[],
+      recentFolders:[],
+      photo:""
+    };
+
+    let systemUser:SystemUser={
+      email : entity.email,
+      name : entity.companyName,
+      entity : entity.id,
+      entityAccount:true
+    }
+
+     // create user in firestore database
+     return  this.authService.signUp(entity.email,"@password").then(async res=>{
+
+    //  if email already exist or invalid
+      if(res=="auth/email-already-in-use" || res=="auth/invalid-email"){
+        return res;
+      }
+      // add user to system users
+      this.afs.collection(DbCollections.SystemUsers).doc(entity.email).set(systemUser).catch(e=>{console.log(e);return e;}).then(()=>{
+        // create new entity in the entity collection
+        this.entityCollection.doc(entity.id).set(entity);
+        // create default  account for entity
+        this.afs.collection(DbCollections.Entities).doc(entity.id).collection<User>(DbCollections.Users).doc(entity.email).set(user);
+        // create default task group for entity
+        this.taskManager.newTaskGroup("My Tasks",true,user.email,entity.id);
+      }).then(()=>{
+           // send password reset link to entity
+          this.authService.ResetPassword(entity.email).catch(err=>{console.log("error from reset password",err);return err});
+      }); 
+    });  
   }
 
   // deactivate an organisation's account
@@ -78,8 +124,7 @@ export class EntitiesService {
         entity.data().email = email;
         entity.data().dateCreated = dateCreated; 
         entity.data().active = status;
-        entity.data().operation = entityOperations
-
+        entity.data().operation = entityOperations;
         this.entityCollection.doc(entityId).update(this.entity);
       }
     });
