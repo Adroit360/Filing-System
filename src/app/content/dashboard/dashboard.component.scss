@@ -83,7 +83,8 @@
 
 .c-contianer {
     position: relative;
-    padding: 16px;
+    padding-top: 10px;
+    padding-left: 20px;
 }
 
 .component {
@@ -733,7 +734,10 @@ button {
 }
 
 @media screen and (max-width: 500px) {
-    // .content {
-    //     margin: 84px 0.5rem 0px 2rem;
-    // }
+    .content {
+        margin: 40px 0.5rem 0px 1rem;
+    }
+    .files {
+        width: auto;
+    }
 }

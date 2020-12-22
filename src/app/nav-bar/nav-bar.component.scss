@@ -45,20 +45,22 @@
     }
     h3,
     img {
-        margin: 0px 74px 20px 75px;
+        // margin: 0px 74px 20px 75px;
         cursor: pointer;
         font-size: 90px;
         color: #459cE3;
+        margin-right: 0px;
     }
     h5 {
-        font-size: 25px;
+        font-size: 15px;
         text-align: center;
         font-family: 'Poppins';
         font-weight: 500;
     }
     h6 {
-        font-size: 16px;
+        font-size: 10px;
         text-align: center;
+        opacity: 0.5;
     }
     p {
         // margin-top: 12px;
@@ -82,11 +84,11 @@
     border-radius: 15px;
     i {
         position: absolute;
-        left: 130px;
+        left: 90px;
         top: 50px;
-        padding: 15px;
+        padding: 10px;
         color: #459cE3;
-        font-size: 25px;
+        font-size: 20px;
         cursor: pointer;
     }
 }
@@ -298,7 +300,7 @@
             margin: -18px 0px;
         }
         #search {
-            right: -6rem;
+            right: -7rem;
         }
     }
 }

@@ -48,8 +48,8 @@
             <span style="background-color: rgba(100, 54, 54, 0.822)"
               class="second-tooltip"
             >
-              <ul *ngFor="let res of resources|async; let i = index">
-                <li>
+              <ul >
+                <li *ngFor="let res of resources|async; let i = index">
                   <div >
                     <h2  (click)="sendFileToResource(item.id,res.id)" class="listtext">{{ res.name }}</h2>
                     <hr />

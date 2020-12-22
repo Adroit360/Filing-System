@@ -1,5 +1,8 @@
+@import '../../../styles/components/modal';
+@import '../../../styles/components/buttons';
 .content {
     padding: 30px;
+    position: relative;
 }
 
 .head {
@@ -21,8 +24,13 @@
 }
 
 .folder a {
+    position: relative;
     padding: 25px;
     text-decoration: none;
+}
+
+.component {
+    padding: 5px;
 }
 
 .toggler {
@@ -37,8 +45,9 @@
         width: 100%;
         height: 100%;
         position: absolute;
-        left: 0;
-        top: 0;
+        left: -4px;
+        top: 5px;
+        color: white;
     }
     #hiddenText {
         width: 100%;
@@ -49,6 +58,95 @@
     }
 }
 
-.folder a:hover {
+.component:hover {
     background-color: rgba(34, 32, 32, 0.486);
+}
+
+p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: 0em;
+    width: 100px;
+    color: black;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 20px;
+    margin: 0px;
+}
+
+.folder a:hover .more-icon {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.692), transparent);
+    opacity: 1;
+    background-color: rgba(34, 32, 32, 0.486);
+}
+
+#Tooltip {
+    //height: 90px;
+    width: 100px;
+    padding: 5px;
+    -webkit-box-shadow: -1px 6px 13px -6px #000000;
+    box-shadow: -1px 6px 13px -6px #000000;
+}
+
+// .text {
+//     //display: flex;
+//     padding: 9px 0px 9px a {
+//         text-decoration: none;
+//         color: white;
+//     }
+// }
+.text:hover {
+    p {
+        color: white;
+        background: #459ce4;
+    }
+}
+
+.second-tooltip {
+    position: absolute;
+    left: calc(90px + 20px);
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.596);
+    color: white;
+    border-radius: 10px;
+    height: auto;
+    // width: 50px;
+    text-align: center;
+    font-size: 15px;
+    /* line-height: 50px; */
+    padding: 5px;
+    opacity: 0;
+}
+
+.text:hover .second-tooltip {
+    //display: block;
+    opacity: 1;
+}
+
+.text>p {
+    font-size: 11px;
+    color: white;
+    margin: 0px;
+    text-align: center;
+    padding: 5px;
+    // overflow: hidden;
+    // line-height: 20px;
+}
+
+.listtext {
+    font-size: 11px;
+    padding: 5px;
+}
+
+.smart-tooltip {
+    padding: 5px;
+    background: white;
+    // height: 200px;
+    p {
+        font-weight: 500;
+        color: black;
+        padding: 5px 0px 5px 0px;
+        margin: 0px;
+    }
 }
