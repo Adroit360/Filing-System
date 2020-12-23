@@ -1,261 +1,263 @@
-// .landing-page {
-//     width: 99.7vw;
-// }
-.navButton {
-    background-color: transparent;
-    color: rgba(0, 0, 0, 0.466);
-    border: none;
-    margin: auto 30px;
-}
-
-.signup {
-    border-radius: 5px;
-    padding: 10px;
-    background-color: blue;
-    color: white;
-    font-weight: bold;
-    border: none;
-    margin: 10px;
-}
-
-.login {
-    border-radius: 5px;
-    padding: 10px;
-    background-color: white;
-    color: blue;
-    font-weight: bold;
-    border: none;
-    margin: 10px;
-}
-
-.navbar {
+$border-color: #dadce0;
+$hover-color: #f1f3f4;
+$grey-color: #5f6368;
+$dark-grey-color: #515458;
+$blue:#1a73e8;
+$shadow: 0 1px 2px 0 rgba(60, 64, 67, .3),
+0 1px 3px 1px rgba(60, 64, 67, .15);
+@mixin flex($side: "none") {
     display: flex;
-    flex-flow: row wrap;
-    // background-color: blue;
-    justify-content: space-between;
-    vertical-align: middle;
-    padding: 10px;
+    @if ($side=="none") {
+        justify-content: center;
+    }
+    @else {
+        justify-content: $side;
+    }
     align-items: center;
 }
 
-button {
-    cursor: pointer;
-    outline: none;
-    border: none;
+@mixin square($dim) {
+    height: $dim;
+    width: $dim;
 }
 
-.logo {
-    width: 15%;
+@mixin heading() {
+    font-size: 44px;
+    line-height: 5.4rem;
+    font-weight: 500;
 }
 
-.try {
-    padding: 15px 20px;
-    font-weight: lighter;
-    font-size: 16px;
+html,
+body {
+    // overflow: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    height: auto !important;
+    width: auto !important;
 }
 
-// .header{
-//     background: rgb(2,0,36);
-//     background: linear-gradient(190deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
-// }
-.content {
-    // display: flex;
-    // width: 80%;
-    margin: auto 3rem;
-    margin-top: 10%;
-    // background: chartreuse;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    .image {
-        grid-column: 4/-1;
-    }
-    .hero-text {
-        grid-column: 1/4;
-    }
-    .header {
-        color: blue;
-        font-size: 40px;
-        font-weight: 1000;
-        width: 80%;
-        margin-bottom: 10px;
-    }
-    .body {
-        color: rgba(0, 0, 0, 0.553);
-        font-size: 20px;
-        width: 50%;
-        line-height: 1.1;
-    }
-}
-
-.hero-image {
-    // background-color: black;
-}
-
-section {
-    margin: 0px 20px 100px 20px;
-}
-
-.show-cards {
-    // display: flex;
-    // justify-content: space-between;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 3rem;
-    // padding: 0px 50px;
-}
-
-.card {
-    border-radius: 10px;
-    box-shadow: 10px 10px 36px -3px rgba(46, 0, 173, 0.29);
-    padding: 20px;
-    // max-width: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 20vh;
-    i {
-        color: blue;
-        font-size: 3rem;
-    }
-    // color: blue;
-    .title {
-        font-weight: bold;
-        color: blue;
-        font-size: 2.4rem;
-    }
-}
-
-.contents {
-    width: 80%;
-}
-
-.aboutUs {
-    background-color: #cccccc;
-    background-image: url("../../assets/wallpaper.jpg");
-    // background-image: url("https://image.freepik.com/free-vector/business-workplace-background_87720-336.jpgs");
-    padding: 100px;
-    color: white;
-    font-weight: bolder;
-    font-size: 50px;
-    background-size: cover;
-}
-
-.feature {
-    display: flex;
-    // margin-top:5rem;
-    justify-content: space-between;
-    flex-direction: row;
-    .image {
-        background-color: blue;
-        height: 100px;
-        width: 40%;
-    }
-    .text {
-        width: 40%;
-        justify-content: center;
-        align-self: center;
-        padding: 1rem;
-        h1 {
-            color: blue;
-            font-weight: bolder;
-            font-size: 25px;
-            padding-bottom: 10px;
-        }
-        h4,
-        h6 {
-            color: rgba(0, 0, 0, 1);
-            // font-weight: bold;
-            font-size: larger;
-            padding-bottom: 10px;
-            width: 85%;
-        }
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .card {
-        width: 90%;
-        margin: auto;
-    }
-    .navbar {
-        padding: 0.5rem;
-    }
-    .section {
-        margin: 0;
-    }
-    .content {
-        display: block;
-        margin: 6rem 0 0 0;
-        .image {
-            display: none;
-        }
-        .header {
-            font-size: 2rem;
-            width: 90%;
-        }
-        .body {
-            font-size: 1.6rem;
-            width: 90%;
-        }
-    }
-    .nav-bar-links {
+.landing {
+    background-position: -185rem -217rem;
+    .background-image {
         position: absolute;
-        top: 8rem;
-        left: 0;
-        display: flex;
+        top: -220rem;
+        left: -145rem;
+        z-index: 0;
     }
-    .try {
-        padding: 12px 7px;
-        font-weight: lighter;
-        font-size: 14px;
-    }
-    .show-cards {
-        display: flex;
-        flex-direction: column;
-    }
-    .aboutUs {
-        padding: 2rem;
-        font-size: 2rem;
-        text-align: center;
-    }
-    .feature {
-        display: block;
-        img {
-            width: 100%;
+    .nav-bar {
+        position: relative;
+        @include flex();
+        z-index: 1;
+        background-color: white;
+        &__left {
+            @include flex("left");
+            .brand-image {
+                // @include square(3rem);
+                // border-radius: 50%;
+                width: 10rem;
+                margin: 1rem;
+            }
+            .brand-text {
+                font-size: 2rem;
+            }
         }
-        .text {
-            width: 100%;
-            justify-content: center;
-            align-self: center;
-            padding: 3rem;
-            h1,
-            h6,
-            h4 {
-                font-size: 1.5rem;
+        &__middle {
+            flex-grow: 1;
+            @include flex();
+            .nav-item {
+                margin: 0rem 2rem;
+                color: $grey-color;
+                transition: color 0.2s;
+                cursor: pointer;
+                &:hover {
+                    color: $dark-grey-color;
+                }
+            }
+        }
+        &__right {
+            .btn {
+                border: 1px solid $border-color;
+                border-radius: 0.5rem;
+                &:hover {
+                    background-color: #f1f3f4;
+                }
+                margin: 0rem 1rem;
+            }
+        }
+    }
+    .front {
+        height: 100vh;
+        z-index: 1;
+        position: relative;
+        @include flex();
+        &__left {
+            color: white;
+            height: 100%;
+            @include flex();
+            flex-direction: column;
+            .main-header {
+                font-size: 52px;
+                line-height: 62px;
+                font-weight: 500;
+                font-family: "Google Sans", sans-serif;
+                text-align: left;
+                margin: 2rem 0rem 2rem 8rem;
+            }
+            .sub-header {
+                font-size: 24px;
+                line-height: 26px;
+                font-weight: 400;
+                text-align: left;
+                font-family: "Google Sans", sans-serif;
+                margin: 2rem 0rem 2rem 8rem;
+            }
+            .actions {
+                @include flex(flex-start);
+                width: 100%;
+                margin: 0rem 0rem 2rem 12rem;
+                &>* {
+                    margin: 0rem 2rem;
+                    cursor: pointer;
+                }
+            }
+        }
+        &__right {
+            height: 100%;
+            width: 50%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+    .panel {
+        position: relative;
+        min-width: 80rem;
+        background-color: white;
+        box-shadow: $shadow;
+        border-radius: 1.6rem;
+        z-index: 1;
+        margin: 2rem;
+        // width: calc(100% - 4rem);
+        width: calc(100vw-4rem);
+        .panel__container {
+            padding: 80px 10px;
+            display: flex;
+            flex-direction: column;
+            .panel__header {
+                h1 {
+                    @include heading();
+                    text-align: center;
+                    margin: 30px;
+                }
+            }
+            .panel__cards {
+                margin: 50px 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                // align-items: center;
+            }
+            .panel_card_col {
+                // flex: 0 1 33%;
+                box-sizing: border-box;
+                display: flex;
+                // flex-direction: column;
+                justify-content: flex-start;
+                position: relative;
+                align-items: center;
+                // width: 100%;
+                min-width: 25rem;
+                margin: 20px;
+                flex-basis: 29%;
+                .card_details {
+                    border-radius: 16px;
+                    background: #f8f9fa;
+                    box-shadow: $shadow;
+                    height: 100%;
+                    padding: 40px 20px 30px;
+                    text-align: center;
+                    width: 100%;
+                    @include flex();
+                    flex-direction: column;
+                    .build {
+                        padding: 25px;
+                        font-size: 35px;
+                        line-height: 54px;
+                        line-height: 12px;
+                        font-weight: 500;
+                    }
+                    p {
+                        font-size: 21px;
+                        line-height: 35px;
+                        font-weight: 300;
+                        font-family: "Google Sans", sans-serif;
+                        min-height: 20px;
+                        // margin: 10px 0px;
+                        padding: 16px 24px;
+                    }
+                    .panel_links {
+                        a {
+                            font-size: 22px;
+                            line-height: 16px;
+                            font-weight: 500;
+                            font-family: "Google Sans", sans-serif;
+                            color: #1a73e8;
+                            display: inline-block;
+                            margin: 20px 0 0;
+                            min-width: 248px;
+                            padding: 15px 0;
+                            width: 100%;
+                        }
+                    }
+                }
             }
         }
     }
 }
 
-@media screen and (max-width: 800px) {
-    .content {
-        display: block;
-        .image {
-            display: none;
-        }
-        // .hero-text {
-        //     // grid-column: 1/-1;
-        // }
-        .header {
-            // font-size: 2rem;
-            width: 90%;
-        }
-        .body {
-            //   font-size: 1.6rem;
-            width: 90%;
-        }
+.get_started {
+    align-items: center;
+    box-sizing: content-box;
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 48px;
+    text-align: center;
+    padding: 70px;
+    .heading {
+        @include heading();
+        text-align: center;
+        line-height: 6.4rem;
     }
-    .show-cards {
-        margin: 5rem;
+    .intro {
+        font-size: 20px;
+        line-height: 7rem;
     }
+    .brand-image {
+        width: 35rem;
+        margin: 2rem auto;
+    }
+}
+
+.btn-big-white {
+    background-color: white;
+    color: $blue;
+    border-radius: 1rem;
+    color: $dark-grey-color;
+    padding: 1rem 1.5rem;
+    &:hover {
+        background-color: $hover-color;
+    }
+}
+
+.btn-big-blue {
+    background-color: $blue;
+    color: white;
+    font-size: 20px;
+    letter-spacing: .21px;
+    line-height: 16px;
+    padding: 20px 52px;
+    border-radius: 0.8rem;
 }

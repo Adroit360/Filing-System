@@ -13,16 +13,15 @@
 
                 <input type="phone" placeholder="(+233)......" formControlName="contact">
 
-                <input type="text" placeholder="Country" formControlName="country">
+                <select #dropDown class='drop-down' formControlName="country">
+                    <!-- <option [value]="countries[85].name" selected>{{countries[85].name}}</option> -->
+                    <option [value]="country.name" *ngFor="let country of countries"> {{country.name}}</option>
+                </select>
+
+                <!-- <input type="text" placeholder="Country" formControlName="country"> -->
 
                 <input type="text" placeholder="Description" formControlName="description">
 
-                <!-- <div class="forgot-password">
-                    <span><input type="radio" name="rememberMe" id="" formControlName="rememberMe"> Remember me</span>
-                    <div>
-                        <span class="psw" (click)="onToggle()"><a  >Forgot password?</a></span>
-                    </div>
-                </div> -->
 
                 <div class="change">
                     <button type="submit"> Sign Up</button>

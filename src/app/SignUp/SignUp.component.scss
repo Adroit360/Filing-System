@@ -66,7 +66,8 @@ form {
     color: red;
 }
 
-input {
+input,
+select {
     width: 90%;
     padding: 12px 20px;
     margin: 8px 0 15px;
@@ -80,6 +81,11 @@ input {
     line-height: 30px;
     letter-spacing: 0em;
     border-radius: 10px;
+}
+
+.show {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 // input[type=number] {
