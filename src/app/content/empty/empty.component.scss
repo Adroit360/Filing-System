@@ -89,7 +89,7 @@ input {
     padding: 0px;
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 1fr 7fr 1fr;
+    grid-template-columns: auto 7fr 4fr;
     align-items: center;
 }
 
