@@ -31,13 +31,13 @@
                 </div>
                 <h5>{{date}}</h5>
             </div>
-            <div class="btns">
+            <div *ngIf="user.isAdmin"  class="btns">
                 <div class="toggler" id="npm">
                     <i style="font-size: 30px; color: rgba(0, 0, 0, 0.479); cursor: pointer;" class="fa fa-ellipsis-h"></i>
 
 
                     <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
-        <span class="smart-tooltip stick stay-down overlay" id="tooltip">
+        <span  class="smart-tooltip stick stay-down overlay" id="tooltip">
           <h4 (click)="onAdd()" style="color: white; font-size: 12px;">Add</h4>
           <hr/>
           <h4 (click)="onViewAll()" style="color: white; font-size: 12px;">View All</h4>
