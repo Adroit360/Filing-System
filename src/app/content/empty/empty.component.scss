@@ -34,7 +34,11 @@ span:hover {
 .add-folder {
     padding: 0px;
     a {
+        display: flex;
         padding: 0px;
+        p {
+            font-size: 13px;
+        }
     }
 }
 
@@ -57,12 +61,13 @@ h1 {
 }
 
 .ssp {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 4fr 3fr;
-    padding: 10px;
+    display: flex;
+    grid-gap: 10px;
+    // grid-auto-flow: column;
+    // grid-template-columns: 4fr 3fr;
+    // padding: 10px;
     a {
-        display: flex;
+        // display: flex;
         color: #808080;
     }
     span,
@@ -89,7 +94,7 @@ input {
     padding: 0px;
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 1fr 7fr 1fr;
+    grid-template-columns: auto 7fr 4fr;
     align-items: center;
 }
 
@@ -98,6 +103,9 @@ input {
     a {
         display: flex;
         padding: 0px;
+        p {
+            font-size: 13px;
+        }
     }
 }
 
@@ -112,12 +120,6 @@ h4 {
 }
 
 .folders {
-    //height: 68vh;
-    // display: flex;
-    // flex-wrap: wrap;
-    // align-items: flex-start;
-    // // justify-content: center;
-    // // margin: 0px 60px;
     overflow-x: hidden;
     /* overflow: auto; */
     overflow-y: auto;
@@ -147,7 +149,7 @@ p {
     font-style: normal;
     font-weight: 300;
     letter-spacing: 0em;
-    width: 100px;
+    width: 100%;
     color: black;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -173,8 +175,8 @@ p {
         width: 100%;
         height: 100%;
         position: absolute;
-        left: 7px;
-        top: -6px;
+        left: 21px;
+        top: -19px;
     }
     #hiddenText {
         width: 100%;
@@ -299,8 +301,8 @@ p {
             width: 100%;
             height: 100%;
             position: absolute;
-            left: 7px;
-            top: -6px;
+            left: 10px;
+            top: -25px;
         }
         #hiddenText {
             width: 100%;
@@ -347,12 +349,17 @@ p {
     border-radius: 10px;
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 500px) {
     .head {
-        display: flex;
+        // margin: 0px;
+        // padding: 0px;
+        // display: grid;
+        // grid-auto-flow: column;
+        grid-template-columns: auto 7fr;
+        // align-items: center;
     }
     .folders {
-        margin-top: 6rem;
+        // margin-top: 6rem;
         grid-template-columns: repeat(2, 1fr);
     }
     .back {
@@ -365,16 +372,56 @@ p {
         margin-left: 35px;
     }
     .ssp {
-        position: absolute;
-        margin: 56px 0px 0px 0px;
-        /* margin-top: 5.6rem; */
-        display: flex;
-        align-items: center;
-        justify-items: center;
-        font-size: 13px;
-        left: 2.2rem;
+        display: block;
         span {
             font-size: 18px;
         }
+        .add-folder {
+            margin-left: 32px;
+            margin-bottom: 10px;
+        }
+    }
+    .toggler {
+        position: absolute;
+        top: 2rem;
+        right: 2.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        .more-icon {
+            opacity: 1;
+            padding: .2rem;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 1px;
+            top: -25px;
+        }
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .head {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .toggler {
+        position: absolute;
+        top: 2rem;
+        right: 2.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        .more-icon {
+            opacity: 1;
+            padding: .2rem;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 18px;
+            top: -25px;
+        }
+    }
+    .ssp {
+        display: flex;
+        margin-top: 10px;
     }
 }

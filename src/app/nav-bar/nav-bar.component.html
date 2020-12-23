@@ -13,32 +13,29 @@
         <input type="search" name="search-box" id="search" placeholder="Search for a specific document" (keyup)="updateSearch($event.target.value)" />
     </div>
 
-    <div class="sidde">
-        <div class="greeting">
-            <!-- <h5 *ngIf="!user.isAdmin">Hi, <strong>{{user.firstName}}</strong></h5> -->
-        </div>
-        <div class="notifications">
-            <div smart-tooltip-container class="toggler clicktoshow">
 
-                <span *ngIf="!user.photo" class="material-icons"> account_circle </span>
-                <img *ngIf="user.photo" style="height: 50px;width: 50px;border-radius: 50%;" src={{user.photo}}>
+    <div class="notifications">
+        <div smart-tooltip-container class="toggler clicktoshow">
 
-                <h4 style="top: 50px; text-align: center;" class="smart-tooltip stay-left " id="hiddenText">
+            <span *ngIf="!user.photo" class="material-icons"> account_circle </span>
+            <img *ngIf="user.photo" style="height: 40px;width: 40px;border-radius: 50%;" src={{user.photo}}>
 
-                    <div class="profile">
-                        <h3 *ngIf="!user.photo" class="material-icons"> account_circle </h3>
-                        <img *ngIf="user.photo" style="height: 70px;width: 70px;border-radius: 50%;" src={{user.photo}}>
-                        <i class="fa fa-camera" (click)="changeProfile($event)"></i>
-                        <input id="file-upload" type="file" accept="image/*" (change)="onChange($event)" />
-                        <h5>{{user.firstName}} {{user.lastName}}</h5>
-                        <h6>{{user.email}}</h6>
-                    </div>
-                    <hr/>
-                    <p class="ta" (click)="onLogOut()">logout</p>
+            <h4 style="top: 50px; text-align: center;" class="smart-tooltip stay-left " id="hiddenText">
 
-                </h4>
-            </div>
+                <div class="profile">
+                    <h3 *ngIf="!user.photo" class="material-icons"> account_circle </h3>
+                    <img *ngIf="user.photo" style="height: 70px;width: 70px;border-radius: 50%;" src={{user.photo}}>
+                    <i class="fa fa-camera" (click)="changeProfile($event)"></i>
+                    <input id="file-upload" type="file" accept="image/*" (change)="onChange($event)" />
+                    <h5>{{user.firstName}} {{user.lastName}}</h5>
+                    <h6>{{user.email}}</h6>
+                </div>
+                <hr/>
+                <p class="ta" (click)="onLogOut()">logout</p>
+
+            </h4>
         </div>
     </div>
+
 
 </div>

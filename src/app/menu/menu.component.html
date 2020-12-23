@@ -84,21 +84,23 @@
                                       folder_open
                                     </span>
                                 <p>{{item.name| tilteCase| truncate:12}}</p>
-                            </a>
 
+
+                            </a>
                             <div class="toggler clicktoshow" smart-tooltip-container>
                                 <span class="more-icons material-icons">
-                                      more_vert
-                                    </span>
+                                  more_vert
+                                </span>
 
                                 <div class="Tooltip">
                                     <span class="smart-tooltip overlay stick stay-right">
-                                            <h4 (click)="onRenameSection(item, i)" >Rename</h4>
+                                        <h4 (click)="onRenameSection(item, i)" >Rename</h4>
 
-                                            <h4 (click)="onDeleteSection(item.id)">Delete</h4>
-                                        </span>
+                                        <h4 (click)="onDeleteSection(item.id)">Delete</h4>
+                                    </span>
                                 </div>
                             </div>
+
 
                         </div>
 

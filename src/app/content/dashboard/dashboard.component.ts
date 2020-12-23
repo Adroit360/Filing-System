@@ -51,6 +51,8 @@ colors= [];
 localColors=["red",'green','pink',"yellow"];
 Random;
 
+DelTask:any;
+
  TaskForm: FormGroup= new FormGroup({
   newTask: new FormControl(null),
   Date: new FormControl(null)
@@ -186,11 +188,11 @@ document.getElementById('c-task').style.display="none";
 // this.TaskForm.value.newTask=null;
 }
 
-//DELETEING ALL TASK modal
+//Calling ALL  delete TASK modal
 allDeleteTask(taskgrpId){
   document.getElementById("myModal").style.display='block';
-  this.taskManager.removeTaskGroup(taskgrpId,this.dataManager.getActiveUser().email,this.dataManager.getEntity());
 
+  this.DelTask=taskgrpId;
 
 }
 
@@ -201,6 +203,9 @@ onAllDelete(){
   document.getElementById("list-task").style.display="none";
   document.getElementById("qwert").style.display="none";
   document.getElementById("qwert1").style.display="none";
+  this.taskManager.removeTaskGroup(this.DelTask,this.dataManager.getActiveUser().email,this.dataManager.getEntity());
+  this.activeTaskGrp=false;
+
 }
 //NOT DELETING ALL TASK
 onCancelAll(){
@@ -217,6 +222,7 @@ onCancelAll(){
     }
 
     this.taskManager.updateTask(this.dataManager.getActiveUser().email,tk,this.activeTaskGrp.id,this.dataManager.getEntity());
+
   }
 
 //DELETE A SINGLE TASK
@@ -271,7 +277,7 @@ taskTab(){
     document.getElementById("Modal-News").style.display="none";
     document.getElementById("npm").style.display="block";
     this.announceManager.newAnnouncement(this.NewsForm.value.Heading,this.NewsForm.value.Content,this.dataManager.getEntity());
-    
+    this.NewsForm.reset();
   }
 
   closeNews(){
@@ -340,7 +346,7 @@ showSlides(n) {
   if(slides[this.slideIndexAutomate-1])
   slides[this.slideIndexAutomate-1].style.display = "block";
 
-  setTimeout( (this.showSlidesAutomate).bind(this), 5000); // Change text every 5 seconds
+  setTimeout( (this.showSlidesAutomate).bind(this), 4000); // Change text every 5 seconds
   if(dots[this.slideIndexAutomate-1])
   dots[this.slideIndexAutomate-1].className += " active";
 }
