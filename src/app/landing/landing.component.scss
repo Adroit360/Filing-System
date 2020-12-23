@@ -23,7 +23,7 @@ $shadow: 0 1px 2px 0 rgba(60, 64, 67, .3),
 
 @mixin heading() {
     font-size: 44px;
-    line-height: 5rem;
+    line-height: 5.4rem;
     font-weight: 500;
 }
 
@@ -32,6 +32,8 @@ body {
     // overflow: auto !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
+    height: auto !important;
+    width: auto !important;
 }
 
 .landing {
@@ -135,16 +137,8 @@ body {
         border-radius: 1.6rem;
         z-index: 1;
         margin: 2rem;
-        width: calc(100vw - 4rem);
-        /*
-            position: relative;
-    background-color: white;
-    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    border-radius: 1.6rem;
-    z-index: 1;
-    margin: 2rem;
-    width: calc(100vw - 10rem);
-    margin: 2rem auto;*/
+        // width: calc(100% - 4rem);
+        width: calc(100vw-4rem);
         .panel__container {
             padding: 80px 10px;
             display: flex;
@@ -153,7 +147,7 @@ body {
                 h1 {
                     @include heading();
                     text-align: center;
-                    margin: 20px;
+                    margin: 30px;
                 }
             }
             .panel__cards {
@@ -162,7 +156,7 @@ body {
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: center;
-                align-items: center;
+                // align-items: center;
             }
             .panel_card_col {
                 // flex: 0 1 33%;
@@ -199,7 +193,8 @@ body {
                         font-weight: 300;
                         font-family: "Google Sans", sans-serif;
                         min-height: 20px;
-                        margin: 10px 0px;
+                        // margin: 10px 0px;
+                        padding: 16px 24px;
                     }
                     .panel_links {
                         a {
