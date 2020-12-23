@@ -55,7 +55,7 @@
 
 <div class="admin-tools">
     <h2>Teams</h2>
-    <ul *ngIf="generalSection">
+    <ul >
         <li>
             <!-- <a (click)="onSelectedGeneral(generalSection.id,generalSection.name)" [routerLink]="['content',entity, generalSection.id, generalSection.name,generalSection.id,generalSection.name]" routerLinkActive="active">
                 <span class="material-icons">
@@ -112,7 +112,7 @@
                 </li>
             </div>
         </div>
-        <li><a (click)="toggle()" *ngIf="visible;else Data"><span class="material-icons">
+        <li *ngIf="user.isAdmin" ><a (click)="toggle()" *ngIf="visible;else Data"><span class="material-icons">
                 control_point
                 </span> <p >Create Team</p>
             </a>

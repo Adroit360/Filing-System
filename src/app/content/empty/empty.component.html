@@ -9,38 +9,39 @@
         <div class="ssp">
             <div class="add-folder">
                 <a (click)="newfolder()"><span class="material-icons"> folder_open</span>
-      <p>Create Folder</p></a
-    >
-  </div>
+              <p>Create Folder</p>
+             </a>
+            </div>
 
-  <div class="beneath">
-    <a (click)="Addfile()"
-      ><span class="material-icons"> content_copy </span>
-      <p>Upload File</p></a
-    >
-  </div>
-</div>
-</div>
-<div class="folders">
-<a class="folder-container" *ngFor="let item of dirContent|async;let i = index">
-  <div (click)="onFolderClicked(item)" class="component">
-    <img *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' " src="../../../assets/preview.png" style="height: 50px; width: 50px;"/>
-    <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="../../../assets/pdf.png" style="height: 50px; width: 50px;"/>
-    <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12' || item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint'" src="../../../assets/pp.png"  style="height: 50px; width: 50px;"/>
-    <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||item.itemType=='file' && item.contentType=='application/msword'"src="../../../assets/word.png" style="height: 50px; width: 50px;"/>
-    <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'"src="../../../assets/excel.png" style="height: 50px; width: 50px;"/>
-    <img *ngIf="item.itemType=='file' && item.contentType=='text/plain'" src="../../../assets/text.png" style="height: 50px; width: 50px;"/>
-    <i *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" class="{{fontIcon}}" style='font-size: 50px;'></i>
-    <p *ngIf="item.itemType=='folder' && item.public || item.itemType=='folder' && !item.public && item.owner==currentUser" style="font-size: 15px;">{{item.alias| truncate: 12}}</p>
-    <p *ngIf="item.itemType=='file'" style="font-size: 15px;">{{item.alias| truncate: 12}}</p>
-  </div>
-  <div class="toggler">
+            <div class="beneath" *ngIf="currentDirectoryName!=currentSectionName">
+                <a (click)="Addfile()"><span class="material-icons"> content_copy </span>
+      <p>Upload File</p>
+    </a>
+            </div>
+        </div>
+    </div>
 
-    <span class="more-icon material-icons" >arrow_drop_down</span>
-      <span
-      id="hiddenText"
-      class="material-icons clicktoshow"
-      smart-tooltip-container [ngStyle]="{'opacity': showTooltip}">
+
+    <div class="folders">
+        <a *ngFor="let item of dirContent|async;let i = index">
+            <div class="folder-container">
+                <div (click)="onFolderClicked(item)" class="component">
+                    <img *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' " src="../../../assets/preview.png" style="height: 50px; width: 50px;" />
+                    <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="../../../assets/pdf.png" style="height: 50px; width: 50px;" />
+                    <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12' || item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint'" src="../../../assets/pp.png" style="height: 50px; width: 50px;"
+                    />
+                    <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||item.itemType=='file' && item.contentType=='application/msword'" src="../../../assets/word.png" style="height: 50px; width: 50px;"
+                    />
+                    <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'" src="../../../assets/excel.png" style="height: 50px; width: 50px;" />
+                    <img *ngIf="item.itemType=='file' && item.contentType=='text/plain'" src="../../../assets/text.png" style="height: 50px; width: 50px;" />
+                    <i *ngIf="item.itemType=='folder' " class="{{fontIcon}}" style='font-size: 50px;'></i>
+                    <p *ngIf="item.itemType=='folder' " style="font-size: 15px;">{{item.alias| truncate: 12}}</p>
+                    <p *ngIf="item.itemType=='file'" style="font-size: 15px;">{{item.alias| truncate: 12}}</p>
+                </div>
+                <div class="toggler">
+
+                    <span class="more-icon material-icons">arrow_drop_down</span>
+                    <span id="hiddenText" class="material-icons clicktoshow" smart-tooltip-container [ngStyle]="{'opacity': showTooltip}">
       <span class="smart-tooltip stick stay-down overlay" id="Tooltip">
         <div *ngIf="item.itemType=='file'" class="text">
           <p >
@@ -57,45 +58,47 @@
                 </li>
               </ul>
             </span>
-          </p>
-        </div>
-        <div *ngIf="item.itemType=='file'" class="text">
-          <p ><a href={{item.url}} download="item.name" style="color:black; text-decoration: none;">Download</a></p>
-            </div>
-            <div class="text" *ngIf="item.itemType=='file'">
-                <p (click)="onShowRequest(item ,i, $event)">Request Approval</p>
-            </div>
-            <div class="text">
-                <p (click)="onDelete(item)">Delete</p>
-            </div>
-            </span>
-            </span>
-        </div>
-        </a>
-
-        <div *ngIf="createfolder">
-            <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>
-        </div>
-
-        <div *ngIf="addfile">
-            <app-preview (onResult)="onPreviewResult($event)"></app-preview>
-        </div>
-
-
-    </div>
-    <app-request-approvals *ngIf="requestModal" (onResult)="onRequestModal($event)"></app-request-approvals>
-    <div *ngIf="delfolder">
-        <div id="myModal" class="Modal">
-
-            <div (click)="onModalDelete(false)" style=" position: absolute;left:0;top:0;width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4);z-index: -1; "></div>
-            <!-- Modal content -->
-            <div class="modal-content ">
-                <h4>{{message}}</h4>
-                <div class="submit ">
-                    <button style="background-color: rgb(250, 250, 250); border-color: rgb(192, 247, 111); " (click)="onModalDelete(true) ">Yes</button>
-                    <button id="btn" (click)="onModalDelete(false) ">No</button>
+                    </p>
                 </div>
+                <div *ngIf="item.itemType=='file'" class="text">
+                    <p><a href={{item.url}} download="item.name" style="color:black; text-decoration: none;">Download</a></p>
+                </div>
+                <div class="text" *ngIf="item.itemType=='file'">
+                    <p (click)="onShowRequest(item ,i, $event)">Request Approval</p>
+                </div>
+                <div class="text">
+                    <p (click)="onDelete(item)">Delete</p>
+                </div>
+                </span>
+                </span>
+            </div>
+    </div>
+
+    </a>
+
+    <div *ngIf="createfolder">
+        <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>
+    </div>
+
+    <div *ngIf="addfile">
+        <app-preview (onResult)="onPreviewResult($event)"></app-preview>
+    </div>
+
+
+</div>
+<app-request-approvals *ngIf="requestModal" (onResult)="onRequestModal($event)"></app-request-approvals>
+<div *ngIf="delfolder">
+    <div id="myModal" class="Modal">
+
+        <div (click)="onModalDelete(false)" style=" position: absolute;left:0;top:0;width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4);z-index: -1; "></div>
+        <!-- Modal content -->
+        <div class="modal-content ">
+            <h4>{{message}}</h4>
+            <div class="submit ">
+                <button style="background-color: rgb(250, 250, 250); border-color: rgb(192, 247, 111); " (click)="onModalDelete(true) ">Yes</button>
+                <button id="btn" (click)="onModalDelete(false) ">No</button>
             </div>
         </div>
     </div>
+</div>
 </div>

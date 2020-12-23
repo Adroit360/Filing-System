@@ -54,10 +54,10 @@ export class LoginComponent implements OnInit {
       //  set user info as volatile data in the data service (to make user details accessible at runtime)
        await this.userInfo.setActiveUser(userobj);
       //  get the id of the general tab
-       this.generalSection = await this.sectionService.getGeneralSection(userobj.entity);
+      //  this.generalSection = await this.sectionService.getGeneralSection(userobj.entity);
       //  set default section and directory
-      this.userInfo.setCurrentSection(this.generalSection.id,"general");
-      this.userInfo.setCurrentDirectory(this.generalSection.id,"general");
+      // this.userInfo.setCurrentSection(this.generalSection.id,"general");
+      // this.userInfo.setCurrentDirectory(this.generalSection.id,"general");
 
       //Local storage
       localStorage.setItem("user", JSON.stringify(this.user));
