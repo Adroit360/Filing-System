@@ -6,17 +6,19 @@
         <h3 style="margin: 0; margin-left: 12px;
       font-size: 20px;
       font-weight: bold;">{{ currentDirectoryName }}</h3>
+
         <div class="ssp">
             <div class="add-folder">
-                <a (click)="newfolder()"><span class="material-icons"> folder_open</span>
-              <p>Create Folder</p>
-             </a>
+                <a (click)="newfolder()">
+                    <span class="material-icons"> folder_open</span>
+                    <p>Create Folder</p>
+                </a>
             </div>
 
-            <div class="beneath" *ngIf="currentDirectoryName!=currentSectionName">
-                <a (click)="Addfile()"><span class="material-icons"> content_copy </span>
-      <p>Upload File</p>
-    </a>
+            <div class="beneath">
+                <a (click)="Addfile()" *ngIf="currentDirectoryName!=currentSectionName"><span class="material-icons"> content_copy </span>
+                <p>Upload File</p>
+            </a>
             </div>
         </div>
     </div>

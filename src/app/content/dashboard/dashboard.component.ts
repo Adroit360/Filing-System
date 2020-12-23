@@ -51,6 +51,8 @@ colors= [];
 localColors=["red",'green','pink',"yellow"];
 Random;
 
+DelTask:any;
+
  TaskForm: FormGroup= new FormGroup({
   newTask: new FormControl(null),
   Date: new FormControl(null)
@@ -186,11 +188,11 @@ document.getElementById('c-task').style.display="none";
 // this.TaskForm.value.newTask=null;
 }
 
-//DELETEING ALL TASK modal
+//Calling ALL  delete TASK modal
 allDeleteTask(taskgrpId){
   document.getElementById("myModal").style.display='block';
-  this.taskManager.removeTaskGroup(taskgrpId,this.dataManager.getActiveUser().email,this.dataManager.getEntity());
 
+  this.DelTask=taskgrpId;
 
 }
 
@@ -201,7 +203,8 @@ onAllDelete(){
   document.getElementById("list-task").style.display="none";
   document.getElementById("qwert").style.display="none";
   document.getElementById("qwert1").style.display="none";
-  // this.activeTaskGrp=false;
+  this.taskManager.removeTaskGroup(this.DelTask,this.dataManager.getActiveUser().email,this.dataManager.getEntity());
+  this.activeTaskGrp=false;
 
 }
 //NOT DELETING ALL TASK
