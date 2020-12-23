@@ -166,7 +166,7 @@ body {
                 justify-content: flex-start;
                 position: relative;
                 align-items: center;
-                width: 100%;
+                // width: 100%;
                 min-width: 25rem;
                 margin: 20px;
                 flex-basis: 29%;
@@ -212,10 +212,32 @@ body {
                     }
                 }
             }
-            .middle {
-                // margin: 88px;
-            }
         }
+    }
+}
+
+.get_started {
+    align-items: center;
+    box-sizing: content-box;
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 48px;
+    text-align: center;
+    padding: 70px;
+    .heading {
+        @include heading();
+        text-align: center;
+        line-height: 6.4rem;
+    }
+    .intro {
+        font-size: 20px;
+        line-height: 7rem;
+    }
+    .brand-image {
+        width: 35rem;
+        margin: 2rem auto;
     }
 }
 
@@ -228,4 +250,14 @@ body {
     &:hover {
         background-color: $hover-color;
     }
+}
+
+.btn-big-blue {
+    background-color: $blue;
+    color: white;
+    font-size: 20px;
+    letter-spacing: .21px;
+    line-height: 16px;
+    padding: 20px 52px;
+    border-radius: 0.8rem;
 }
