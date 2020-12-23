@@ -19,11 +19,14 @@ export class NavBarComponent implements OnInit {
   photo:any;
   showMenu: boolean = false;
   cross: boolean = false;
+  firstName:string="";
   constructor( private authManager:AuthServiceService,private userservice: UserService, private router: Router,
     private entityManager:EntitiesService, private dataManager: DataService, private sectionService: SectionService) {
+      // get user info
       this.entityManager._getEntityUser(this.dataManager.getActiveUser().email,this.dataManager.getEntity()).subscribe(result=>{
         this.user = result;
-      })
+      });
+      // this.firstName=this.dataManager.getActiveUser().firstName;
 
      }
 

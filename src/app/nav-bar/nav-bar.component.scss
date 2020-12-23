@@ -145,6 +145,12 @@
     display: none;
 }
 
+.sidde {
+    display: flex;
+    align-items: baseline;
+    grid-gap: 10px;
+}
+
 @media screen and (max-width: 800px) {
     .nav-bar {
         height: 6rem;
