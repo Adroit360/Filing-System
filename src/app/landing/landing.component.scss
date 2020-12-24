@@ -27,6 +27,12 @@ $shadow: 0 1px 2px 0 rgba(60, 64, 67, .3),
     font-weight: 500;
 }
 
+@mixin active() {
+    padding: 6px 10px;
+    box-shadow: $shadow;
+    border-radius: 2px;
+}
+
 html,
 body {
     // overflow: auto !important;
@@ -71,6 +77,9 @@ body {
                 &:hover {
                     color: $dark-grey-color;
                 }
+            }
+            .active {
+                @include active();
             }
         }
         &__right {
@@ -162,7 +171,7 @@ body {
                     margin: 2rem;
                     @include flex();
                     flex-direction: column;
-                    @media screen and (min-width: 1045px) {
+                    @media screen and (min-width: 1100px) {
                         flex-basis: 25%;
                     }
                     @media screen and (max-width:1045px) {
@@ -260,7 +269,7 @@ body {
         .news_heading {
             padding: 25px 5px;
             font-size: 18px;
-            line-height: 54px;
+            line-height: 24px;
             font-weight: 600;
         }
     }
@@ -285,4 +294,43 @@ body {
     line-height: 16px;
     padding: 20px 52px;
     border-radius: 0.8rem;
+}
+
+.prices {
+    .price__heading {
+        padding-bottom: 3rem;
+    }
+    .image {
+        width: 20rem;
+    }
+    .list_section {
+        // margin: 10px auto;
+        a {
+            padding: 1rem;
+            border-radius: 5px;
+            background: $blue;
+            color: white;
+        }
+        ul {
+            padding: 20px;
+        }
+        li {
+            // margin: 8px;
+            list-style: inside;
+            text-align: left;
+        }
+    }
+    .plan_month {
+        padding: 2rem 0rem 0rem 0rem;
+        h3 {
+            color: $blue;
+            line-height: 5rem;
+            font-weight: 700;
+            font-size: 5rem;
+        }
+        small {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+    }
 }
