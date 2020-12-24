@@ -17,11 +17,11 @@ export class HompageComponent implements OnInit {
   constructor(private route: Router, private sectionService: SectionService) { }
 
   ngOnInit(): void {
-    this.route.navigate(['content', 'general']);
+    // this.route.navigate(['content', 'general']);
     this.sectionService.toggleMenuBar.subscribe(
       data =>{
         this.toggleMenu = data;
-        
+
       }
     );
   }
@@ -32,6 +32,6 @@ export class HompageComponent implements OnInit {
     this.toggleMenu= false;
     this.sectionService.onToggleMenu(false);
     this.sectionService.onToggleCloseMenu(false);
-    
+
   }
 }
