@@ -5,7 +5,7 @@
             <!-- <div class="brand-text">Konvy</div> -->
         </div>
         <div class="nav-bar__middle">
-            <div routerLink="/home/content/dashboard" class="nav-item">About Us</div>
+            <div class="nav-item" (click)="onClickScroll('features')">Features</div>
             <div class="nav-item" (click)="onClickScroll('prices')">Pricing</div>
             <div class="nav-item">FAQs</div>
         </div>
@@ -19,7 +19,7 @@
             <div class="main-header">Konvy helps you build and run successful business</div>
             <div class="sub-header">Backed by Google and loved by app development teams - from startups to global enterprises</div>
             <div class="actions">
-                <button class="btn-get-started btn-big-white">Get Started</button>
+                <button class="btn-get-started btn-big-white" routerLink="/SignUp">Get Started</button>
                 <div class="demo">Try Demo</div>
             </div>
         </div>
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="panel">
-        <div class="panel__container">
+        <div class="panel__container" id="features">
             <header class="panel__header">
                 <h1>Products and solutions you can rely on Through your app's journey</h1>
             </header>
@@ -93,7 +93,7 @@
                     <h5 class="news_heading">Catch up on Firebase Summit</h5>
                     <div class="news_details_section">
                         <p class="news__details">We just wrapped up our virtual Firebase Summit 2020. If you missed the online event or simply want a refresher, you can still recap everything we announced plus highlights of our recent launches.</p>
-                        <a href="#" class="news_details_links">Read more</a>
+                        <a class="news_details_links">Read more</a>
                     </div>
 
 
@@ -103,7 +103,7 @@
                     <h5 class="news_heading">Catch up on Firebase Summit</h5>
                     <div class="news_details_section">
                         <p class="news__details">We just wrapped up our virtual Firebase Summit 2020. If you missed the online event or simply want a refresher, you can still recap everything we announced plus highlights of our recent launches.</p>
-                        <a href="#" class="news_details_links">Read more</a>
+                        <a class="news_details_links">Read more</a>
                     </div>
 
 
@@ -113,7 +113,7 @@
                     <h5 class="news_heading">Catch up on Firebase Summit</h5>
                     <div class="news_details_section">
                         <p class="news__details">We just wrapped up our virtual Firebase Summit 2020. If you missed the online event or simply want a refresher, you can still recap everything we announced plus highlights of our recent launches.</p>
-                        <a href="#" class="news_details_links">Read more</a>
+                        <a class="news_details_links">Read more</a>
                     </div>
 
 
@@ -140,7 +140,7 @@
                             <li>500 GB Storage</li>
                             <li>Collaborate with up to 10 people</li>
                         </ul>
-                        <a href="#">Try 30 days for free</a>
+                        <a routerLink="/SignUp">Try 30 days for free</a>
                     </div>
 
 
@@ -156,7 +156,7 @@
                             <li>500 GB Storage</li>
                             <li>Collaborate with up to 10 people</li>
                         </ul>
-                        <a href="#">Try 30 days for free</a>
+                        <a routerLink="/SignUp">Try 30 days for free</a>
                     </div>
 
 
@@ -172,7 +172,7 @@
                             <li>1 TB Storage</li>
                             <li>Collaborate with up to 200 people</li>
                         </ul>
-                        <a href="#">Try 30 days for free</a>
+                        <a routerLink="/SignUp">Try 30 days for free</a>
                     </div>
 
 
