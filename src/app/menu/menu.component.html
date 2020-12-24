@@ -55,7 +55,7 @@
 
 <div class="admin-tools">
     <h2>Teams</h2>
-    <ul >
+    <ul>
         <li>
             <!-- <a (click)="onSelectedGeneral(generalSection.id,generalSection.name)" [routerLink]="['content',entity, generalSection.id, generalSection.name,generalSection.id,generalSection.name]" routerLinkActive="active">
                 <span class="material-icons">
@@ -83,22 +83,24 @@
                                 <span class="material-icons">
                                       folder_open
                                     </span>
-                                <p>{{item.name| tilteCase| truncate:12}}</p>
-                            </a>
+                                <p [title]="item.name">{{item.name| tilteCase| truncate:12}}</p>
 
+
+                            </a>
                             <div class="toggler clicktoshow" smart-tooltip-container>
                                 <span class="more-icons material-icons">
-                                      more_vert
-                                    </span>
+                                  more_vert
+                                </span>
 
                                 <div class="Tooltip">
                                     <span class="smart-tooltip overlay stick stay-right">
-                                            <h4 (click)="onRenameSection(item, i)" >Rename</h4>
+                                        <h4 (click)="onRenameSection(item, i)" >Rename</h4>
 
-                                            <h4 (click)="onDeleteSection(item.id)">Delete</h4>
+                                        <h4 (click)="onDeleteSection(item.id)">Delete</h4>
                                     </span>
                                 </div>
                             </div>
+
 
                         </div>
 
@@ -110,7 +112,7 @@
                 </li>
             </div>
         </div>
-        <li *ngIf="user.isAdmin" ><a (click)="toggle()" *ngIf="visible;else Data"><span class="material-icons">
+        <li *ngIf="user.isAdmin"><a (click)="toggle()" *ngIf="visible;else Data"><span class="material-icons">
                 control_point
                 </span> <p >Create Team</p>
             </a>

@@ -34,6 +34,7 @@ body {
     overflow-x: hidden !important;
     height: auto !important;
     width: auto !important;
+    min-width: auto !important;
 }
 
 .landing {
@@ -52,8 +53,6 @@ body {
         &__left {
             @include flex("left");
             .brand-image {
-                // @include square(3rem);
-                // border-radius: 50%;
                 width: 10rem;
                 margin: 1rem;
             }
@@ -131,13 +130,11 @@ body {
     }
     .panel {
         position: relative;
-        min-width: 80rem;
         background-color: white;
         box-shadow: $shadow;
         border-radius: 1.6rem;
         z-index: 1;
-        margin: 2rem;
-        // width: calc(100% - 4rem);
+        margin: 6rem;
         width: calc(100vw-4rem);
         .panel__container {
             padding: 80px 10px;
@@ -153,23 +150,8 @@ body {
             .panel__cards {
                 margin: 50px 0;
                 display: flex;
-                flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: center;
-                // align-items: center;
-            }
-            .panel_card_col {
-                // flex: 0 1 33%;
-                box-sizing: border-box;
-                display: flex;
-                // flex-direction: column;
-                justify-content: flex-start;
-                position: relative;
-                align-items: center;
-                // width: 100%;
-                min-width: 25rem;
-                margin: 20px;
-                flex-basis: 29%;
                 .card_details {
                     border-radius: 16px;
                     background: #f8f9fa;
@@ -177,9 +159,15 @@ body {
                     height: 100%;
                     padding: 40px 20px 30px;
                     text-align: center;
-                    width: 100%;
+                    margin: 2rem;
                     @include flex();
                     flex-direction: column;
+                    @media screen and (min-width: 1045px) {
+                        flex-basis: 25%;
+                    }
+                    @media screen and (max-width:1045px) {
+                        flex-basis: 80%;
+                    }
                     .build {
                         padding: 25px;
                         font-size: 35px;
@@ -238,6 +226,43 @@ body {
     .brand-image {
         width: 35rem;
         margin: 2rem auto;
+    }
+}
+
+.news {
+    .image {
+        width: 20rem;
+    }
+    .card_details {
+        background: transparent !important;
+        box-shadow: none !important;
+        border-radius: 0px !important;
+        margin: 1rem !important;
+        flex-basis: 27% !important;
+        padding: 10px !important;
+        .news_details_section {
+            display: flex;
+            flex-direction: column;
+            .news__details {
+                font-size: 16px !important;
+                line-height: 27px !important;
+                font-weight: 300 !important;
+                font-family: "Google Sans", sans-serif;
+                min-height: 20px !important;
+                padding: 0px 10px !important;
+                text-align: left !important;
+            }
+            .news_details_links {
+                text-align: left;
+                padding: 15px 0px 15px 10px;
+            }
+        }
+        .news_heading {
+            padding: 25px 5px;
+            font-size: 18px;
+            line-height: 54px;
+            font-weight: 600;
+        }
     }
 }
 

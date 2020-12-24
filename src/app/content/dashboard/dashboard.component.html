@@ -1,5 +1,4 @@
 <div class="content">
-
     <div class="header">
         <div class="caption">
             <h2>Recently Open</h2>
@@ -13,7 +12,7 @@
             <div class="c-contianer">
                 <div (click)="onFolderClicked(item)" class="component">
                     <i class="fa fa-folder" style='font-size: 50px; color:  #459CE3;'></i>
-                    <p>{{item.alias }}</p>
+                    <p [title]="item.alias">{{item.alias| truncate: 9 }}</p>
                 </div>
             </div>
 
@@ -31,7 +30,7 @@
                 </div>
                 <h5>{{date}}</h5>
             </div>
-            <div *ngIf="user.isAdmin"  class="btns">
+            <div *ngIf="user.isAdmin" class="btns">
                 <div class="toggler" id="npm">
                     <i style="font-size: 30px; color: rgba(0, 0, 0, 0.479); cursor: pointer;" class="fa fa-ellipsis-h"></i>
 
@@ -106,23 +105,24 @@
         <!-- <br> The dots/circles -->
         <div style="text-align:center">
             <span class="dot" *ngFor="let announce of announcements; let i=index" (click)="currentSlide(i+1)"></span>
-            <span class="dot" (click)="currentSlide(2)"></span>
-            <span class="dot" (click)="currentSlide(3)"></span>
+            <!-- <span class="dot" (click)="currentSlide(2)"></span>
+            <span class="dot" (click)="currentSlide(3)"></span> -->
         </div>
     </div>
 
     <div class="task">
         <div class="task-caption">
-            <div style="display: flex;">
+            <div style="display: flex; align-items: center;">
                 <h5 (click)="back()" id="qwert" class="material-icons">
                     arrow_left
                 </h5>
-                <h3><span *ngIf="!activeTaskGrp">Tasks</span><span *ngIf="activeTaskGrp">{{activeTaskGrp.name}}</span></h3>
+                <h3><span *ngIf="!activeTaskGrp" style="background: transparent;">Tasks</span><span *ngIf="activeTaskGrp" style="background: none;">{{activeTaskGrp.name}}</span></h3>
             </div>
             <div id="qwert1" style="cursor: pointer;
             display: none;
             grid-gap: 10px;
             margin-right: 75px;">
+
                 <span (click)="createTask()" class="material-icons">
                 add
               </span>
@@ -180,10 +180,10 @@
                         <li *ngFor="let tk of activeTaskArray">
                             <div class="f-side" style="font-size: 14px;">
 
-                                <h3>{{tk.task}}</h3>
-                                <h5 *ngIf="!tk.done" style="color:red">Pending...</h5>
-                                <h5 *ngIf="tk.done" style="color:green">Done</h5>
-                                <h6 style="font-size:11px ;">{{tk.dueDate}}</h6>
+                                <h3><strong>Task: </strong> {{tk.task}}</h3>
+                                <h5 *ngIf="!tk.done" style="color:red"> <strong> Status: </strong> Pending...</h5>
+                                <h5 *ngIf="tk.done" style="color:green"> <strong> Status: </strong> Done</h5>
+                                <h5 style="font-size:11px ;"> <strong>Date: </strong> {{tk.dueDate}}</h5>
                             </div>
                             <div class="s-side">
 

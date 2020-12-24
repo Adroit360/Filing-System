@@ -2,15 +2,15 @@
     display: flex;
     align-items: center;
     position: relative;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    justify-content: space-between;
+    // margin-top: 10px;
+    // margin-bottom: 10px;
 }
 
 .logo {
     img {
-        width: 200px;
-        height: 55px;
-        margin: 10px 0 0 25px;
+        width: 10rem;
+        margin: 1rem;
         // margin-left: 4.3rem;
         // margin-top: 1.63rem;
     }
@@ -21,8 +21,8 @@
     span,
     img {
         cursor: pointer;
-        font-size: 45px;
-        margin-right: 3rem;
+        font-size: 55px;
+        margin-right: 1rem;
         border-radius: 50%;
         background-color: #E5E5E5;
         height: 50px;
@@ -107,32 +107,22 @@
 
 .search-box {
     position: relative;
-    flex-grow: 1;
-    margin-left: 10rem;
+    // flex-grow: 1;
+    // margin-left: 10rem;
 }
 
 .search-box span {
     position: absolute;
-    top: 26%;
+    top: 16%;
     left: 2%;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 #search {
-    font-size: 18px;
-    width: 80%;
-    padding: 1.2rem;
-    padding-left: 5.5rem;
-    border-radius: 3rem;
-    outline: none;
-    border: transparent;
-    background: #E5E5E5;
-    font-size: 18px;
-    width: 75%;
-    padding: 1.2rem;
-    padding-left: 5.5rem;
-    border-radius: 3rem;
-    outline: none;
+    border-radius: 15px;
+    width: 516px;
+    padding: 0.5rem;
+    padding-left: 5rem;
     border: transparent;
     background: #E5E5E5;
 }
@@ -153,11 +143,13 @@
 
 @media screen and (max-width: 800px) {
     .nav-bar {
-        height: 6rem;
-        margin-top: 0px;
+        display: grid;
+        grid-template-columns: auto auto 5fr auto;
+        /* height: 6rem; */
+        /* margin-top: 0px; */
         box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
         -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+        // -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
     }
     .sidebar {
         display: block;
@@ -194,13 +186,13 @@
     }
     #search {
         // width: 275px;
-        width: 89%;
+        width: 80%;
         font-size: 11px;
     }
     .search-box {
-        margin-left: 5rem;
+        // margin-left: 5rem;
         span {
-            top: 17%;
+            top: 9%;
         }
     }
     .logo {
@@ -213,7 +205,7 @@
 
 @media screen and (max-width: 650px) {
     #search {
-        width: 247px;
+        // width: 247px;
         font-size: 11px;
         padding-left: 3.5rem;
     }
@@ -222,7 +214,7 @@
     }
     .logo {
         img {
-            margin: 10px 0 0 15px
+            // margin: 10px 0 0 15px
         }
     }
     .search-box {
@@ -237,6 +229,9 @@
 }
 
 @media screen and (max-width: 500px) {
+    .nav-bar {
+        display: flex;
+    }
     .sidebar {
         margin: 0 1rem;
     }
@@ -252,11 +247,10 @@
         // right: 0rem;
         // top: 6rem;
         span {
-            top: 17%;
-            // margin-top: -18px;
-            margin: -18px 40px;
+            top: -25%;
+            /* margin: -18px 40px; */
             padding: 3px;
-            text-align: center;
+            /* text-align: center; */
             border-radius: 50%;
             background: #e5e5e5;
             cursor: pointer;
@@ -264,10 +258,9 @@
         #search {
             display: none;
             position: absolute;
-            // right: -8rem;
-            right: -6rem;
+            right: -12rem;
             top: 3rem;
-            width: 100vw;
+            width: 89vw;
             border-radius: 0px;
             z-index: 10;
             background: white;
@@ -295,7 +288,7 @@
         //     margin-left: -2.3rem;
         // }
         #search {
-            right: -6rem;
+            right: -10rem;
         }
     }
 }
@@ -303,7 +296,7 @@
 @media screen and (max-width:350px) {
     .search-box {
         span {
-            margin: -18px 0px;
+            margin: 0px -25px;
         }
         #search {
             right: -7rem;

@@ -5,13 +5,13 @@
             <!-- <div class="brand-text">Konvy</div> -->
         </div>
         <div class="nav-bar__middle">
-            <div class="nav-item">About Us</div>
+            <div routerLink="/home/content/dashboard" class="nav-item">About Us</div>
             <div class="nav-item">Pricing</div>
             <div class="nav-item">FAQs</div>
         </div>
         <div class="nav-bar__right">
-            <button class="btn btn-sign-in">Sign In</button>
-            <button class="btn btn-sign-up">Sign Up</button>
+            <button class="btn btn-sign-in " routerLink="/login">Sign In</button>
+            <button class="btn btn-sign-up" routerLink="/SignUp">Sign Up</button>
         </div>
     </div>
     <div class="front">
@@ -33,56 +33,94 @@
                 <h1>Products and solutions you can rely on Through your app's journey</h1>
             </header>
             <div class="panel__cards">
-                <div class="panel_card_col left">
-                    <div class="card_details">
-                        <img srcset="https://firebase.google.com/images/homepage/home-icon-build_2x.png 2x,https://firebase.google.com/images/homepage/home-icon-build.png 1x" src="/images/homepage/home-icon-build.png" alt="Build Illustration">
-                        <h5 class="build">Build</h5>
-                        <p>Accelerate app development with fully managed backend infrastructure
-                        </p>
-                        <div class="panel_links">
-                            <a href="#">View all build products</a>
-                            <ul>
-                                <li>lorem ipsum</li>
-                                <li>lorem ipsum</li>
-                            </ul>
-                        </div>
+                <!-- <div class="panel_card_col left"> -->
+                <div class="card_details">
+                    <img srcset="https://firebase.google.com/images/homepage/home-icon-build_2x.png 2x,https://firebase.google.com/images/homepage/home-icon-build.png 1x" src="/images/homepage/home-icon-build.png" alt="Build Illustration">
+                    <h5 class="build">Build</h5>
+                    <p>Accelerate app development with fully managed backend infrastructure
+                    </p>
+                    <div class="panel_links">
+                        <a href="#">View all build products</a>
+                        <ul>
+                            <li>lorem ipsum</li>
+                            <li>lorem ipsum</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="panel_card_col middle">
-                    <div class="card_details">
-                        <img srcset="https://firebase.google.com/images/homepage/home-icon-build_2x.png 2x,https://firebase.google.com/images/homepage/home-icon-build.png 1x" src="/images/homepage/home-icon-build.png" alt="Build Illustration">
-                        <h5 class="build">Build</h5>
-                        <p>Accelerate app development with fully managed backend infrastructure
-                        </p>
-                        <div class="panel_links">
-                            <a href="#">View all build products</a>
-                            <ul>
-                                <li>lorem ipsum</li>
-                                <li>lorem ipsum</li>
-                            </ul>
-                        </div>
+                <!-- </div> -->
+                <!-- <div class="panel_card_col middle"> -->
+                <div class="card_details">
+                    <img srcset="https://firebase.google.com/images/homepage/home-icon-build_2x.png 2x,https://firebase.google.com/images/homepage/home-icon-build.png 1x" src="/images/homepage/home-icon-build.png" alt="Build Illustration">
+                    <h5 class="build">Build</h5>
+                    <p>Accelerate app development with fully managed backend infrastructure
+                    </p>
+                    <div class="panel_links">
+                        <a href="#">View all build products</a>
+                        <ul>
+                            <li>lorem ipsum</li>
+                            <li>lorem ipsum</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="panel_card_col right">
-                    <div class="card_details">
-                        <img srcset="https://firebase.google.com/images/homepage/home-icon-build_2x.png 2x,https://firebase.google.com/images/homepage/home-icon-build.png 1x" src="/images/homepage/home-icon-build.png" alt="Build Illustration">
-                        <h5 class="build">Build</h5>
-                        <p>Accelerate app development with fully managed backend infrastructure
-                        </p>
-                        <div class="panel_links">
-                            <a href="#">View all build products</a>
-                            <ul>
-                                <li>lorem ipsum</li>
-                                <li>lorem ipsum</li>
-                            </ul>
-                        </div>
+                <!-- </div> -->
+                <!-- <div class="panel_card_col right"> -->
+                <div class="card_details">
+                    <img srcset="https://firebase.google.com/images/homepage/home-icon-build_2x.png 2x,https://firebase.google.com/images/homepage/home-icon-build.png 1x" src="/images/homepage/home-icon-build.png" alt="Build Illustration">
+                    <h5 class="build">Build</h5>
+                    <p>Accelerate app development with fully managed backend infrastructure
+                    </p>
+                    <div class="panel_links">
+                        <a href="#">View all build products</a>
+                        <ul>
+                            <li>lorem ipsum</li>
+                            <li>lorem ipsum</li>
+                        </ul>
                     </div>
                 </div>
+                <!-- </div> -->
             </div>
         </div>
     </div>
     <div class="panel">
+        <!---NEWS SECTION-->
+        <div class="panel__container">
+            <header class="panel__header">
+                <h1>News & Events</h1>
+            </header>
+            <div class="panel__cards news">
+                <div class="card_details">
+                    <img src="../../assets/files.svg" class="image">
+                    <h5 class="news_heading">Catch up on Firebase Summit</h5>
+                    <div class="news_details_section">
+                        <p class="news__details">We just wrapped up our virtual Firebase Summit 2020. If you missed the online event or simply want a refresher, you can still recap everything we announced plus highlights of our recent launches.</p>
+                        <a href="#" class="news_details_links">Read more</a>
+                    </div>
 
+
+                </div>
+                <div class="card_details">
+                    <img src="../../assets/files.svg" class="image">
+                    <h5 class="news_heading">Catch up on Firebase Summit</h5>
+                    <div class="news_details_section">
+                        <p class="news__details">We just wrapped up our virtual Firebase Summit 2020. If you missed the online event or simply want a refresher, you can still recap everything we announced plus highlights of our recent launches.</p>
+                        <a href="#" class="news_details_links">Read more</a>
+                    </div>
+
+
+                </div>
+                <div class="card_details">
+                    <img src="../../assets/files.svg" class="image">
+                    <h5 class="news_heading">Catch up on Firebase Summit</h5>
+                    <div class="news_details_section">
+                        <p class="news__details">We just wrapped up our virtual Firebase Summit 2020. If you missed the online event or simply want a refresher, you can still recap everything we announced plus highlights of our recent launches.</p>
+                        <a href="#" class="news_details_links">Read more</a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!--NEWS SECTION-->
     </div>
     <div class="get_started">
         <img class="brand-image" src="assets/konvy.png" alt="">

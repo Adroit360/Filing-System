@@ -1,4 +1,4 @@
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "./services/data.service";
 import { SectionService } from "./services/section.service";
@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private userInfo: DataService,
-    private sectionService: SectionService
+    private sectionService: SectionService,
+    private activatedRoute: ActivatedRoute
   ) {
     // router.navigate(["login"]);
   }
@@ -34,7 +35,8 @@ export class AppComponent implements OnInit {
     let _user = localStorage.getItem("user");
     if (!_user) {
       //this.router.navigate(["login"]);
-      this.router.navigate(["welcome"]);
+      if (!window.location.href.includes("not-found"))
+        this.router.navigate(["welcome"]);
       console.log("no user");
     } else {
       console.log("user");
@@ -46,7 +48,9 @@ export class AppComponent implements OnInit {
         //  set default section and directory
         this.userInfo.setCurrentSection(this.generalSection.id, "general");
         this.userInfo.setCurrentDirectory(this.generalSection.id, "general");
-        this.router.navigateByUrl("home/content/dashboard");
+        // console.log("activatedroute url",this.activatedRoute.url);
+        if (!window.location.href.includes("not-found"))
+          this.router.navigateByUrl("home/content/dashboard");
       });
     }
   }
