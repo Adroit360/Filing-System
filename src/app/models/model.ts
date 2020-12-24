@@ -22,7 +22,8 @@ export interface User{
   export interface Section{
     id: string,
     name: string,
-    dateCreated: string
+    dateCreated: string,
+    default:boolean
   }
 
   export interface FileObject{

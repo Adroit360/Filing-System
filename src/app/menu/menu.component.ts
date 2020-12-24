@@ -32,7 +32,7 @@ export class MenuComponent implements OnInit {
   visible = true; // ng template
   Opened = false;
   ResetModal=false;
-  sections: Section[];
+  sections: any=[];
   accessList:any;
   user:any;
   delete: boolean;
@@ -256,6 +256,12 @@ export class MenuComponent implements OnInit {
       }
     })
    }
+
+
+   backup(){
+
+   }
+
 
   }
 

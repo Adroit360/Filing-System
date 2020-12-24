@@ -37,6 +37,7 @@ span:hover {
         display: flex;
         padding: 0px;
         p {
+            margin-left: 10px;
             font-size: 13px;
         }
     }
@@ -182,8 +183,8 @@ p {
         width: 100%;
         height: 100%;
         position: absolute;
-        left: 0;
-        top: 0;
+        left: 22px;
+        top: -22px;
     }
 }
 
@@ -308,8 +309,8 @@ p {
             width: 100%;
             height: 100%;
             position: absolute;
-            left: 0;
-            top: 0;
+            left: 10px;
+            top: -25px;
         }
     }
 }

@@ -55,6 +55,7 @@ import { SearchComponent } from './content/search/search.component';
 import { TilteCasePipe } from './tilte-case.pipe';
 import { DashboardComponent } from './content/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 
 
@@ -95,7 +96,8 @@ import { HttpClientModule } from '@angular/common/http';
     SearchComponent,
     TilteCasePipe,
     DashboardComponent,
-    LandingComponent
+    LandingComponent,
+    ErrorPageComponent
   ],
 
   imports: [

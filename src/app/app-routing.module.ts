@@ -21,6 +21,7 @@ import { SearchComponent} from './content/search/search.component';
 import { DashboardComponent } from './content/dashboard/dashboard.component';
 import { SignUpComponent } from './SignUp/SignUp.component';
 import { LandingComponent } from './landing/landing.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 //import { SectionComponent } from './content/section/section.component';
 
 
@@ -29,8 +30,10 @@ const routes: Routes = [
   {path: 'home', component: HompageComponent, children: [
     // {path: '/:id/:name', component: SectionComponent},
     {path: 'content', component: ContentComponent, children: [
+
       {path: ':entityId/:sectionId/:sectionName/:directoryId/:directory', component: EmptyComponent},
       // {path: ':sectionId/:sectionName/:directoryId/:directory', component: EmptyComponent},
+
       {path: 'dashboard', component: DashboardComponent},
       {path: 'manageUsers', component: ManageUserComponent},
       {path: 'user-settings', component: UserSettingsComponent},
@@ -46,14 +49,17 @@ const routes: Routes = [
         {path: 'sent', component: SentComponent},
         {path: 'received', component: ReceivedComponent},
       ]},
-      // {path: 'general', component: EmptyComponent},
+
+      {path: '**', redirectTo:"/not-found"},
     ]},
 
   ]},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'welcome', component: LandingComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'SignUp', component: SignUpComponent }
+  {path: 'SignUp', component: SignUpComponent },
+  {path: '**', component: ErrorPageComponent},
+  // {path: '**', component: ErrorPageComponent}
 
 ]
 

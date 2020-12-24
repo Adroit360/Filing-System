@@ -1,5 +1,4 @@
 <div class="content">
-
     <div class="header">
         <div class="caption">
             <h2>Recently Open</h2>
@@ -13,7 +12,7 @@
             <div class="c-contianer">
                 <div (click)="onFolderClicked(item)" class="component">
                     <i class="fa fa-folder" style='font-size: 50px; color:  #459CE3;'></i>
-                    <p>{{item.alias| truncate: 9 }}</p>
+                    <p [title]="item.alias">{{item.alias| truncate: 9 }}</p>
                 </div>
             </div>
 
