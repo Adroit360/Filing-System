@@ -1,56 +1,47 @@
 <div class="Mycontainer">
-  <div class="head">
-    <span (click)="Back()" class="material-icons back">
+    <div class="head">
+        <span (click)="Back()" class="material-icons back">
       arrow_back
     </span>
-    <h3 style="margin: 0; margin-left: 12px;
+        <h3 style="margin: 0; margin-left: 12px;
       font-size: 20px;
       font-weight: bold;">{{ currentDirectoryName }}</h3>
-    <div class="ssp">
-      <div class="add-folder">
-        <a (click)="newfolder()"><span class="material-icons"> folder_open</span>
+        <div class="ssp">
+            <div class="add-folder">
+                <a (click)="newfolder()"><span class="material-icons"> folder_open</span>
           <p>Create Folder</p>
         </a>
-      </div>
+            </div>
 
-      <div class="beneath" *ngIf="currentDirectoryName!=currentSectionName">
-        <a (click)="Addfile()"><span class="material-icons"> content_copy </span>
+            <div class="beneath" *ngIf="currentDirectoryName!=currentSectionName">
+                <a (click)="Addfile()"><span class="material-icons"> content_copy </span>
           <p>Upload File</p>
         </a>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="folders">
+    <div class="folders">
 
-    <ng-container *ngFor="let item of dirContent|async;let i = index">
-      <a *ngIf=" item.public || !item.public && item.owner==currentUser">
-        <div class="folder-container">
-          <div (click)="onFolderClicked(item)" class="component">
-            <img
-              *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' "
-              src="../../../assets/preview.png" style="height: 50px; width: 50px;" />
-            <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="../../../assets/pdf.png"
-              style="height: 50px; width: 50px;" />
-            <img
-              *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12' || item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint'"
-              src="../../../assets/pp.png" style="height: 50px; width: 50px;" />
-            <img
-              *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||item.itemType=='file' && item.contentType=='application/msword'"
-              src="../../../assets/word.png" style="height: 50px; width: 50px;" />
-            <img
-              *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'"
-              src="../../../assets/excel.png" style="height: 50px; width: 50px;" />
-            <img *ngIf="item.itemType=='file' && item.contentType=='text/plain'" src="../../../assets/text.png"
-              style="height: 50px; width: 50px;" />
-            <i *ngIf="item.itemType=='folder' " class="{{fontIcon}}" style='font-size: 50px;'></i>
-            <p *ngIf="item.itemType=='folder' " style="font-size: 15px;">{{item.alias| truncate: 12}}</p>
-            <p *ngIf="item.itemType=='file'" style="font-size: 15px;">{{item.alias| truncate: 12}}</p>
-          </div>
-          <div class="toggler">
-  
-            <span class="more-icon material-icons">arrow_drop_down</span>
-            <span id="hiddenText" class="material-icons clicktoshow" smart-tooltip-container
-              [ngStyle]="{'opacity': showTooltip}">
+        <ng-container *ngFor="let item of dirContent|async;let i = index">
+            <a *ngIf=" item.public || !item.public && item.owner==currentUser">
+                <div class="folder-container">
+                    <div (click)="onFolderClicked(item)" class="component">
+                        <img *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' " src="../../../assets/preview.png" style="height: 50px; width: 50px;" />
+                        <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="../../../assets/pdf.png" style="height: 50px; width: 50px;" />
+                        <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12' || item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint'" src="../../../assets/pp.png" style="height: 50px; width: 50px;"
+                        />
+                        <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||item.itemType=='file' && item.contentType=='application/msword'" src="../../../assets/word.png" style="height: 50px; width: 50px;"
+                        />
+                        <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'" src="../../../assets/excel.png" style="height: 50px; width: 50px;" />
+                        <img *ngIf="item.itemType=='file' && item.contentType=='text/plain'" src="../../../assets/text.png" style="height: 50px; width: 50px;" />
+                        <i *ngIf="item.itemType=='folder' " class="{{fontIcon}}" style='font-size: 50px;'></i>
+                        <p *ngIf="item.itemType=='folder' " style="font-size: 15px;">{{item.alias| truncate: 12}}</p>
+                        <p *ngIf="item.itemType=='file'" style="font-size: 15px;">{{item.alias| truncate: 12}}</p>
+                    </div>
+                    <div class="toggler">
+
+                        <span class="more-icon material-icons">arrow_drop_down</span>
+                        <span id="hiddenText" class="material-icons clicktoshow" smart-tooltip-container [ngStyle]="{'opacity': showTooltip}">
               <span class="smart-tooltip stick stay-down overlay" id="Tooltip">
                 <div *ngIf="item.itemType=='file'" class="text">
                   <p>
@@ -65,27 +56,27 @@
                         </li>
                       </ul>
                     </span>
-                  </p>
+                        </p>
+                    </div>
+                    <div *ngIf="item.itemType=='file'" class="text">
+                        <p><a href={{item.url}} download="item.name" style="color:black; text-decoration: none;">Download</a>
+                        </p>
+                    </div>
+                    <div class="text" *ngIf="item.itemType=='file'">
+                        <p (click)="onShowRequest(item ,i, $event)">Request Approval</p>
+                    </div>
+                    <div class="text">
+                        <p (click)="onDelete(item)">Delete</p>
+                    </div>
+                    </span>
+                    </span>
                 </div>
-                <div *ngIf="item.itemType=='file'" class="text">
-                  <p><a href={{item.url}} download="item.name" style="color:black; text-decoration: none;">Download</a>
-                  </p>
-                </div>
-                <div class="text" *ngIf="item.itemType=='file'">
-                  <p (click)="onShowRequest(item ,i, $event)">Request Approval</p>
-                </div>
-                <div class="text">
-                  <p (click)="onDelete(item)">Delete</p>
-                </div>
-              </span>
-            </span>
-          </div>
-        </div>
-  
-      </a>
+    </div>
+
+    </a>
     </ng-container>
 
-  
+
 
     <div *ngIf="createfolder">
         <app-new-folder (onResult)="onModalResult($event)"></app-new-folder>
@@ -110,7 +101,7 @@
                 <button id="btn" (click)="onModalDelete(false) ">No</button>
             </div>
         </div>
-      </div>
     </div>
-  
+</div>
+
 </div>
