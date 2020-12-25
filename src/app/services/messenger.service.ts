@@ -6,7 +6,7 @@ import * as firebase from 'firebase/app';
 import {User,SystemUser,DocumentApprovalObject,Section,Directory,FileObject,ApprovalResponse,ApprovalRequest } from '../models/model';
 import { AngularFireStorage,AngularFireStorageReference,AngularFireUploadTask } from '@angular/fire/storage';
 import {AuthServiceService} from '../services/auth-service.service';
-import { EntitiesService } from '../services/entities.service';
+import { EntitiesService,DbCollections } from '../services/entities.service';
 
 
 
@@ -283,7 +283,7 @@ export class MessengerService {
             parentId:directoryId,
             owner:userId
           }
-        this.sectionCollection.doc(sectionId).collection("Archives").doc(file.id).set(file).catch(e=>{console.log(e); return e;});
+        this.sectionCollection.doc(sectionId).collection(DbCollections.Archives).doc(file.id).set(file).catch(e=>{console.log(e); return e;});
           
         });
       })
@@ -292,6 +292,10 @@ export class MessengerService {
     return uploadTask.percentageChanges();
   }
  
+  // get subscription packages
+  getSubscriptionPlans(){
+    return this.database.collection(DbCollections.SubscriptionPlan).valueChanges();
+  }
 // create document approval request
 
 // get

@@ -17,7 +17,8 @@ export interface Entity{
   country:string,
   dateCreated:string,
   operation:string,
-  active:Boolean
+  active:Boolean,
+  subscriptionPlan
 }
 
 export enum DbCollections{
@@ -30,7 +31,9 @@ export enum DbCollections{
   Tasks = "Tasks",
   Chats = "Chats",
   Sections="Sections",
-  Meetings="Meetings"
+  Meetings="Meetings",
+  SubscriptionPlan="SubscrptionPackages",
+  System="System"
 }
 
 @Injectable({
@@ -49,7 +52,7 @@ export class EntitiesService {
   }
 
   // create new entity account
-  NewEntity(name,email,contact,country,dateCreated,entityOperationsDescription){
+  NewEntity(name,email,contact,country,dateCreated,entityOperationsDescription,plan){
     
     // create entity object
     let entity:Entity={
@@ -60,7 +63,8 @@ export class EntitiesService {
       email : email,
       dateCreated : dateCreated,
       active : true,
-      operation : entityOperationsDescription
+      operation : entityOperationsDescription,
+      subscriptionPlan:plan
     }
     
 
@@ -130,10 +134,22 @@ export class EntitiesService {
     });
   }
 
+  // entity upgrade subscription
+  upgradeSubscriptionPlan(entityId,newPlan){
+    this.entityCollection.doc(entityId).get().subscribe(entity=>{
+      if (entity){
+         entity.data().subscriptionPlan = newPlan;
+        
+         this.entityCollection.doc(entityId).update(this.entity);
+       }
+     });
+  }
+
+
   // delete entity account
   removeEntity(entityId){
-    firebase.firestore().collection(DbCollections.Entities).doc(entityId).collection("System").get().then(a=>a.docs.forEach(doc=>{
-      this.entityCollection.doc(entityId).collection("System").doc(doc.data().id).delete();
+    firebase.firestore().collection(DbCollections.Entities).doc(entityId).collection(DbCollections.System).get().then(a=>a.docs.forEach(doc=>{
+      this.entityCollection.doc(entityId).collection(DbCollections.System).doc(doc.data().id).delete();
     })).then(()=> this.entityCollection.doc(entityId).delete()); 
   }
 
@@ -273,5 +289,6 @@ getChatMessages(user,targetUser,entity){
     return this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Meetings).valueChanges();
   }
 
+  
 
 }
