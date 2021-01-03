@@ -24,7 +24,7 @@
 
                 <select #dropDown class='drop-down' formControlName="subscription" placeholder="Subscription Plan">
                     <!-- <option [value]="countries[85].name" selected>{{countries[85].name}}</option> -->
-                    <option [value]="plan.id" *ngFor="let plan of subscriptionPlans"> {{plan.type}}</option>
+                    <option [value]="plan.type " *ngFor="let plan of subscriptionPlans"> {{plan.type}}</option>
                 </select>
 
 
