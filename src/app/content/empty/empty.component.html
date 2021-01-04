@@ -59,7 +59,7 @@
                         </p>
                     </div>
                     <div *ngIf="item.itemType=='file'" class="text">
-                        <p><a href={{item.url}} download="item.name" style="color:black; text-decoration: none;">Download</a>
+                        <p><a [href]="item.url" [download]="item.name" style="color:black; text-decoration: none;">Download</a>
                         </p>
                     </div>
                     <div class="text" *ngIf="item.itemType=='file'">
