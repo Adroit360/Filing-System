@@ -296,8 +296,6 @@ export class MessengerService {
   getSubscriptionPlans(){
     return this.database.collection(DbCollections.SubscriptionPlan).valueChanges();
   }
-
-  
 // create document approval request
 
 // get

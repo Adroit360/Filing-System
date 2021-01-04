@@ -16,7 +16,7 @@ export class DataService {
   searchItem= new Subject<any>();
   user:any;
   systemUser:any;
-  entity:any;
+
   currentSection:string="";
   currentDirectory:string="";
   currentDirectoryName:string="";
@@ -119,11 +119,6 @@ export class DataService {
   setEntity( entityId:string){
     this.entityId = entityId;
     // this.entityName = entityName;
-  }
-
-  setEntityInfo(id){
-    console.log("executing set entity info function")
-    this.entityManager.getEntity(id).subscribe(result=>{this.entity = result.data();});
   }
 
   getEntity(){
