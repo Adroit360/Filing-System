@@ -8,6 +8,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 import { TaskService } from '../services/task.service';
 import { NewTask } from '../interface/newTask.interface';
+import { SubscriptionService } from './subscription.service';
 
 export interface Entity{
   id:string,
@@ -15,9 +16,11 @@ export interface Entity{
   email:string,
   contact:string,
   country:string,
-  dateCreated:string,
+  dateCreated:any,
   operation:string,
-  active:Boolean
+  active:Boolean,
+  subscriptionPlan,
+  activation:boolean
 }
 
 export enum DbCollections{
@@ -30,7 +33,10 @@ export enum DbCollections{
   Tasks = "Tasks",
   Chats = "Chats",
   Sections="Sections",
-  Meetings="Meetings"
+  Meetings="Meetings",
+  SubscriptionPlan="SubscrptionPackages",
+  System="System",
+  EntitySubscription="EntitySubscription"
 }
 
 @Injectable({
@@ -42,14 +48,14 @@ export class EntitiesService {
   entity:Entity;
   taskManager : NewTask;
  
-  constructor(private afs:AngularFirestore,private authService:AuthServiceService,private chatManager:ChatService,
+  constructor(private subscription: SubscriptionService,private afs:AngularFirestore,private authService:AuthServiceService,private chatManager:ChatService,
     private afStorage: AngularFireStorage,_taskManager:TaskService) {
     this.entityCollection = afs.collection<Entity>(DbCollections.Entities,ref=> ref.orderBy('dateCreated'));
        this.taskManager = _taskManager;
   }
 
   // create new entity account
-  NewEntity(name,email,contact,country,dateCreated,entityOperationsDescription){
+  NewEntity(name,email,contact,country,entityOperationsDescription,planType){
     
     // create entity object
     let entity:Entity={
@@ -58,9 +64,11 @@ export class EntitiesService {
       contact : contact,
       country : country,
       email : email,
-      dateCreated : dateCreated,
+      dateCreated : firebase.firestore.FieldValue.serverTimestamp(),
       active : true,
-      operation : entityOperationsDescription
+      operation : entityOperationsDescription,
+      subscriptionPlan:planType,
+      activation:false
     }
     
 
@@ -99,6 +107,9 @@ export class EntitiesService {
         this.entityCollection.doc(entity.id).set(entity);
         // create default  account for entity
         this.afs.collection(DbCollections.Entities).doc(entity.id).collection<User>(DbCollections.Users).doc(entity.email).set(user);
+       
+      //  create trial subscription
+        this.subscription.TrialSubscription(entity.id,planType,DbCollections.Entities,DbCollections.EntitySubscription);
         // create default task group for entity
         this.taskManager.newTaskGroup("My Tasks",true,user.email,entity.id);
       }).then(()=>{
@@ -130,10 +141,22 @@ export class EntitiesService {
     });
   }
 
+  // entity upgrade subscription
+  upgradeSubscriptionPlan(entityId,newPlan){
+    this.entityCollection.doc(entityId).get().subscribe(entity=>{
+      if (entity){
+         entity.data().subscriptionPlan = newPlan;
+        
+         this.entityCollection.doc(entityId).update(this.entity);
+       }
+     });
+  }
+
+
   // delete entity account
   removeEntity(entityId){
-    firebase.firestore().collection(DbCollections.Entities).doc(entityId).collection("System").get().then(a=>a.docs.forEach(doc=>{
-      this.entityCollection.doc(entityId).collection("System").doc(doc.data().id).delete();
+    firebase.firestore().collection(DbCollections.Entities).doc(entityId).collection(DbCollections.System).get().then(a=>a.docs.forEach(doc=>{
+      this.entityCollection.doc(entityId).collection(DbCollections.System).doc(doc.data().id).delete();
     })).then(()=> this.entityCollection.doc(entityId).delete()); 
   }
 
@@ -273,5 +296,8 @@ getChatMessages(user,targetUser,entity){
     return this.afs.collection(DbCollections.Entities).doc(entity).collection(DbCollections.Meetings).valueChanges();
   }
 
+  getEntity(entityId){
+    return this.afs.collection(DbCollections.Entities).doc(entityId).get();
+  }
 
 }

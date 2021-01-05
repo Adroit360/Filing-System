@@ -5,8 +5,8 @@
             <!-- <div class="brand-text">Konvy</div> -->
         </div>
         <div class="nav-bar__middle">
-            <div routerLink="/home/content/dashboard" class="nav-item">About Us</div>
-            <div class="nav-item">Pricing</div>
+            <div class="nav-item" (click)="onClickScroll('features')">Features</div>
+            <div class="nav-item" (click)="onClickScroll('prices')">Pricing</div>
             <div class="nav-item">FAQs</div>
         </div>
         <div class="nav-bar__right">
@@ -16,11 +16,11 @@
     </div>
     <div class="front">
         <div class="front__left">
-            <div class="main-header">Konvy helps you build and run successful business</div>
-            <div class="sub-header">Backed by Google and loved by app development teams - from startups to global enterprises</div>
+            <div class="main-header">Konvy helps you manage business documents safely and conviniently</div>
+            <div class="sub-header">Backed by Cloud solution and loved by businesses - from startups to global enterprises</div>
             <div class="actions">
-                <button class="btn-get-started btn-big-white">Get Started</button>
-                <div class="demo">Try Demo</div>
+                <button class="btn-get-started btn-big-white" routerLink="/SignUp">Get Started</button>
+                <!-- <div class="demo">Try Demo</div> -->
             </div>
         </div>
         <div style="background-image: url(assets/filing.svg);" class="front__right">
@@ -28,54 +28,48 @@
         </div>
     </div>
     <div class="panel">
-        <div class="panel__container">
+        <div class="panel__container" id="features">
             <header class="panel__header">
-                <h1>Products and solutions you can rely on Through your app's journey</h1>
+                <h1><strong>Features</strong></h1>
+                <h2 style="text-align: center;">Solutions you can rely on Through your business journey</h2>
             </header>
             <div class="panel__cards">
                 <!-- <div class="panel_card_col left"> -->
                 <div class="card_details">
-                    <img srcset="https://firebase.google.com/images/homepage/home-icon-build_2x.png 2x,https://firebase.google.com/images/homepage/home-icon-build.png 1x" src="/images/homepage/home-icon-build.png" alt="Build Illustration">
-                    <h5 class="build">Build</h5>
-                    <p>Accelerate app development with fully managed backend infrastructure
+                    <img src="../../assets/CloudHosting.svg" class="img">
+                    <h3 class=""><strong>Cloud storage & multi-accounts</strong></h3>
+                    <p>Although you can create unlimited hierarchy under your primary account role, you can actually add up to 5 additional roles! So, you can have one for your company or its divisions, others for your team members!
                     </p>
-                    <div class="panel_links">
+                    <!-- <div class="panel_links">
                         <a href="#">View all build products</a>
-                        <ul>
-                            <li>lorem ipsum</li>
-                            <li>lorem ipsum</li>
-                        </ul>
-                    </div>
+                       
+                    </div> -->
                 </div>
                 <!-- </div> -->
                 <!-- <div class="panel_card_col middle"> -->
                 <div class="card_details">
-                    <img srcset="https://firebase.google.com/images/homepage/home-icon-build_2x.png 2x,https://firebase.google.com/images/homepage/home-icon-build.png 1x" src="/images/homepage/home-icon-build.png" alt="Build Illustration">
-                    <h5 class="build">Build</h5>
-                    <p>Accelerate app development with fully managed backend infrastructure
+                    <img src="../../assets/VideoConferencing.svg" class="img">
+                    <h3 class=""><strong>Video conferencing & Messaging</strong></h3>
+                    <p>Your documents are stored in a secure cloud and are perfectly safe, yet if you wish, you can easily download the whole account or individual files/folders to your hard-drive as often as you like for your local backup.
+
                     </p>
-                    <div class="panel_links">
+                    <!-- <div class="panel_links">
                         <a href="#">View all build products</a>
-                        <ul>
-                            <li>lorem ipsum</li>
-                            <li>lorem ipsum</li>
-                        </ul>
-                    </div>
+                       
+                    </div> -->
                 </div>
                 <!-- </div> -->
                 <!-- <div class="panel_card_col right"> -->
                 <div class="card_details">
-                    <img srcset="https://firebase.google.com/images/homepage/home-icon-build_2x.png 2x,https://firebase.google.com/images/homepage/home-icon-build.png 1x" src="/images/homepage/home-icon-build.png" alt="Build Illustration">
-                    <h5 class="build">Build</h5>
-                    <p>Accelerate app development with fully managed backend infrastructure
+                    <img src="../../assets/ApprovalWorkflow.svg" class="img">
+                    <h3 class=""><strong>Approval Workflow</strong></h3>
+                    <p>Does an invoice, or another documents need to be approved by a supervisor before the next step? Not a problem! Send an approval request to any person of your choice and get your document approved. It's never been easier to get documents
+                        approved.
                     </p>
-                    <div class="panel_links">
+                    <!-- <div class="panel_links">
                         <a href="#">View all build products</a>
-                        <ul>
-                            <li>lorem ipsum</li>
-                            <li>lorem ipsum</li>
-                        </ul>
-                    </div>
+                       
+                    </div> -->
                 </div>
                 <!-- </div> -->
             </div>
@@ -83,37 +77,73 @@
     </div>
     <div class="panel">
         <!---NEWS SECTION-->
-        <div class="panel__container">
+        <div class="panel__container product">
             <header class="panel__header">
-                <h1>News & Events</h1>
+                <h1>Product Benefits</h1>
             </header>
             <div class="panel__cards news">
                 <div class="card_details">
                     <img src="../../assets/files.svg" class="image">
-                    <h5 class="news_heading">Catch up on Firebase Summit</h5>
+                    <h5 class="news_heading">Improved Flexibility and Agility</h5>
                     <div class="news_details_section">
-                        <p class="news__details">We just wrapped up our virtual Firebase Summit 2020. If you missed the online event or simply want a refresher, you can still recap everything we announced plus highlights of our recent launches.</p>
-                        <a href="#" class="news_details_links">Read more</a>
+                        <p class="news__details">Konvy enables you to access data and documents from anywhere. That means you can pull up company important documents from the comfort of your home or while flying at 50,000 feet. Konvy gives you access to the information you need,
+                            when you need it.</p>
+                        <!-- <a class="news_details_links">Read more</a> -->
                     </div>
 
 
                 </div>
                 <div class="card_details">
-                    <img src="../../assets/files.svg" class="image">
-                    <h5 class="news_heading">Catch up on Firebase Summit</h5>
+                    <img src="../../assets/SecureData.svg" class="image">
+                    <h5 class="news_heading">Enforced Data Security</h5>
                     <div class="news_details_section">
-                        <p class="news__details">We just wrapped up our virtual Firebase Summit 2020. If you missed the online event or simply want a refresher, you can still recap everything we announced plus highlights of our recent launches.</p>
-                        <a href="#" class="news_details_links">Read more</a>
+                        <p class="news__details"> Konvy protects your valuable data from loss due to server failures, employee mistakes, natural disasters, and more. The future of data storage is in the cloud and Konvy ensures your business is part of the future.</p>
+
                     </div>
 
 
                 </div>
                 <div class="card_details">
-                    <img src="../../assets/files.svg" class="image">
-                    <h5 class="news_heading">Catch up on Firebase Summit</h5>
+                    <img src="../../assets/CostEffectiveness.svg" class="image">
+                    <h5 class="news_heading">Guaranteed Cost Effectiveness</h5>
                     <div class="news_details_section">
-                        <p class="news__details">We just wrapped up our virtual Firebase Summit 2020. If you missed the online event or simply want a refresher, you can still recap everything we announced plus highlights of our recent launches.</p>
-                        <a href="#" class="news_details_links">Read more</a>
+                        <p class="news__details">Storing data internally is more expensive regarding equipment and power. Cloud storage removes the need for investment in storage hardware.</p>
+
+                    </div>
+
+
+                </div>
+
+                <div class="card_details">
+                    <img src="../../assets/TeamAccessPrivelages.svg" class="image">
+                    <h5 class="news_heading">Team Access Privileges</h5>
+                    <div class="news_details_section">
+                        <p class="news__details">Konvy allows team members to access documents based on access privileges given to them. You are able to upload sensitive documents into private directories which would be unaccessible to other team members.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+                <div class="card_details">
+                    <img src="../../assets/DataRecovery.svg" class="image">
+                    <h5 class="news_heading">Data Recovery</h5>
+                    <div class="news_details_section">
+                        <p class="news__details">Konvy can be used as a back‐up plan by businesses as it holds a copy of important files. This data can be then accessed through an internet connection from anywhere.</p>
+
+                    </div>
+
+
+                </div>
+
+                <div class="card_details">
+                    <img src="../../assets/CostlyInfrastructure.svg" class="image">
+                    <h5 class="news_heading">Eliminate the need for costly infrastructure</h5>
+                    <div class="news_details_section">
+                        <p class="news__details"> Konvy is extremely cost effective.You only pay a subscription fee and use all available services without worrying about the cost of infrastructure and its maintenance. Konvy adapts to your business as you scale and only costs a
+                            fraction of an entire infrastructure price.</p>
+
                     </div>
 
 
@@ -122,11 +152,74 @@
         </div>
         <!--NEWS SECTION-->
     </div>
+    <!---PRICING-->
+    <div class="panel" id="prices">
+        <div class="panel__container">
+            <header class="panel__header">
+                <h1>Pricing</h1>
+            </header>
+            <div class="panel__cards prices">
+                <div class="card_details ">
+                    <h2 class="price__heading">Basic Plan</h2>
+                    <!-- <img src="../../assets/bitcoin.svg" class="image"> -->
+                    <!-- <h1 class="price__number">price</h1> -->
+                    <div class="price plan_month">
+                        <h3><sup>$</sup>99</h3><small>/month</small></div>
+                    <div class="list_section">
+                        <ul>
+                            <li>500 GB Storage</li>
+                            <li>Collaborate with up to 10 team members</li>
+                        </ul>
+                        <a routerLink="/SignUp">Try 30 days for free</a>
+                    </div>
+
+
+                </div>
+                <div class="card_details ">
+                    <h2 class="price__heading">Advanced Plan</h2>
+                    <!-- <img src="../../assets/bitcoin.svg" class="image"> -->
+                    <!-- <h1 class="price__number">price</h1> -->
+                    <div class="price plan_month">
+                        <h3><sup>$</sup>299</h3><small>/month</small></div>
+                    <div class="list_section">
+                        <ul>
+                            <li>500 GB Storage</li>
+                            <li>Collaborate with up to 50 team members</li>
+                        </ul>
+                        <a routerLink="/SignUp">Try 30 days for free</a>
+                    </div>
+
+
+                </div>
+                <div class="card_details ">
+                    <h2 class="price__heading">Premium Plan</h2>
+                    <!-- <img src="../../assets/bitcoin.svg" class="image"> -->
+                    <!-- <h1 class="price__number">price</h1> -->
+                    <div class="price plan_month">
+                        <h3><sup>$</sup>499</h3><small>/month</small></div>
+                    <div class="list_section">
+                        <ul>
+                            <li>1 TB Storage</li>
+                            <li> Collaborate with up to 500 team members</li>
+                        </ul>
+                        <a routerLink="/SignUp">Try 30 days for free</a>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!---PRICING-->
+
+        </div>
+    </div>
     <div class="get_started">
         <img class="brand-image" src="assets/konvy.png" alt="">
         <h1 class="heading">Try Konvy Today</h1>
-        <h5 class="intro">Integrating your app is easy</h5>
-        <button class=" btn-big-blue">Get Started</button>
+        <h5 class="intro">Convinient and easy management of your documents</h5>
+        <button class=" btn-big-blue" routerLink="/SignUp">Get Started</button>
 
     </div>
 </div>

@@ -5,6 +5,7 @@ import { SectionService } from '../services/section.service';
 import { EntitiesService } from '../services/entities.service';
 // import {User } from '../models/model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MessengerService } from '../services/messenger.service';
 
 @Component({
   selector: 'app-SignUp',
@@ -21,16 +22,20 @@ export class SignUpComponent implements OnInit,AfterViewInit {
   generalSection:any;
   countryApi:string ="https://restcountries.eu/rest/v2/";
   countries:any=[];
+  subscriptionPlans:any=[];
 
   @ViewChild("dropDown",{static:true}) dropDown:ElementRef;
 
-  constructor(private http:HttpClient,private route: Router,private entityManager:EntitiesService,private sectionService:SectionService) {
+  constructor(private msg:MessengerService, private http:HttpClient,private route: Router,private entityManager:EntitiesService,private sectionService:SectionService) {
       http.get(this.countryApi).subscribe(result=>{
         this.countries=result;
-        console.log("countries" , this.countries);
       });
-      // var dropDown:any = document.querySelector(".drop-down");
-      // document.querySelector(".show").innerHTML="put selectedIndex = '85'";
+     
+      // get subscription packages
+      msg.getSubscriptionPlans().subscribe(result=>{
+        this.subscriptionPlans=result;
+        console.log("this is subscription plan ",result)
+      });
 
 
    }
@@ -38,10 +43,10 @@ export class SignUpComponent implements OnInit,AfterViewInit {
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
-    setTimeout(()=>{
-      console.dir(this.dropDown.nativeElement);
-      this.dropDown.nativeElement.selectedIndex = 85;
-    },500);
+    // setTimeout(()=>{
+    //   console.dir(this.dropDown.nativeElement);
+    //   this.dropDown.nativeElement.selectedIndex = 85;
+    // },500);
 
 
   }
@@ -54,21 +59,18 @@ export class SignUpComponent implements OnInit,AfterViewInit {
       companyName: new FormControl(null, Validators.required),
       contact: new FormControl(null),
       description: new FormControl(null),
-      country: new FormControl(null)
+      country: new FormControl(null),
+      subscription: new FormControl(null)
 
     });
   }
 
-  // async getGeneralSection(){
-
-  //   console.log("general section info",this.generalSection.id);
-  // }
 
   onSubmit(){
     console.log(this.SignUpForm.value);
     // register new entity
     this.entityManager.NewEntity(this.SignUpForm.value.companyName,this.SignUpForm.value.email,this.SignUpForm.value.contact,
-     this.SignUpForm.value.country,new Date().toLocaleString(), this.SignUpForm.value.description);
+     this.SignUpForm.value.country, this.SignUpForm.value.description,this.SignUpForm.value.subscription);
       this.route.navigate(['login'])
   }
 
@@ -76,10 +78,6 @@ export class SignUpComponent implements OnInit,AfterViewInit {
     this.forgot = !this.forgot;
   }
 
-  // onModalResult (result: boolean){
-  //   console.log(result);
-  //   this.forgot= result;
-  // }
   onLogin(){
     this.route.navigate(['login'])
   }

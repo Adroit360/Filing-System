@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LandingComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private viewportScroller: ViewportScroller) { }
 
   ngOnInit(): void {
   }
@@ -18,4 +19,7 @@ export class LandingComponent implements OnInit {
   // onLogin(){
   //   this.router.navigate(['login'])
   // }
+  onClickScroll(elementId: string){
+    this.viewportScroller.scrollToAnchor(elementId);
+  }
 }
