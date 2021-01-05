@@ -19,7 +19,7 @@
 .caption {
     h2 {
         margin-left: 20px;
-        font-size: 24px;
+        font-size: 17px;
         font-weight: 600;
         font-family: 'Poppins';
         line-height: 36px;
@@ -29,15 +29,20 @@
 .files {
     display: flex;
     max-width: 96%;
-    height: 114px;
     background: #FFFFFF;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-top: 30px;
     /* flex-wrap: wrap; */
     align-items: flex-start;
     /* overflow: auto; */
     overflow-y: hidden;
+    flex-wrap: wrap;
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
+    padding: 1rem;
+}
+
+.folder-container {
+    width: 11rem;
 }
 
 .toggler {
@@ -82,12 +87,13 @@
 
 .c-contianer {
     position: relative;
-    padding-top: 10px;
-    padding-left: 20px;
+    // padding-top: 10px;
+    // padding-left: 20px;
 }
 
 .component {
     padding: 10px;
+    text-align: center;
     p {
         font-size: 13px;
         font-weight: 400;
@@ -108,7 +114,7 @@
 .caption-2 {
     h2 {
         margin-left: 20px;
-        font-size: 24px;
+        font-size: 17px;
         font-weight: 600;
         font-family: 'Poppins';
         line-height: 36px;
@@ -126,18 +132,20 @@
 .viewContainer {
     position: absolute;
     background-color: white;
-    max-width: 350px;
+    width: 70%;
     border-radius: 10px;
     padding: 10px;
     position: absolute;
     top: 50%;
-    right: 30%;
+    right: 20%;
     // margin: -25px 0 0 -25px;
     z-index: 1;
     -webkit-box-shadow: -1px 6px 13px -6px #000000;
     box-shadow: -1px 6px 13px -6px #000000;
     .VC-head {
         display: flex;
+        justify-content: space-between;
+        margin-top: 1.2rem;
         h1 {
             font-size: 20px;
             font-weight: bold;
@@ -152,6 +160,11 @@
             color: blueviolet;
             cursor: pointer;
         }
+        span {
+            font-size: 22px;
+            padding: 5px;
+            cursor: pointer;
+        }
     }
 }
 
@@ -159,12 +172,16 @@
     padding: 5px;
     display: flex;
     justify-content: space-between;
+    margin: 0.7rem 0rem;
     h4 {
         font-size: 16px;
         color: black;
     }
     h3 {
         font-size: 13px;
+    }
+    span {
+        font-weight: 14px;
     }
 }
 
@@ -231,10 +248,10 @@
     justify-content: space-between;
     margin-top: 50px;
     h3 {
-        font-size: 24px;
+        font-size: 17px;
         font-family: "Poppins";
         font-weight: bold;
-        margin-left: 25px;
+        // margin-left: 25px;
         margin-top: 10px;
         background: none;
     }
@@ -281,7 +298,7 @@
         height: 25px;
     }
     span:hover {
-        background-color: rgb(138, 136, 136);
+        // background-color: rgb(138, 136, 136);
         cursor: pointer;
     }
 }
@@ -315,16 +332,36 @@
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
 }
 
+// Tooltip
+// .smart-tooltip {
+//     background-color: white;
+//     box-shadow: -1px 6px 13px -6px #000000;
+//     h4 {
+//         color: black;
+//         padding: 1rem 1.5rem;
+//         font-size: 15px;
+//         text-align: left;
+//     }
+// }
 .f-form {
     display: contents;
     input {
         width: 97%;
     }
+    span {
+        position: absolute;
+        right: 11px;
+        top: 3px;
+        padding: 3px;
+        font-size: 17px;
+        cursor: pointer;
+    }
 }
 
 .f-side {
     display: grid;
-    grid-template-columns: 5fr 2fr auto;
+    grid-template-columns: 5fr 3.5fr auto;
+    grid-gap: 16px;
     input[type="checkbox"] {
         // margin: 0;
         // padding: 0;
@@ -373,6 +410,12 @@
         height: 45px;
         border-radius: 10px;
     }
+    i {
+        font-size: 20px;
+        position: absolute;
+        right: 9px;
+        top: 24px;
+    }
 }
 
 .task-tab:hover {
@@ -394,6 +437,18 @@
     }
     h5 {
         font-family: 'Poppins';
+    }
+    input {
+        border: none;
+        background-color: transparent;
+    }
+    input:focus {
+        outline: none !important;
+        background-color: none !important;
+        border: none !important;
+    }
+    span {
+        font-weight: 15px;
     }
 }
 
@@ -488,17 +543,16 @@
 form {
     display: grid;
     grid-gap: 10px;
-    position: absolute;
-    // background-color: rgba(0, 0, 0, 0.692);
+    position: fixed;
     background-color: whitesmoke;
     padding: 20px;
-    border-radius: 30px;
-    float: right;
+    border-radius: 15px;
+    /* float: right; */
     width: 290px;
     top: 50%;
-    right: 30%;
-    -webkit-box-shadow: -1px 6px 13px -6px #000000;
+    left: 50%;
     box-shadow: -1px 6px 13px -6px #000000;
+    transform: translate(-50%, -50%);
     /* Sit on top */
 }
 
@@ -523,16 +577,27 @@ form {
     border-radius: 30px;
     float: right;
     z-index: 1;
+    textarea {
+        border: none;
+        border-bottom: 1px solid rgba(103, 103, 250, 0.445);
+        background: none;
+    }
+    input {
+        margin: 0;
+        background: transparent;
+    }
 }
 
 input {
-    width: 80%;
+    width: 100%;
     border: none;
     color: rgb(2, 3, 5);
     border-bottom: 1px solid rgba(103, 103, 250, 0.445);
     font-size: 16px;
     font-family: "Poppins";
-    background-color: #ffffff18;
+    background-color: none;
+    margin-top: 12px;
+    outline: none;
 }
 
 .action-btn {
@@ -549,6 +614,7 @@ button {
     border-radius: 10px;
     background-color: rgba(0, 0, 255, 0.575);
     color: rgba(252, 252, 252, 0.918);
+    margin-top: 16px;
     cursor: pointer;
 }
 
@@ -556,21 +622,18 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: -16px;
-}
-
-.close {
-    color: black;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: rgb(143, 172, 216);
-    text-decoration: none;
-    cursor: pointer;
+    // margin-top: 10px;
+    h3 {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    span {
+        font-size: 15px;
+        padding: 5px;
+        border-radius: 6px;
+        color: rgb(204, 42, 42);
+        cursor: pointer;
+    }
 }
 
 .nothing {

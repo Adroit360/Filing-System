@@ -42,7 +42,7 @@ ul {
 
 p {
     margin-top: 0.8rem;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
 }
 
 li {
@@ -64,14 +64,15 @@ li {
 }
 
 li span {
-    font-size: 30px;
+    font-size: 22px;
 }
 
 li a {
     text-decoration: none;
     color: #808080;
-    padding: 1.1rem;
+    padding: 0.5rem;
     cursor: pointer;
+    font-size: 1.5rem;
 }
 
 .admin-tools li a {
@@ -105,16 +106,20 @@ li a {
 }
 
 .admin-tools .custom-section {
-    height: 33vh;
+    max-height: 250px;
     overflow-y: auto;
     margin-top: 0.94rem;
-    margin-bottom: 1rem;
+    // margin-bottom: 1rem;
 }
 
 .Tooltip>span {
-    height: 30px;
-    width: 60px;
+    // height: 30px;
+    // width: 60px;
     font-size: 15px;
+}
+
+.smart-tooltip {
+    padding: 0;
 }
 
 span>h4 {
@@ -263,6 +268,52 @@ input {
     margin-top: 30px;
 }
 
+.newTeam {
+    position: relative;
+    display: flex;
+    padding-right: 20px;
+    padding-left: 8px;
+    input {
+        border: none;
+        outline: transparent;
+        border-bottom: 3px solid #459ce3;
+        box-sizing: border-box;
+        font-family: 'Poppins';
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 30px;
+        width: 100%;
+        margin-top: 0px;
+        // padding-right: 26px;
+    }
+    span {
+        // position: absolute; */
+        font-size: 15px;
+        /* top: 30px; */
+        /* right: 7px; */
+        /* font-weight: lighter; */
+        cursor: pointer;
+        z-index: 1;
+        line-height: 31px;
+        margin-left: -12px;
+    }
+    input:focus {
+        outline: none !important;
+        border: none !important;
+    }
+    //     position: absolute; */
+    //     font-size: 20px;
+    //     /* top: 30px; */
+    //     /* right: 7px; */
+    //     /* font-weight: lighter; */
+    //     cursor: pointer;
+    //     z-index: 1;
+    //     line-height: 31px;
+    //     margin-left: -20px;
+    // }
+}
+
 button {
     width: 106px;
     height: 40px;
@@ -301,6 +352,7 @@ button {
         position: absolute;
         left: 15px;
         top: -12px;
+        font-size: 1.7rem;
     }
 }
 
@@ -309,13 +361,13 @@ button {
 // }
 .Tooltip>span {
     background-color: white;
-    height: 35px;
-    width: 70px;
+    // height: 35px;
+    // width: 70px;
     -webkit-box-shadow: -1px 6px 13px -6px #000000;
     box-shadow: -1px 6px 13px -6px #000000;
     h4 {
         color: black;
-        padding-bottom: 7px;
+        padding: 1rem 1.5rem;
         font-size: 15px;
         text-align: left;
     }
@@ -323,6 +375,7 @@ button {
 
 .Tooltip>span>h4:hover {
     color: #459ce3;
+    background-color: rgb(245, 245, 245);
 }
 
 @media screen and (max-width: 800px) {

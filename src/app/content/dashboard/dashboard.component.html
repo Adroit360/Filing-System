@@ -8,11 +8,11 @@
 
     <!-- files -->
     <div class="files" *ngIf="user.recentFolders">
-        <a *ngFor="let item of user.recentFolders">
+        <a *ngFor="let item of user.recentFolders" class="folder-container">
             <div class="c-contianer">
                 <div (click)="onFolderClicked(item)" class="component">
                     <i class="fa fa-folder" style='font-size: 50px; color:  #459CE3;'></i>
-                    <p [title]="item.alias">{{item.alias| truncate: 9 }}</p>
+                    <p [title]="item.alias">{{item.alias}}</p>
                 </div>
             </div>
 
@@ -36,14 +36,13 @@
 
 
                     <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
-        <span  class="smart-tooltip stick stay-down overlay" id="tooltip">
-          <h4 (click)="onAdd()" style="color: white; font-size: 12px;">Add</h4>
-          <hr/>
-          <h4 (click)="onViewAll()" style="color: white; font-size: 12px;">View All</h4>
-          <hr/>
-          <!-- <h4 (click)="onDelete()" style="color: white ; font-size: 12px;">Delete</h4> -->
+                      <span  class="smart-tooltip stick stay-down overlay" id="Tooltip">
+                        <h4 (click)="onAdd()" style="color: white; font-size: 12px;">Add</h4>
 
-        </span>
+                        <h4 (click)="onViewAll()" style="color: white; font-size: 12px;">View All</h4>
+
+                        <!-- <h4 (click)="onDelete()" style="color: white ; font-size: 12px;">Delete</h4> -->
+                      </span>
 
                     </span>
                 </div>
@@ -56,12 +55,12 @@
                 <form [formGroup]='NewsForm' (ngSubmit)="onAddAnnouncement()">
                     <div class="S-top">
                         <h3 style="color:black;"> Add Announcement</h3>
-                        <span class="close" (click)="closeNews()">x</span>
+                        <span class="material-icons" (click)="closeNews()">
+                          close
+                          </span>
                     </div>
                     <input type="text" placeholder="Heading" formControlName="Heading">
-                    <label style="color: black;"> Content</label>
-
-                    <textarea style="height: 100px;" type="Text" placeholder="Write Content...." formControlName="Content"></textarea>
+                    <textarea type="Text" placeholder="Write Content...." formControlName="Content"></textarea>
                     <button type="submit"> ok</button>
                 </form>
             </div>
@@ -71,13 +70,17 @@
                 <div class="viewContainer">
                     <div class="VC-head">
                         <h1> All Announcements</h1>
-                        <h4 (click)="closeAllAnnounce()">X</h4>
+                        <span class="material-icons" (click)="closeAllAnnounce()">
+                          close
+                          </span>
                     </div>
                     <hr/>
                     <div class="allannounce" *ngFor="let announce of announcements; let i=index">
 
                         <h3>{{announce.title}}</h3>
-                        <h4 (click)="delAnnounce(announce.id)">x</h4>
+                        <span class="material-icons" (click)="delAnnounce(announce.id)">
+                          close
+                          </span>
                     </div>
                 </div>
             </div>
@@ -144,12 +147,15 @@
 
             <!-- CREATING A TASK TAB -->
             <div class="task-tab" id="createTab" style="display: none;">
-                <h5 class="close-x" style="font-size: 22px;" (click)="closeTab()">x</h5>
+
                 <div class="v2"></div>
                 <div class="t-side">
                     <input type="text" placeholder="Name" (keydown.enter)="taskTab()" #createTab>
                 </div>
-
+                <span class="material-icons" style="margin-right: 10px;margin-top: 5px;
+                border: none;" (click)="closeTab()">
+                  close
+                  </span>
             </div>
 
             <span class="material-icons" (click)="onCreateTab()">
@@ -167,7 +173,9 @@
                             <li id='c-task' style="display: none; position: relative;">
 
                                 <form class="f-form" [formGroup]="TaskForm" (ngSubmit)="newTask()">
-                                    <h5 class="close-x" style="font-size: 22px;" (click)="closeTask()">x</h5>
+                                    <span class="material-icons" (click)="closeTask()">
+                                      close
+                                      </span>
                                     <div class="f-side">
                                         <input type="text" placeholder="create task" formControlName="newTask" />
                                         <input type="Date" placeholder="Date" formControlName="Date" />

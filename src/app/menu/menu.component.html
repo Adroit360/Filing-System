@@ -83,7 +83,7 @@
                                 <span class="material-icons">
                                       folder_open
                                     </span>
-                                <p [title]="item.name">{{item.name| truncate:12}}</p>
+                                <p [title]="item.name">{{item.name| truncate:12:false}}</p>
 
 
                             </a>
@@ -112,13 +112,17 @@
                 </li>
             </div>
         </div>
-        <li *ngIf="user.isAdmin"><a (click)="toggle()" *ngIf="visible;else Data"><span class="material-icons">
-                control_point
-                </span> <p >Create Team</p>
+        <li *ngIf="user.isAdmin"><a (click)="toggle()" *ngIf="visible;else Data"><i class="fa fa-plus"></i> <p class="moveit">Create Team</p>
             </a>
 
             <ng-template #Data>
-                <input (keydown.enter)="onAddedItem()" type="text" placeholder=" Add a New Team" #newSection>
+                <div class="newTeam">
+                    <input (keydown.enter)="onAddedItem()" type="text" placeholder="New Team" #newSection>
+                    <span class="material-icons" (click)="toggle()">
+                      close
+                      </span>
+                </div>
+
             </ng-template>
         </li>
     </ul>
