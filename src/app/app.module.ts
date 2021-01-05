@@ -60,6 +60,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,6 +115,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     SmartTooltipAngularModule,
     CarouselModule ,
     HttpClientModule,
+    
   ],
 
   providers: [UserService,AdminResourceService, SectionService],

@@ -102,6 +102,7 @@
             <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
             <a class="next" (click)="plusSlides(1)">&#10095;</a>
         </div>
+
         <!-- <br> The dots/circles -->
         <div style="text-align:center">
             <span class="dot" *ngFor="let announce of announcements; let i=index" (click)="currentSlide(i+1)"></span>
