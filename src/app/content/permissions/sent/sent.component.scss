@@ -4,9 +4,9 @@
     position: relative;
     background: #F6F6F6;
     padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 1rem;
+    // display: flex;
+    // justify-content: space-between;
+    // border-radius: 1rem;
     margin-bottom: 10px;
 }
 
@@ -15,10 +15,14 @@
     h2 {
         font-size: 16px;
     }
+    strong {
+        font-weight: 600;
+        font-size: 1.2rem;
+    }
 }
 
 i {
-    margin-top: 20px;
+    // margin-top: 20px;
     font-size: 20px;
     color: #71B71B;
 }
@@ -29,8 +33,8 @@ i {
 
 .icon {
     display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .details:hover>.user-details+.icon>#hidden {

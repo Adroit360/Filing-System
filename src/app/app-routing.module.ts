@@ -22,6 +22,7 @@ import { DashboardComponent } from './content/dashboard/dashboard.component';
 import { SignUpComponent } from './SignUp/SignUp.component';
 import { LandingComponent } from './landing/landing.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { SubscriptionPageComponent } from './content/subscription-page/subscription-page.component'
 //import { SectionComponent } from './content/section/section.component';
 
 
@@ -33,7 +34,7 @@ const routes: Routes = [
 
       {path: ':entityId/:sectionId/:sectionName/:directoryId/:directory', component: EmptyComponent},
       // {path: ':sectionId/:sectionName/:directoryId/:directory', component: EmptyComponent},
-
+      {path: 'subscription', component: SubscriptionPageComponent},
       {path: 'dashboard', component: DashboardComponent},
       {path: 'manageUsers', component: ManageUserComponent},
       {path: 'user-settings', component: UserSettingsComponent},

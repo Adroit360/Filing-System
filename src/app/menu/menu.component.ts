@@ -54,7 +54,7 @@ export class MenuComponent implements OnInit {
   // leaveUrl = 'http://localhost:4200/home/content/dashboard'
   // userName = 'Angular'
   // userEmail = 'info.adroit360@gmail.com'
-  // passWord = 'wM2fhB' 
+  // passWord = 'wM2fhB'
 
   constructor(private entityManager:EntitiesService, private meetConfig: MeetingsService, public httpClient: HttpClient, @Inject(DOCUMENT) document,private authManager:AuthServiceService,private directory:DirectoryService, private sectionService:SectionService, private router: Router, private route: ActivatedRoute,private msg:MessengerService, private data:DataService) {
     console.log("we are here");
@@ -107,6 +107,10 @@ export class MenuComponent implements OnInit {
   toggle(){
     this.visible = !this.visible;
   }
+
+  // toggle(){
+  //   thi
+  // }
 
 // when a section is clicked
   async onSelected(sectionId,sectionName, event){

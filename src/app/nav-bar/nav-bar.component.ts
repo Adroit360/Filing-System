@@ -78,5 +78,8 @@ export class NavBarComponent implements OnInit {
       this.sectionService.onToggleMenuBar(this.showMenu);
   }
 
-
+  onsubscription(){
+    this.router.navigate(['home/content/subscription']);
+    console.log('on subscription')
+  }
 }

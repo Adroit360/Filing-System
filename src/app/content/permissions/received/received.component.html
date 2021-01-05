@@ -1,15 +1,17 @@
 <!-- <p>received works!</p> -->
 <div class="details" *ngFor="let item of receivedRequests|async">
-    <div class="user-details" style="font-size: 14px;">
-        <p>{{item.requestMessage}}</p>
-        <h2>from: {{item.senderId | truncate: 20}}</h2>
-        <p>Due date: {{item.latestApprovalDate}}</p>
-        <p>{{item.dateCreated}}</p>
 
-    </div>
     <div class="actions">
         <a [href]="item.documentUrl"><i class="fa fa-download" style="color: black;" ></i></a>
         <i *ngIf="!item.approvalStatus" class="fa fa-thumbs-up" (click)="onThumbClicked( item)"></i>
     </div>
+    <div class="user-details" style="font-size: 14px;">
+        <p><strong>Message: </strong> {{item.requestMessage}}</p>
+        <h2><strong>From: </strong> <span>{{item.senderId | truncate: 20}}</span> </h2>
+        <p><strong>Due date: </strong> {{item.latestApprovalDate}}</p>
+        <p>{{item.dateCreated}}</p>
+
+    </div>
+
 </div>
 <app-reply-approvals *ngIf="thumbClicked" (onResult)="onModalResult($event)"></app-reply-approvals>
