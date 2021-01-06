@@ -39,12 +39,17 @@ export class NavBarComponent implements OnInit {
     });
 
   }
+  //Homepage
+  onHome(){
+    localStorage.clear();
+    this.router.navigate(['welcome']);
+  }
 
   // routes to the log in page
   onLogOut(){
     this.authManager.SignOut();
     localStorage.clear();
-    this.router.navigate(["login"]);
+    this.router.navigate(["welcome"]);
   }
 
   updateSearch(searchTextValue: string) {
