@@ -2,11 +2,13 @@
 .Mycontainer {
     position: relative;
     margin: 40px 0.5rem 0px 2rem;
+    height: 84vh;
+    overflow: auto;
 }
 
 .heading {
     h1 {
-        font-size: 24px;
+        font-size: 1.5rem;
         font-family: 'Poppins';
         font-weight: 700;
         margin-bottom: 1.5rem;
@@ -100,12 +102,18 @@
 
 .smart-tooltip {
     background-color: rgba(98, 101, 105, 0.205);
-    a {
+    padding: 0;
+    p {
         color: black;
         text-decoration: none;
+        padding: 3px 5px;
     }
-    a:hover {
-        color: white;
+}
+
+.smart-tooltip:hover {
+    p:hover {
+        background-color: whitesmoke;
+        color: rgb(120, 120, 194);
         cursor: pointer;
     }
 }

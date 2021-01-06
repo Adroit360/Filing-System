@@ -42,4 +42,20 @@ export class SubscriptionPageComponent implements OnInit {
   onRenew(){
     this.modalcall=!this.modalcall;
   }
+
+  update() {
+    var element = document.getElementById("myBar");
+    var width = 1;
+    var identity = setInterval(scene, 1000);
+    function scene() {
+      if (width >= 100) {
+        clearInterval(identity);
+      } else {
+        width++;
+        element.innerHTML=`${width}` +' day(s) left ';
+        element.style.width = width + '%';
+
+      }
+    }
+  }
 }

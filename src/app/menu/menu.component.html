@@ -134,26 +134,11 @@
         <li *ngIf="user.isAdmin"><a routerLink="content/manageUsers" routerLinkActive="active"> Manage Users </a></li>
         <li><a routerLink="content/SharedResources" routerLinkActive="active"> User Groups </a></li>
         <li><a (click)="MeetingRoom()" routerLinkActive="active"> Meeting Room </a></li>
-        <li><a (click)="reset()" routerLinkActive="active"> Reset password</a></li>
+
         <!-- <li><a (click)="backup()" routerLinkActive="active"> Local Back UP</a></li> -->
     </ul>
 </div>
 
 <div class="Modal" *ngIf="modalState">
     <app-modal [title]="message" (onResult)="onModalResult($event)"></app-modal>
-</div>
-
-<div *ngIf="ResetModal">
-    <div id="myModal" class="Modal">
-        <div (click)="onReset(false)" style="position: absolute; left: 0; top: 0;width: 100%; height: 100%;background-color: rgba(0, 0, 0, 0.4); z-index: -1;">
-        </div>
-        <!-- Modal content -->
-        <div class="modal-content ">
-            <h4>A password reset link has been sent to your email address</h4>
-
-            <button (click)="onReset(false)">Ok </button>
-        </div>
-
-    </div>
-
 </div>

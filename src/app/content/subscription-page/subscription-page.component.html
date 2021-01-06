@@ -12,9 +12,9 @@
             <div smart-tooltip-container class="clicktoshow">
                 <button>Change Subscription</button>
                 <span class="smart-tooltip">
-                  <a  (click)="onUnSubscribe()"> Unsubscribe</a>
-                  <a (click)="onRenew()"> Renew</a>
-                  <a (click)="onUpgrade()" > Upgrade</a>
+                  <p (click)="onUnSubscribe()"> Unsubscribe</p>
+                  <p (click)="onRenew()"> Renew</p>
+                  <p (click)="onUpgrade()" > Upgrade</p>
                 </span>
             </div>
 
@@ -23,7 +23,7 @@
         <div id="myProgress">
             <div id="myBar">23 days left</div>
         </div>
-
+        <button (click)="update()"> load</button>
         <div class="timeline">
             <h4>
                 <strong>Start Date:</strong>2020/10/5
