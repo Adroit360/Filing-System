@@ -70,7 +70,7 @@ export class SignUpComponent implements OnInit,AfterViewInit {
     console.log(this.SignUpForm.value);
     // register new entity
     this.entityManager.NewEntity(this.SignUpForm.value.companyName,this.SignUpForm.value.email,this.SignUpForm.value.contact,
-     this.SignUpForm.value.country,new Date().toLocaleString(), this.SignUpForm.value.description,this.SignUpForm.value.subscription);
+     this.SignUpForm.value.country, this.SignUpForm.value.description,this.SignUpForm.value.subscription);
       this.route.navigate(['login'])
   }
 
