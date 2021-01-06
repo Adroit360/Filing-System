@@ -61,6 +61,7 @@ import { SubscriptionPageComponent } from './content/subscription-page/subscript
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,6 +117,7 @@ import { SubscriptionPageComponent } from './content/subscription-page/subscript
     SmartTooltipAngularModule,
     CarouselModule ,
     HttpClientModule,
+    
   ],
 
   providers: [UserService,AdminResourceService, SectionService],
