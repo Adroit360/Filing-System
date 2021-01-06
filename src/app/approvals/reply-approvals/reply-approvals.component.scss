@@ -42,8 +42,8 @@
     margin: 100px auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 350px;
-    height: 280px;
+    width: 280px;
+    height: 165px;
     border-radius: 10px;
     -webkit-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -7px 2px 30px -16px rgba(0, 0, 0, 0.75);
@@ -53,13 +53,19 @@
 }
 
 button {
-    width: 140px;
-    height: 40px;
+    width: 70px;
+    height: 30px;
     color: white;
     background-color: red;
     border: white;
     border-radius: 20px;
-    font-size: 20px;
+    font-size: 1.3rem;
     float: right;
-    margin-top: 25px;
+    margin-top: 15px;
+}
+
+label {
+    height: 64px;
+    width: 200px;
+    font-size: 1.2rem;
 }

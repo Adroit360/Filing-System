@@ -28,7 +28,7 @@
     bottom: 0;
     width: 19%;
     height: 4%;
-    padding: 10px 9px 10px 12px;
+    padding: 7px 2px 7px 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,7 +36,7 @@
     animation-name: closelist;
     animation-duration: 1s;
     h1 {
-        font-size: 20px;
+        font-size: 1.5rem;
         font-weight: 600;
         color: white;
     }
@@ -72,31 +72,31 @@
 }
 
 .friend {
-    height: 70px;
+    height: 60px;
     border-bottom: 1px solid #fffffff6;
     // position: relative;
     display: grid;
     grid-template-columns: 1fr 5fr auto;
     img,
     span {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
-        font-size: 48px;
-        margin-top: 3px;
+        font-size: 40px;
+        margin-top: 5px;
         padding: 4px;
     }
     .tttt {
-        padding: 15px 0 0 10px;
+        padding: 15px 0 0 5px;
         float: left;
         // width: 220px;
         strong {
             font-weight: 600;
-            font-size: 15px;
+            font-size: 11px;
             color: #0b0b0c;
         }
         span {
-            font-size: 13px;
+            font-size: 10px;
             font-weight: lighter;
             color: rgba(0, 0, 0, 0.281);
         }
@@ -116,8 +116,8 @@
     background: #dddddd;
     cursor: pointer;
     span {
-        font-size: 13px;
-        font-weight: 400;
+        // font-size: 13px;
+        // font-weight: 400;
         color: #070707fb;
     }
 }
@@ -144,7 +144,7 @@
 }
 
 #topmenu {
-    height: 40px;
+    height: 30px;
     // background: #459CE3;
     // width: 290px;
     // border-bottom: 1px solid #d8dfe3;
@@ -160,7 +160,7 @@
     span {
         color: #459cE3;
         font-weight: bold;
-        font-size: 24px;
+        font-size: 1.5rem;
     }
 }
 
@@ -185,7 +185,7 @@
 
 #profile {
     text-align: center;
-    height: 70px;
+    height: 55px;
     /* background: #776363; */
     display: flex;
     border-bottom: 1px solid;
@@ -206,19 +206,22 @@
     display: flex;
     align-items: center;
     img {
-        width: 40px;
+        width: 35px;
         border-radius: 50%;
-        margin: 15px;
-        height: 40px;
+        margin: 5px;
+        height: 35px;
     }
-    i {
-        font-size: 13px;
+    span {
+        font-size: 35px;
         cursor: pointer;
-        padding: 10px;
+        padding: 5px;
     }
     h4 {
         font-weight: bold;
         font-size: 16px;
+        strong {
+            font-size: 13px;
+        }
     }
 }
 

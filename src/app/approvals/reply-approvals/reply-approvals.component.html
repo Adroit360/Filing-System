@@ -4,13 +4,21 @@
     <!-- Modal content -->
     <div class="modal-content ">
         <h3 style="color: rgba(10, 10, 10, 0.897); font-weight: bold;
-      font-size: 20px;
-      margin: 10px;">Reply Approval</h3>
+      font-size: 1.5rem;
+      ">Reply Approval</h3>
 
-        <textarea [(ngModel)]="message" placeholder="message" style="width: 90%;border: none; border-bottom: 1px solid black; height: 120px;" name="review" cols="30" rows="5">
+        <textarea [(ngModel)]="message" placeholder="message" style="width: 90%;
+        border: none;
+        border-bottom: 1px solid black;
+        height: 50px;
+        margin-top: 15px;" name="review" cols="30" rows="5">
            message
       </textarea>
-        <input type="file" id="myFile" name="filename" style="margin: 12px;" (change)="onChange($event)">
+
+        <h4 (click)="onAddFiles()" style="font-size: 1.5rem;cursor: pointer;
+        color: red;">+ Add files</h4>
+        <input type="file" id="myFile" name="filename" style="display: none;" (change)="onChange($event)">
+        <label>{{filename | truncate: 6}}</label>
 
         <button type="submit" id="btn" (click)="onOkay(false) ">Ok</button>
 
