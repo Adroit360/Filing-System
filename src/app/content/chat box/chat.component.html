@@ -29,7 +29,9 @@
                 <div id="friends" *ngFor="let user of entityUsers; let i=index">
                     <div class="friend" (click)="OpenChat(user)">
                         <!-- <span  class="material-icons" style="font-size: 55px;"> account_circle </span> -->
-                        <i *ngIf="!user.photo" class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        <span *ngIf="!user.photo" class="material-icons">
+                          account_circle
+                          </span>
                         <img *ngIf="user.photo" src={{user.photo}} />
                         <div class="tttt">
 
