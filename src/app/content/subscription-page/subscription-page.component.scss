@@ -1,0 +1,192 @@
+@import '../../../styles/components/modal';
+.Mycontainer {
+    position: relative;
+    margin: 40px 0.5rem 0px 2rem;
+}
+
+.heading {
+    h1 {
+        font-size: 24px;
+        font-family: 'Poppins';
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        margin-top: 1.5rem;
+    }
+}
+
+.side {
+    margin: 1.5rem 0;
+}
+
+.box-1 {
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-right: 40px;
+    -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+    h3 {
+        font-size: 16px;
+        margin-bottom: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    h4 {
+        text-align: left;
+        color: black;
+    }
+}
+
+.sub-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    button {
+        border: none;
+        background: #0000ff52;
+        color: white;
+        border-radius: 3.5rem;
+        padding: 1rem 2rem;
+        height: 20px;
+        font-size: 14px;
+    }
+    h2 {
+        font-weight: 700;
+        font-family: "Poppins";
+        font-size: 20px;
+    }
+    button:hover {
+        cursor: pointer;
+        background-color: #0000ff93;
+    }
+}
+
+#myProgress {
+    height: 20px;
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 18px;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+#myBar {
+    font-size: 1.3rem;
+    width: 25%;
+    height: 20px;
+    background-color: #4CAF50;
+    text-align: center;
+    // line-height: 30px;
+    color: white;
+    border-radius: 18px;
+}
+
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.8rem;
+    margin-top: 1.8rem;
+    strong {
+        font-size: 13px;
+        color: black;
+        margin-right: 5px;
+    }
+    h4 {
+        font-size: 14px;
+    }
+}
+
+.smart-tooltip {
+    background-color: rgba(98, 101, 105, 0.205);
+    a {
+        color: black;
+        text-decoration: none;
+    }
+    a:hover {
+        color: white;
+        cursor: pointer;
+    }
+}
+
+#box-2 {
+    display: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-right: 40px;
+    -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+}
+
+.sections {
+    display: flex;
+    justify-content: space-between;
+    .boxModal {
+        padding: 10px;
+        border: 1px solid black;
+        text-align: center;
+        border-radius: 10px;
+        h3 {
+            font-size: 18px;
+            font-family: 'Poppins';
+            font-weight: 700;
+            margin-top: 1.5rem !important;
+            margin-bottom: 1rem !important;
+        }
+        h1 {
+            margin-top: 1.5rem !important;
+            margin-bottom: 1rem !important;
+        }
+        button {
+            margin-top: 1.5rem !important;
+            margin-bottom: 1rem !important;
+            border: none;
+            background: #0000ff52;
+            color: white;
+            border-radius: 3.5rem;
+            padding: 1rem 2rem;
+            height: 20px;
+            font-size: 14px;
+        }
+        button:hover {
+            cursor: pointer;
+            background-color: #0000ff93;
+        }
+    }
+}
+
+.modal-content {
+    margin: 155px auto;
+    height: auto;
+    h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        padding: 12px 0px;
+    }
+    form {
+        display: grid;
+        grid-gap: 5px;
+        input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #3a3a98;
+            font-size: 1.2rem;
+            margin: 12px 0px;
+        }
+        .secondPart {
+            display: flex;
+            grid-gap: 25px;
+        }
+        input:focus {
+            outline: none;
+        }
+        .submit {
+            display: flex;
+            justify-content: center;
+            grid-gap: 80px;
+        }
+    }
+}

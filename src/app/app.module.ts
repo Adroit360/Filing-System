@@ -56,6 +56,8 @@ import { TilteCasePipe } from './tilte-case.pipe';
 import { DashboardComponent } from './content/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { SubscriptionPageComponent } from './content/subscription-page/subscription-page.component';
+
 
 
 
@@ -97,7 +99,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     TilteCasePipe,
     DashboardComponent,
     LandingComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    SubscriptionPageComponent
   ],
 
   imports: [
@@ -114,6 +117,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     SmartTooltipAngularModule,
     CarouselModule ,
     HttpClientModule,
+    
   ],
 
   providers: [UserService,AdminResourceService, SectionService],

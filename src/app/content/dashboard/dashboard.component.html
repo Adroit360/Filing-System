@@ -8,61 +8,58 @@
 
     <!-- files -->
     <div class="files" *ngIf="user.recentFolders">
-        <a *ngFor="let item of user.recentFolders">
+        <a *ngFor="let item of user.recentFolders" class="folder-container">
             <div class="c-contianer">
                 <div (click)="onFolderClicked(item)" class="component">
-                    <i class="fa fa-folder" style='font-size: 50px; color:  #459CE3;'></i>
-                    <p [title]="item.alias">{{item.alias| truncate: 9 }}</p>
+                    <i class="fa fa-folder" style="font-size: 50px; color: #459ce3"></i>
+                    <p [title]="item.alias">{{ item.alias }}</p>
                 </div>
             </div>
-
         </a>
-
     </div>
 
     <!-- News -->
     <div class="news">
-
         <div class="news-head">
             <div class="header-2">
                 <div class="caption-2">
                     <h2>Announcement</h2>
                 </div>
-                <h5>{{date}}</h5>
+                <h5>{{ date }}</h5>
             </div>
             <div *ngIf="user.isAdmin" class="btns">
                 <div class="toggler" id="npm">
-                    <i style="font-size: 30px; color: rgba(0, 0, 0, 0.479); cursor: pointer;" class="fa fa-ellipsis-h"></i>
-
+                    <i style="
+              font-size: 30px;
+              color: rgba(0, 0, 0, 0.479);
+              cursor: pointer;
+            " class="fa fa-ellipsis-h"></i>
 
                     <span id="hiddenText" class="clicktoshow" smart-tooltip-container>
-        <span  class="smart-tooltip stick stay-down overlay" id="tooltip">
-          <h4 (click)="onAdd()" style="color: white; font-size: 12px;">Add</h4>
-          <hr/>
-          <h4 (click)="onViewAll()" style="color: white; font-size: 12px;">View All</h4>
-          <hr/>
-          <!-- <h4 (click)="onDelete()" style="color: white ; font-size: 12px;">Delete</h4> -->
+            <span class="smart-tooltip stick stay-down overlay" id="Tooltip">
+              <h4 (click)="onAdd()" style="color: white; font-size: 12px">
+                Add
+              </h4>
 
-        </span>
+              <h4 (click)="onViewAll()" style="color: white; font-size: 12px">
+                View All
+              </h4>
 
+              <!-- <h4 (click)="onDelete()" style="color: white ; font-size: 12px;">Delete</h4> -->
+            </span>
                     </span>
                 </div>
-
-
-
             </div>
             <!-- MOdal to add a new Announcement -->
             <div class="N-Modal" id="Modal-News">
-                <form [formGroup]='NewsForm' (ngSubmit)="onAddAnnouncement()">
+                <form [formGroup]="NewsForm" (ngSubmit)="onAddAnnouncement()">
                     <div class="S-top">
-                        <h3 style="color:black;"> Add Announcement</h3>
-                        <span class="close" (click)="closeNews()">x</span>
+                        <h3 style="color: black">Add Announcement</h3>
+                        <span class="material-icons" (click)="closeNews()"> close </span>
                     </div>
-                    <input type="text" placeholder="Heading" formControlName="Heading">
-                    <label style="color: black;"> Content</label>
-
-                    <textarea style="height: 100px;" type="Text" placeholder="Write Content...." formControlName="Content"></textarea>
-                    <button type="submit"> ok</button>
+                    <input type="text" placeholder="Heading" formControlName="Heading" />
+                    <textarea type="Text" placeholder="Write Content...." formControlName="Content"></textarea>
+                    <button type="submit">ok</button>
                 </form>
             </div>
 
@@ -70,20 +67,23 @@
             <div id="lets-hide">
                 <div class="viewContainer">
                     <div class="VC-head">
-                        <h1> All Announcements</h1>
-                        <h4 (click)="closeAllAnnounce()">X</h4>
+                        <h1>All Announcements</h1>
+                        <span class="material-icons" (click)="closeAllAnnounce()">
+              close
+            </span>
                     </div>
-                    <hr/>
-                    <div class="allannounce" *ngFor="let announce of announcements; let i=index">
-
-                        <h3>{{announce.title}}</h3>
-                        <h4 (click)="delAnnounce(announce.id)">x</h4>
+                    <hr />
+                    <div class="allannounce" *ngFor="let announce of announcements; let i = index">
+                        <h3>{{ announce.title }}</h3>
+                        <span class="material-icons" (click)="delAnnounce(announce.id)">
+              close
+            </span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="slideshow-container">
+        <!-- <div class="slideshow-container">
             <div class="mySlides fade" *ngFor="let announce  of announcements; let i=index">
                 <div class="news-section">
                     <div class="newstext">
@@ -98,76 +98,106 @@
                 </div>
             </div>
 
-            <!-- Next and previous buttons-->
             <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
             <a class="next" (click)="plusSlides(1)">&#10095;</a>
+        </div> -->
+        <div class="slide_container">
+            <div class="slides">
+                <div *ngFor="let announce  of announcements" class="slide" style="background-color: white;">
+                    <div class="slide-content">
+                        <div class="newstext">
+                            <div class="date-right" style="color: black;">
+                                <h5>{{announce.date}}</h5>
+                            </div>
+                            <div class="text">
+                                <h3 style="color: black;">{{announce.title}}</h3>
+                                <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi recusandae quasi incidunt nihil error ipsam quam porro inventore reprehenderit accusamus exercitationem perspiciatis tempore provident vitae ut, sint eveniet
+                                    dignissimos a. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum accusamus consequuntur incidunt nemo libero soluta voluptatum qui corporis. Maxime dolorem sunt iste ipsam modi praesentium voluptatem reiciendis
+                                    error excepturi aut?</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="slide-controls">
+                <button id="prev-btn">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+                <button id="next-btn">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+            </div>
         </div>
+
         <!-- <br> The dots/circles -->
-        <div style="text-align:center">
-            <span class="dot" *ngFor="let announce of announcements; let i=index" (click)="currentSlide(i+1)"></span>
-            <!-- <span class="dot" (click)="currentSlide(2)"></span>
+        <!-- <div style="text-align:center">
+            <span class="dot" *ngFor="let announce of announcements; let i=index" (click)="currentSlide(i+1)"></span> -->
+        <!-- <span class="dot" (click)="currentSlide(2)"></span>
             <span class="dot" (click)="currentSlide(3)"></span> -->
-        </div>
+        <!-- </div> -->
     </div>
 
     <div class="task">
         <div class="task-caption">
-            <div style="display: flex; align-items: center;">
-                <h5 (click)="back()" id="qwert" class="material-icons">
-                    arrow_left
-                </h5>
-                <h3><span *ngIf="!activeTaskGrp" style="background: transparent;">Tasks</span><span *ngIf="activeTaskGrp" style="background: none;">{{activeTaskGrp.name}}</span></h3>
+            <div style="display: flex; align-items: center">
+                <h5 (click)="back()" id="qwert" class="material-icons">arrow_left</h5>
+                <h3>
+                    <span *ngIf="!activeTaskGrp" style="background: transparent">Tasks</span
+          ><span *ngIf="activeTaskGrp" style="background: none">{{
+            activeTaskGrp.name
+          }}</span>
+                </h3>
             </div>
-            <div id="qwert1" style="cursor: pointer;
-            display: none;
-            grid-gap: 10px;
-            margin-right: 75px;">
-
-                <span (click)="createTask()" class="material-icons">
-                add
-              </span>
+            <div id="qwert1" style="
+          cursor: pointer;
+          display: none;
+          grid-gap: 10px;
+          margin-right: 75px;
+        ">
+                <span (click)="createTask()" class="material-icons"> add </span>
                 <span *ngIf="activeTaskGrp" (click)="allDeleteTask(activeTaskGrp.id)" class="material-icons">
-                  delete_outline
-              </span>
+          delete_outline
+        </span>
             </div>
         </div>
 
         <div id="task-content">
-
-            <div *ngFor="let taskgrp of tasks;let i = index" class="task-tab">
-                <div class="vl" [ngStyle]="{'color': colors[i]}"></div>
+            <div *ngFor="let taskgrp of tasks; let i = index" class="task-tab">
+                <div class="vl" [ngStyle]="{ color: colors[i] }"></div>
                 <div class="t-side" (click)="Tab(taskgrp)">
-                    <h3>{{taskgrp.name}}</h3>
-                    <h5>{{taskgrp.count}} out of {{taskgrp.tasks.length}} Tasks complete</h5>
+                    <h3>{{ taskgrp.name }}</h3>
+                    <h5>
+                        {{ taskgrp.count }} out of {{ taskgrp.tasks.length }} Tasks complete
+                    </h5>
                 </div>
             </div>
 
             <!-- CREATING A TASK TAB -->
-            <div class="task-tab" id="createTab" style="display: none;">
-                <h5 class="close-x" style="font-size: 22px;" (click)="closeTab()">x</h5>
+            <div class="task-tab" id="createTab" style="display: none">
                 <div class="v2"></div>
                 <div class="t-side">
-                    <input type="text" placeholder="Name" (keydown.enter)="taskTab()" #createTab>
+                    <input type="text" placeholder="Name" (keydown.enter)="taskTab()" #createTab />
                 </div>
-
+                <span class="material-icons" style="margin-right: 10px; margin-top: 5px; border: none" (click)="closeTab()">
+          close
+        </span>
             </div>
 
-            <span class="material-icons" (click)="onCreateTab()">
-              add
-            </span>
-
+            <span class="material-icons" (click)="onCreateTab()"> add </span>
         </div>
-
 
         <div id="list-task">
             <div *ngIf="activeTaskGrp">
                 <div>
                     <ul class="table-list" id="TheTop">
                         <div>
-                            <li id='c-task' style="display: none; position: relative;">
-
+                            <li id="c-task" style="display: none; position: relative">
                                 <form class="f-form" [formGroup]="TaskForm" (ngSubmit)="newTask()">
-                                    <h5 class="close-x" style="font-size: 22px;" (click)="closeTask()">x</h5>
+                                    <span class="material-icons" (click)="closeTask()">
+                    close
+                  </span>
                                     <div class="f-side">
                                         <input type="text" placeholder="create task" formControlName="newTask" />
                                         <input type="Date" placeholder="Date" formControlName="Date" />
@@ -178,38 +208,73 @@
                         </div>
 
                         <li *ngFor="let tk of activeTaskArray">
-                            <div class="f-side" style="font-size: 14px;">
-
-                                <h3><strong>Task: </strong> {{tk.task}}</h3>
-                                <h5 *ngIf="!tk.done" style="color:red"> <strong> Status: </strong> Pending...</h5>
-                                <h5 *ngIf="tk.done" style="color:green"> <strong> Status: </strong> Done</h5>
-                                <h5 style="font-size:11px ;"> <strong>Date: </strong> {{tk.dueDate}}</h5>
+                            <div class="f-side" style="font-size: 14px">
+                                <h3><strong>Task: </strong> {{ tk.task }}</h3>
+                                <h5 *ngIf="!tk.done" style="color: red">
+                                    <strong> Status: </strong> Pending...
+                                </h5>
+                                <h5 *ngIf="tk.done" style="color: green">
+                                    <strong> Status: </strong> Done
+                                </h5>
+                                <h5 style="font-size: 11px">
+                                    <strong>Date: </strong> {{ tk.dueDate }}
+                                </h5>
                             </div>
                             <div class="s-side">
-
                                 <h6 smart-tooltip-container class="clicktoshow">
-                                    <img src="../../../assets/dots.png" style="height: 35px; width: 35px;">
+                                    <img src="../../../assets/dots.png" style="height: 35px; width: 35px" />
                                     <span class="smart-tooltip overlay">
-                                    <h5 *ngIf="!tk.done" style="color: white;font-size: 14px;" (click)="OnDoneTask(tk,1)">Done</h5>
-                                    <h5 *ngIf="tk.done" style="color: white;font-size: 14px;" (click)="OnDoneTask(tk,2)">Undone</h5>
-                                    <hr/>
-                                    <h5 style="color: white;font-size: 14px;" (click)="DeleteTask(tk)">Delete</h5>
-                                </span>
+                    <h5
+                      *ngIf="!tk.done"
+                      style="color: white; font-size: 14px"
+                      (click)="OnDoneTask(tk, 1)"
+                    >
+                      Done
+                    </h5>
+                    <h5
+                      *ngIf="tk.done"
+                      style="color: white; font-size: 14px"
+                      (click)="OnDoneTask(tk, 2)"
+                    >
+                      Undone
+                    </h5>
+                    <hr />
+                    <h5
+                      style="color: white; font-size: 14px"
+                      (click)="DeleteTask(tk)"
+                    >
+                      Delete
+                    </h5>
+                  </span>
                                 </h6>
                             </div>
                         </li>
                     </ul>
                 </div>
                 <!-- pop up for deleteing all the task Including the tab -->
-                <div id="myModal" style="display:none;" class="Modal">
-
-                    <div (click)=" onCancelAll()" style=" position: absolute;left:0;top:0;width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4);z-index: -1; "></div>
+                <div id="myModal" style="display: none" class="Modal">
+                    <div (click)="onCancelAll()" style="
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.4);
+              z-index: -1;
+            "></div>
                     <!-- Modal content -->
-                    <div class="modal-content ">
-                        <h4 style="color:black;">Are you Sure you want to delete all Tasks?</h4>
-                        <div class="submit ">
+                    <div class="modal-content">
+                        <h4 style="color: black">
+                            Are you Sure you want to delete all Tasks?
+                        </h4>
+                        <div class="submit">
                             <button id="btn" (click)="onAllDelete()">Yes</button>
-                            <button style="background-color: rgb(39, 144, 163); border-color: rgb(192, 247, 111); " (click)=" onCancelAll()">No</button>
+                            <button style="
+                  background-color: rgb(39, 144, 163);
+                  border-color: rgb(192, 247, 111);
+                " (click)="onCancelAll()">
+                No
+              </button>
                         </div>
                     </div>
                 </div>

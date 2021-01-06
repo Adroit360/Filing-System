@@ -11,9 +11,11 @@ export class TruncatePipe implements PipeTransform {
   * limit - string max length
   * completeWords - Flag to truncate at the nearest complete word, instead of character
   * ellipsis - appended trailing suffix
-  
+
    */
-  transform(value: string, limit = 25, completeWords = false, ellipsis = '...') {
+  transform(value: string, limit = 25, showEllipses = true, completeWords = false) {
+
+    let ellipsis = showEllipses? "..." : "";
     if (completeWords) {
       limit = value.substr(0, limit).lastIndexOf(' ');
     }

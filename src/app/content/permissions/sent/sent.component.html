@@ -1,25 +1,29 @@
 <div class="details" *ngFor="let item of sentRequests|async">
+    <div class="icon">
+        <i *ngIf="item.approvalStatus" class="fa fa-check-circle"></i>
+        <h6 smart-tooltip-container class="clicktoshow">
+            <span class="material-icons">
+            more_vert
+            </span>
+            <span class="smart-tooltip overlay" style="height: auto; width:auto;">
+        <h4 style="color: white; cursor: pointer;"  (click)="onDelete()">Delete</h4>
+        </span>
+        </h6>
+        <!-- <a id="del" class=del> Delete</a> -->
+
+    </div>
     <div class="user-details" style="font-size: 14px;">
-        <h2><span style="font-weight: bold; font-size: 16px;">Title:<br></span> {{item.title}}</h2>
-        <p><span style="font-weight: bold;">To:<br></span> {{item.approverId | truncate: 20}}</p>
-        <p><span style="font-weight: bold;">created:</span> {{item.dateCreated}}</p>
-        <p *ngIf="item.approvedMessage"><span style="font-weight: bold;">Response from:<br></span> <span>{{item.approverId}}<br></span>
+        <!-- <h2><span style="font-weight: bold; font-size: 16px;">Title:<br></span> {{item.title}}</h2> -->
+        <h2><strong>Title:</strong> {{item.title}}</h2>
+        <!-- <p><span style="font-weight: bold;">To:<br></span> {{item.approverId | truncate: 20}}</p> -->
+        <p><strong>To:</strong> {{item.approverId| truncate: 20}} </p>
+        <p><span style="font-weight: 600;
+          font-size: 1.2rem;">created:</span> {{item.dateCreated}}</p>
+        <p *ngIf="item.approvedMessage"><span style="font-weight: 600;font-size: 1.2rem;">Response from:<br></span> <span>{{item.approverId}}<br></span>
             <span>{{item.approvalMessage}}</span>
         </p>
         <p *ngIf="item.returnedDocumentUrl">download response document <a [href]="item.returnedDocumentUrl">here</a></p>
     </div>
-    <div class="icon">
-
-        <h6 smart-tooltip-container class="clicktoshow">
-            <img src="../../../../assets/dots.png" style="height: 35px; width: 35px; cursor: pointer;">
-            <span class="smart-tooltip overlay" style="height: auto; width:auto;">
-            <h4 style="color: white; cursor: pointer;"  (click)="onDelete()">Delete</h4>
-            </span>
-        </h6>
-        <!-- <a id="del" class=del> Delete</a> -->
-        <i *ngIf="item.approvalStatus" class="fa fa-check-circle"></i>
-    </div>
-
 
 </div>
 <!-- Modal to Delete a message -->
