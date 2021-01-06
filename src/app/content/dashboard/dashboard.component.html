@@ -83,37 +83,21 @@
             </div>
         </div>
 
-        <!-- <div class="slideshow-container">
-            <div class="mySlides fade" *ngFor="let announce  of announcements; let i=index">
-                <div class="news-section">
-                    <div class="newstext">
-                        <div class="date-right">
-                            <h5>{{announce.date}}</h5>
-                        </div>
-                        <div class="text">
-                            <h3>{{announce.title}}</h3>
-                            <h4>{{announce.content}}</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
-            <a class="next" (click)="plusSlides(1)">&#10095;</a>
-        </div> -->
         <div class="slide_container">
             <div class="slides">
                 <div *ngFor="let announce  of announcements" class="slide" style="background-color: white;">
                     <div class="slide-content">
                         <div class="newstext">
-                            <div class="date-right" style="color: black;">
+                            <div class="date-right" style="color: black; padding: 10px;">
                                 <h5>{{announce.date}}</h5>
                             </div>
                             <div class="text">
-                                <h3 style="color: black;">{{announce.title}}</h3>
-                                <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi recusandae quasi incidunt nihil error ipsam quam porro inventore reprehenderit accusamus exercitationem perspiciatis tempore provident vitae ut, sint eveniet
-                                    dignissimos a. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum accusamus consequuntur incidunt nemo libero soluta voluptatum qui corporis. Maxime dolorem sunt iste ipsam modi praesentium voluptatem reiciendis
-                                    error excepturi aut?</h4>
+                                <h3 style="color: black; 
+                                padding: 10px;
+                                padding-left: 5rem;
+                            ">{{announce.title}}</h3>
+                                <h4>{{announce.content}}</h4>
                             </div>
                         </div>
                     </div>

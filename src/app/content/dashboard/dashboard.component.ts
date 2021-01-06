@@ -20,33 +20,6 @@ import { OwlOptions } from "ngx-owl-carousel-o";
   styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
-  // carousel options
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    dots: true,
-    navSpeed: 1000,
-    navText: ["", ""],
-    autoplay: true,
-    autoplayTimeout: 5000,
-    responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 1,
-      },
-      740: {
-        items: 1,
-      },
-      940: {
-        items: 1,
-      },
-    },
-    nav: true,
-  };
 
   colors = [];
   localColors = ["red", "green", "pink", "yellow"];
@@ -119,9 +92,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     //this.showSlidesAutomate();
     // this.showSlides(this.slideIndex);
-    // setTimeout(()=>{
-    //   this.slideShow();
-    // },1000)
+    setTimeout(()=>{
+      this.slideShow();
+    },1000)
 
   }
 
