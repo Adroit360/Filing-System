@@ -29,14 +29,18 @@ change=false;
     this.sentRequests = await this.approvalManager.GetSentRequest(this.currentUser,this.userVolatileData.getEntity());
   }
 
+  // holds id of request to be deleted
+  targetRequest:any;
 // calling the delete modal
-  onDelete(){
+  onDelete(requestId){
     console.log("deleted");
+    this.targetRequest=requestId;
    this.change=!this.change
   }
 
 //Deleting the message
-DeleteMess(){
+DeleteRequest(){
+  this.approvalManager.RemoveRequest(this.targetRequest,this.userVolatileData.getEntity());
   this.change=!this.change;
 }
 
