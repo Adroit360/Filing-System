@@ -86,14 +86,14 @@
 
         <div class="slide_container">
             <div class="slides">
-                <div *ngFor="let announce  of announcements" class="slide" style="background-color: white;">
+                <div *ngFor="let announce  of announcements" class="slide" style="background-color: white; border-radius:20px;    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);">
                     <div class="slide-content">
                         <div class="newstext">
                             <div class="date-right" style="color: black; padding: 10px;">
                                 <h5>{{announce.date}}</h5>
                             </div>
                             <div class="text">
-                                <h3 style="color: black; 
+                                <h3 style="color: black;
                                 padding: 10px;
                                 padding-left: 5rem;
                             ">{{announce.title}}</h3>

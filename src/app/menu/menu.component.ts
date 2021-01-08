@@ -31,7 +31,7 @@ export class MenuComponent implements OnInit {
 
   visible = true; // ng template
   Opened = false;
-  ResetModal=false;
+
   sections: any=[];
   accessList:any;
   user:any;
@@ -191,14 +191,9 @@ export class MenuComponent implements OnInit {
   //   this.Opened = !this.Opened;
   // }
 
-  onReset(value: boolean){
-    this.ResetModal=value;
-  }
 
-  reset(){
-    this.authManager.ResetPassword(this.user.email);
-    this.ResetModal=!this.ResetModal;
-  }
+
+
 
   tooltip(event){
     event.stopPropagation();

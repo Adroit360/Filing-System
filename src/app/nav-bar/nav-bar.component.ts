@@ -20,6 +20,7 @@ export class NavBarComponent implements OnInit {
   showMenu: boolean = false;
   cross: boolean = false;
   firstName:string="";
+  ResetModal=false;
   constructor( private authManager:AuthServiceService,private userservice: UserService, private router: Router,
     private entityManager:EntitiesService, private dataManager: DataService, private sectionService: SectionService) {
       // get user info
@@ -87,4 +88,13 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['home/content/subscription']);
     console.log('on subscription')
   }
+  // reset(){
+  //   this.authManager.ResetPassword(this.user.email);
+  //   this.ResetModal=!this.ResetModal;
+  // }
+  onReset(value: boolean){
+    this.ResetModal=value;
+  }
+
+
 }
