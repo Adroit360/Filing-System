@@ -142,15 +142,15 @@ export class EntitiesService {
   }
 
   // entity upgrade subscription
-  upgradeSubscriptionPlan(entityId,newPlan){
-    this.entityCollection.doc(entityId).get().subscribe(entity=>{
-      if (entity){
-         entity.data().subscriptionPlan = newPlan;
+  // upgradeSubscriptionPlan(entityId,newPlan){
+  //   this.entityCollection.doc(entityId).get().subscribe(entity=>{
+  //     if (entity){
+  //        entity.data().subscriptionPlan = newPlan;
         
-         this.entityCollection.doc(entityId).update(this.entity);
-       }
-     });
-  }
+  //        this.entityCollection.doc(entityId).update(this.entity);
+  //      }
+  //    });
+  // }
 
 
   // delete entity account
@@ -217,6 +217,7 @@ export class EntitiesService {
   getEntityUsers(entity){
     return  this.entityCollection.doc(entity).collection(DbCollections.Users).valueChanges();
   }
+  
 
   // remove a user
   removeEntityUser(user,entity){
@@ -298,6 +299,11 @@ getChatMessages(user,targetUser,entity){
 
   getEntity(entityId){
     return this.afs.collection(DbCollections.Entities).doc(entityId).get();
+  }
+
+  // get entity subscription details
+  entitySubscriptionPackage(entity){
+    return this.subscription.getSubscriptionInfo(entity,DbCollections.Entities,DbCollections.EntitySubscription);
   }
 
 }

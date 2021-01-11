@@ -18,7 +18,7 @@
 
 .caption {
     h2 {
-        margin-left: 20px;
+        margin-left: 5px;
         font-size: 17px;
         font-weight: 600;
         font-family: 'Poppins';
@@ -104,7 +104,7 @@
 .header-2 {
     margin-top: 40px;
     h5 {
-        margin-left: 23px;
+        margin-left: 5px;
         font-size: 13px;
         font-weight: 300;
         line-height: 15px;
@@ -113,7 +113,7 @@
 
 .caption-2 {
     h2 {
-        margin-left: 20px;
+        margin-left: 5px;
         font-size: 17px;
         font-weight: 600;
         font-family: 'Poppins';
@@ -432,11 +432,12 @@
     display: flex;
     flex-direction: column;
     h3 {
-        font-size: 19px;
-        font-weight: 600;
+        font-size: 18px;
+        // font-weight: 600;
     }
     h5 {
         font-family: 'Poppins';
+        color:rgb(94, 119, 230);
     }
     input {
         border: none;
@@ -463,14 +464,14 @@
 .text {
     h2 {
         font-family: 'Poppins';
-        font-weight: bold;
+        // font-weight: bold;
         font-style: normal;
         font-size: 24px;
         line-height: 36px;
     }
     h3 {
         font-family: 'Poppins';
-        font-weight: 600;
+        // font-weight: 600;
         font-style: normal;
         font-size: 16px;
         line-height: 24px;

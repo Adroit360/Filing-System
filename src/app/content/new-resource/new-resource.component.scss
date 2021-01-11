@@ -18,7 +18,7 @@ input {
     display: inline-block;
     border: none;
     outline: transparent;
-    border-bottom: 3px solid #ED1E23;
+    border-bottom: 3px solid rgb(94, 119, 230);
     box-sizing: border-box;
     font-family: 'Poppins';
     font-size: 2rem;
@@ -32,19 +32,19 @@ input {
 
 ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #ED1E23;
+    // color: #ED1E23;
     opacity: 1;
     /* Firefox */
 }
 
  :-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-    color: #ED1E23;
+    // color: #ED1E23;
 }
 
  ::-ms-input-placeholder {
     /* Microsoft Edge */
-    color: #ED1E23;
+    // color: #ED1E23;
 }
 
 .psp {

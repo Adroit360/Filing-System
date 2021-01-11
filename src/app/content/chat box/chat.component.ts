@@ -20,9 +20,28 @@ export class ChatComponent implements OnInit {
   mySound;
   unReadMessages: any=[];
   unReadMessagesEmail:any=[];
+  filter:string="";
 
   constructor(private entityManager:EntitiesService,private dataManager:DataService) {
-    entityManager.getEntityUsers(dataManager.getEntity()).subscribe(result=>this.entityUsers = result);
+    entityManager.getEntityUsers(dataManager.getEntity()).subscribe(result=>{
+      // if(this.filter.length>0){
+      //   this.entityUsers=[];
+          
+      //     result.forEach(doc=>{
+      //       if (doc.firstName.toLowerCase==this.filter.toLowerCase()){
+      //         this.entityUsers.push(doc);
+      //       }
+      //     })
+      // }else{
+        this.entityUsers=[];
+          
+          result.forEach(doc=>{
+            if (doc.email!=this.dataManager.getActiveUser().email){
+              this.entityUsers.push(doc);
+            }
+          })
+      // }
+    });
     this.currentUser = this.dataManager.getActiveUser().email;
     // get user photo
     this.currentUserPhoto = this.dataManager.getActiveUser().photo;
@@ -133,4 +152,25 @@ export class ChatComponent implements OnInit {
         });     
   }
 
+  searchUser(searchParam){
+    this.entityManager.getEntityUsers(this.dataManager.getEntity()).subscribe(result=>{
+      if(searchParam.length>0){
+        this.entityUsers=[];
+          
+          result.forEach(doc=>{
+            if (doc.firstName.toLowerCase().includes(searchParam.toLowerCase()) && doc.email!=this.dataManager.getActiveUser().email|| doc.lastName.toLowerCase().includes(searchParam.toLowerCase()) && doc.email!=this.dataManager.getActiveUser().email){
+              this.entityUsers.push(doc);
+            }
+          })
+      }else{
+        this.entityUsers=[];
+          
+          result.forEach(doc=>{
+            if (doc.email!=this.dataManager.getActiveUser().email){
+              this.entityUsers.push(doc);
+            }
+          })
+      }
+    });
+  }
 }

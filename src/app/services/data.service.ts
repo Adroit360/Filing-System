@@ -22,6 +22,7 @@ export class DataService {
   currentDirectoryName:string="";
   directoryHierachy:string="";
   accessibleDocs:any =[];
+  subscriptionPackage:any;
 
 
   constructor(private directoryManager: DirectoryService,private entityManager:EntitiesService) { }
@@ -177,4 +178,13 @@ export class DataService {
       this.is_chatArea=false;
       console.log("chat area is closed");
     }
+
+    setSubscriptionPackage(obj){
+      this.subscriptionPackage=obj;
+    }
+
+    getSubscriptionPackage(){
+      return this.subscriptionPackage;
+    }
+    
 }

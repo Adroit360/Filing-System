@@ -23,6 +23,8 @@ export class SignUpComponent implements OnInit,AfterViewInit {
   countryApi:string ="https://restcountries.eu/rest/v2/";
   countries:any=[];
   subscriptionPlans:any=[];
+  defaultIndustry:string="Choose an Industry";
+  defaultSubscription:string="Subscription Plan";
 
   @ViewChild("dropDown",{static:true}) dropDown:ElementRef;
 
@@ -43,11 +45,15 @@ export class SignUpComponent implements OnInit,AfterViewInit {
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
+    setTimeout(()=>{
+      console.dir(this.dropDown.nativeElement);
+      this.dropDown.nativeElement.selectedIndex = 85;
+    },300);
+
     // setTimeout(()=>{
     //   console.dir(this.dropDown.nativeElement);
     //   this.dropDown.nativeElement.selectedIndex = 85;
     // },500);
-
 
   }
 
@@ -67,11 +73,12 @@ export class SignUpComponent implements OnInit,AfterViewInit {
 
 
   onSubmit(){
-    console.log(this.SignUpForm.value);
+    console.log("industry",this.SignUpForm.value.description);
     // register new entity
-    this.entityManager.NewEntity(this.SignUpForm.value.companyName,this.SignUpForm.value.email,this.SignUpForm.value.contact,
-     this.SignUpForm.value.country, this.SignUpForm.value.description,this.SignUpForm.value.subscription);
-      this.route.navigate(['login'])
+    // this.entityManager.NewEntity(this.SignUpForm.value.companyName,this.SignUpForm.value.email,this.SignUpForm.value.contact,
+    //  this.SignUpForm.value.country, this.SignUpForm.value.description,this.SignUpForm.value.subscription);
+    //   this.route.navigate(['login'])
+
   }
 
   onToggle(){

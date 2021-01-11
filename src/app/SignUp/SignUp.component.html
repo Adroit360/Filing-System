@@ -20,20 +20,39 @@
 
                 <!-- <input type="text" placeholder="Country" formControlName="country"> -->
 
-                <input type="text" placeholder="Description" formControlName="description">
-
-                <select #dropDown class='drop-down' formControlName="subscription" placeholder="Subscription Plan">
-                    <!-- <option [value]="countries[85].name" selected>{{countries[85].name}}</option> -->
-                    <option [value]="plan.type " *ngFor="let plan of subscriptionPlans"> {{plan.type}}</option>
+                <!-- <input type="text" placeholder="Description" formControlName="description"> -->
+                <select  class='drop-down' formControlName="description" [(ngModel)]="defaultIndustry">
+                    <option disabled>Choose an Industry</option>
+                    <option value="Advertising, Media & Communication" >Advertising, Media & Communication</option>
+                    <option value="Automotive & Aviation" >Automotive & Aviation</option>
+                    <option value="Banking, Finance & Insurance" >Banking, Finance & Insurance </option>
+                    <option value="Construction" >Construction</option>
+                    <option value="Education" >Education</option>
+                    <option value="Energy & Utilities" >Energy & Utilities</option>
+                    <option value="Entertainment, Events & Sports" >Entertainment, Events & Sports</option>
+                    <option value="Healthcare" >Healthcare</option>
+                    <option value="Hospitality & Hotel" >Hospitality & Hotel</option>
+                    <option value="IT & Telecoms" >IT & Telecoms</option>
+                    <option value="Legal Services" >Legal Services</option>
+                    <option value="Manufacturing & Warehousing" >Manufacturing & Warehousing</option>
+                    <option value="Mining, Energy & Metals" >Mining, Energy & Metals</option>
+                    <option value="NGO, NPO & Charity" >NGO, NPO & Charity</option>
+                    <option value="Real Estate" >Real Estate</option>
+                    <option value="Recruitment" >Recruitment</option>
+                    <option value="Retail & Fashion" >Retail & Fashion</option>
+                    <option value="Shipping & Logistics" >Shipping & Logistics</option>
+                    <option value="Tourism & Travel" >Tourism & Travel</option>
                 </select>
 
+                <select  class='drop-down' formControlName="subscription"  [(ngModel)]="defaultSubscription">
+                    <option disabled>Subscription Type</option>
+                    <option [value]="plan.type " *ngFor="let plan of subscriptionPlans"> {{plan.type}}</option>
+                </select>
 
                 <div class="change">
                     <button type="submit"> Sign Up</button>
                     <a (click)="onLogin()"> <u>Already have an account? <strong> Login</strong></u></a>
                 </div>
-
-
             </div>
         </form>
     </div>

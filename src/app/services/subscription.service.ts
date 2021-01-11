@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase';
+import { DbCollections } from './entities.service';
 
 interface Subscription{
   id:string,
-  type:string,
   trial:boolean,
   subscriptionDate:any,
   subscriptionType:string,
@@ -25,7 +25,6 @@ export class SubscriptionService {
     let id = this.afs.createId();
     let pckg:Subscription={
       id:id,
-      type:subscriptionType,
       trial:true,
       subscriptionDate: firebase.firestore.FieldValue.serverTimestamp(),
       subscriptionType: subscriptionType,
@@ -39,7 +38,7 @@ export class SubscriptionService {
     
   }
   // subscribe
-  suscribe(entity,entityCollection,subscribeCollection,id){
+  subscribe(entity,entityCollection,subscribeCollection,id){
     this.setExpiryDate(entityCollection,entity,subscribeCollection,id,30);
     this.afs.collection(entityCollection).doc(entity).update({activation:true});
   }
@@ -51,7 +50,7 @@ export class SubscriptionService {
   }
 
   // change subscription -- upgrade or downgrade
-  changeSubscriptionPackage(entity,){}
+  // changeSubscriptionPackage(entity,){}
 
 
   // set expiring date
@@ -62,5 +61,9 @@ export class SubscriptionService {
       dt.setDate(dt.getDate()+duration)
       this.afs.collection(entityCollection).doc(entity).collection(subscribeCollection).doc(id).update({expiringDate:dt.toDateString()});
   })
+  }
+
+  getSubscriptionInfo(entity,entityCol,subCol){
+    return this.afs.collection(entityCol).doc(entity).collection(subCol).valueChanges();
   }
 }

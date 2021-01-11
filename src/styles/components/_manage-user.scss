@@ -10,7 +10,7 @@
 
 .content-table th,
 .content-table td {
-    padding: 15px;
+    padding: 9px;
 }
 
 .content-table td {
@@ -20,17 +20,18 @@
 }
 
 .content-table thead {
-    background-color: #ED1E23;
+    background-color: rgb(94, 119, 230);
     color: #ffffff;
     display: table;
     width: 100%;
     /* width: calc(100% - 18px); */
+    
 }
 
 .content-table thead tr th {
     text-align: revert;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .content-table tbody {
@@ -57,7 +58,7 @@
 }
 
 .content-table tbody tr:last-of-type {
-    border-bottom: 2px solid #ED1E23;
+    border-bottom: 2px solid rgb(94, 119, 230)3;
 }
 
 // .content-table {
@@ -133,9 +134,9 @@
 
 h2 {
     font: 'Poppins';
-    font-weight: 900;
+    font-weight: 600;
     font-style: normal;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .right-side {
@@ -144,7 +145,7 @@ h2 {
 }
 
 .right-side a {
-    color: #ED1E23;
+    color: rgb(94, 119, 230);
     text-align: center;
     padding: 0.75rem;
     text-decoration: none;

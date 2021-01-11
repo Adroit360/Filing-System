@@ -5,10 +5,13 @@
 
     <div class="box-1">
         <div class="side">
-            <h3>Your Plan</h3>
+            <h3>Your Plan
+            <span *ngIf="!subscriptionPlan.trial">{{subscriptionPlan.type}}</span>
+                <span *ngIf="subscriptionPlan.trial">Trial</span></h3>
         </div>
         <div class="sub-box">
-            <h2>Basic</h2>
+            <!-- <h2 *ngIf="!subscriptionPlan.trial">{{subscriptionPlan.type}}</h2>
+            <h2 *ngIf="subscriptionPlan.trial">Trial</h2> -->
             <div smart-tooltip-container class="clicktoshow">
                 <button>Change Subscription</button>
                 <span class="smart-tooltip">
@@ -21,16 +24,16 @@
         </div>
         <h4> Timeline </h4>
         <div id="myProgress">
-            <div id="myBar">23 days left</div>
+            <div id="myBar"></div>
         </div>
-        <button (click)="update()"> load</button>
+        
         <div class="timeline">
             <h4>
-                <strong>Start Date:</strong>2020/10/5
+                <strong>Start Date:</strong>{{subscriptionDate}}
 
             </h4>
             <h4>
-                <strong>Expiring Date:</strong>2020/10/5
+                <strong>Expiring Date:</strong>{{subscriptionPlan.expiringDate}}
             </h4>
         </div>
 
