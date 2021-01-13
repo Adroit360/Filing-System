@@ -202,8 +202,10 @@ export class DataService {
 
     setSubscriptionInfo(obj){
       let subscriptionPackage=obj;
+      console.log(subscriptionPackage,"this is subscription group");
       this.subscriptionDate = new Date(subscriptionPackage.subscriptionDate.toDate()).toDateString();
-      this.validity_days = (new Date(this.subscriptionPackage.expiringDate).getTime()- new Date(this.subscriptionPackage.subscriptionDate.toDate()).getTime())/this.MS_PER_DAY;
+      console.log("first worked");
+      this.validity_days = (new Date(subscriptionPackage.expiringDate).getTime()- new Date(subscriptionPackage.subscriptionDate.toDate()).getTime())/this.MS_PER_DAY;
       this.expiringDate = subscriptionPackage.expiringDate;
       this.subscriptionPlan=subscriptionPackage.type;
       this.is_trial = obj.trial;

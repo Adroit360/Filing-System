@@ -7,16 +7,19 @@
     </div>
 
     <!-- files -->
-    <div class="files" *ngIf="user.recentFolders">
-        <a *ngFor="let item of user.recentFolders" class="folder-container">
-            <div class="c-contianer">
-                <div (click)="onFolderClicked(item)" class="component">
-                    <i class="fa fa-folder" style="font-size: 50px; color: #459ce3"></i>
-                    <p [title]="item.alias">{{ item.alias }}</p>
+    <div *ngIf="user">
+        <div class="files" *ngIf="user.recentFolders">
+            <a *ngFor="let item of user.recentFolders" class="folder-container">
+                <div class="c-contianer">
+                    <div (click)="onFolderClicked(item)" class="component">
+                        <i class="fa fa-folder" style="font-size: 50px; color: #459ce3"></i>
+                        <p [title]="item.alias">{{ item.alias }}</p>
+                    </div>
                 </div>
-            </div>
-        </a>
-    </div>
+            </a>
+        </div>
+    
+    
 
     <!-- News -->
     <div class="news">
@@ -265,4 +268,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

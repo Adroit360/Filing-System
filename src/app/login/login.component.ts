@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
           console.log("active is true")
           // get entity subscription info
           this.entityManager.entitySubscriptionPackage(userobj.entity).subscribe(subPackage=>{
-            this.userInfo.setSubscriptionInfo(subPackage);
+            this.userInfo.setSubscriptionInfo(subPackage[0]);
             //Local storage
             localStorage.setItem("user", JSON.stringify(this.user));
             // route to the dashboard

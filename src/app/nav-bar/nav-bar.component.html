@@ -14,8 +14,8 @@
     </div>
 
 
-    <div class="notifications">
-        <div smart-tooltip-container class="toggler clicktoshow">
+    <div *ngIf="user" class="notifications">
+        <div  smart-tooltip-container class="toggler clicktoshow">
 
             <span *ngIf="!user.photo" class="material-icons"> account_circle </span>
             <img *ngIf="user.photo" style="height: 40px;width: 40px;border-radius: 50%;" src={{user.photo}}>
