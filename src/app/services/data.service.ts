@@ -24,6 +24,14 @@ export class DataService {
   accessibleDocs:any =[];
   subscriptionPackage:any;
 
+  // subscription related data
+  validity_days:number;
+  subscriptionDate:string="";
+  expiringDate:string="";
+  subscriptionPlan:string="";
+  MS_PER_DAY = 1000 * 60 * 60 * 24;
+  is_trial:boolean;
+
 
   constructor(private directoryManager: DirectoryService,private entityManager:EntitiesService) { }
 
@@ -42,6 +50,20 @@ export class DataService {
     // this.directoryManager.getAccessibleArchives(userInfo.user.accessList,userInfo.entity).subscribe(result=>{
     //   this.accessibleDocs = result;
     // });
+
+  }
+
+  // this function is used to set the active user after login
+  async _setActiveUser(userInfo){
+    this.systemUser =  userInfo;
+    console.log("this is the user info from volatile data",userInfo);
+    this.setEntity(userInfo.entity);
+    this.user = await this.entityManager.getEntityUser(userInfo.email,userInfo.entity);
+    // this.directoryManager.getAccessibleArchives(userInfo.user.accessList,userInfo.entity).subscribe(result=>{
+    //   this.accessibleDocs = result;
+    // });
+
+    return this.entityManager.getEntity(this.systemUser.entity);
   }
 
   // returns all info about current user
@@ -126,7 +148,6 @@ export class DataService {
     return this.entityId;
   }
 
-
     //Edit user
     EditUser = new BehaviorSubject<any>({});
     setEditUSerInfo(item:User){
@@ -179,12 +200,22 @@ export class DataService {
       console.log("chat area is closed");
     }
 
-    setSubscriptionPackage(obj){
-      this.subscriptionPackage=obj;
+    setSubscriptionInfo(obj){
+      let subscriptionPackage=obj;
+      this.subscriptionDate = new Date(subscriptionPackage.subscriptionDate.toDate()).toDateString();
+      this.validity_days = (new Date(this.subscriptionPackage.expiringDate).getTime()- new Date(this.subscriptionPackage.subscriptionDate.toDate()).getTime())/this.MS_PER_DAY;
+      this.expiringDate = subscriptionPackage.expiringDate;
+      this.subscriptionPlan=subscriptionPackage.type;
+      this.is_trial = obj.trial;
     }
 
     getSubscriptionPackage(){
       return this.subscriptionPackage;
     }
-    
+
+    getSubscriptionInfo(){
+      return {trial:this.is_trial,validity_days:this.validity_days,subscriptionType:this.subscriptionPlan,expiringDate:this.expiringDate,
+                startDate:this.subscriptionDate }
+    }
+   
 }

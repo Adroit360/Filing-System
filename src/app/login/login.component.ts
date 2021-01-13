@@ -5,6 +5,7 @@ import {AuthServiceService} from '../services/auth-service.service';
 import {DataService } from '../services/data.service';
 import {MessengerService} from '../services/messenger.service';
 import { SectionService } from '../services/section.service';
+import { EntitiesService } from '../services/entities.service';
 // import {User } from '../models/model';
 
 @Component({
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
   generalSection:any;
   user;
 
-  constructor(private route: Router,private authService:AuthServiceService,private userInfo:DataService,private msg:MessengerService,private sectionService:SectionService) {
+  constructor(private route: Router,private entityManager:EntitiesService, private authService:AuthServiceService,private userInfo:DataService,private msg:MessengerService,private sectionService:SectionService) {
 
   }
 
@@ -52,13 +53,26 @@ export class LoginComponent implements OnInit {
        this.user=userobj;
        console.log("lgoing",userobj.entity);
       //  set user info as volatile data in the data service (to make user details accessible at runtime)
-       await this.userInfo.setActiveUser(userobj);
-      // get entity subscription info
+       await (await this.userInfo._setActiveUser(userobj)).subscribe(result=>{
+        console.log("this is the entity user belong to",result.data());
+        if(result.data().entityAccountActive){
+          console.log("active is true")
+          // get entity subscription info
+          this.entityManager.entitySubscriptionPackage(userobj.entity).subscribe(subPackage=>{
+            this.userInfo.setSubscriptionInfo(subPackage);
+            //Local storage
+            localStorage.setItem("user", JSON.stringify(this.user));
+            // route to the dashboard
+             this.route.navigate(["home/content/dashboard"]);
+           });
+
+        }else{
+          alert("Sorry this account is inactive");
+        }
+      });
       
-      //Local storage
-      localStorage.setItem("user", JSON.stringify(this.user));
-     // route to the dashboard
-      this.route.navigate(["home/content/dashboard"]);
+      
+      
     }).catch(err=>{
       this.errorMessage = err.message;
       console.log("this is the error from login page",err);

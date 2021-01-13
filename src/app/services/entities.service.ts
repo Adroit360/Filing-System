@@ -18,9 +18,9 @@ export interface Entity{
   country:string,
   dateCreated:any,
   operation:string,
-  active:Boolean,
+  entityAccountActive:Boolean,
   subscriptionPlan,
-  activation:boolean
+  subscriptionActivation:boolean
 }
 
 export enum DbCollections{
@@ -65,10 +65,10 @@ export class EntitiesService {
       country : country,
       email : email,
       dateCreated : firebase.firestore.FieldValue.serverTimestamp(),
-      active : true,
+      entityAccountActive : true,
       operation : entityOperationsDescription,
       subscriptionPlan:planType,
-      activation:false
+      subscriptionActivation:false
     }
     
 
@@ -101,6 +101,7 @@ export class EntitiesService {
       if(res=="auth/email-already-in-use" || res=="auth/invalid-email"){
         return res;
       }
+
       // add user to system users
       this.afs.collection(DbCollections.SystemUsers).doc(entity.email).set(systemUser).catch(e=>{console.log(e);return e;}).then(()=>{
         // create new entity in the entity collection
@@ -126,7 +127,7 @@ export class EntitiesService {
   }
 
   // update entity info
-  UpdateEntityInfo(entityId,name,email,contact,country,dateCreated,entityOperations,status){
+  UpdateEntityInfo(entityId,name,email,contact,country,dateCreated,entityIndustry,status){
     this.entityCollection.doc(entityId).get().subscribe(entity=>{
      if (entity){
         entity.data().companyName = name;
@@ -134,8 +135,8 @@ export class EntitiesService {
         entity.data().country = country;
         entity.data().email = email;
         entity.data().dateCreated = dateCreated; 
-        entity.data().active = status;
-        entity.data().operation = entityOperations;
+        // entity.data().active = status;
+        entity.data().operation = entityIndustry;
         this.entityCollection.doc(entityId).update(this.entity);
       }
     });
@@ -298,7 +299,13 @@ getChatMessages(user,targetUser,entity){
   }
 
   getEntity(entityId){
+    let obj:any;
     return this.afs.collection(DbCollections.Entities).doc(entityId).get();
+    //;.subscribe(result=>{
+    //   obj=result.data();
+    // });
+
+    // return obj;
   }
 
   // get entity subscription details

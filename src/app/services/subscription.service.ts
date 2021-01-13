@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase';
-import { DbCollections } from './entities.service';
 
 interface Subscription{
   id:string,
@@ -44,9 +43,8 @@ export class SubscriptionService {
   }
 
   // unsuscribe
-
-  unsuscribe(entity, entityCollection){
-    this.afs.collection(entityCollection).doc(entity).update({activation:false});
+  unsubscribe(entity, entityCollection){
+    this.afs.collection(entityCollection).doc(entity).update({subscriptionActivation:false});
   }
 
   // change subscription -- upgrade or downgrade
