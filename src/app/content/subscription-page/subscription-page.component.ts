@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
@@ -14,8 +15,9 @@ export class SubscriptionPageComponent implements OnInit {
   modalcall=false;
   subscriptionPlan:any;
   subscriptionDate:string="";
+  ENDPOINT:string="https://konvyapi.azurewebsites.net/transaction/pay";
 
-  constructor(private entityManager:EntitiesService,private dataManager:DataService) { 
+  constructor(private entityManager:EntitiesService,private dataManager:DataService, private httpClient:HttpClient) { 
     entityManager.entitySubscriptionPackage(dataManager.getEntity()).subscribe(result=>{
       this.subscriptionPlan = result[0];
       console.log("sub",this.subscriptionPlan);
@@ -56,7 +58,20 @@ export class SubscriptionPageComponent implements OnInit {
   }
 
   onRenew(){
-    this.modalcall=!this.modalcall;
+    this.modalcall=!this.modalcall; 
+    // get package price
+
+    // subscribe
+    let amount=0;
+    let subscriptionId = this.entityManager.subscribe(this.dataManager.getEntity(),amount );
+    let body={
+      amount:amount,
+      description:"subscription payment",
+      email:this.dataManager.getActiveUser().email
+    }
+    this.httpClient.post(this.ENDPOINT,body).subscribe(data=>{
+      console.log(data);
+    })
   }
 
   
