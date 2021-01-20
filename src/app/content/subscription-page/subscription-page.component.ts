@@ -23,7 +23,7 @@ export class SubscriptionPageComponent implements OnInit {
       var element = document.getElementById("myBar");
       var width = 1;
       // var identity = setInterval(scene, 1000);
-      let validity_days = (new Date(this.subscriptionPlan.expiringDate).getTime()- new Date(this.subscriptionPlan.subscriptionDate.toDate()).getTime());
+      let validity_days = 17;//(new Date(this.subscriptionPlan.expiringDate).getTime()- new Date(this.subscriptionPlan.subscriptionDate.toDate()).getTime());
       element.innerHTML=`${validity_days}` +' day(s) left ';
       element.style.width = (validity_days/30)*100 + '%';
     });
