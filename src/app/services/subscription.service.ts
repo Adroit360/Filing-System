@@ -9,6 +9,13 @@ interface Subscription{
   subscriptionType:string,
   expiringDate:string
 }
+
+interface SubscriptionLogs{
+    entityName:string,
+    amount:string,
+    date:any
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -37,9 +44,10 @@ export class SubscriptionService {
     
   }
   // subscribe
-  subscribe(entity,entityCollection,subscribeCollection,id){
-    this.setExpiryDate(entityCollection,entity,subscribeCollection,id,30);
-    this.afs.collection(entityCollection).doc(entity).update({activation:true});
+  subscribe(entity,subscriptionLog, entityCollection,subscribeCollection,pckgid,amount){
+    this.setExpiryDate(entityCollection,entity,subscribeCollection,pckgid,30);
+    let logId = this.SubscriptionLogs(entity,amount,subscriptionLog);
+    return logId;
   }
 
   // unsuscribe
@@ -64,4 +72,16 @@ export class SubscriptionService {
   getSubscriptionInfo(entity,entityCol,subCol){
     return this.afs.collection(entityCol).doc(entity).collection(subCol).valueChanges();
   }
+
+ SubscriptionLogs(entity, amount,entityCol){
+   let id = this.afs.createId();
+    this.afs.collection(entityCol).doc(id).set({entity:entity,amount:amount,paid:false,date:firebase.firestore.FieldValue.serverTimestamp()});
+    return id;
+ }
+
+ updateSubscription(id,entityCol,entityCollection,entity){
+   this.afs.collection(entityCol).doc(id).update({paid:true});
+   this.afs.collection(entityCollection).doc(entity).update({activation:true});
+ }
+
 }
