@@ -37,7 +37,8 @@ export enum DbCollections{
   SubscriptionPlan="SubscrptionPackages",
   System="System",
   EntitySubscription="EntitySubscription",
-  SubscriptionLogs ="SubscriptionLogs"
+  SubscriptionLogs ="SubscriptionLogs",
+
 }
 
 @Injectable({
@@ -314,8 +315,8 @@ getChatMessages(user,targetUser,entity){
     return this.subscription.getSubscriptionInfo(entity,DbCollections.Entities,DbCollections.EntitySubscription);
   }
 
-  subscribe(entity,amount){
-    this.subscription.subscribe(entity,DbCollections.SubscriptionLogs)
+  subscribe(entity,amount,pkdId){
+    this.subscription.subscribe(entity,DbCollections.SubscriptionLogs,DbCollections.Entities,DbCollections.EntitySubscription,pkdId)
   }
 
 }
