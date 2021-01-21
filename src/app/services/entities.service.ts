@@ -315,8 +315,8 @@ getChatMessages(user,targetUser,entity){
     return this.subscription.getSubscriptionInfo(entity,DbCollections.Entities,DbCollections.EntitySubscription);
   }
 
-  subscribe(entity,amount,pkdId){
-    this.subscription.subscribe(entity,DbCollections.SubscriptionLogs,DbCollections.Entities,DbCollections.EntitySubscription,pkdId)
+  subscribe(entity,amount, pkgId){
+    return this.subscription.subscribe(entity,DbCollections.SubscriptionLogs,DbCollections.Entities,DbCollections.EntitySubscription,amount,pkgId)
   }
 
 }

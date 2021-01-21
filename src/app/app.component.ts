@@ -1,7 +1,8 @@
 import { ActivatedRoute, Router } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Renderer2 } from "@angular/core";
 import { DataService } from "./services/data.service";
 import { SectionService } from "./services/section.service";
+import { LoaderService } from "src/interceptors/loader.service";
 
 @Component({
   selector: "app-root",
@@ -18,9 +19,19 @@ export class AppComponent implements OnInit {
     private router: Router,
     private userInfo: DataService,
     private sectionService: SectionService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private loaderService:LoaderService,
+    private renderer:Renderer2
   ) {
     // router.navigate(["login"]);
+
+    this.loaderService.httpProgress().subscribe((status: boolean) => {
+      if (status) {
+        this.renderer.addClass(document.body, 'busy');
+      } else {
+        this.renderer.removeClass(document.body, 'busy');
+      }
+    });
   }
 
   ngOnInit(): void {

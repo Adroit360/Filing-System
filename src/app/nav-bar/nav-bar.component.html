@@ -13,14 +13,13 @@
         <input type="search" name="search-box" id="search" placeholder="Search for a specific document" (keyup)="updateSearch($event.target.value)" />
     </div>
 
-
     <div *ngIf="user" class="notifications">
-        <div  smart-tooltip-container class="toggler clicktoshow">
+        <div  smart-tooltip-container class="clicktoshow">
 
             <span *ngIf="!user.photo" class="material-icons"> account_circle </span>
             <img *ngIf="user.photo" style="height: 40px;width: 40px;border-radius: 50%;" src={{user.photo}}>
 
-            <h4 style="top: 50px; text-align: center;" class="smart-tooltip stay-left " id="hiddenText">
+            <h4 style="top: 50px; text-align: center;" class="smart-tooltip stay-left stick-100 stayonhover" id="hiddenText">
 
                 <div class="profile">
                     <h3 *ngIf="!user.photo" class="material-icons"> account_circle </h3>

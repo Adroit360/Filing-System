@@ -1,10 +1,11 @@
 .Modal {
     /* Hidden by default */
     position: fixed;
+    background-color: white !important;
     /* Stay in place */
-    z-index: 1;
+    z-index: 200;
     /* Sit on top */
-    padding-top: 100px;
+    // padding-top: 100px;
     /* Location of the box */
     left: 0;
     top: 0;
@@ -18,6 +19,15 @@
     /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
     /* Black w/ opacity */
+
+    .close{
+        width: 20px;
+        position: absolute;
+        right: 2rem;
+        top: 2rem;
+        color: red;
+        cursor: pointer;
+    }
 }
 
 
