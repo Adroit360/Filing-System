@@ -13,6 +13,7 @@ import { DirectoryService } from "../../services/directory.service";
 import { SectionService } from "../../services/section.service";
 import { Router } from "@angular/router";
 import { OwlOptions } from "ngx-owl-carousel-o";
+import { EntitiesService } from 'src/app/services/entities.service';
 
 @Component({
   selector: "app-dashboard",
@@ -54,7 +55,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private dataManager: DataService,
     private announceManager: AnnouncementService,
     private router: Router,
-    private sectionManager: SectionService
+    private sectionManager: SectionService,
+    private entityManager:EntitiesService
   ) {
     // get user recently accessed folders
     directoryManager
@@ -85,6 +87,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         console.log(this.colors);
         console.log(this.tasks, "these are the task");
       });
+
+      this.entityManager.entitySubscriptionPackage(dataManager.getEntity()).subscribe(result=>{
+        this.dataManager.setSubscriptionInfo(result[0])});
 
     this.date = new Date().toDateString();
   }

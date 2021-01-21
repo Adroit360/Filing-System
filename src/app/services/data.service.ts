@@ -31,6 +31,7 @@ export class DataService {
   subscriptionPlan:string="";
   MS_PER_DAY = 1000 * 60 * 60 * 24;
   is_trial:boolean;
+  subscriptionId:string;
 
 
   constructor(private directoryManager: DirectoryService,private entityManager:EntitiesService) { }
@@ -207,8 +208,9 @@ export class DataService {
       console.log("first worked");
       this.validity_days = (new Date(subscriptionPackage.expiringDate).getTime()- new Date(subscriptionPackage.subscriptionDate.toDate()).getTime())/this.MS_PER_DAY;
       this.expiringDate = subscriptionPackage.expiringDate;
-      this.subscriptionPlan=subscriptionPackage.type;
+      this.subscriptionPlan=subscriptionPackage.subscriptionType;
       this.is_trial = obj.trial;
+      this.subscriptionId = obj.id;
     }
 
     getSubscriptionPackage(){
@@ -217,7 +219,7 @@ export class DataService {
 
     getSubscriptionInfo(){
       return {trial:this.is_trial,validity_days:this.validity_days,subscriptionType:this.subscriptionPlan,expiringDate:this.expiringDate,
-                startDate:this.subscriptionDate }
+        subscriptionDate:this.subscriptionDate, subscriptionId:this.subscriptionId }
     }
    
 }
