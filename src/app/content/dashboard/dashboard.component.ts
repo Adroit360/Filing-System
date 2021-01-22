@@ -104,7 +104,15 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       });
 
       this.entityManager.entitySubscriptionPackage(dataManager.getEntity()).subscribe(result=>{
-        this.dataManager.setSubscriptionInfo(result[0])});
+        console.log(result[0],"here we are ")
+        this.dataManager.setSubscriptionInfo(result[0]);
+
+        this.entityManager.getKonvySubscriptionPackageDetail(result[0].id).subscribe(data=>{
+          this.dataManager.setKonvySubscriptionPackageInfo(data);
+        });
+      });
+
+        
 
     this.date = new Date().toDateString();
   }
@@ -118,12 +126,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit()
+  {
     // this.showSlides(this.slideIndex);
     // this.showSlidesAutomate();
   }
 
-  generateColors() {
+  generateColors()
+  {
     this.colors = [];
     for (let i = 0; i < this.tasks.length; i++) {
       this.colors[i] = this.localColors[this.getColorIndex()];
@@ -145,6 +155,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   onEdit() {
     console.log("edited");
   }
+
   //openeing a task group
   activeTaskGrp: any;
   activeTaskArray: any = [];

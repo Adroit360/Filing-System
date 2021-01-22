@@ -33,6 +33,8 @@ export class DataService {
   is_trial:boolean;
   subscriptionId:string;
 
+  konvySubscriptionPackage:any;
+
 
   constructor(private directoryManager: DirectoryService,private entityManager:EntitiesService) { }
 
@@ -225,6 +227,12 @@ export class DataService {
         subscriptionDate:this.subscriptionDate, subscriptionId:this.subscriptionId }
     }
 
-    
+    setKonvySubscriptionPackageInfo(subscriptionInfo){
+      this.konvySubscriptionPackage = subscriptionInfo
+    }
+
+    getKonvySubscriptionPackageInfo(){
+      return this.konvySubscriptionPackage;
+    }
    
 }

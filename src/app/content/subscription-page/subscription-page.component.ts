@@ -98,6 +98,9 @@ export class SubscriptionPageComponent implements OnInit {
     });
   }
 
+  closeModal(){
+    this.modalcall = false;
+  }
 
   update() {
     // var element = document.getElementById("myBar");
@@ -109,9 +112,5 @@ export class SubscriptionPageComponent implements OnInit {
 
 
 
-  }
-
-  closeModal(){
-    this.modalcall = false;
   }
 }
