@@ -17,7 +17,6 @@ import { DbCollections } from '../services/entities.service'
 }
 
 
-
 @Injectable({
   providedIn: 'root'
 })

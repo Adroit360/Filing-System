@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase';
+import { ServerTimerService } from './server-timer.service';
+
 
 interface Subscription{
   id:string,
@@ -21,8 +23,12 @@ interface SubscriptionLogs{
 })
 export class SubscriptionService {
 
-  constructor(private afs:AngularFirestore) {
-
+  serverTime:any={};
+  constructor(private afs:AngularFirestore,private serverTimer: ServerTimerService) {
+    serverTimer.getServerTime().subscribe(result=>{
+      console.log("got server time",result);
+      this.serverTime = result;
+    });
   }
 
   // free trial subscription
@@ -44,8 +50,9 @@ export class SubscriptionService {
     
   }
   // subscribe
-  subscribe(entity,subscriptionLog, entityCollection,subscribeCollection,pckgid,amount){
-    this.setExpiryDate(entityCollection,entity,subscribeCollection,pckgid,30);
+   subscribe(entity,subscriptionLog, entityCollection,subscribeCollection,pckgid,amount){
+    console.log("in subscription service subscribe")
+     this.setExpiryDate(entityCollection,entity,subscribeCollection,pckgid,30);
     let logId = this.SubscriptionLogs(entity,amount,subscriptionLog);
     return logId;
   }
@@ -60,13 +67,20 @@ export class SubscriptionService {
 
 
   // set expiring date
-  setExpiryDate(entityCollection,entity,subscribeCollection,id,duration){
+  async setExpiryDate(entityCollection,entity,subscribeCollection,id,duration){
     // set correct expiring date
-    this.afs.collection(entityCollection).doc(entity).collection(subscribeCollection).doc(id).get().subscribe(doc=>{
-      let dt = new Date(doc.data().subscriptionDate.toDate());
-      dt.setDate(dt.getDate()+duration)
-      this.afs.collection(entityCollection).doc(entity).collection(subscribeCollection).doc(id).update({expiringDate:dt.toDateString()});
-  })
+    // this.afs.collection(entityCollection).doc(entity).collection(subscribeCollection).doc(id).get().subscribe(doc=>{
+    console.log("server time",this.serverTime.time.toDate());  
+
+    
+       let dt = new Date(this.serverTime.time.toDate());
+      console.log("first dt conver",dt)
+      dt.setDate(dt.getDate()+duration);
+      console.log(dt);
+      this.afs.collection(entityCollection).doc(entity).collection(subscribeCollection).doc(id).update({expiringDate:dt.toDateString(),subscriptionDate: firebase.firestore.FieldValue.serverTimestamp()});
+   
+    
+  // })
   }
 
   getSubscriptionInfo(entity,entityCol,subCol){
@@ -74,6 +88,7 @@ export class SubscriptionService {
   }
 
  SubscriptionLogs(entity, amount,entityCol){
+   console.log("inside subscription log")
    let id = this.afs.createId();
     this.afs.collection(entityCol).doc(id).set({entity:entity,amount:amount,paid:false,date:firebase.firestore.FieldValue.serverTimestamp()});
     return id;

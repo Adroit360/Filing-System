@@ -79,20 +79,20 @@ export class SubscriptionPageComponent implements OnInit {
 
     // subscribe
     let amount = 0;
-    // let subscriptionId = this.entityManager.subscribe(this.dataManager.getEntity(),amount,this.subscriptionPlan.subscriptionId );
-    // console.log(subscriptionId);
+    let subscriptionId = this.entityManager.subscribe(this.dataManager.getEntity(),amount,this.subscriptionPlan.subscriptionId );
+    console.log(subscriptionId);
     let body = {
       amount: amount,
       description: "subscription payment",
       email: this.dataManager.getActiveUser().email,
       redirectUrl: "https://217f8815c37b.ngrok.io/home/content/dashboard"
     }
-    this.httpClient.post(this.ENDPOINT, body).subscribe((data: { checkoutUrl }) => {
-      console.log(data);
-      if (data.checkoutUrl)
-        this.checkoutUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(data.checkoutUrl);
-      this.modalcall = !this.modalcall;
-    });
+    // this.httpClient.post(this.ENDPOINT, body).subscribe((data: { checkoutUrl }) => {
+    //   console.log(data);
+    //   if (data.checkoutUrl)
+    //     this.checkoutUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(data.checkoutUrl);
+    //   this.modalcall = !this.modalcall;
+    // });
   }
 
 

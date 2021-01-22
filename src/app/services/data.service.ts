@@ -221,5 +221,7 @@ export class DataService {
       return {trial:this.is_trial,validity_days:this.validity_days,subscriptionType:this.subscriptionPlan,expiringDate:this.expiringDate,
         subscriptionDate:this.subscriptionDate, subscriptionId:this.subscriptionId }
     }
+
+    
    
 }
