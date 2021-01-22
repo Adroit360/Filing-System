@@ -49,10 +49,12 @@ export class SubscriptionPageComponent implements OnInit {
     var element = document.getElementById("myBar");
     var width = 1;
     // this.subscriptionDate = new Date(this.subscriptionPlan.subscriptionDate.toDate()).toDateString();
-    let validity_days = this.subscriptionPlan.validity_days;//(new Date(this.subscriptionPlan.expiringDate).getTime()- new Date(this.subscriptionPlan.subscriptionDate.toDate()).getTime());
+    let validity_days = Math.ceil(this.subscriptionPlan.validity_days);//(new Date(this.subscriptionPlan.expiringDate).getTime()- new Date(this.subscriptionPlan.subscriptionDate.toDate()).getTime());
     console.log(validity_days);
+  
     element.innerHTML = `${validity_days}` + ' day(s) left ';
-    element.style.width = (validity_days / 30) * 100 + '%';
+
+    element.style.width = `${(validity_days / 30) * 100}%`;
   }
 
 
@@ -78,20 +80,21 @@ export class SubscriptionPageComponent implements OnInit {
     // get package price
 
     // subscribe
-    let amount = 0;
+    let amount = 100;
     // let subscriptionId = this.entityManager.subscribe(this.dataManager.getEntity(),amount,this.subscriptionPlan.subscriptionId );
     // console.log(subscriptionId);
     let body = {
       amount: amount,
       description: "subscription payment",
       email: this.dataManager.getActiveUser().email,
-      redirectUrl: "https://773d7e0929cd.ngrok.io/home/content/dashboard"
+      redirectUrl: "https://c08b9e61aad3.ngrok.io/home/content/dashboard"
     }
     this.httpClient.post(this.ENDPOINT, body).subscribe((data: { checkoutUrl }) => {
       console.log(data);
       if (data.checkoutUrl)
-        this.checkoutUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(data.checkoutUrl);
-      this.modalcall = !this.modalcall;
+        window.location.href = data.checkoutUrl;
+      //this.checkoutUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(data.checkoutUrl);
+      // this.modalcall = !this.modalcall;
     });
   }
 
