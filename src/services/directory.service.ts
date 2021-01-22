@@ -6,7 +6,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable, of } from 'rxjs';
 import {finalize} from 'rxjs/operators';
 import * as firebase from 'firebase/app';
-import { DbCollections } from '../services/entities.service';
+import { DbCollections } from './entities.service';
 
 export interface Archives{
   id:string,

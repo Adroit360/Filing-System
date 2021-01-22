@@ -1,12 +1,12 @@
-import { SectionService } from 'src/app/services/section.service';
+import { SectionService } from 'src/services/section.service';
 import { Router } from '@angular/router';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import {AuthServiceService} from '../services/auth-service.service';
-import { UserService } from '../services/User.service';
-import { DataService } from '../services/data.service';
-import { EntitiesService } from '../services/entities.service';
+import {AuthServiceService} from '../../services/auth-service.service';
+import { UserService } from '../../services/User.service';
+import { DataService } from '../../services/data.service';
+import { EntitiesService } from '../../services/entities.service';
 
 @Component({
   selector: 'app-nav-bar',

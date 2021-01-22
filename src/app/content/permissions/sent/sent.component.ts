@@ -1,6 +1,6 @@
 import { Component, OnInit, ɵCodegenComponentFactoryResolver } from '@angular/core';
-import { ApprovalService } from '../../../services/approval.service';
-import { DataService } from '../../../services/data.service';
+import { ApprovalService } from '../../../../services/approval.service';
+import { DataService } from '../../../../services/data.service';
 
 @Component({
   selector: 'app-sent',

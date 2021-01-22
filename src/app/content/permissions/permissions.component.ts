@@ -1,7 +1,7 @@
-import { SectionService } from 'src/app/services/section.service';
+import { SectionService } from 'src/services/section.service';
 import { Component, OnInit } from '@angular/core';
-import { ApprovalService } from '../../services/approval.service';
-import { DataService } from '../../services/data.service';
+import { ApprovalService } from '../../../services/approval.service';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-permissions',

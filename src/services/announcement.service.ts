@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
-import { DbCollections } from '../services/entities.service';
+import { DbCollections } from './entities.service';
 
 interface Announcement{
   id:string,

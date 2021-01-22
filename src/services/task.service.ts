@@ -1,9 +1,9 @@
 import { Injectable, ɵisDefaultChangeDetectionStrategy } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
-import { DbCollections } from '../services/entities.service';
-import { User } from '../models/model';
-import { NewTask } from '../interface/newTask.interface';
+import { DbCollections } from './entities.service';
+import { User } from '../app/models/model';
+import { NewTask } from '../app/interface/newTask.interface';
 
 interface Task{
   id:string,

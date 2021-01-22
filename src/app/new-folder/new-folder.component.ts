@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DataService } from '../services/data.service';
-import { DirectoryService } from '../services/directory.service';
+import { DataService } from '../../services/data.service';
+import { DirectoryService } from '../../services/directory.service';
 
 @Component({
   selector: 'app-new-folder',

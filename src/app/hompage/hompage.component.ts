@@ -2,7 +2,7 @@ import { User } from './../models/user.model';
 
 import { Router } from '@angular/router';
 import { Component, OnInit , Output, EventEmitter} from '@angular/core';
-import { SectionService } from '../services/section.service';
+import { SectionService } from '../../services/section.service';
 
 @Component({
   selector: 'app-hompage',
@@ -18,6 +18,7 @@ export class HompageComponent implements OnInit {
 
   ngOnInit(): void {
     // this.route.navigate(['content', 'general']);
+    console.log("Hompage Component Loaded");
     this.sectionService.toggleMenuBar.subscribe(
       data =>{
         this.toggleMenu = data;

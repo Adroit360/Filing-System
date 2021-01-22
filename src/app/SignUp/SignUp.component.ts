@@ -1,11 +1,11 @@
 import { Router } from '@angular/router';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {FormControl, FormGroup, Validators, } from '@angular/forms';
-import { SectionService } from '../services/section.service';
-import { EntitiesService } from '../services/entities.service';
+import { SectionService } from '../../services/section.service';
+import { EntitiesService } from '../../services/entities.service';
 // import {User } from '../models/model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MessengerService } from '../services/messenger.service';
+import { MessengerService } from '../../services/messenger.service';
 
 @Component({
   selector: 'app-SignUp',

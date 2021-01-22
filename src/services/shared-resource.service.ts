@@ -4,8 +4,8 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import {finalize} from 'rxjs/operators';
 import * as firebase from 'firebase/app';
-import { User } from '../models/model';
-import { DbCollections } from '../services/entities.service'
+import { User } from '../app/models/model';
+import { DbCollections } from './entities.service'
 
  interface Resource{
   id:string,
@@ -15,7 +15,6 @@ import { DbCollections } from '../services/entities.service'
   objects:[],
   date:string
 }
-
 
 
 @Injectable({

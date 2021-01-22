@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
-import { DataService } from 'src/app/services/data.service';
-import { MessengerService } from 'src/app/services/messenger.service';
-import { SharedResourceService } from 'src/app/services/shared-resource.service';
-import { AdminResourceService } from 'src/app/services/AdminResource.service';
-import { EntitiesService } from '../../services/entities.service';
+import { DataService } from 'src/services/data.service';
+import { MessengerService } from 'src/services/messenger.service';
+import { SharedResourceService } from 'src/services/shared-resource.service';
+import { AdminResourceService } from 'src/services/AdminResource.service';
+import { EntitiesService } from '../../../services/entities.service';
 
 @Component({
   selector: 'app-user-list',

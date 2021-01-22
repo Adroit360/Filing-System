@@ -1,5 +1,5 @@
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Resource } from '../models/resources.model';
+import { Resource } from '../app/models/resources.model';
 
 export class AdminResourceService{
 

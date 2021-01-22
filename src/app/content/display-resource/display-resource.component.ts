@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 //import { Console } from 'console';
-import { AdminResourceService } from 'src/app/services/AdminResource.service';
-import { SectionService } from 'src/app/services/section.service';
-import { DataService } from 'src/app/services/data.service';
-import { DirectoryService } from 'src/app/services/directory.service';
-import { SharedResourceService } from '../../services/shared-resource.service';
+import { AdminResourceService } from 'src/services/AdminResource.service';
+import { SectionService } from 'src/services/section.service';
+import { DataService } from 'src/services/data.service';
+import { DirectoryService } from 'src/services/directory.service';
+import { SharedResourceService } from '../../../services/shared-resource.service';
 
 @Component({
   selector: 'app-display-resource',

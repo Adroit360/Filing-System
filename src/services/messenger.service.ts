@@ -3,10 +3,10 @@ import {AngularFirestore,AngularFirestoreCollection} from '@angular/fire/firesto
 import {Observable} from 'rxjs';
 import {map,finalize} from 'rxjs/operators';
 import * as firebase from 'firebase/app';
-import {User,SystemUser,DocumentApprovalObject,Section,Directory,FileObject,ApprovalResponse,ApprovalRequest } from '../models/model';
+import {User,SystemUser,DocumentApprovalObject,Section,Directory,FileObject,ApprovalResponse,ApprovalRequest } from '../app/models/model';
 import { AngularFireStorage,AngularFireStorageReference,AngularFireUploadTask } from '@angular/fire/storage';
-import {AuthServiceService} from '../services/auth-service.service';
-import { EntitiesService,DbCollections } from '../services/entities.service';
+import {AuthServiceService} from './auth-service.service';
+import { EntitiesService,DbCollections } from './entities.service';
 
 
 
@@ -296,8 +296,7 @@ export class MessengerService {
   getSubscriptionPlans(){
     return this.database.collection(DbCollections.SubscriptionPlan).valueChanges();
   }
-// create document approval request
 
-// get
+
   
 }

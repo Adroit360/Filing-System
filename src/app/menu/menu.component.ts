@@ -1,18 +1,18 @@
 import { Component, ElementRef, OnInit, Output, ViewChild,Inject } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router'
 import { Section } from '../models/model';
-import { SectionService } from '../services/section.service';
-import { DataService } from '../services/data.service';
-import {MessengerService} from '../services/messenger.service';
-import { DirectoryService } from '../services/directory.service';
+import { SectionService } from '../../services/section.service';
+import { DataService } from '../../services/data.service';
+import {MessengerService} from '../../services/messenger.service';
+import { DirectoryService } from '../../services/directory.service';
 import { Observable } from 'rxjs';
-import {AuthServiceService} from '../services/auth-service.service';
+import {AuthServiceService} from '../../services/auth-service.service';
 import { HttpClient } from '@angular/common/http';
 import { DOCUMENT } from '@angular/common';
 
 import { ZoomMtg } from '@zoomus/websdk';
-import { MeetingsService } from '../services/meetings.service';
-import { EntitiesService } from '../services/entities.service';
+import { MeetingsService } from '../../services/meetings.service';
+import { EntitiesService } from '../../services/entities.service';
 ZoomMtg.preLoadWasm();
 ZoomMtg.prepareJssdk();
 

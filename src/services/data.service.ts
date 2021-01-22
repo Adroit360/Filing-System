@@ -5,7 +5,7 @@
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { User,SystemUser } from '../models/model';
+import { User,SystemUser } from '../app/models/model';
 import { DirectoryService } from './directory.service';
 import { EntitiesService } from './entities.service';
 
@@ -47,7 +47,8 @@ export class DataService {
     this.systemUser =  userInfo;
     console.log("this is the user info from volatile data",userInfo);
     this.setEntity(userInfo.entity);
-    this.user = await this.entityManager.getEntityUser(userInfo.email,userInfo.entity);
+    this.user = userInfo;
+    // this.user = await this.entityManager.getEntityUser(userInfo.email,userInfo.entity);
     // this.directoryManager.getAccessibleArchives(userInfo.user.accessList,userInfo.entity).subscribe(result=>{
     //   this.accessibleDocs = result;
     // });
@@ -60,6 +61,8 @@ export class DataService {
     console.log("this is the user info from volatile data",userInfo);
     this.setEntity(userInfo.entity);
     this.user = await this.entityManager.getEntityUser(userInfo.email,userInfo.entity);
+    localStorage.setItem("user", JSON.stringify({...this.user,entity:userInfo.entity}));
+
     // this.directoryManager.getAccessibleArchives(userInfo.user.accessList,userInfo.entity).subscribe(result=>{
     //   this.accessibleDocs = result;
     // });
@@ -221,5 +224,7 @@ export class DataService {
       return {trial:this.is_trial,validity_days:this.validity_days,subscriptionType:this.subscriptionPlan,expiringDate:this.expiringDate,
         subscriptionDate:this.subscriptionDate, subscriptionId:this.subscriptionId }
     }
+
+    
    
 }

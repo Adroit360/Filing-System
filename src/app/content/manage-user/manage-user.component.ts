@@ -2,9 +2,9 @@ import { Router } from '@angular/router';
 import { Component, OnInit, Output } from '@angular/core';
 // import { UserService } from 'src/app/services/User.service';
 import { User } from '../../models/model';
-import {MessengerService} from '../../services/messenger.service';
-import {DataService} from '../../services/data.service';
-import { EntitiesService } from '../../services/entities.service';
+import {MessengerService} from '../../../services/messenger.service';
+import {DataService} from '../../../services/data.service';
+import { EntitiesService } from '../../../services/entities.service';
 
 @Component({
   selector: 'app-manage-user',

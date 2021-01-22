@@ -25,13 +25,13 @@ import { EmptyComponent } from './content/empty/empty.component';
 import { SignUpComponent} from './SignUp/SignUp.component';
 
 import { SectionComponent } from './content/section/section.component';
-import { UserService } from './services/User.service';
+import { UserService } from '../services/User.service';
 import { LoginComponent } from './login/login.component';
 import { HompageComponent } from './hompage/hompage.component';
 import {ModalComponent} from './modal/modal.component';
 import { PasswordComponent} from './forgotPassword/password.component';
 import { NewFolderComponent } from './new-folder/new-folder.component'
-import { AdminResourceService } from './services/AdminResource.service';
+import { AdminResourceService } from '../services/AdminResource.service';
 import{ChatComponent} from './content/chat box/chat.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
@@ -45,7 +45,7 @@ import { TruncatePipe } from './truncate.pipe';
 import { PermissionsComponent } from './content/permissions/permissions.component';
 import { SentComponent } from './content/permissions/sent/sent.component';
 import { ReceivedComponent } from './content/permissions/received/received.component';
-import { SectionService } from './services/section.service';
+import { SectionService } from '../services/section.service';
 import { UserListComponent } from './content/user-list/user-list.component';
 import { SentApprovalsComponent } from './approvals/sent-approvals/sent-approvals.component';
 import { RequestApprovalsComponent } from './approvals/request-approvals/request-approvals.component';

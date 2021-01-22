@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { DataService } from 'src/app/services/data.service';
-import { EntitiesService } from 'src/app/services/entities.service';
+import { DataService } from 'src/services/data.service';
+import { EntitiesService } from 'src/services/entities.service';
 
 @Component({
   selector: 'app-subscription-page',
@@ -81,13 +81,13 @@ export class SubscriptionPageComponent implements OnInit {
 
     // subscribe
     let amount = 100;
-    // let subscriptionId = this.entityManager.subscribe(this.dataManager.getEntity(),amount,this.subscriptionPlan.subscriptionId );
-    // console.log(subscriptionId);
+    let subscriptionId = this.entityManager.subscribe(this.dataManager.getEntity(),amount,this.subscriptionPlan.subscriptionId );
+    console.log(subscriptionId);
     let body = {
       amount: amount,
       description: "subscription payment",
       email: this.dataManager.getActiveUser().email,
-      redirectUrl: "https://c08b9e61aad3.ngrok.io/home/content/dashboard"
+      redirectUrl: "http://localhost:4200/home/content/dashboard"
     }
     this.httpClient.post(this.ENDPOINT, body).subscribe((data: { checkoutUrl }) => {
       console.log(data);

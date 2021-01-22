@@ -1,12 +1,12 @@
 import { ActivatedRoute, Router } from '@angular/router';
 // import { SectionService } from 'src/app/services/section.service';
 import { Component, OnInit } from '@angular/core';
-import { DirectoryService } from '../../services/directory.service';
-import { DataService } from '../../services/data.service';
-import { SharedResourceService } from '../../services/shared-resource.service';
-import { AdminResourceService } from 'src/app/services/AdminResource.service';
+import { DirectoryService } from '../../../services/directory.service';
+import { DataService } from '../../../services/data.service';
+import { SharedResourceService } from '../../../services/shared-resource.service';
+import { AdminResourceService } from 'src/services/AdminResource.service';
 import { Resource } from 'src/app/models/resources.model';
-import { ApprovalService } from 'src/app/services/approval.service';
+import { ApprovalService } from 'src/services/approval.service';
 
 @Component({
   selector: 'app-empty',

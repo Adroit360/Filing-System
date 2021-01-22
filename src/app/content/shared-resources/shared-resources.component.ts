@@ -1,9 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {  Router } from '@angular/router';
 import { Resource } from 'src/app/models/resources.model';
-import { AdminResourceService } from 'src/app/services/AdminResource.service';
-import { SharedResourceService } from '../../services/shared-resource.service';
-import { DataService } from '../../services/data.service';
+import { AdminResourceService } from 'src/services/AdminResource.service';
+import { SharedResourceService } from '../../../services/shared-resource.service';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-shared-resources',

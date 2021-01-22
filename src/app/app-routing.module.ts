@@ -28,6 +28,7 @@ import { SubscriptionPageComponent } from './content/subscription-page/subscript
 
 
 const routes: Routes = [
+  // {path: 'home/contents/dashboard', component: DashboardComponent},
   {path: 'home', component: HompageComponent, children: [
     // {path: '/:id/:name', component: SectionComponent},
     {path: 'content', component: ContentComponent, children: [
@@ -60,7 +61,10 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'SignUp', component: SignUpComponent },
   {path: '**', component: ErrorPageComponent},
-  // {path: '**', component: ErrorPageComponent}
+
+
+  
+  {path: '**', component: ErrorPageComponent}
 
 ]
 

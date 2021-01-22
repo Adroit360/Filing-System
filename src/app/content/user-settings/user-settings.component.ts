@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { SectionService } from '../../services/section.service';
-import { DataService } from '../../services/data.service';
-import { MessengerService } from '../../services/messenger.service';
-import { EntitiesService } from '../../services/entities.service';
+import { SectionService } from '../../../services/section.service';
+import { DataService } from '../../../services/data.service';
+import { MessengerService } from '../../../services/messenger.service';
+import { EntitiesService } from '../../../services/entities.service';
 
 @Component({
   selector: 'app-user-settings',

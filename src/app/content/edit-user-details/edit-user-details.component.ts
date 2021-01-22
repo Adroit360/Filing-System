@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { stringify } from 'querystring';
-import { UserService } from 'src/app/services/User.service';
-import {DataService} from '../../services/data.service';
-import {EntitiesService} from '../../services/entities.service';
+import { UserService } from 'src/services/User.service';
+import {DataService} from '../../../services/data.service';
+import {EntitiesService} from '../../../services/entities.service';
 
 @Component({
   selector: 'app-edit-user-details',

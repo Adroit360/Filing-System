@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
-import {User,SystemUser } from '../models/model';
-import {AuthServiceService} from '../services/auth-service.service';
-import { ChatService } from '../services/chat.service';
+import {User,SystemUser } from '../app/models/model';
+import {AuthServiceService} from './auth-service.service';
+import { ChatService } from './chat.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
-import { TaskService } from '../services/task.service';
-import { NewTask } from '../interface/newTask.interface';
+import { TaskService } from './task.service';
+import { NewTask } from '../app/interface/newTask.interface';
 import { SubscriptionService } from './subscription.service';
 
 export interface Entity{
@@ -38,6 +38,7 @@ export enum DbCollections{
   System="System",
   EntitySubscription="EntitySubscription",
   SubscriptionLogs ="SubscriptionLogs",
+  ServerTime="ServerTime"
 
 }
 
@@ -315,8 +316,11 @@ getChatMessages(user,targetUser,entity){
     return this.subscription.getSubscriptionInfo(entity,DbCollections.Entities,DbCollections.EntitySubscription);
   }
 
+  // entity subscription
   subscribe(entity,amount, pkgId){
-    return this.subscription.subscribe(entity,DbCollections.SubscriptionLogs,DbCollections.Entities,DbCollections.EntitySubscription,amount,pkgId)
+    return this.subscription.subscribe(entity,DbCollections.SubscriptionLogs,DbCollections.Entities,DbCollections.EntitySubscription,pkgId,amount)
   }
+
+ 
 
 }

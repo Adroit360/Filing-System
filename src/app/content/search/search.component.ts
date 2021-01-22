@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
-import { DirectoryService } from '../../services/directory.service';
+import { DataService } from 'src/services/data.service';
+import { DirectoryService } from '../../../services/directory.service';
 import { Router } from '@angular/router';
-import { SharedResourceService } from 'src/app/services/shared-resource.service';
+import { SharedResourceService } from 'src/services/shared-resource.service';
 
 @Component({
   selector: 'app-search',

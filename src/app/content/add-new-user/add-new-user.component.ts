@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import {EntitiesService} from '../../services/entities.service';
-import { DataService } from '../../services/data.service';
+import {EntitiesService} from '../../../services/entities.service';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-add-new-user',

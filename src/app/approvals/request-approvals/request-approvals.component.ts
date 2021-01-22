@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
-import { ApprovalService } from '../../services/approval.service';
-import { DataService } from '../../services/data.service';
+import { ApprovalService } from '../../../services/approval.service';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-request-approvals',

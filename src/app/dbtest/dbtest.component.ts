@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { auth } from 'firebase';
-import {AuthServiceService} from '../services/auth-service.service';
-import {MessengerService} from '../services/messenger.service';
+import {AuthServiceService} from '../../services/auth-service.service';
+import {MessengerService} from '../../services/messenger.service';
 import {User,Section,Directory } from '../models/model';
 
 @Component({

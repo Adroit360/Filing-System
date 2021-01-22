@@ -1,7 +1,7 @@
-import { SectionService } from 'src/app/services/section.service';
+import { SectionService } from 'src/services/section.service';
 import { Component, OnInit } from '@angular/core';
 // import { SectionService } fro../services/section.serviceice';
-import {DataService } from '../services/data.service';
+import {DataService } from '../../services/data.service';
 import { HostListener } from "@angular/core";
 
 
@@ -20,6 +20,7 @@ export class ContentComponent implements OnInit {
   constructor(private userInfo:DataService, private sectionService:  SectionService) {
       userInfo.getAccessList();
       
+
    }
 
   ngOnInit(): void {
@@ -34,17 +35,18 @@ export class ContentComponent implements OnInit {
   disp(){
     // this.sectionservice.displaysection;
   }
+
+
   onOpenChat(){
     let blackBox: any = document.querySelector('#open-chat');
     blackBox.checked = false;
    this.sectionService.onToggleChats(true);
-   
- 
   }
+
+
   onOpenApprovals(){
     let blackBox: any = document.querySelector('#open-chat');
     blackBox.checked = false;
     this.sectionService.onToggleApprovals(true);
-    
   }
 }

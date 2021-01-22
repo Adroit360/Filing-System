@@ -1,11 +1,11 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators, } from '@angular/forms';
-import {AuthServiceService} from '../services/auth-service.service';
-import {DataService } from '../services/data.service';
-import {MessengerService} from '../services/messenger.service';
-import { SectionService } from '../services/section.service';
-import { EntitiesService } from '../services/entities.service';
+import {AuthServiceService} from '../../services/auth-service.service';
+import {DataService } from '../../services/data.service';
+import {MessengerService} from '../../services/messenger.service';
+import { SectionService } from '../../services/section.service';
+import { EntitiesService } from '../../services/entities.service';
 // import {User } from '../models/model';
 
 @Component({
@@ -59,7 +59,6 @@ export class LoginComponent implements OnInit {
             // this.userInfo.setSubscriptionInfo(subPackage[0]);   
           //  });
            //Local storage
-           localStorage.setItem("user", JSON.stringify(this.user));
            // route to the dashboard
             this.route.navigate(["home/content/dashboard"]);
 

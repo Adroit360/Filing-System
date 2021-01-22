@@ -6,14 +6,14 @@ import {
   ViewChild,
 } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
-import { TaskService } from "../../services/task.service";
-import { DataService } from "../../services/data.service";
-import { AnnouncementService } from "../../services/announcement.service";
-import { DirectoryService } from "../../services/directory.service";
-import { SectionService } from "../../services/section.service";
-import { Router } from "@angular/router";
+import { TaskService } from "../../../services/task.service";
+import { DataService } from "../../../services/data.service";
+import { AnnouncementService } from "../../../services/announcement.service";
+import { DirectoryService } from "../../../services/directory.service";
+import { SectionService } from "../../../services/section.service";
+import { ActivatedRoute, Router } from "@angular/router";
 import { OwlOptions } from "ngx-owl-carousel-o";
-import { EntitiesService } from 'src/app/services/entities.service';
+import { EntitiesService } from 'src/services/entities.service';
 
 @Component({
   selector: "app-dashboard",
@@ -56,9 +56,21 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private announceManager: AnnouncementService,
     private router: Router,
     private sectionManager: SectionService,
-    private entityManager:EntitiesService
+    private entityManager:EntitiesService,
+    private activatedRoute:ActivatedRoute
   ) {
-    // get user recently accessed folders
+    console.log(dataManager.getActiveUser());
+    //get user recently accessed folders
+    let reason = activatedRoute.snapshot.queryParams["reason"];
+    let transactionId = activatedRoute.snapshot.queryParams["transaction_id"];
+    if(reason.includes("successful")){
+
+    }else{
+      
+    }
+
+    console.error("REASON",);
+
     directoryManager
       .getRecentFolders(
         dataManager.getActiveUser().email,
@@ -78,8 +90,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         this.announcements = result;
       });
 
-    // get user tasks
-    taskManager
+   // get user tasks
+    
+   
+   
+   taskManager
       .getTaskGroups(dataManager.getActiveUser().email, dataManager.getEntity())
       .subscribe((result) => {
         this.tasks = result;

@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router } from "@angular/router";
 import { Component, OnInit, Renderer2 } from "@angular/core";
-import { DataService } from "./services/data.service";
-import { SectionService } from "./services/section.service";
+import { DataService } from "../services/data.service";
+import { SectionService } from "../services/section.service";
 import { LoaderService } from "src/interceptors/loader.service";
 
 @Component({
@@ -52,6 +52,9 @@ export class AppComponent implements OnInit {
     } else {
       console.log("user");
       this.user = JSON.parse(_user);
+
+      // this.userInfo.user = this.user;
+
       this.userInfo.setActiveUser(this.user).then(() => {
         this.generalSection = this.sectionService.getGeneralSection(
           this.user.entity
@@ -60,7 +63,7 @@ export class AppComponent implements OnInit {
         this.userInfo.setCurrentSection(this.generalSection.id, "general");
         this.userInfo.setCurrentDirectory(this.generalSection.id, "general");
         // console.log("activatedroute url",this.activatedRoute.url);
-        if (!window.location.href.includes("not-found"))
+        if (!window.location.href.includes("not-found") && (window.location.href.includes("login") || window.location.href.includes("SignUp")))
           this.router.navigateByUrl("home/content/dashboard");
       });
     }

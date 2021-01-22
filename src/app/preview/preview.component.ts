@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import {DataService}  from "../services/data.service";
-import { DirectoryService } from "../services/directory.service";
+import {DataService}  from "../../services/data.service";
+import { DirectoryService } from "../../services/directory.service";
 
 @Component({
   selector: 'app-preview',
