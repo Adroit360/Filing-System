@@ -7,7 +7,7 @@
         font-size: 26px;">
           control_point
       </i>
-            <a class="active" (click)="addPage()">Add a New user</a>
+            <a *ngIf="users.count<userCapacity" class="active" (click)="addPage()">Add a New user</a>
         </div>
     </div>
 

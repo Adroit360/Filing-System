@@ -46,13 +46,13 @@ export class SubscriptionService {
     await this.afs.collection(entityCollection).doc(entity).collection(subscribeCollection).doc(id).set(pckg);
 
     // set trial expiring date
-    this.setExpiryDate(entityCollection,entity,subscribeCollection,id,30);
+    this.setExpiryDateForTrial(entityCollection,entity,subscribeCollection,id,30);
     
   }
   // subscribe
-   subscribe(entity,subscriptionLog, entityCollection,subscribeCollection,pckgid,amount){
+   subscribe(entity,subscriptionLog, entityCollection,subscribeCollection,entitySubscriptionPlan,amount){
     console.log("in subscription service subscribe")
-     this.setExpiryDate(entityCollection,entity,subscribeCollection,pckgid,30);
+     this.setMonthlyExpiryDate(entityCollection,entity,subscribeCollection,entitySubscriptionPlan,30);
     let logId = this.SubscriptionLogs(entity,amount,subscriptionLog);
     return logId;
   }
@@ -67,21 +67,40 @@ export class SubscriptionService {
 
 
   // set expiring date
-  async setExpiryDate(entityCollection,entity,subscribeCollection,id,duration){
+  async setExpiryDateForTrial(entityCollection,entity,subscribeCollection,id,duration){
     // set correct expiring date
     // this.afs.collection(entityCollection).doc(entity).collection(subscribeCollection).doc(id).get().subscribe(doc=>{
-    console.log("server time",this.serverTime.time.toDate());  
-
-    
-       let dt = new Date(this.serverTime.time.toDate());
+    console.log("server time",this.serverTime.time.toDate());      
+      let dt = new Date(this.serverTime.time.toDate());
       console.log("first dt conver",dt)
       dt.setDate(dt.getDate()+duration);
       console.log(dt);
       this.afs.collection(entityCollection).doc(entity).collection(subscribeCollection).doc(id).update({expiringDate:dt.toDateString(),subscriptionDate: firebase.firestore.FieldValue.serverTimestamp()});
-   
-    
-  // })
   }
+
+
+    // set expiring date
+    async setMonthlyExpiryDate(entityCollection,entity,subscribeCollection,entitySubscriptionPlan,duration){
+      // set correct expiring date
+      // this.afs.collection(entityCollection).doc(entity).collection(subscribeCollection).doc(id).get().subscribe(doc=>{
+     let previousExpiringDate = new Date(entitySubscriptionPlan.expiringDate);
+     
+    
+        let dt = new Date(this.serverTime.time.toDate());
+        // if subscription is not yet expired while a new purchase is being done
+        if (previousExpiringDate> dt){
+          console.log("expected", previousExpiringDate)
+          previousExpiringDate.setDate(previousExpiringDate.getDate()+ duration);
+          dt = previousExpiringDate;
+        }
+        // when subscription is already expired
+        else{
+          console.log("unexpected")
+          dt.setDate(dt.getDate()+duration);
+        }
+      
+        this.afs.collection(entityCollection).doc(entity).collection(subscribeCollection).doc(entitySubscriptionPlan.subscriptionId).update({expiringDate:dt.toDateString(),subscriptionDate: firebase.firestore.FieldValue.serverTimestamp()});
+    }
 
   getSubscriptionInfo(entity,entityCol,subCol){
     return this.afs.collection(entityCol).doc(entity).collection(subCol).valueChanges();
