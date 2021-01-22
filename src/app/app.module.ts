@@ -54,9 +54,10 @@ import { UserSettingsComponent } from './content/user-settings/user-settings.com
 import { SearchComponent } from './content/search/search.component';
 import { TilteCasePipe } from './tilte-case.pipe';
 import { DashboardComponent } from './content/dashboard/dashboard.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { SubscriptionPageComponent } from './content/subscription-page/subscription-page.component';
+import { LoaderInterceptor } from 'src/interceptors/loading.interceptor';
 
 
 
@@ -120,7 +121,9 @@ import { SubscriptionPageComponent } from './content/subscription-page/subscript
     
   ],
 
-  providers: [UserService,AdminResourceService, SectionService],
+  providers: [UserService,AdminResourceService, SectionService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -85,7 +85,7 @@ export class SubscriptionPageComponent implements OnInit {
       amount: amount,
       description: "subscription payment",
       email: this.dataManager.getActiveUser().email,
-      redirectUrl: "https://217f8815c37b.ngrok.io/home/content/dashboard"
+      redirectUrl: "https://773d7e0929cd.ngrok.io/home/content/dashboard"
     }
     // this.httpClient.post(this.ENDPOINT, body).subscribe((data: { checkoutUrl }) => {
     //   console.log(data);
@@ -106,5 +106,9 @@ export class SubscriptionPageComponent implements OnInit {
 
 
 
+  }
+
+  closeModal(){
+    this.modalcall = false;
   }
 }

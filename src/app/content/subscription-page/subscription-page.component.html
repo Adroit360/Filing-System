@@ -14,7 +14,7 @@
             <h2 *ngIf="subscriptionPlan.trial">Trial</h2> -->
             <div smart-tooltip-container class="clicktoshow">
                 <button>Change Subscription</button>
-                <span class="smart-tooltip">
+                <span class="smart-tooltip stick-100 stayonhover">
                   <p (click)="onUnSubscribe()"> Unsubscribe</p>
                   <p (click)="onRenew()"> Renew</p>
                   <p (click)="onUpgrade()" > Upgrade</p>
@@ -108,6 +108,7 @@
                 </div>
             </form> -->
         <!-- </div> -->
+        <div class="material-icons close" (click)="closeModal()" >close</div>
         <iframe *ngIf="checkoutUrl" [src]="checkoutUrl"></iframe>
 
     </div>
