@@ -48,9 +48,11 @@ export class NavBarComponent implements OnInit {
 
   // routes to the log in page
   onLogOut(){
-    this.authManager.SignOut();
-    localStorage.clear();
-    this.router.navigate(["welcome"]);
+    this.authManager.SignOut().then(()=>{
+      localStorage.clear();
+      this.router.navigate(["welcome"]);
+    });
+   
   }
 
   updateSearch(searchTextValue: string) {
