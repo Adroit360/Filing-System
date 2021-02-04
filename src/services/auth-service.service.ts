@@ -52,4 +52,8 @@ export class AuthServiceService {
   ResetPassword(email){
     return this.afAuth.sendPasswordResetEmail(email);
   }
+
+  isLoggedIn() : boolean {
+    return (this.afAuth.currentUser != null) || (this.afAuth.currentUser != undefined);
+  }
 }

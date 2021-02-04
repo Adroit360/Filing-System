@@ -8,11 +8,14 @@
             <div class="nav-item" (click)="onClickScroll('about')">About</div>
             <div class="nav-item" (click)="onClickScroll('features')">Features</div>
             <div class="nav-item" (click)="onClickScroll('prices')">Pricing</div>
-
+            
         </div>
-        <div class="nav-bar__right">
+        <div *ngIf="!(true|isLoggedIn);else loggedInTemplate" class="nav-bar__right">
             <button class="btn btn-sign-in " routerLink="/login">Sign In</button>
             <button class="btn btn-sign-up" routerLink="/SignUp">Sign Up</button>
+        </div>
+        <div #loggedInTemplate class="nav-bar__right">
+            <button class="btn btn-sign-in " routerLink="/home/content/dashboard">Go to Dashboard</button>
         </div>
     </div>
     <div class="front" id="about">

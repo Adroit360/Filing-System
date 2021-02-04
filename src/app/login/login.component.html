@@ -6,11 +6,11 @@
         <form [formGroup]="LogInForm" (ngSubmit)="onSubmit()">
             <div class="Mycontainer" [ngStyle]="{'grid-template-rows': isValid? '1fr 1fr 1fr 1fr 1fr 1fr':'2fr 1.4fr 1.4fr 1.4fr' }">
                 <h1>Login into your account</h1>
-                <span class="email-checker" *ngIf="errorMessage"> Email or Password is invalid. Please try again</span>
+                <span  class="email-checker" *ngIf="errorMessage"> Email or Password is invalid. Please try again</span>
 
-                <input type="email" placeholder="email" formControlName="email">
+                <input (focus)="controlFocused()" type="email" placeholder="email" formControlName="email">
 
-                <input type="password" placeholder="Password" formControlName="password">
+                <input (focus)="controlFocused()" type="password" placeholder="Password" formControlName="password">
 
                 <div class="forgot-password">
                     <span><input type="radio" name="rememberMe" id="" formControlName="rememberMe"> Remember me</span>

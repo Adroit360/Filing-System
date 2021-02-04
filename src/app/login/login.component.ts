@@ -6,6 +6,7 @@ import {DataService } from '../../services/data.service';
 import {MessengerService} from '../../services/messenger.service';
 import { SectionService } from '../../services/section.service';
 import { EntitiesService } from '../../services/entities.service';
+import { LoaderService } from 'src/interceptors/loader.service';
 // import {User } from '../models/model';
 
 @Component({
@@ -23,7 +24,13 @@ export class LoginComponent implements OnInit {
   generalSection:any;
   user;
 
-  constructor(private route: Router,private entityManager:EntitiesService, private authService:AuthServiceService,private userInfo:DataService,private msg:MessengerService,private sectionService:SectionService) {
+  constructor(private route: Router,
+    private entityManager:EntitiesService, 
+    private authService:AuthServiceService,
+    private userInfo:DataService,
+    private msg:MessengerService,
+    private loaderService:LoaderService,
+    private sectionService:SectionService) {
 
   }
 
@@ -46,6 +53,7 @@ export class LoginComponent implements OnInit {
   // }
 
  async onSubmit(){
+   this.loaderService.setHttpProgressStatus(true);
     let email = this.LogInForm.value.email;
     await this.authService.SignIn(this.LogInForm.value.email,this.LogInForm.value.password).then(async ()=>{
        let userobj =  await this.msg.getSystemUser(email);
@@ -60,6 +68,7 @@ export class LoginComponent implements OnInit {
           //  });
            //Local storage
            // route to the dashboard
+           this.loaderService.setHttpProgressStatus(false);
             this.route.navigate(["home/content/dashboard"]);
 
         }else{
@@ -70,10 +79,11 @@ export class LoginComponent implements OnInit {
       
       
     }).catch(err=>{
+      this.loaderService.setHttpProgressStatus(false);
       this.errorMessage = err.message;
       this.isValid = true;
     });
-  }
+}
 
   onToggle(){
     this.forgot = !this.forgot;
@@ -84,6 +94,10 @@ export class LoginComponent implements OnInit {
   onModalResult (result: boolean){
     console.log(result);
     this.forgot= result;
+  }
+
+  controlFocused(){
+    this.errorMessage = null;
   }
 
 }

@@ -1,6 +1,7 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/services/auth-service.service';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { Router } from '@angular/router';
 })
 export class LandingComponent implements OnInit {
 
-  constructor(private router: Router, private viewportScroller: ViewportScroller) { }
+  constructor(private router: Router,
+    private viewportScroller: ViewportScroller) { }
 
   ngOnInit(): void {
   }

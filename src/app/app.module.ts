@@ -58,6 +58,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { SubscriptionPageComponent } from './content/subscription-page/subscription-page.component';
 import { LoaderInterceptor } from 'src/interceptors/loading.interceptor';
+import { isLoggedInPipe } from 'src/pipes/isLoggedIn.pipe';
 
 
 
@@ -101,7 +102,9 @@ import { LoaderInterceptor } from 'src/interceptors/loading.interceptor';
     DashboardComponent,
     LandingComponent,
     ErrorPageComponent,
-    SubscriptionPageComponent
+    SubscriptionPageComponent,
+
+    isLoggedInPipe
   ],
 
   imports: [
