@@ -297,6 +297,9 @@ export class MessengerService {
     return this.database.collection(DbCollections.SubscriptionPlan).valueChanges();
   }
 
-
+async getSubscriptionPrice(subscriptionId){
+  let result = await firebase.firestore().collection(DbCollections.SubscriptionPlan).doc(subscriptionId).get();
+  return result.data().price;
+}
   
 }

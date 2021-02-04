@@ -320,8 +320,8 @@ getChatMessages(user,targetUser,entity){
     return this.subscription.subscribe(entity,DbCollections.SubscriptionLogs,DbCollections.Entities,DbCollections.EntitySubscription,entitySubscriptionPlan,amount)
   }
 
-  getKonvySubscriptionPackageDetail(packageId){
-    return this.afs.collection(DbCollections.SubscriptionPlan).doc(packageId).valueChanges();
+  getKonvySubscriptionPackageDetail(packageType){
+    return firebase.firestore().collection(DbCollections.SubscriptionPlan).where("type","==",packageType).get();
   }
 
  

@@ -17,12 +17,18 @@ export class ManageUserComponent implements OnInit {
  delete: boolean;
  user: User;
  modalState: boolean;
- users:any;
+ users:any=[];
  userCapacity:number;
+ totalUsers:number;
 
   constructor( private data:DataService, private route: Router, private entityManager:EntitiesService) { 
-    this.users = entityManager.getEntityUsers(this.data.getEntity());
+    entityManager.getEntityUsers(this.data.getEntity()).subscribe(data=>{
+      this.users = data;
+      this.totalUsers=this.users.length;
+      console.log("users",this.users)
+    });
     this.userCapacity = this.data.getKonvySubscriptionPackageInfo().collaborationLimit;
+    console.log("users in entity ",this.users.length, "max capa: ",this.userCapacity)
   }
 
   ngOnInit(): void {

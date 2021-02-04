@@ -14,6 +14,7 @@ import { SectionService } from "../../../services/section.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { OwlOptions } from "ngx-owl-carousel-o";
 import { EntitiesService } from 'src/services/entities.service';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: "app-dashboard",
@@ -63,10 +64,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     //get user recently accessed folders
     let reason = activatedRoute.snapshot.queryParams["reason"];
     let transactionId = activatedRoute.snapshot.queryParams["transaction_id"];
-    if(reason.includes("successful")){
-
-    }else{
-      
+    if(reason && reason.includes("successful")){
+      let transaction = localStorage.getItem("transaction");
+      let transacObj = JSON.parse(transaction);
+      if(transaction){
+        this.entityManager.subscribe(transacObj.entity,transacObj.amount,transacObj.subscriptionType);
+      }
     }
 
     console.error("REASON",);
@@ -104,15 +107,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       });
 
       this.entityManager.entitySubscriptionPackage(dataManager.getEntity()).subscribe(result=>{
-        console.log(result[0],"here we are ")
         this.dataManager.setSubscriptionInfo(result[0]);
-
-        this.entityManager.getKonvySubscriptionPackageDetail(result[0].id).subscribe(data=>{
+        this.entityManager.getKonvySubscriptionPackageDetail(result[0].subscriptionType).then(obj=>{
+          let data=obj.docs[0].data();
           this.dataManager.setKonvySubscriptionPackageInfo(data);
         });
       });
-
-        
 
     this.date = new Date().toDateString();
   }

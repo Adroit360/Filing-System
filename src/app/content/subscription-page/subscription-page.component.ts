@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DataService } from 'src/services/data.service';
 import { EntitiesService } from 'src/services/entities.service';
+import { MessengerService } from 'src/services/messenger.service';
 
 @Component({
   selector: 'app-subscription-page',
@@ -21,7 +22,7 @@ export class SubscriptionPageComponent implements OnInit {
 
   constructor(private entityManager: EntitiesService, private dataManager: DataService,
     private domSanitizer: DomSanitizer,
-    private httpClient: HttpClient) {
+    private httpClient: HttpClient, private msg:MessengerService) {
 
     // console.log("stored subscr info",app);
     // entityManager.entitySubscriptionPackage(dataManager.getEntity()).subscribe(result=>{
@@ -57,7 +58,6 @@ export class SubscriptionPageComponent implements OnInit {
     element.style.width = `${(validity_days / 30) * 100}%`;
   }
 
-
   onUnSubscribe() {
     confirm("Successully Unsubscribe from your package");
   }
@@ -78,17 +78,17 @@ export class SubscriptionPageComponent implements OnInit {
 
 
     // get package price
-
-    // subscribe
-    let amount = 100;
-    let subscriptionId = this.entityManager.subscribe(this.dataManager.getEntity(),amount,this.subscriptionPlan.subscriptionId );
-    console.log(subscriptionId);
+    let amount = this.msg.getSubscriptionPrice(this.subscriptionPlan.subscriptionId);
+   
     let body = {
       amount: amount,
       description: "subscription payment",
       email: this.dataManager.getActiveUser().email,
       redirectUrl: "http://localhost:4200/home/content/dashboard"
     }
+
+    // temporal storage of transaction info
+    localStorage.setItem("transaction", JSON.stringify({entity:this.dataManager.getEntity(),amount:amount,subscriptionType:this.subscriptionPlan.subscriptionId}));
     this.httpClient.post(this.ENDPOINT, body).subscribe((data: { checkoutUrl }) => {
       console.log(data);
       if (data.checkoutUrl)
