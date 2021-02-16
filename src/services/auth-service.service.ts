@@ -54,6 +54,8 @@ export class AuthServiceService {
   }
 
   isLoggedIn() : boolean {
-    return (this.afAuth.currentUser != null) || (this.afAuth.currentUser != undefined);
+    console.log("CURRENT USER",localStorage.getItem("user"));
+    if(localStorage.getItem("user")) return true;
+    else return false;
   }
 }

@@ -14,9 +14,12 @@
             <button class="btn btn-sign-in " routerLink="/login">Sign In</button>
             <button class="btn btn-sign-up" routerLink="/SignUp">Sign Up</button>
         </div>
-        <div #loggedInTemplate class="nav-bar__right">
-            <button class="btn btn-sign-in " routerLink="/home/content/dashboard">Go to Dashboard</button>
-        </div>
+        <ng-template #loggedInTemplate>
+            <div  class="nav-bar__right">
+                <button class="btn btn-sign-in " routerLink="/home/content/dashboard">Go to Dashboard</button>
+            </div>
+        </ng-template>
+        
     </div>
     <div class="front" id="about">
         <div class="front__left">

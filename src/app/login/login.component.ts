@@ -29,9 +29,12 @@ export class LoginComponent implements OnInit {
     private authService:AuthServiceService,
     private userInfo:DataService,
     private msg:MessengerService,
+    private router:Router,
     private loaderService:LoaderService,
     private sectionService:SectionService) {
-
+      if(authService.isLoggedIn()){
+        router.navigate(["welcome"]);
+      }
   }
 
   ngOnInit(): void {
