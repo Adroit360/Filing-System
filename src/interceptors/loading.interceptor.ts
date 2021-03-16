@@ -10,10 +10,13 @@ export class LoaderInterceptor implements HttpInterceptor {
   private count = 0;
 
   constructor(private loaderService: LoaderService) { }
+
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (this.count === 0) {
       this.loaderService.setHttpProgressStatus(true);
     }
+
     this.count++;
     return next.handle(req).pipe(
       finalize(() => {
@@ -22,5 +25,6 @@ export class LoaderInterceptor implements HttpInterceptor {
           this.loaderService.setHttpProgressStatus(false);
         }
       }));
+      
   }
 }
