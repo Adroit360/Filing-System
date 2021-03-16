@@ -7,9 +7,10 @@ import { DataService } from '../../../services/data.service';
 @Component({
   selector: 'app-add-new-user',
   templateUrl: './add-new-user.component.html',
-  styleUrls: ['./add-new-user.component.scss']
+  styleUrls: ['./add-new-user.component.scss'] 
 })
 export class AddNewUserComponent implements OnInit {
+  invalidInput:string;
   addUserForm: FormGroup;
   errorMessage:string="";
   entity:any;
@@ -28,7 +29,11 @@ export class AddNewUserComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.addUserForm.value);
+    if (this.addUserForm.value.firstName == null || this.addUserForm.value.firstName=="" ||
+    this.addUserForm.value.lastName == null || this.addUserForm.value.lastName == "" ||
+    this.addUserForm.value.email == null || this.addUserForm.value.email == "" || 
+    this.addUserForm.value.role == null || this.addUserForm.value.role == "") {this.invalidInput = "Invalid input, all fields must be filled"; return;}
+
     this.entityManager.NewUser(this.addUserForm.value.firstName,this.addUserForm.value.lastName,
       this.addUserForm.value.email,this.addUserForm.value.role,this.entity).then((res)=>{
 
@@ -38,11 +43,17 @@ export class AddNewUserComponent implements OnInit {
         }
 
        }).catch(err=>{
+        this.errorMessage="All fields must be filled";
          console.log(err);
          return;
        });
   }
   onCancel(){
     this.router.navigate(['home/content/manageUsers']);
+  }
+
+  controlFocused(){
+    this.errorMessage=null;
+    this.invalidInput=null;
   }
 }

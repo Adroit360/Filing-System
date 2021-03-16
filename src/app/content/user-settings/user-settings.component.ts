@@ -4,6 +4,7 @@ import { SectionService } from '../../../services/section.service';
 import { DataService } from '../../../services/data.service';
 import { MessengerService } from '../../../services/messenger.service';
 import { EntitiesService } from '../../../services/entities.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-settings',
@@ -19,7 +20,7 @@ export class UserSettingsComponent implements OnInit {
   user:any;
   accessList:any=[];
 
-  constructor(private entityManager: EntitiesService, private sectionService:SectionService,private volatileData:DataService,private msg:MessengerService) { 
+  constructor(private router:Router, private entityManager: EntitiesService, private sectionService:SectionService,private volatileData:DataService,private msg:MessengerService) { 
     this.userEmail = this.volatileData.getUserToSetAccess();
    
     this.updateUserAccess(this.userEmail);
@@ -58,5 +59,8 @@ export class UserSettingsComponent implements OnInit {
       this.user = result;
       this.accessList = this.user.accessList;
     });
+  }
+  back(){
+    this.router.navigate(['home/content/manageUsers']);
   }
 }
