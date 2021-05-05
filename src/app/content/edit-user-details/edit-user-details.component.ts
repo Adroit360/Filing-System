@@ -18,7 +18,7 @@ EditUserDetails: FormGroup = new FormGroup({
   role: new FormControl(null),
   email: new FormControl({disable:true}),
 });
-
+invalidInput:string;
 selectedUser:any;
 
 index: number;
@@ -53,6 +53,11 @@ email: string;
 //uodating user details
   onUpdate(){
   // this.userdetails.UpdateUser(this.EditUserDetails.value,this.index);
+  if (this.EditUserDetails.value.firstName == null || this.EditUserDetails.value.firstName=="" ||
+    this.EditUserDetails.value.lastName == null || this.EditUserDetails.value.lastName == "" ||
+    this.EditUserDetails.value.email == null || this.EditUserDetails.value.email == "" || 
+    this.EditUserDetails.value.role == null || this.EditUserDetails.value.role == "") {this.invalidInput = "Invalid input, all fields must be filled"; return;}
+
   console.log("edit form",this.EditUserDetails);
   let editData = {email: this.EditUserDetails.value.email,firstName:this.EditUserDetails.value.firstName, lastName:this.EditUserDetails.value.lastName,role: this.EditUserDetails.value.role};
   console.log(editData);
@@ -63,6 +68,10 @@ email: string;
   //Cancelling the update
   onCancel(){
       this.route.navigate(['home/content/manageUsers'])
+  }
+
+  controlFocused(){
+    this.invalidInput=null;
   }
 
 }

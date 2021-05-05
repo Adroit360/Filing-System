@@ -161,6 +161,8 @@ export class DirectoryService {
     {
     let file:Archives;
     let alias="";
+    //   console.log("Datas",fileItem,userId,sectionId,directoryId,entity);
+    // return;
     firebase.firestore().collection(DbCollections.Entities).doc(entity).collection(DbCollections.Archives).where("parentId","==",directoryId).where("name","==",fileItem.name).get().then(result=>{
       if (result.docs.length>0){
         alias = fileItem.name+" "+result.docs.length;

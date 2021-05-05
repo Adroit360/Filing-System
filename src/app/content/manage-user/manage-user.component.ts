@@ -27,12 +27,13 @@ export class ManageUserComponent implements OnInit {
       this.totalUsers=this.users.length;
       console.log("users",this.users)
     });
-    this.userCapacity = this.data.getKonvySubscriptionPackageInfo().collaborationLimit;
-    console.log("users in entity ",this.users.length, "max capa: ",this.userCapacity)
+    
   }
 
   ngOnInit(): void {
-    // this.userDetails = this.userdetails.getuserDetails();  
+    // this.userDetails = this.userdetails.getuserDetails();
+    this.userCapacity = this.data.getKonvySubscriptionPackageInfo().collaborationLimit;
+    console.log("users in entity ",this.users.length, "max capa: ",this.userCapacity)  
   }
 
   Ondelected(item:any){

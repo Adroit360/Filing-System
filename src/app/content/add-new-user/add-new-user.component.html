@@ -13,11 +13,13 @@
 
     <div class="main">
         <p *ngIf="errorMessage" style="color:red">{{errorMessage}}</p>
+        <p *ngIf="invalidInput" style="color:red">{{invalidInput}}</p>
         <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
-            <input type="firstName" placeholder=" First Name" formControlName="firstName">
-            <input type="LastName" placeholder=" Last Name" formControlName="lastName">
-            <input type="Role" placeholder=" Role" formControlName="role">
-            <input type="email" placeholder=" Email" formControlName="email">
+            <!-- <div ngIf="invalidInput">invalid input</div> -->
+            <input (focus)="controlFocused()" type="firstName" placeholder=" First Name" formControlName="firstName" required>
+            <input (focus)="controlFocused()" type="LastName" placeholder=" Last Name" formControlName="lastName" required>
+            <input (focus)="controlFocused()" type="Role" placeholder=" Role" formControlName="role" >
+            <input (focus)="controlFocused()"type="email" placeholder=" Email" formControlName="email" required>
             <div class="submit">
                 <button style="background-color: rgb(250, 250, 250);" (click)="onCancel()">Cancel</button>
                 <button type="submit" id="btn">Add User</button>

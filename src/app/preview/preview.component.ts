@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { LoaderService } from 'src/interceptors/loader.service';
 import {DataService}  from "../../services/data.service";
 import { DirectoryService } from "../../services/directory.service";
 
@@ -13,7 +14,9 @@ export class PreviewComponent implements OnInit {
   file:any;
   uploadForm: FormGroup;
   imageURL: any;
-  constructor(private data:DataService,private directory:DirectoryService, public fb: FormBuilder) {
+  constructor(private data:DataService,private directory:DirectoryService, public fb: FormBuilder,
+    private loaderService:LoaderService
+    ) {
     //Reactive Form
     this.uploadForm= this.fb.group({
       avatar: [null],
@@ -30,10 +33,20 @@ export class PreviewComponent implements OnInit {
     }
 
     async onUpload(value: boolean){
-      let res = await this.directory.uploadFile(this.file,this.data.getActiveUser().email,this.data.getCurrentSection(),this.data.getCurrentDirectory(),this.data.getEntity());
-      console.log(res,"response from upload");
-      //this.onBack;
-      this.onResult.emit(value);
+      try {
+        
+        this.loaderService.setHttpProgressStatus(true);
+        let res = await this.directory.uploadFile(this.file,this.data.getActiveUser().email,this.data.getCurrentSection(),this.data.getCurrentDirectory(),this.data.getEntity());
+        this.loaderService.setHttpProgressStatus(false);
+        console.log(res,"response from upload");
+        //this.onBack;
+        this.onResult.emit(value);
+      } catch (error) {
+
+        console.error("Catchingggg",error);
+        this.loaderService.setHttpProgressStatus(false);
+      }
+     
     }
 
   onChange(event){
