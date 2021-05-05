@@ -40,7 +40,6 @@ export class PreviewComponent implements OnInit {
         console.log("sectionID: ", this.currentSectionID);
         console.log("directoryID: ", this.currentDirectory);
       });
-      console.log(window.location.href);
       let res = await this.directory.uploadFile(this.file,this.data.getActiveUser().email,this.currentSectionID,this.currentDirectory,this.data.getEntity());
       console.log(res,"response from upload");
       //this.onBack;

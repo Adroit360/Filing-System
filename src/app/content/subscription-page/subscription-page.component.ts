@@ -84,7 +84,7 @@ export class SubscriptionPageComponent implements OnInit {
       amount: amount,
       description: "subscription payment",
       email: this.dataManager.getActiveUser().email,
-      redirectUrl: "http://localhost:4200/home/content/dashboard"
+      redirectUrl: `${location.host}/home/content/dashboard`
     }
 
     // temporal storage of transaction info

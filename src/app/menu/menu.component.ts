@@ -15,6 +15,7 @@ import { MeetingsService } from '../../services/meetings.service';
 import { EntitiesService } from '../../services/entities.service';
 ZoomMtg.preLoadWasm();
 ZoomMtg.prepareJssdk();
+//  ZoomMtg.setZoomJSLib("https://jssdk.zoomus.cn/1.9.1/lib", "/av");
 
 
 @Component({
@@ -51,7 +52,7 @@ export class MenuComponent implements OnInit {
   // apiKey = 'vhRU1GZxTAGEKoC6YhM18g'
   // meetingNumber = '85959080319'
   // role = 0
-  // leaveUrl = 'http://localhost:4200/home/content/dashboard'
+  // leaveUrl = `${location.host}/home/content/dashboard`
   // userName = 'Angular'
   // userEmail = 'info.adroit360@gmail.com'
   // passWord = 'wM2fhB'
@@ -65,11 +66,15 @@ export class MenuComponent implements OnInit {
       console.log(this.KonvyMeetingConfig, "konvy config");
     });
 
+    
+
     // get meeting number and pwd
     this.entityManager.getEntityMeetingDetails(this.entity).subscribe(result=>{
       this.meeting=result[0];
       console.log(this.meeting,"this")
     })
+
+    // this.MeetingRoom();
   }
 
    ngOnInit(): void {
@@ -209,8 +214,10 @@ export class MenuComponent implements OnInit {
   }
 
   getSignature() {
+    console.log("signature Endpoint",this.KonvyMeetingConfig)
+    debugger;
     this.httpClient.post(this.KonvyMeetingConfig.signatureEndpoint, {
-	    meetingNumber: this.meeting.meetingNumber,
+	    meetingNumber: this.meeting?.meetingNumber,
 	    role: 0
     }).toPromise().then((data: any) => {
       if(data.signature) {
@@ -225,7 +232,7 @@ export class MenuComponent implements OnInit {
   }
 
   startMeeting(signature) {
-
+    debugger;
     document.getElementById('zmmtg-root').style.display = 'block'
 
     ZoomMtg.init({
@@ -236,7 +243,7 @@ export class MenuComponent implements OnInit {
         console.log('signature used in join',signature)
         ZoomMtg.join({
           signature: signature,
-          meetingNumber: this.meeting.meetingNumber,
+          meetingNumber: this.meeting?.meetingNumber,
           userName: this.data.getActiveUser().firstName,
           apiKey: this.KonvyMeetingConfig.apiKey,
           userEmail: this.data.getActiveUser().email,
