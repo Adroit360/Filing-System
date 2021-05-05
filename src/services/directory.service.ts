@@ -293,7 +293,7 @@ export class DirectoryService {
       .collection<Archives>(DbCollections.Archives)
       .doc(id)
       .set(file);
-
+//upload
     // return uploadTask.percentageChanges();
   }
 
