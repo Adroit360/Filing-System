@@ -43,7 +43,7 @@ export class DataService {
   }
 
 
-  
+
   // setting current user info
   async setActiveUser(userInfo){
     this.systemUser =  userInfo;
@@ -234,5 +234,5 @@ export class DataService {
     getKonvySubscriptionPackageInfo(){
       return this.konvySubscriptionPackage;
     }
-   
+
 }

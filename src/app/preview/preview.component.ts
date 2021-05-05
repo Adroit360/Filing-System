@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import {DataService}  from "../../services/data.service";
 import { DirectoryService } from "../../services/directory.service";
 
@@ -13,7 +14,9 @@ export class PreviewComponent implements OnInit {
   file:any;
   uploadForm: FormGroup;
   imageURL: any;
-  constructor(private data:DataService,private directory:DirectoryService, public fb: FormBuilder) {
+  private currentSectionID: string;
+  private currentDirectory: string;
+  constructor(private data:DataService,private directory:DirectoryService, public fb: FormBuilder, private activatedroute:ActivatedRoute) {
     //Reactive Form
     this.uploadForm= this.fb.group({
       avatar: [null],
@@ -30,7 +33,15 @@ export class PreviewComponent implements OnInit {
     }
 
     async onUpload(value: boolean){
-      let res = await this.directory.uploadFile(this.file,this.data.getActiveUser().email,this.data.getCurrentSection(),this.data.getCurrentDirectory(),this.data.getEntity());
+      this.activatedroute.params.subscribe((params)=>{
+        console.log("this is the route parameters",params);
+        this.currentSectionID = params["sectionId"];
+        this.currentDirectory = params["directoryId"];
+        console.log("sectionID: ", this.currentSectionID);
+        console.log("directoryID: ", this.currentDirectory);
+      });
+      console.log(window.location.href);
+      let res = await this.directory.uploadFile(this.file,this.data.getActiveUser().email,this.currentSectionID,this.currentDirectory,this.data.getEntity());
       console.log(res,"response from upload");
       //this.onBack;
       this.onResult.emit(value);

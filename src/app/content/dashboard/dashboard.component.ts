@@ -94,9 +94,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       });
 
    // get user tasks
-    
-   
-   
+
+
+
    taskManager
       .getTaskGroups(dataManager.getActiveUser().email, dataManager.getEntity())
       .subscribe((result) => {
@@ -314,7 +314,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         directory.id,
         directory.name,
       ]);
-    } else {
+      } else {
       return;
     }
   }
