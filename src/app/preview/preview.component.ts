@@ -19,6 +19,9 @@ export class PreviewComponent implements OnInit {
   private currentDirectory: string;
   fileName: any;
   fileboolean: boolean = false;
+  // progress bar value
+  progessValue: number= 0;
+
   constructor(private data:DataService,private directory:DirectoryService, public fb: FormBuilder,
      private activatedroute:ActivatedRoute,
      private loaderService: LoaderService) {
@@ -27,9 +30,20 @@ export class PreviewComponent implements OnInit {
       avatar: [null],
       name: ['']
     })
+    directory.progressBarValue.subscribe(res => {
+      this.progessValue = res ;
+      console.log("Progess: ", this.progessValue);
+
+    })
    }
 
   ngOnInit(): void {
+  }
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+   // this.directory.progressBarValue.unsubscribe();
+
   }
 
   onBack(value:boolean){
@@ -38,7 +52,7 @@ export class PreviewComponent implements OnInit {
     }
 
     async onUpload(value: boolean){
-      this.loaderService.setHttpProgressStatus(true);
+      // this.loaderService.setHttpProgressStatus(true);
       this.activatedroute.params.subscribe((params)=>{
         console.log("this is the route parameters",params);
         this.currentSectionID = params["sectionId"];
@@ -49,7 +63,7 @@ export class PreviewComponent implements OnInit {
       try {
         let res:any = await this.directory.uploadFile(this.file,this.data.getActiveUser().email,this.currentSectionID,this.currentDirectory,this.data.getEntity());
         console.log(res,"response from upload");
-        this.loaderService.setHttpProgressStatus(false);
+        // this.loaderService.setHttpProgressStatus(false);
         //this.onBack;
         this.onResult.emit(value);
 

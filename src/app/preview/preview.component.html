@@ -41,6 +41,12 @@
         <span *ngIf="fileboolean">{{fileName}}</span> </label
       >
       <button type="submit" (click)="onUpload(false)">Upload</button>
+
     </div>
-  </div>
+
+<div class="progress__bar" *ngIf="progessValue>0">
+  <mat-progress-bar  mode="determinate" value="{{progessValue}}"></mat-progress-bar><span>{{progessValue| number: '1.0-0'}}%</span>
+
+</div>
+
 </div>

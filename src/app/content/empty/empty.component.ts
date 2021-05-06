@@ -274,4 +274,9 @@ export class EmptyComponent implements OnInit {
       ]);
     }
   }
+//Download a file
+  onDownloadFile(itemUrl){
+    console.log("item url", itemUrl);
+    window.open(itemUrl);
+  }
 }

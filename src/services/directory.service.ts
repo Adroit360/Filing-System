@@ -6,7 +6,7 @@ import {
   AngularFirestoreCollection,
 } from "@angular/fire/firestore";
 import { AngularFireStorage } from "@angular/fire/storage";
-import { Observable, of } from "rxjs";
+import { Observable, of, Subject } from "rxjs";
 import { finalize } from "rxjs/operators";
 import * as firebase from "firebase/app";
 import { DbCollections } from "./entities.service";
@@ -35,7 +35,7 @@ export class DirectoryService {
   generalContent: any = [];
   currentSection: string;
   currentDirectory: string;
-
+  progressBarValue = new Subject<number>();
   private archivesCollection: AngularFirestoreCollection<Archives>;
   private subarchivesCollection: AngularFirestoreCollection<Archives>;
   private archives: Observable<Archives[]>;
@@ -50,7 +50,9 @@ export class DirectoryService {
     );
     this.archives = this.archivesCollection.valueChanges();
   }
-
+  onGetProgressBarValue(number){
+    this.progressBarValue.next(number);
+  }
   // async setActiveSectionItems(sectionId,directoryId,accessList){
   //   this.items = await this.msg.getDirectoryContent(sectionId,directoryId,accessList);
   //   console.log('items under section',this.items);
@@ -269,7 +271,15 @@ export class DirectoryService {
     const id = this.afs.createId();
     const filePath = `${this.basePath}/${entity}/${alias}`;
     const storageRef = this.afStorage.ref(filePath);
+    // uploading a file to firebase
     const uploadTask = this.afStorage.upload(filePath, fileItem);
+
+    // getting the upload progress
+    uploadTask.percentageChanges().subscribe(number =>{
+      console.log(number);
+      this.onGetProgressBarValue(number);
+
+    });
 
     let uploadResult = await uploadTask.snapshotChanges().toPromise();
 

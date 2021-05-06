@@ -32,7 +32,7 @@
     /* Black w/ opacity */
     // ANIMATION
     animation-name: example;
-    animation-duration: 1.5s;
+    animation-duration: 300ms;
 }
 
 
@@ -61,12 +61,12 @@ input {
 }
 
 button {
-    width: 90px;
+    width: 150px;
     height: 40px;
     color: white;
     background-color: red;
     border: white;
-    border-radius: 10px;
+    border-radius: 13px;
     font-size: 15px;
     margin-top: 20px;
     float: right;
@@ -163,14 +163,15 @@ h1 {
 }
 
 .box {
+    flex-direction: column;
+    transform-style: flat;
     background-color: #fbfbfb;
-    /* padding: 6.25rem 1.25rem; */
-    /* margin: auto 200px; */
     display: flex;
     align-items: center;
+    justify-content: column;
+    /* margin: 0px 50rem; */
     justify-content: center;
-    /* margin-block-end: auto; */
-    margin-top: 6rem;
+    margin: 4rem 0px;
 }
 
 .box+.box {
@@ -417,5 +418,16 @@ h1 {
 @media screen and (max-width: 50em) {
     .inputfile-6+label strong {
         display: block;
+    }
+}
+
+
+/***************PROGRESS BAR**********************/
+
+.progress__bar {
+    display: flex;
+    mat-progress-bar {
+        align-self: center;
+        margin-right: 5px;
     }
 }

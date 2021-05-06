@@ -59,6 +59,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { SubscriptionPageComponent } from './content/subscription-page/subscription-page.component';
 import { LoaderInterceptor } from 'src/interceptors/loading.interceptor';
 import { isLoggedInPipe } from 'src/pipes/isLoggedIn.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
@@ -121,7 +123,10 @@ import { isLoggedInPipe } from 'src/pipes/isLoggedIn.pipe';
     SmartTooltipAngularModule,
     CarouselModule ,
     HttpClientModule,
-    
+    BrowserAnimationsModule,
+    MatProgressBarModule
+
+
   ],
 
   providers: [UserService,AdminResourceService, SectionService,
