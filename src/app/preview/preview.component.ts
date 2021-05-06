@@ -17,6 +17,8 @@ export class PreviewComponent implements OnInit {
   imageURL: any;
   private currentSectionID: string;
   private currentDirectory: string;
+  fileName: any;
+  fileboolean: boolean = false;
   constructor(private data:DataService,private directory:DirectoryService, public fb: FormBuilder,
      private activatedroute:ActivatedRoute,
      private loaderService: LoaderService) {
@@ -59,7 +61,10 @@ export class PreviewComponent implements OnInit {
     }
 
   onChange(event){
+     this.fileboolean = true;
       this.file = (event.target as HTMLInputElement).files[0];
+      this.fileName = this.file;
+      this.fileName = this.fileName.name;
       this.uploadForm.patchValue({
         avatar: this.file
       });
