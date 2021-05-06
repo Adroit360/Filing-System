@@ -22,7 +22,7 @@
     </div>
     <div class="folders">
 
-        <ng-container *ngFor="let item of dirContent|async;let i = index">
+        <ng-container *ngFor="let item of dirContent | async;let i = index">
             <a *ngIf=" item.public || !item.public && item.owner==currentUser">
                 <div class="folder-container">
                     <div (click)="onFolderClicked(item)" class="component">

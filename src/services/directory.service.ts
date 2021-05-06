@@ -79,7 +79,9 @@ export class DirectoryService {
   // getCurrentDirectory(){return this.currentDirectory;}
 
   getSubDirectoryContent(sectionId, directoryId, entity) {
-    this.subarchivesCollection = this.afs
+
+    // return new Promise((resolve,reject)=>{
+      this.subarchivesCollection =  this.afs
       .collection("Entities")
       .doc(entity)
       .collection<Archives>("Archives", (ref) =>
@@ -87,9 +89,13 @@ export class DirectoryService {
           .where("sectionId", "==", sectionId)
           .where("parentId", "==", directoryId)
       );
-    this.subarchives = this.subarchivesCollection.valueChanges();
+      this.subarchives = this.subarchivesCollection.valueChanges();
+
+      // resolve(this.subarchives);
+    // });
+
     // firebase.firestore().collection("Archives").where('sectionId','==',sectionId).where('parentId','==',directoryId).orderBy('dat
-    console.log("from dir service", this.subarchives);
+    // console.log("from dir service", this.subarchives);
     return this.subarchives;
   }
 

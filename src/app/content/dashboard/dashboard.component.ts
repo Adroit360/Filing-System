@@ -15,6 +15,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { OwlOptions } from "ngx-owl-carousel-o";
 import { EntitiesService } from 'src/services/entities.service';
 import { JsonPipe } from '@angular/common';
+import { LoaderService } from "src/interceptors/loader.service";
 
 @Component({
   selector: "app-dashboard",
@@ -58,10 +59,15 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private router: Router,
     private sectionManager: SectionService,
     private entityManager:EntitiesService,
-    private activatedRoute:ActivatedRoute
+    private activatedRoute:ActivatedRoute,
+    private loaderService:LoaderService,
+
   ) {
     console.log(dataManager.getActiveUser());
     //get user recently accessed folders
+    //
+    this.loaderService.setHttpProgressStatus(true);
+    //
     let reason = activatedRoute.snapshot.queryParams["reason"];
     let transactionId = activatedRoute.snapshot.queryParams["transaction_id"];
     if(reason && reason.includes("successful")){
@@ -113,6 +119,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
           this.dataManager.setKonvySubscriptionPackageInfo(data);
         });
       });
+
+      this.loaderService.setHttpProgressStatus(false);
 
     this.date = new Date().toDateString();
   }
