@@ -141,6 +141,7 @@ export class EmptyComponent implements OnInit {
         directory.name,
       ]);
     } else {
+      this.loaderService.setHttpProgressStatus(false);
       return;
     }
   }

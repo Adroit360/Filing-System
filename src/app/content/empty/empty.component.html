@@ -26,7 +26,9 @@
             <a *ngIf=" item.public || !item.public && item.owner==currentUser">
                 <div class="folder-container">
                     <div (click)="onFolderClicked(item)" class="component">
-                        <img *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' " src="../../../assets/preview.png" style="height: 50px; width: 50px;" />
+                        <div class="img-container">
+                            <img *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' " src={{item.url}} style="height: 50px; width: 50px;" />
+                        </div>
                         <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="../../../assets/pdf.png" style="height: 50px; width: 50px;" />
                         <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12' || item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint'" src="../../../assets/pp.png" style="height: 50px; width: 50px;"
                         />
@@ -46,7 +48,8 @@
                 <div *ngIf="item.itemType=='file'" class="text">
                   <p>
                     share
-                    <span style="background-color: rgba(100, 54, 54, 0.822)" class="second-tooltip">
+                    <span style="    background-color: white;
+                    box-shadow: 4px 9px 16px -6px #000000;" class="second-tooltip">
                       <ul>
                         <li *ngFor="let res of resources|async; let i = index">
                           <div>
