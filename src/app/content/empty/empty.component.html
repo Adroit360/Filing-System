@@ -27,20 +27,27 @@
                 <div class="folder-container">
                     <div (click)="onFolderClicked(item)" class="component">
                         <div class="image-box" *ngIf="item.itemType=='file'">
-                            <div class="image__background" style="background-image: url('https://render.fineartamerica.com/images/rendered/default/print/8/12/break/images/artworkimages/medium/2/1-hotel-du-cap-eden-roc-slim-aarons.jpg')">
+                            <div *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png'; else documents " class="image__background" style="background-image: url('https://render.fineartamerica.com/images/rendered/default/print/8/12/break/images/artworkimages/medium/2/1-hotel-du-cap-eden-roc-slim-aarons.jpg')">
                             </div>
+                            <ng-template #documents>
+                                <div class="image__background">
+                                    <iframe src="https://ai.stanford.edu/~nilsson/MLBOOK.pdf" frameborder="0"></iframe>
+                                </div>
+                            </ng-template>
+
                             <div class="image__content">
                                 <!-- <img src="../../../assets/preview.png" /> -->
                                 <!--FILES-->
                                 <img *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' " src="../../../assets/preview.png" />
                                 <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="../../../assets/pdf.png" />
+
                                 <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12' || item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint'" src="../../../assets/pp.png" />
                                 <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||item.itemType=='file' && item.contentType=='application/msword'" src="../../../assets/word.png" />
                                 <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'" src="../../../assets/excel.png" />
                                 <img *ngIf="item.itemType=='file' && item.contentType=='text/plain'" src="../../../assets/text.png" />
 
 
-                                <p class="image__name">{{item.alias| truncate: 12}}</p>
+                                <p class="image__name">{{item.alias}}</p>
                             </div>
                         </div>
                         <!-- <img *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' " src="../../../assets/preview.png" style="height: 50px; width: 50px;" />
