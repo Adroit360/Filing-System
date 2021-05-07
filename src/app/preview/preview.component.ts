@@ -47,8 +47,10 @@ export class PreviewComponent implements OnInit {
   }
 
   onBack(value:boolean){
+
     this.onResult.emit(value);
     console.log('onBack',value);
+
     }
 
     async onUpload(value: boolean){
@@ -61,12 +63,13 @@ export class PreviewComponent implements OnInit {
         console.log("directoryID: ", this.currentDirectory);
       });
       try {
-        let res:any = await this.directory.uploadFile(this.file,this.data.getActiveUser().email,this.currentSectionID,this.currentDirectory,this.data.getEntity());
+        let res:any = await this.directory.uploadFile(this.file,this.data.getActiveUser().email,this.currentSectionID,this.currentDirectory,this.data.getEntity())
+
         console.log(res,"response from upload");
         // this.loaderService.setHttpProgressStatus(false);
         //this.onBack;
-        this.onResult.emit(value);
 
+        this.onResult.emit(value);
 
       } catch (error) {
         this.loaderService.setHttpProgressStatus(false);

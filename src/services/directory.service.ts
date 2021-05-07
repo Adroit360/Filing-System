@@ -395,6 +395,7 @@ export class DirectoryService {
   }
 
   deleteDirectory(directoryId, entity) {
+    debugger;
     firebase
       .firestore()
       .collection(DbCollections.Entities)
@@ -403,6 +404,7 @@ export class DirectoryService {
       .where("parentId", "==", directoryId)
       .get()
       .then((a) => {
+        console.log("data to be deleted", a);
         a.docs.forEach((doc) => {
           if (doc.data().itemType == "folder") {
             this.deleteDirectory(doc.data().id, doc.data().entity);
