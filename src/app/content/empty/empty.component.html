@@ -26,7 +26,24 @@
             <a *ngIf=" item.public || !item.public && item.owner==currentUser">
                 <div class="folder-container">
                     <div (click)="onFolderClicked(item)" class="component">
-                        <img *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' " src="../../../assets/preview.png" style="height: 50px; width: 50px;" />
+                        <div class="image-box" *ngIf="item.itemType=='file'">
+                            <div class="image__background" style="background-image: url('https://render.fineartamerica.com/images/rendered/default/print/8/12/break/images/artworkimages/medium/2/1-hotel-du-cap-eden-roc-slim-aarons.jpg')">
+                            </div>
+                            <div class="image__content">
+                                <!-- <img src="../../../assets/preview.png" /> -->
+                                <!--FILES-->
+                                <img *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' " src="../../../assets/preview.png" />
+                                <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="../../../assets/pdf.png" />
+                                <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12' || item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint'" src="../../../assets/pp.png" />
+                                <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||item.itemType=='file' && item.contentType=='application/msword'" src="../../../assets/word.png" />
+                                <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'" src="../../../assets/excel.png" />
+                                <img *ngIf="item.itemType=='file' && item.contentType=='text/plain'" src="../../../assets/text.png" />
+
+
+                                <p class="image__name">{{item.alias| truncate: 12}}</p>
+                            </div>
+                        </div>
+                        <!-- <img *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' " src="../../../assets/preview.png" style="height: 50px; width: 50px;" />
                         <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="../../../assets/pdf.png" style="height: 50px; width: 50px;" />
                         <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12' || item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint'" src="../../../assets/pp.png" style="height: 50px; width: 50px;"
                         />
@@ -36,7 +53,7 @@
                         <img *ngIf="item.itemType=='file' && item.contentType=='text/plain'" src="../../../assets/text.png" style="height: 50px; width: 50px;" />
                         <i *ngIf="item.itemType=='folder' " class="{{fontIcon}}" style='font-size: 50px;'></i>
                         <p *ngIf="item.itemType=='folder' " style="font-size: 15px;">{{item.alias| truncate: 12}}</p>
-                        <p *ngIf="item.itemType=='file'" style="font-size: 15px;">{{item.alias| truncate: 12}}</p>
+                        <p *ngIf="item.itemType=='file'" style="font-size: 15px;">{{item.alias| truncate: 12}}</p> -->
                     </div>
                     <div class="toggler">
 

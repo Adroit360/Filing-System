@@ -428,3 +428,62 @@ p {
         margin-top: 10px;
     }
 }
+
+
+/*******FOLDERS**********/
+
+.folders {
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+    grid-auto-rows: auto;
+    /* gap: 0.5rem; */
+    margin-top: 3rem;
+    height: 68vh;
+}
+
+
+/*****IMAGE FOLDER******/
+
+.image-box {
+    width: 200px;
+    /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
+    // box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.75);
+    // -webkit-box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.75);
+    // -moz-box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.image__background {
+    // background: url("https://render.fineartamerica.com/images/rendered/default/print/8/12/break/images/artworkimages/medium/2/1-hotel-du-cap-eden-roc-slim-aarons.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100px;
+}
+
+.image__content {
+    display: flex;
+    width: 100%;
+    align-content: center;
+    padding: 5px 0px;
+    background: white;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    height: 30px;
+    align-items: center;
+    p {
+        margin: 0px;
+        padding: 0px 3px;
+        font-size: 15px;
+        width: auto;
+    }
+}
+
+.image__content img {
+    padding: 0px 5px;
+    height: 25px;
+}
