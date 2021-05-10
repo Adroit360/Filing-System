@@ -41,8 +41,8 @@
         <span *ngIf="fileboolean">{{fileName}}</span> </label
       >
       <div class="button-loader">
-        <button type="submit" (click)="onUpload(false)" id="uploadButton">Upload</button>
-        <mat-spinner></mat-spinner>
+        <button type="submit" *ngIf="!loading" (click)="onUpload(false)" id="uploadButton">Upload</button>
+        <mat-spinner *ngIf="loading"></mat-spinner>
       </div>
       
 

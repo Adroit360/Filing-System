@@ -19,6 +19,7 @@ export class PreviewComponent implements OnInit {
   private currentDirectory: string;
   fileName: any;
   fileboolean: boolean = false;
+  loading: boolean = false;
   // progress bar value
   progessValue: number= 0;
 
@@ -55,6 +56,7 @@ export class PreviewComponent implements OnInit {
 
     async onUpload(value: boolean){
       // this.loaderService.setHttpProgressStatus(true);
+      this.loading = true;
       this.activatedroute.params.subscribe((params)=>{
         console.log("this is the route parameters",params);
         this.currentSectionID = params["sectionId"];
@@ -68,7 +70,9 @@ export class PreviewComponent implements OnInit {
         console.log(res,"response from upload");
         // this.loaderService.setHttpProgressStatus(false);
         //this.onBack;
-
+        if(this.progessValue==100){
+          this.loading = false;
+        }
         this.onResult.emit(value);
 
       } catch (error) {
