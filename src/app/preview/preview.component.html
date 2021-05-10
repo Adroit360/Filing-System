@@ -40,7 +40,11 @@
         <span *ngIf="!fileboolean">Choose a file&hellip;</span>
         <span *ngIf="fileboolean">{{fileName}}</span> </label
       >
-      <button type="submit" (click)="onUpload(false)" id="uploadButton">Upload</button>
+      <div class="button-loader">
+        <button type="submit" (click)="onUpload(false)" id="uploadButton">Upload</button>
+        <mat-spinner></mat-spinner>
+      </div>
+      
 
     </div>
 

@@ -61,6 +61,7 @@ import { LoaderInterceptor } from 'src/interceptors/loading.interceptor';
 import { isLoggedInPipe } from 'src/pipes/isLoggedIn.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -124,7 +125,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     CarouselModule ,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatProgressSpinnerModule
 
 
   ],

@@ -38,13 +38,13 @@
                             <div class="image__content">
                                 <!-- <img src="../../../assets/preview.png" /> -->
                                 <!--FILES-->
-                                <!-- <img *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' " src="../../../assets/preview.png" /> -->
-                                <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="../../../assets/pdf.png" />
+                                <img *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png' " src="../../../assets/preview.png" />
+                                <img *ngIf="item.itemType=='file' && item.contentType=='application/pdf'" src="../../../assets/pdf2.png" style="width:50px;" />
 
-                                <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12' || item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint'" src="../../../assets/pp.png" />
+                                <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint.presentation.macroEnabled.12' || item.itemType=='file' && item.contentType=='application/vnd.ms-powerpoint'" src="../../../assets/powerpoint.png" />
                                 <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||item.itemType=='file' && item.contentType=='application/msword'" src="../../../assets/word.png" />
                                 <img *ngIf="item.itemType=='file' && item.contentType=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || item.contentType=='csv'" src="../../../assets/excel.png" />
-                                <img *ngIf="item.itemType=='file' && item.contentType=='text/plain'" src="../../../assets/text.png" />
+                                <img *ngIf="item.itemType=='file' && item.contentType=='text/plain'" src="../../../assets/files.png" style="width: 25px;" />
 
 
                                 <p class="image__name">{{item.alias}}</p>
