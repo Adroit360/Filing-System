@@ -56,7 +56,10 @@ export class PreviewComponent implements OnInit {
 
     async onUpload(value: boolean){
       // this.loaderService.setHttpProgressStatus(true);
-      this.loading = true;
+      // if(value==true){
+      //   this.loading = true;
+      // }
+      
       this.activatedroute.params.subscribe((params)=>{
         console.log("this is the route parameters",params);
         this.currentSectionID = params["sectionId"];
@@ -72,6 +75,9 @@ export class PreviewComponent implements OnInit {
         //this.onBack;
         if(this.progessValue==100){
           this.loading = false;
+        }
+        else{
+          this.loading = true;
         }
         this.onResult.emit(value);
 
