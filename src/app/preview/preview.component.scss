@@ -444,3 +444,18 @@ h1 {
         margin-top: 2rem;
     }
 }
+
+
+/*******ERROR MESSAGE**************/
+
+.error {
+    border: 1px solid;
+    margin: 10px auto;
+    padding: 15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    max-width: 100%;
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('https://i.imgur.com/GnyDvKN.png');
+}

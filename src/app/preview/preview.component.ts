@@ -30,7 +30,7 @@ export class PreviewComponent implements OnInit {
     this.uploadForm= this.fb.group({
       avatar: [null],
       name: ['']
-    })
+    });
     directory.progressBarValue.subscribe(res => {
       this.progressValue = res ;
       console.log("Progess: ", this.progressValue);
@@ -40,7 +40,7 @@ export class PreviewComponent implements OnInit {
       }
     
 
-    })
+    });
    }
 
   ngOnInit(): void {
@@ -60,16 +60,6 @@ export class PreviewComponent implements OnInit {
     }
 
     async onUpload(value: boolean){
-      // this.loaderService.setHttpProgressStatus(true);
-      // if(value==true){
-      //   this.loading = true;
-      // }
-      // if(this.progressValue<100){
-      //   this.loading = true;
-      // }
-      // else if(this.progressValue>0 && this.progressValue==100){
-      //   this.loading = false;
-      // }
       this.activatedroute.params.subscribe((params)=>{
         console.log("this is the route parameters",params);
         this.currentSectionID = params["sectionId"];
@@ -90,6 +80,9 @@ export class PreviewComponent implements OnInit {
 
       } catch (error) {
         this.loaderService.setHttpProgressStatus(false);
+        this.loading = false;
+        this.progressValue = 0;
+        console.log("An unexpected error occured. Please try again");
       }
 
     }
