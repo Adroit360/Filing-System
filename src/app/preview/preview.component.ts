@@ -21,7 +21,7 @@ export class PreviewComponent implements OnInit {
   fileboolean: boolean = false;
   loading: boolean = false;
   // progress bar value
-  progessValue: number= 0;
+  progressValue: number= 0;
 
   constructor(private data:DataService,private directory:DirectoryService, public fb: FormBuilder,
      private activatedroute:ActivatedRoute,
@@ -32,8 +32,13 @@ export class PreviewComponent implements OnInit {
       name: ['']
     })
     directory.progressBarValue.subscribe(res => {
-      this.progessValue = res ;
-      console.log("Progess: ", this.progessValue);
+      this.progressValue = res ;
+      console.log("Progess: ", this.progressValue);
+      // loading spinner effect
+      if(this.progressValue<100){
+        this.loading = true;
+      }
+    
 
     })
    }
@@ -59,7 +64,12 @@ export class PreviewComponent implements OnInit {
       // if(value==true){
       //   this.loading = true;
       // }
-      
+      // if(this.progressValue<100){
+      //   this.loading = true;
+      // }
+      // else if(this.progressValue>0 && this.progressValue==100){
+      //   this.loading = false;
+      // }
       this.activatedroute.params.subscribe((params)=>{
         console.log("this is the route parameters",params);
         this.currentSectionID = params["sectionId"];
@@ -73,13 +83,10 @@ export class PreviewComponent implements OnInit {
         console.log(res,"response from upload");
         // this.loaderService.setHttpProgressStatus(false);
         //this.onBack;
-        if(this.progessValue==100){
-          this.loading = false;
-        }
-        else{
-          this.loading = true;
-        }
         this.onResult.emit(value);
+        console.log(this.onResult);
+        this.loading= true;
+        console.log(this.loading);
 
       } catch (error) {
         this.loaderService.setHttpProgressStatus(false);
