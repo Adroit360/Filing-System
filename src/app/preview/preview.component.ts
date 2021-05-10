@@ -20,6 +20,7 @@ export class PreviewComponent implements OnInit {
   fileName: any;
   fileboolean: boolean = false;
   loading: boolean = false;
+  error: boolean = false;
   // progress bar value
   progressValue: number= 0;
 
@@ -67,6 +68,7 @@ export class PreviewComponent implements OnInit {
         console.log("sectionID: ", this.currentSectionID);
         console.log("directoryID: ", this.currentDirectory);
       });
+      this.error = false;
       try {
         let res:any = await this.directory.uploadFile(this.file,this.data.getActiveUser().email,this.currentSectionID,this.currentDirectory,this.data.getEntity())
 
@@ -82,7 +84,7 @@ export class PreviewComponent implements OnInit {
         this.loaderService.setHttpProgressStatus(false);
         this.loading = false;
         this.progressValue = 0;
-        console.log("An unexpected error occured. Please try again");
+       this.error = true;
       }
 
     }

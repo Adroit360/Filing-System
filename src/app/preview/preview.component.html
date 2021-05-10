@@ -25,7 +25,7 @@
 
         </form> -->
         <!--Error message-->
-        <div class="error">An unexpted error occured. Please try again</div>
+        <div class="error" *ngIf="error">An unexpted error occured. Please try again</div>
         <div class="box">
             <input type="file" name="file-2[]" id="file-2" accept=" file_type| image/*" class="inputfile inputfile-2" data-multiple-caption="{count} files selected" multiple (change)="onChange($event)" />
             <label for="file-2"><svg
@@ -44,7 +44,7 @@
       <div class="button-loader">
         <button type="submit" *ngIf="!loading" (click)="onUpload(false)" id="uploadButton">Upload</button>
         <!--Loading spinner-->
-        <mat-spinner *ngIf="loading"></mat-spinner>
+        <mat-spinner *ngIf="loading" [diameter]="40"></mat-spinner>
       </div>
       
 
