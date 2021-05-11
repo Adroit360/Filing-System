@@ -62,6 +62,7 @@ import { isLoggedInPipe } from 'src/pipes/isLoggedIn.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { SafeSecurityPipePipe } from './pipes/safe-security-pipe.pipe';
 
 
 
@@ -107,7 +108,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ErrorPageComponent,
     SubscriptionPageComponent,
 
-    isLoggedInPipe
+    isLoggedInPipe,
+
+    SafeSecurityPipePipe
   ],
 
   imports: [

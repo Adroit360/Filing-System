@@ -27,11 +27,13 @@
                 <div class="folder-container">
                     <div (click)="onFolderClicked(item)" class="component">
                         <div class="image-box" *ngIf="item.itemType=='file'">
-                            <div *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png'; else documents " class="image__background" style="background-image: url('https://render.fineartamerica.com/images/rendered/default/print/8/12/break/images/artworkimages/medium/2/1-hotel-du-cap-eden-roc-slim-aarons.jpg')">
+
+                            <div>{{item.url}}</div>
+                            <div *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png'; else documents " class="image__background" [ngStyle]="{'background-image': 'url(\''+ item.url + '\')'}">
                             </div>
                             <ng-template #documents>
                                 <div class="image__background">
-                                    <iframe src="https://ai.stanford.edu/~nilsson/MLBOOK.pdf" frameborder="0" scrolling="no"></iframe>
+                                    <iframe [src]="item.url | safe" frameborder="0" scrolling="no"></iframe>
                                 </div>
                             </ng-template>
 
