@@ -27,8 +27,6 @@
                 <div class="folder-container">
                     <div (click)="onFolderClicked(item)" class="component">
                         <div class="image-box" *ngIf="item.itemType=='file'">
-
-                            <div>{{item.url}}</div>
                             <div *ngIf="item.itemType=='file' && item.contentType=='image/jpeg' ||item.itemType=='file' && item.contentType=='image/png'; else documents " class="image__background" [ngStyle]="{'background-image': 'url(\''+ item.url + '\')'}">
                             </div>
                             <ng-template #documents>
