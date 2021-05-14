@@ -149,9 +149,17 @@
     .subscription {
         width: 100%;
         text-align: center;
+        // border: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        // border-color: rgba(0,0,0,.2);
     }
     .logout {
         width: 100%;
+        // border: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        // border-color: rgba(0,0,0,.2);
         text-align: center;
     }
 }
