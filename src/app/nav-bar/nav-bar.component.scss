@@ -31,53 +31,31 @@
 }
 
 #hiddenText {
-    top: 50px;
-    color: black;
-    // padding: 10px;
-    background-color: #ffffff;
-    -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
-    p {
-        font-size: 20px;
-        text-align: center;
-    }
-    hr {
-        color: rgba(128, 128, 128, 0.253);
-    }
-    h3,
-    img {
-        // margin: 0px 74px 20px 75px;
-        cursor: pointer;
-        font-size: 90px;
-        color: #459cE3;
-        margin-right: 0px;
-    }
-    h2 {
-        // font-size: 15px;
-        text-align: center;
-        font-family: 'Poppins';
-        // font-weight: 500;
-    }
-    h4 {
-        // font-size: 10px;
-        text-align: center;
-        opacity: 0.5;
-    }
-    p {
-        // margin-top: 12px;
-        padding: 15px;
-        cursor: pointer;
-        border-radius: .5rem;
-        font-size: 1.5rem;
-        margin: 1.5rem 0 !important;
-        border: 1px solid #ccc;
-        display: inline-block;
-        padding: 1.3rem 2rem;
-    }
-    p:hover {
-        color: black;
-        background-color: #ccc;
-    }
+    // top: 50px;
+    // color: black;
+    // // padding: 10px;
+    // background-color: #ffffff;
+    // -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+    // box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+    // h3,
+    // img {
+    //     // margin: 0px 74px 20px 75px;
+    //     cursor: pointer;
+    //     font-size: 90px;
+    //     color: #459cE3;
+    //     margin-right: 0px;
+    // }
+    // h2 {
+    //     // font-size: 15px;
+    //     text-align: center;
+    //     font-family: 'Poppins';
+    //     // font-weight: 500;
+    // }
+    // h4 {
+    //     // font-size: 10px;
+    //     text-align: center;
+    //     opacity: 0.5;
+    // }
 }
 
 
@@ -91,7 +69,12 @@
     align-items: center;
     width: 350px;
     border-radius: 6px;
-    gap: 10px
+    gap: 10px;
+    color: black;
+    // padding: 10px;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
 }
 
 .profile {
@@ -99,8 +82,26 @@
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-    gap: 13px;
+    gap: 20px;
     position: relative;
+    //  h3 {
+    //     // margin: 0px 74px 20px 75px;
+    //     cursor: pointer;
+    //     font-size: 90px;
+    //     color: #459cE3;
+    //     margin-right: 0px;
+    // }
+    h2 {
+        // font-size: 15px;
+        text-align: center;
+        font-family: 'Poppins';
+        // font-weight: 500;
+    }
+    h4 {
+        // font-size: 10px;
+        text-align: center;
+        opacity: 0.5;
+    }
     .profile__user {
         display: flex;
         flex-direction: column;
@@ -122,14 +123,6 @@
         padding: 5px;
         border-radius: 50%;
         background: white;
-        /** original style****/
-        // position: absolute;
-        // left: 90px;
-        // top: 55px;
-        // padding: 10px;
-        // color: #459cE3;
-        // font-size: 20px;
-        // cursor: pointer;
         i {
             padding: 5px;
             border-radius: 50%;
@@ -143,23 +136,31 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    // margin-bottom: 15px;
-    // border: 1px solid red;
-    // gap: 10px;
+    p {
+        // margin-top: 12px;
+        font-size: 20px;
+        text-align: center;
+        padding: 15px;
+        cursor: pointer;
+        border-radius: .5rem;
+        font-size: 1.5rem;
+        margin: 1.5rem 0 !important;
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 1.3rem 2rem;
+    }
+    p:hover {
+        color: black;
+        background-color: #ccc;
+    }
     .subscription {
         width: 100%;
         text-align: center;
-        // border: 1px solid #ccc;
         border-top: 1px solid #ccc;
         border-bottom: 1px solid #ccc;
-        // border-color: rgba(0,0,0,.2);
     }
     .logout {
         width: 100%;
-        // border: 1px solid #ccc;
-        // border-top: 1px solid #ccc;
-        // border-bottom: 1px solid #ccc;
-        // border-color: rgba(0,0,0,.2);
         text-align: center;
     }
 }
