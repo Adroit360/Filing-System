@@ -101,15 +101,16 @@
     flex-direction: column;
     gap: 13px;
     position: relative;
-    .profile__details {
+    .profile__user {
         display: flex;
         flex-direction: column;
-        border: 1px solid red;
+        position: relative;
+        align-items: center;
     }
     .change__profile {
         position: absolute;
-        right: 25px;
-        top: 55px;
+        right: -10px;
+        top: 52px;
         color: #459cE3;
         font-size: 16px;
         cursor: pointer;
