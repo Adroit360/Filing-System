@@ -101,8 +101,12 @@
     flex-direction: column;
     gap: 13px;
     position: relative;
-    .change__profile {
+    .profile__details {
+        display: flex;
+        flex-direction: column;
         border: 1px solid red;
+    }
+    .change__profile {
         position: absolute;
         right: 25px;
         top: 55px;
