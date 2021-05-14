@@ -37,12 +37,17 @@
                     </div>
 
                 </div>
-                <hr/>
-                <p (click)="onsubscription()"> Subscription </p>
-                <!-- <hr/>
-                <p (click)="reset()" routerLinkActive="active" style="padding: 10px;"> Reset password</p> -->
-                <hr/>
-                <p class="ta" (click)="onLogOut()">logout</p>
+                <div class="profile__links">
+                    <div class="subscription">
+                        <p (click)="onsubscription()"> Subscription </p>
+                    </div>
+                    <div class="logout">
+                        <!-- <hr/>
+                    <p (click)="reset()" routerLinkActive="active" style="padding: 10px;"> Reset password</p> -->
+
+                        <p class="ta" (click)="onLogOut()">logout</p>
+                    </div>
+                </div>
 
             </div>
         </div>
