@@ -22,9 +22,11 @@
             <div class="profile-container" id="hiddenText">
 
                 <div class="profile">
-                    <h3 *ngIf="!user.photo" class="material-icons"> account_circle </h3>
+
                     <div class="profile__user">
-                        <img *ngIf="user.photo" src={{user.photo}}>
+                        <!-- <h3 *ngIf="!user.photo" class="material-icons"> account_circle </h3> -->
+                        <span class="material-icons"> account_circle </span>
+                        <!-- <img *ngIf="user.photo" src={{user.photo}}> -->
                         <div class="change__profile">
                             <i class="fa fa-camera" (click)="changeProfile($event)"></i>
                             <input id="file-upload" type="file" accept="image/*" (change)="onChange($event)" />
