@@ -106,11 +106,16 @@
         flex-direction: column;
         position: relative;
         align-items: center;
+        img {
+            height: 90px;
+            width: 90px;
+            border-radius: 50%;
+        }
     }
     .change__profile {
         position: absolute;
-        right: -10px;
-        top: 52px;
+        right: 21px;
+        top: 60px;
         color: #459cE3;
         font-size: 16px;
         cursor: pointer;
