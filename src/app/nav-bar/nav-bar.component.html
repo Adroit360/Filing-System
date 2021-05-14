@@ -15,9 +15,9 @@
 
     <div *ngIf="user" class="notifications">
         <div smart-tooltip-container class="clicktoshow">
-            <div class="user__profile" style="position: relative;">
+            <div [ngClass]="{'user__profile': progressSpinner}" style="position: relative;">
                 <!--Loading spinner-->
-                <mat-spinner [strokeWidth]="5" [diameter]="60" style="position: relative;"></mat-spinner>
+                <mat-spinner *ngIf="progressSpinner" [strokeWidth]="5" [diameter]="60" style="position: relative;"></mat-spinner>
                 <div class="user__image">
                     <span *ngIf="!user.photo" class="material-icons"> account_circle </span>
                     <img *ngIf="user.photo" style="height: 40px;width: 40px;border-radius: 50%;" src={{user.photo}}>

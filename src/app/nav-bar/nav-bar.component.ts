@@ -21,6 +21,7 @@ export class NavBarComponent implements OnInit {
   cross: boolean = false;
   firstName:string="";
   ResetModal=false;
+  progressSpinner = false;
   constructor( private authManager:AuthServiceService,private userservice: UserService, private router: Router,
     private entityManager:EntitiesService, private dataManager: DataService, private sectionService: SectionService) {
       // get user info
@@ -75,6 +76,7 @@ export class NavBarComponent implements OnInit {
 
   onChange(event){
     let file = (event.target as HTMLInputElement).files[0];
+    this.progressSpinner = true;
     if(file){
       this.entityManager.UserProfilePhoto(this.dataManager.getActiveUser().email,file,this.dataManager.getEntity());
     }
