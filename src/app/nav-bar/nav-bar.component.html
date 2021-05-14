@@ -19,14 +19,14 @@
             <span *ngIf="!user.photo" class="material-icons"> account_circle </span>
             <img *ngIf="user.photo" style="height: 40px;width: 40px;border-radius: 50%;" src={{user.photo}}>
             <!--class="smart-tooltip stay-left stick-100 stayonhover"-->
-            <div class="profile-container" id="hiddenText">
+            <div class="profile-container smart-tooltip stay-left stick-100 stayonhover" id="profile-container">
 
                 <div class="profile">
 
                     <div class="profile__user">
                         <!-- <h3 *ngIf="!user.photo" class="material-icons"> account_circle </h3> -->
-                        <span class="material-icons"> account_circle </span>
-                        <!-- <img *ngIf="user.photo" src={{user.photo}}> -->
+                        <span *ngIf="!user.photo" class="material-icons"> account_circle </span>
+                        <img *ngIf="user.photo" src={{user.photo}}>
                         <div class="change__profile">
                             <i class="fa fa-camera" (click)="changeProfile($event)"></i>
                             <input id="file-upload" type="file" accept="image/*" (change)="onChange($event)" />

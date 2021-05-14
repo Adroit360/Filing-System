@@ -55,7 +55,6 @@
     position: relative;
     margin-top: 1.6rem;
     span {
-        // margin: 0px 74px 20px 75px;
         cursor: pointer;
         font-size: 90px;
         color: #459cE3;
@@ -63,13 +62,10 @@
         border-radius: 50%;
     }
     h2 {
-        // font-size: 15px;
         text-align: center;
         font-family: 'Poppins';
-        // font-weight: 500;
     }
     h4 {
-        // font-size: 10px;
         text-align: center;
         opacity: 0.5;
     }
@@ -108,7 +104,6 @@
     align-items: center;
     width: 100%;
     p {
-        // margin-top: 12px;
         font-size: 20px;
         text-align: center;
         padding: 15px;
@@ -254,11 +249,6 @@
     }
     .sidebar {
         margin: 0 1rem;
-    }
-    .logo {
-        img {
-            // margin: 10px 0 0 15px
-        }
     }
     .search-box {
         margin-left: 2rem;
