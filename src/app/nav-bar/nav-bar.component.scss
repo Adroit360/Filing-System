@@ -147,10 +147,12 @@
     // border: 1px solid red;
     gap: 10px;
     .subscription {
-        border: 1px solid red;
+        width: 100%;
+        text-align: center;
     }
     .logout {
-        border: 1px solid blue;
+        width: 100%;
+        text-align: center;
     }
 }
 
